@@ -22,6 +22,10 @@ svg {
     max-width: 100%;
 }
 
+nav :where(ol, ul) {
+    list-style: none;
+}
+
 /*
 3. Remove built-in form typography styles
 */
