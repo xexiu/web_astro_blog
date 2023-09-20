@@ -14,3 +14,11 @@ export interface LinkProps {
    classes?: string;
    target: string;
 }
+
+export interface HeadProps {
+   title: string;
+   description: string;
+   image: any;
+   frontmatter: any;
+   robots: any;
+}

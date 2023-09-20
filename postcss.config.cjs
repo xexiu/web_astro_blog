@@ -1,6 +1,5 @@
 module.exports = {
    plugins: {
-      'postcss-import': {},
       'postcss-mixins': {},
       'postcss-extend': {},
       'postcss-nesting': {},

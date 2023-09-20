@@ -1,7 +1,8 @@
 ---
 import data from '@schemas/sidebar-data.json';
 import { Icon } from 'astro-icon';
-import Link from '../Link.astro';
+import Link from '@components/Link.astro';
+import './sidebar.css';
 ---
 
 <script>
@@ -99,7 +100,3 @@ hideSideBarOnOutsideClick();
       </div>
    </div>
 </aside>
-
-<style itemscope>
-@import "sidebar.css";
-</style>

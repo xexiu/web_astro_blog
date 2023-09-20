@@ -1,19 +1,26 @@
 ---
 import Logo from '@components/Logo.astro';
-import Sidebar from '@components/sidebar/Sidebar.astro';
 import ToggleTheme from '@components/ToggleTheme.astro';
+import Sidebar from '@components/sidebar/Sidebar.astro';
 import data from '@schemas/index-data.json';
 import '@styles/global.css';
+import type { HeadProps } from 'types/interfaces';
 import MainFooter from './MainFooter.astro';
 import MainHead from './MainHead.astro';
 import MainHeader from './MainHeader.astro';
 
-const { title = data.title, description = data.description } = Astro.props;
+const {
+   title = data.title,
+   description = data.description,
+   image,
+   frontmatter,
+   robots,
+} = Astro.props as HeadProps;
 ---
 
 <!doctype html>
 <html lang="es">
-   <MainHead {title} {description} />
+   <MainHead {title} {description} {description} {image} {frontmatter} {robots}/>
    <body>
       <MainHeader>
          <Logo />
