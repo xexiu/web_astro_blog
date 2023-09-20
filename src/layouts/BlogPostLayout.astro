@@ -12,7 +12,7 @@ const { frontmatter } = Astro.props;
 const { title, description, date, category, author, image, robots } =
    frontmatter;
 
-const allPosts = await Astro.glob('../pages/blog/*.md');
+const allPosts = await Astro.glob('../pages/blog/*.mdx');
 const formattedPosts = formatBlogPosts(allPosts as [], {
    sortByDate: false,
 });
