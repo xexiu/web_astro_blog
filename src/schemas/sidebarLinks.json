@@ -1,0 +1,22 @@
+[
+    {
+        "iconName": "clarity:home-solid",
+        "name": "Inicio",
+        "path": "/"
+    },
+    {
+        "iconName": "clarity:avatar-outline-badged",
+        "name": "Sobre Mí",
+        "path": "/about/"
+    },
+    {
+        "iconName": "grommet-icons:contact",
+        "name": "Contacto",
+        "path": "/contact/"
+    },
+    {
+        "iconName": "clarity:blocks-group-outline-alerted",
+        "name": "Blog",
+        "path": "/blog/"
+    }
+]

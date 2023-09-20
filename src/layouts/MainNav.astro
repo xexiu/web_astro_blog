@@ -1,0 +1,31 @@
+---
+import Link from '@components/Link.astro';
+import data from '@schemas/navLinks.json';
+---
+
+<nav aria-label="primary">
+   <ul>
+      {
+         data.map((item) => (
+            <li><Link
+               text={item.name}
+               href={item.path}
+               style="primary"
+               isFilled={false}
+               data-navLink
+            />
+            </li>
+         ))
+      }
+   </ul>
+</nav>
+
+<script>
+const navLinks = document.querySelectorAll('[data-navLink]');
+
+navLinks.forEach((link) => {
+   if (link.getAttribute('href') === window.location.pathname) {
+      link.setAttribute('aria-current', 'page');
+   }
+});
+</script>

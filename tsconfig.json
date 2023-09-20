@@ -1,0 +1,48 @@
+{
+  "extends": "astro/tsconfigs/base",
+  "target": "es5",
+  "lib": [
+    "dom",
+    "dom.iterable",
+    "esnext"
+  ],
+  "allowJs": true,
+  "compilerOptions": {
+    "types": [
+      "bun-types"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@layouts/*": [
+        "src/layouts/*"
+      ],
+      "@pages/*": [
+        "src/pages/*"
+      ],
+      "@schemas/*": [
+        "src/schemas/*"
+      ],
+      "@styles/*": [
+        "src/styles/*"
+      ],
+      "@js/*": [
+        "src/js/*"
+      ],
+      "types/*": [
+        "src/types/*"
+      ]
+    },
+    "verbatimModuleSyntax": true,
+    "strictNullChecks": true,
+  },
+  "include": [
+    "src",
+    "modules.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+}

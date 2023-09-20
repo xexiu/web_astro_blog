@@ -1,0 +1,54 @@
+@import "reset";
+@import '@fontsource/golos-text';
+@import "partials/_variables";
+@import "partials/_mixins";
+@import "partials/_buttons";
+@import "partials/_root";
+
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    max-width: 1248px;
+    background-color: var(--bg-light-papaya);
+    margin: 0 auto;
+    padding: 0 10px;
+    position: relative;
+    font-family: 'Golos Text', cursive;
+
+    a[data-normal-link] {
+        color: $color-red;
+        position: relative;
+        transition: color .3s ease-in-out;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            width: 100%;
+            height: 3px;
+            background-color: $bg-blue;
+            transform: scaleX(0);
+            transition: transform .3s ease-in-out;
+        }
+
+        &:hover {
+            color: var(--link-1);
+        }
+
+        &:hover::before {
+            transform: scaleX(1);
+        }
+    }
+}
+
+.dark {
+    body {
+        background-color: #212123;
+        color: #eee;
+    }
+}
+
+main {
+    padding: 16px 0 0 75px;
+}

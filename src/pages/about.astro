@@ -1,0 +1,128 @@
+---
+import Link from '@components/Link.astro';
+import MainLayout from '@layouts/MainLayout.astro';
+import data from '@schemas/aboutPage.json';
+import { Image } from 'astro:assets';
+---
+
+<MainLayout title={data.title} description={data.description}>
+   <section class="container" aria-label="Sobre Mi">
+      <div class="content">
+         <div class="image-container">
+            <Image
+               src={data.avatar.src}
+               alt={data.avatar.alt}
+               width="200"
+               height="200"
+               format="png"
+               quality={80}
+               class="hero-image"
+            />
+         </div>
+         <div class="text-container">
+            <h1>Sobre Mí</h1>
+            <p>
+               Soy un desarrollador Full Stack especializado en JavaScript, HTML, CSS y Node.js. También tengo experiencia en Python y he trabajado con tecnologías como React, React Native, Blockchain, WEB3, dApps y smart contracts. ¡Explora mi blog para obtener información y consejos sobre estos temas y más!
+            </p>
+         </div>
+      </div>
+      <div class="social-icons">
+         <Link
+            icon={{
+               name: data.iconTwitter.iconName,
+               side: 'left',
+               width: '22',
+               height: '22',
+            }}
+            text=""
+            href={data.iconTwitter.path}
+            style="primary"
+            isFilled={false}
+            target="_blank"
+         />
+         <Link
+            icon={{
+               name: data.iconLinkedin.iconName,
+               side: 'left',
+               width: '22',
+               height: '22',
+            }}
+            text=""
+            href={data.iconLinkedin.path}
+            style="primary"
+            isFilled={false}
+         />
+         <Link
+            icon={{
+               name: data.iconStack.iconName,
+               side: 'left',
+               width: '22',
+               height: '22',
+            }}
+            text=""
+            href={data.iconStack.path}
+            style="primary"
+            isFilled={false}
+         />
+         <Link
+            icon={{
+               name: data.iconEmail.iconName,
+               side: 'left',
+               width: '22',
+               height: '22',
+            }}
+            text=""
+            href={data.iconEmail.path}
+            style="primary"
+            isFilled={false}
+         />
+      </div>
+   </section>
+</MainLayout>
+<style>
+   .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .content {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+      flex-wrap: wrap;
+   }
+
+   .image-container {
+      margin-right: 20px;
+   }
+
+   .text-container {
+      flex: 1;
+   }
+
+   .hero-image {
+      border-radius: 10px;
+      width: 200px;
+      height: 200px;
+   }
+
+   .social-icons {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+   }
+
+   .social-icons a {
+      margin: 0 10px;
+   }
+
+   h1 {
+      text-align: center;
+   }
+
+   p {
+      text-align: center;
+   }
+</style>

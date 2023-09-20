@@ -1,0 +1,43 @@
+---
+import Link from '@components/Link.astro';
+import MainLayout from '@layouts/MainLayout.astro';
+import data from '@schemas/404Page.json';
+---
+
+<MainLayout title={data.title} description={data.description}>
+   <div class="container" style={{
+      display: 'grid',
+      placeItems: 'center',
+      textAlign: 'center',
+      gap: 'var(--space-sm)'
+   }}>
+      <div>
+         <h1>Ooppss!! Al ha ocurrido!</h1>
+         <p>Puede que la página que busque no existe...</p>
+         <Link href='/' text='Volver a Inicio' style="primary" />
+      </div>
+   </div>
+</MainLayout>
+
+<style>
+    %btn-blue {
+      background: var(--bg-blue);
+      border: 0;
+      color: white;
+      padding: 5px 15px;
+      font-size: 1em;
+      text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+      border-radius: 5px;
+      display: inline-flex;
+      &:hover {
+        cursor: pointer;
+        box-shadow: var(--shadow-md);
+      }
+      &:focus {
+        box-shadow: inset 1px 1px 10px rgba(0,0,0,.3);
+      }
+    }
+    .primary {
+       @extend %btn-blue;
+    }
+</style>

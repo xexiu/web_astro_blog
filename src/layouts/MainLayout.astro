@@ -1,0 +1,35 @@
+---
+import Logo from '@components/Logo.astro';
+import Sidebar from '@components/sidebar/Sidebar.astro';
+import ToggleTheme from '@components/ToggleTheme.astro';
+import data from '@schemas/indexPage.json';
+import '@styles/global.css';
+import MainFooter from './MainFooter.astro';
+import MainHead from './MainHead.astro';
+import MainHeader from './MainHeader.astro';
+
+const { title = data.title, description = data.description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+   <MainHead {title} {description} />
+   <body>
+      <MainHeader>
+         <Logo />
+         <ToggleTheme style={{ marginLeft: 'auto' }} />
+         <!-- <MainNav /> -->
+      </MainHeader>
+      <!-- Header -->
+      <!-- Nav -->
+      <!-- Header -->
+      <main>
+         <slot> Default Text</slot>
+         <!-- Sidebar -->
+         <Sidebar />
+         <!--- Articles -->
+      </main>
+      <!-- Footer -->
+      <MainFooter />
+   </body>
+</html>

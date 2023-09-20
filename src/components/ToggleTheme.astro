@@ -1,0 +1,94 @@
+---
+interface Props {
+   style: { [key: string]: string | number };
+}
+const { style }: Props = Astro.props;
+---
+
+<div class="inline-flex items-center" style={style}>
+   <input type="checkbox" checked id="darkmode-toggle" data-theme="dark" />
+   <label for="darkmode-toggle"></label>
+</div>
+
+<style>
+   :root > * {
+      display: none;
+   }
+   .light > * {
+      display: block;
+   }
+   .dark {
+      background-color: #212123;
+      color: white;
+      > * {
+         display: block;
+      }
+   }
+   label {
+      width: 40px;
+      height: 20px;
+      position: relative;
+      display: block;
+      background: #ebebeb;
+      border-radius: 200px;
+      box-shadow:
+         inset 0px 5px 15px rgba(0, 0, 0, 0.4),
+         inset 0px -5px 15px rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+   }
+   label:after {
+      content: "";
+      width: 15px;
+      height: 15px;
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      background: linear-gradient(180deg, #ffcc89, #d8860b);
+      border-radius: 180px;
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+   }
+   input {
+      width: 0;
+      height: 0;
+      visibility: hidden;
+   }
+   input:checked + label {
+      background: #242424;
+   }
+   input:checked + label:after {
+      left: 22px;
+      background: linear-gradient(180deg, #777, #3a3a3a);
+   }
+   label:active:after {
+      width: 15px;
+   }
+   input:checked + label + .background {
+      background: #242424;
+   }
+</style>
+
+<script>
+   import { updateTheme } from '@js/utils';
+   const select = document.getElementById(
+      'darkmode-toggle',
+   ) as HTMLInputElement;
+   const theme = localStorage.getItem('theme');
+
+   if (theme !== null) {
+      select.checked = theme === 'dark' ? true : false;
+      select.dataset.theme = theme;
+   }
+
+   updateTheme(select.dataset.theme as string);
+
+   if (select) {
+      select.addEventListener('change', (event: Event) => {
+         event.preventDefault();
+         const select = event.target as HTMLInputElement;
+         const theme = select.checked ? 'dark' : 'light';
+         select.checked = theme === 'dark' ? true : false;
+         select.dataset.theme = theme;
+         updateTheme(theme);
+      });
+   }
+</script>

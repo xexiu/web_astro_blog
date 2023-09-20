@@ -1,0 +1,55 @@
+---
+import Link from '@components/Link.astro';
+---
+
+<footer>
+   <div>
+      <small>
+         Copyright &copy; <span id="copyright"></span> | All rights reserved
+      </small>
+      <small>
+         <Link href='/rss.xm' text='Subscribe to RSS' style="primary" icon={{
+            name: 'tabler:rss',
+            side: 'right',
+            width: '20',
+            height: '20'
+         }} data-normal-link />
+      </small>
+   </div>
+</footer>
+
+<script>
+   const element = document.querySelector('#copyright');
+   if (element !== null) {
+      element.textContent = new Date().getFullYear().toString();
+   }
+</script>
+
+<style>
+   :where(footer) {
+      width: 100%;
+      text-align: center;
+      padding: var(--space-sm);
+      border-top: 1px solid #bbb;
+
+      & div {
+         display: grid;
+         place-items: center;
+         max-width: 1500px;
+         margin-inline: auto;
+         gap: var(--space-sm);
+
+         @media (--sm) {
+            display: flex;
+            justify-content: space-between;
+         }
+
+         & a {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+         }
+      }
+   }
+</style>
