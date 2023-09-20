@@ -64,7 +64,7 @@
 
 #nav-bar {
     position: absolute;
-    left: -15px;
+    left: calc(0.7vw);
     top: 80px;
     max-height: calc(100vh - 100px);
     min-height: 200px;

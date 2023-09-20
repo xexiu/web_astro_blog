@@ -19,6 +19,7 @@ function hideSideBarOnOutsideClick() {
          const { target } = event;
          const sidebarToggle = element.querySelector('#nav-toggle') as HTMLInputElement;
          const navFooterSidebarToggle = element.querySelector('#nav-footer-toggle') as HTMLInputElement;
+
          if (!sidebar.contains(target as HTMLElement)) {
             // Check if the sidebar is in an open state
             if (!sidebarToggle.checked) {

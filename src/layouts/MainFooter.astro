@@ -8,18 +8,25 @@ import Link from '@components/Link.astro';
          Copyright &copy; <span id="copyright"></span> | All rights reserved
       </small>
       <small>
-         <Link href='/rss.xm' text='Subscribe to RSS' style="primary" icon={{
-            name: 'tabler:rss',
-            side: 'right',
-            width: '20',
-            height: '20'
-         }} data-normal-link />
+         <Link
+            href="/rss.xml"
+            text="Subscribe to RSS"
+            style="primary"
+            icon={{
+               name: 'tabler:rss',
+               side: 'right',
+               width: '16',
+               height: '16',
+            }}
+            data-normal-link
+         />
       </small>
    </div>
 </footer>
 
 <script>
    const element = document.querySelector('#copyright');
+
    if (element !== null) {
       element.textContent = new Date().getFullYear().toString();
    }
@@ -28,28 +35,24 @@ import Link from '@components/Link.astro';
 <style>
    :where(footer) {
       width: 100%;
-      text-align: center;
       padding: var(--space-sm);
-      border-top: 1px solid #bbb;
+      padding-left: 100px;
+      font-size: var(--fs-sm);
 
       & div {
-         display: grid;
-         place-items: center;
+         display: flex;
+         justify-content: space-between; /* Add this line */
+         align-items: center; /* Add this line */
          max-width: 1500px;
          margin-inline: auto;
          gap: var(--space-sm);
+      }
 
-         @media (--sm) {
-            display: flex;
-            justify-content: space-between;
-         }
-
-         & a {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            text-decoration: none;
-         }
+      & a {
+         display: flex;
+         align-items: center;
+         gap: 5px;
+         text-decoration: none;
       }
    }
 </style>

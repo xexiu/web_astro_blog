@@ -11,13 +11,14 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "stylelint src",
+    "lint": "stylelint **/*.css",
     "lint:fix": "bun run lint -- --fix",
     "postcss:watch": "postcss src/style.css --dir public"
   },
   "dependencies": {
     "@astrojs/mdx": "^1.1.0",
     "@astrojs/partytown": "^2.0.0",
+    "@astrojs/rss": "^3.0.0",
     "@astrojs/sitemap": "^3.0.0",
     "@fontsource/golos-text": "^5.0.8",
     "@types/mdx": "^2.0.7",

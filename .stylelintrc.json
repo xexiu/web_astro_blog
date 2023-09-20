@@ -2,10 +2,12 @@
     "defaultSeverity": "warning",
     "extends": "stylelint-config-standard-scss",
     "rules": {
+        "at-mixin-pattern": null,
         "at-rule-no-unknown": null,
         "custom-property-pattern": "^([a-z][a-z0-9]*)(-[a-z0-9]+)*$",
         "no-descending-specificity": null,
         "scss/at-import-no-partial-leading-underscore": null,
+        "scss/at-mixin-pattern": null,
         "scss/at-rule-no-unknown": null,
         "selector-class-pattern": null,
         "selector-id-pattern": null

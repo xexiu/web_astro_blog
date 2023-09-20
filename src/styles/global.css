@@ -1,3 +1,5 @@
+/* stylelint-disable at-mixin-pattern */
+
 @import "reset";
 @import '@fontsource/golos-text';
 @import "partials/_variables";
@@ -50,5 +52,13 @@ body {
 }
 
 main {
-    padding: 16px 0 0 75px;
+    padding: 15px 0 0 100px;
+
+    &::after {
+        content: "";
+        display: inline-block;
+        width: 100%;
+        box-shadow: var(--shadow-md);
+        height: 1px;
+    }
 }

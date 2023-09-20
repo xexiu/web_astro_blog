@@ -1,3 +1,5 @@
+import type { Post } from 'types/utils';
+
 export function updateTheme(value: string):void {
    document.documentElement.classList.remove('light', 'dark');
    document.documentElement.classList.add(value);
@@ -53,6 +55,7 @@ export function formatBlogPosts(posts: Post[], {
    if (typeof limit === 'number') {
       return filteredPosts.slice(0, limit);
    }
+
    return filteredPosts;
 
 }
@@ -60,6 +63,7 @@ export function formatBlogPosts(posts: Post[], {
 export function isVisible(elem: HTMLElement):boolean {
    return !!elem && !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
 }
+
 export function hideOnClickOutside(element: HTMLElement, cb: Function):void {
    const outsideClickListener = (event: Event) => {
       const targetElement = event.target as HTMLElement;
