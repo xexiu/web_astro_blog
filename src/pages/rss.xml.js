@@ -2,7 +2,7 @@ import rss from '@astrojs/rss';
 
 import { formatBlogPosts } from '@js/utils';
 
-const postImportResult = import.meta.glob('./blog/**/*.md', { eager: true });
+const postImportResult = import.meta.glob('./blog/**/*.mdx', { eager: true });
 const posts = formatBlogPosts(Object.values(postImportResult));
 
 export const GET = () => rss({

@@ -8,7 +8,7 @@ import data from '@schemas/blog-data.json';
 import type { Post } from 'types/utils';
 
 export async function getStaticPaths({ paginate }) {
-   const allPosts = await Astro.glob('./*.md');
+   const allPosts = await Astro.glob('./*.mdx');
    const formattedPosts = formatBlogPosts(allPosts as []);
 
    return paginate(formattedPosts, {
