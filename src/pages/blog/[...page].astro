@@ -4,7 +4,7 @@ import Pagination from '@components/Pagination.astro';
 import PostCard from '@components/PostCard.astro';
 import { formatBlogPosts } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
-import data from '@schemas/blogPage.json';
+import data from '@schemas/blog-data.json';
 import type { Post } from 'types/utils';
 
 export async function getStaticPaths({ paginate }) {

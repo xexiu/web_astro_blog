@@ -1,3 +1,4 @@
+/* stylelint-disable at-mixin-pattern */
 :root {
     /* Aside Navbar */
     --navbar-width: 256px;
@@ -12,9 +13,9 @@
     --accent-light: 224, 204, 250;
     --accent-dark: 49, 10, 101;
     --accent-gradient: linear-gradient(45deg,
-            rgb(var(--accent)),
-            rgb(var(--accent-light)) 30%,
-            white 60%);
+    rgb(var(--accent)),
+    rgb(var(--accent-light)) 30%,
+    white 60%);
 
     /* colors */
     --bg-light-papaya: papayawhip;

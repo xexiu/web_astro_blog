@@ -1,5 +1,10 @@
+.dark #nav-content .nav-button:nth-of-type(n):hover {
+    color: blue;
+    text-shadow: 0 0 5px rgb(217 13 13);
+}
+
 .dark .nav-button[aria-current="page"], .light .nav-button[aria-current="page"] {
-    color: rgb(217 13 13);
+    color: blue;
     text-shadow: 0 0 5px rgb(217 13 13);
 }
 
@@ -251,11 +256,6 @@ label[for="nav-toggle"] {
 
 .nav-button .fas {
     transition: min-width 0.2s;
-}
-
-.dark .nav-button:nth-of-type(n):hover {
-    color: rgb(217 13 13);
-    text-shadow: 0 0 5px rgb(217 13 13);
 }
 
 .nav-button:nth-of-type(n):hover {

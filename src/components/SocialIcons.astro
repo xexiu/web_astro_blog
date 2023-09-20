@@ -1,0 +1,26 @@
+---
+import Link from '@components/Link.astro';
+const{ data, classes } = Astro.props;
+---
+
+<div class={classes}>
+   {
+      data['social-icons'].map((social: object) => {
+         return Object.keys(social as []).map((s: string) => (
+            <Link
+               icon={{
+                  name: social[s].iconName,
+                  side: 'left',
+                  width: '22',
+                  height: '22',
+               }}
+               text=""
+               href={social[s].path}
+               style="primary"
+               isFilled={false}
+               target="_blank"
+            />
+         ));
+      })
+   }
+</div>

@@ -1,7 +1,7 @@
 ---
-import Link from '@components/Link.astro';
+import SocialIcons from '@components/SocialIcons.astro';
 import MainLayout from '@layouts/MainLayout.astro';
-import data from '@schemas/aboutPage.json';
+import data from '@schemas/about-data.json';
 import { Image } from 'astro:assets';
 ---
 
@@ -26,60 +26,11 @@ import { Image } from 'astro:assets';
             </p>
          </div>
       </div>
-      <div class="social-icons">
-         <Link
-            icon={{
-               name: data.iconTwitter.iconName,
-               side: 'left',
-               width: '22',
-               height: '22',
-            }}
-            text=""
-            href={data.iconTwitter.path}
-            style="primary"
-            isFilled={false}
-            target="_blank"
-         />
-         <Link
-            icon={{
-               name: data.iconLinkedin.iconName,
-               side: 'left',
-               width: '22',
-               height: '22',
-            }}
-            text=""
-            href={data.iconLinkedin.path}
-            style="primary"
-            isFilled={false}
-         />
-         <Link
-            icon={{
-               name: data.iconStack.iconName,
-               side: 'left',
-               width: '22',
-               height: '22',
-            }}
-            text=""
-            href={data.iconStack.path}
-            style="primary"
-            isFilled={false}
-         />
-         <Link
-            icon={{
-               name: data.iconEmail.iconName,
-               side: 'left',
-               width: '22',
-               height: '22',
-            }}
-            text=""
-            href={data.iconEmail.path}
-            style="primary"
-            isFilled={false}
-         />
-      </div>
+      <SocialIcons {data} classes="social-icons" />
    </section>
 </MainLayout>
-<style>
+
+<style is:inline>
    .container {
       display: flex;
       flex-direction: column;
@@ -117,10 +68,12 @@ import { Image } from 'astro:assets';
 
    .social-icons a {
       margin: 0 10px;
+      color: black;
    }
 
    h1 {
       text-align: center;
+      margin-bottom: 10px;
    }
 
    p {

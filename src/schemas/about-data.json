@@ -1,0 +1,34 @@
+{
+    "avatar": {
+        "alt": "Sergiu Mironescu",
+        "src": "https://media.licdn.com/dms/image/C4E03AQFKc-vBpCWksg/profile-displayphoto-shrink_200_200/0/1631536690547?e=1700697600&v=beta&t=qc0rU6k7i4PN3_pk7mnq5Q0IXT_3zC2sRig663AbbZc"
+    },
+    "description": "Soy un desarrollador Full Stack especializado en JavaScript, HTML, CSS y Node.js. También tengo experiencia en Python y he trabajado con tecnologías como React, React Native, Blockchain, WEB3, dApps y smart contracts. ¡Explora mi blog para obtener información y consejos sobre estos temas y más!",
+    "social-icons": [
+        {
+            "email": {
+                "iconName": "mdi:email-edit-outline",
+                "path": "mailto:sergiu.mironescu@gmail.com"
+            }
+        },
+        {
+            "linkedin": {
+                "iconName": "la:linkedin",
+                "path": "https://www.linkedin.com/in/smironescu/"
+            }
+        },
+        {
+            "stack": {
+                "iconName": "jam:stackoverflow",
+                "path": "https://stackoverflow.com/users/2193382/sergio-mironescu-iancu"
+            }
+        },
+        {
+            "twitter": {
+                "iconName": "gg:twitter",
+                "path": "https://twitter.com/xexiudev"
+            }
+        }
+    ],
+    "title": "Sobre Mí"
+}
