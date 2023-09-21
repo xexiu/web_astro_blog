@@ -9,7 +9,7 @@ import MainLayout from '@layouts/MainLayout.astro';
 import { formatBlogPosts } from '@js/utils';
 
 const { frontmatter } = Astro.props;
-const { title, description, date, category, author, image, robots } =
+const { title, description, date, category, author, featured_image, robots } =
    frontmatter;
 
 const allPosts = await Astro.glob('../pages/blog/*.md');
@@ -25,8 +25,8 @@ const relatedPosts = formattedPosts
    .slice(0, 3);
 ---
 
-<MainLayout {title} {description} {image} {frontmatter} {robots}>
-   <PostHeader {title} {description} {date} {category} {image} {author} />
+<MainLayout {title} {description} {featured_image} {frontmatter} {robots}>
+   <PostHeader {title} {description} {date} {category} {featured_image} {author} />
    <div class="post-content">
       <div class="content">
          <slot />

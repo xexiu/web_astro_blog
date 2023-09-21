@@ -3,10 +3,6 @@ layout: "../../layouts/BlogPostLayout.astro"
 title: Running out of sample post ideas
 date: 2022-11-25
 author: Victoria Greenfelder
-image: {
-  src: "https://images.unsplash.com/photo-1694587970265-a6b828d4d1c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2342&q=80",
-  alt: "A picture of a coder",
-}
 description: Sometimes you just run out of ideas for sample blog posts. It’s no one’s fault, it’s just the way it is.
 category: General
 slug: "post-2"

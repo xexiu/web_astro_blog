@@ -18,7 +18,7 @@ export interface LinkProps {
 export interface HeadProps {
    title: string;
    description: string;
-   image: any;
+   featured_image: any;
    frontmatter: any;
    robots: any;
 }

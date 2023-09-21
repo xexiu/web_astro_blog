@@ -3,10 +3,6 @@ layout: "../../layouts/BlogPostLayout.astro"
 title: JavaScript SchmavaScript
 date: 2022-12-05
 author: Victoria Greenfelder
-image: {
-  src: "https://images.unsplash.com/photo-1682687980976-fec0915c6177?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
-  alt: "A picture of a coder",
-}
 description: This is a blog post about the JavaScript programming language. Like it, love it, hate it, it's here to stay.
 category: Reference Docs
 slug: "post-5"

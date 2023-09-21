@@ -3,10 +3,6 @@ layout: "../../layouts/BlogPostLayout.astro"
 title: Beginning with CSS
 date: 2022-12-03
 author: Darnell McClure
-image: {
-  src: "https://plus.unsplash.com/premium_photo-1694825173733-eefc661ac670?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2338&q=80",
-  alt: "A picture of a coder",
-}
 description: CSS is a great way to style your website. In fact, there are no alternatives! Learn how to use it here.
 category: CSS,
 slug: "post-3"

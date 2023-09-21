@@ -3,10 +3,6 @@ layout: "../../layouts/BlogPostLayout.astro"
 title: Why is this CSS so weird?
 date: 2022-12-09
 author: Anna Dixon
-image: {
-  src: "https://images.unsplash.com/photo-1694676517357-25cd4d8f67f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2428&q=80",
-  alt: "A picture of a coder",
-}
 description: The global css file for this site is a bit different than I’d write things normally, but I’m trying to keep you from having to write a bunch of random classes.
 category: CSS
 slug: "post-4"

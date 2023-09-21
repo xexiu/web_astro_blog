@@ -12,7 +12,7 @@ import MainHeader from './MainHeader.astro';
 const {
    title = data.title,
    description = data.description,
-   image,
+   featured_image,
    frontmatter,
    robots,
 } = Astro.props as HeadProps;
@@ -20,7 +20,7 @@ const {
 
 <!doctype html>
 <html lang="es">
-   <MainHead {title} {description} {description} {image} {frontmatter} {robots}/>
+   <MainHead {title} {description} {description} {featured_image} {frontmatter} {robots}/>
    <body>
       <MainHeader>
          <Logo />

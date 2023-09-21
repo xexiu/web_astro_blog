@@ -12,7 +12,7 @@ const { frontmatter, url, tagType } = Astro.props;
 
 const Tag = tagType;
 
-const { title, date, author, image, description, category } = frontmatter;
+const { title, date, author, featured_image, description, category } = frontmatter;
 ---
 
 <article class="card">
@@ -21,8 +21,8 @@ const { title, date, author, image, description, category } = frontmatter;
    </small>
    <a href={url} aria-hidden="true" tabindex="-1">
       <Image
-         src={image.src}
-         alt={image.alt}
+         src={featured_image.src}
+         alt={featured_image.alt}
          width="400"
          height="250"
          format="webp"
