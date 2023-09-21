@@ -7,8 +7,6 @@ author: Sergiu Mironescu
 description: |-
   Hey, welcome to the blog! Image of Picachu!
 
-
-
   ![Dev Picachu](/assets/pic_ts.jpeg)
 featured_post: false
 tags:
