@@ -4,12 +4,18 @@ title: Running out of sample post ideas
 date: 2022-11-25
 author: Victoria Greenfelder
 image: {
-  src: "https://images.unsplash.com/photo-1694587970265-a6b828d4d1c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2342&q=80",
+  src: "/src/assets/mnt1.png",
   alt: "A picture of a coder",
 }
 description: Sometimes you just run out of ideas for sample blog posts. It’s no one’s fault, it’s just the way it is.
 category: General
-slug: "post-2"
+slug: "post-1"
+featured_post: false
+tags: ["css, js"]
+featured_image: {
+  src: "/src/assets/mnt1.png",
+  alt: "A picture of a coder",
+}
 ---
 
 Nisi duis ex aliqua eu officia eiusmod duis magna pariatur. Irure laborum qui aliqua nulla esse cillum laborum aliquip nulla elit. Id id Lorem duis irure cillum culpa. Nulla sint et aliqua velit do. Nulla sit sit proident consectetur enim ullamco aliqua in reprehenderit ullamco officia.

@@ -1,22 +1,32 @@
 ---
 layout: "../../layouts/BlogPostLayout.astro"
-title: Building an Astro Post Tag Component
-date: 2022-12-03
-author: Anna Dixon
+title: Running out of sample post ideas
+date: 2022-11-25
+author: Victoria Greenfelder
 image: {
-  src: "https://images.unsplash.com/photo-1694972937182-00eaa9e09378?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+  src: "https://images.unsplash.com/photo-1694587970265-a6b828d4d1c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2342&q=80",
   alt: "A picture of a coder",
 }
-description: In this project, we’ll build out a custom Astro component for post tags.
-category: Astro
-slug: "post-6"
+description: Sometimes you just run out of ideas for sample blog posts. It’s no one’s fault, it’s just the way it is.
+category: General
+slug: "post-2"
+featured_post: false
+tags: ["css, js"]
+featured_image: {
+  src: "/src/assets/mnt1.png",
+  alt: "A picture of a coder",
+}
 ---
 
 Nisi duis ex aliqua eu officia eiusmod duis magna pariatur. Irure laborum qui aliqua nulla esse cillum laborum aliquip nulla elit. Id id Lorem duis irure cillum culpa. Nulla sint et aliqua velit do. Nulla sit sit proident consectetur enim ullamco aliqua in reprehenderit ullamco officia.
 
+## Kinda Sus
+
 Ad ipsum velit sint enim exercitation mollit consequat elit mollit qui commodo aute. Laboris culpa voluptate aliquip incididunt duis. Cupidatat aliquip et sunt aute fugiat cupidatat irure voluptate. Occaecat officia et sunt.
 
 Officia tempor voluptate enim consequat cillum aute fugiat cupidatat incididunt magna labore in commodo. Eiusmod nostrud non deserunt. Incididunt excepteur pariatur magna. Proident aute ad in velit labore enim sit cillum ad mollit proident et qui. Esse sunt ullamco ullamco ipsum enim eu esse id eu exercitation laboris magna Lorem. Anim nostrud officia anim velit do exercitation labore mollit excepteur excepteur ex.
+
+## Is anyone reading these?
 
 Ipsum adipisicing exercitation dolor pariatur labore qui. Culpa cupidatat ea elit eiusmod tempor ea qui dolor Lorem laborum adipisicing. Ad ea laboris qui cupidatat deserunt culpa. Nulla ex velit adipisicing proident fugiat deserunt sunt eu adipisicing sint incididunt quis qui. Nulla fugiat labore duis ullamco reprehenderit excepteur laboris tempor ullamco aliquip laborum aliqua. Est tempor nisi magna ut elit pariatur commodo.
 

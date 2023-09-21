@@ -17,7 +17,20 @@ collections:
       - {label: "Layout", name: "layout", widget: "hidden", default: "../../layouts/BlogPostLayout.astro"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Image", name: "image", widget: "image"}
       - {label: "Category", name: "category", widget: "string"}
       - {label: "Author", name: "author", widget: "string"}
       - {label: "Body", name: "description", widget: "markdown"}
+      - {label: "Featured Post", name: "featured_post", widget: "boolean"}
+      - {label: "Tags", name: "tags", widget: "list"}
+      - label: "Featured Image"
+        name: "featured_image"
+        widget: "object"
+        fields:
+          - {name: src, label: Image, widget: image}
+          - {name: alt, label: Alt text, widget: string}
+      - label: "Image"
+        name: "image"
+        widget: "object"
+        fields:
+          - {name: src, label: Image, widget: image}
+          - {name: alt, label: Alt text, widget: string}
