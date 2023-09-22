@@ -7,8 +7,6 @@ author: Sergiu Mironescu
 description: |-
   This is a final test!
 
-
-
   ![Pica](/src/image/pic_ts.jpeg)
 featured_post: false
 tags:
