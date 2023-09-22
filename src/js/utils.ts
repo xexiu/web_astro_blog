@@ -17,7 +17,7 @@ export function slugify(text: string):string {
       .replace(/-+$/, '');
 }
 
-export function formatDate(date: Date):string {
+export function formatDate(date: string):string {
    return new Date(date).toLocaleDateString('en-US', {
       timeZone: 'UTC',
    });

@@ -1,0 +1,35 @@
+---
+import { PostCard } from '@components/PostCard';
+import { slugify } from '@js/utils';
+import MainLayout from '@layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+import type { Post } from 'types/utils';
+
+export async function getStaticPaths() {
+   const blogEntries = await getCollection('blog');
+   const blogTags = blogEntries.flatMap((entry: Post) => entry.data.tags);
+
+   return blogTags.map((tag: string) => ({
+      params: { tag: slugify(tag) }, props: { blogEntries },
+   }));
+}
+
+const { tag } = Astro.params;
+const { blogEntries } = Astro.props;
+const tagPosts = blogEntries.filter((entry: Post) => entry.data.tags.includes(tag));
+---
+
+<MainLayout title={tag}>
+   <section class="container" aria-label={`Posts about ${tag}`}>
+      <h1 class="h1">Publicaciones del blog etiquetadas con <span>{tag}</span></h1>
+      <div class="post-container">
+         {
+            tagPosts.map((post: Post) => (
+               <PostCard
+                  {post}
+               />
+            ))
+         }
+      </div>
+   </section>
+</MainLayout>

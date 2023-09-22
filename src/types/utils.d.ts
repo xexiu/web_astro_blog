@@ -1,10 +1,12 @@
 export type Post = {
-    frontmatter: {
-       draft: boolean,
-       date: string,
-       category: string,
-       title: string
+    data: {
+       category: string;
+       title: string;
+       description: string;
+       tags: string[];
+       date: Date;
        author: string;
-    },
-    url: string
+       featured_post: boolean;
+       featured_image: object
+    }
  }

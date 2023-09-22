@@ -20,20 +20,12 @@
         display: block;
     }
 
-    .nav-button a.link {
-        color: $main-link-white !important;
-    }
-
-    #nav-content li[aria-current='page'] a {
-        color: $bg-blue !important;
-    }
-
     body {
         background-color: $bg-dark;
         color: $main-link-white;
 
-        a.link {
-            color: $bg-blue !important;
+        a[data-normal-link], a.logomark {
+            color: $bg-blue;
             position: relative;
             transition: color .3s ease-in-out;
             text-decoration: none;
@@ -71,7 +63,7 @@ body {
     position: relative;
     font-family: 'Golos Text', cursive;
 
-    a.link {
+    a[data-normal-link], a.logomark {
         color: $color-red;
         position: relative;
         transition: color .3s ease-in-out;

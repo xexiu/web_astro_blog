@@ -1,12 +1,14 @@
 ---
 // component import
 import CategoryCloud from '@components/CategoryCloud.astro';
-import PostHeader from '@components/PostHeader.astro';
+import PostHeader from '@components/PostCardHeader.astro';
 import RelatedPosts from '@components/RelatedPosts.astro';
 import MainLayout from '@layouts/MainLayout.astro';
 
+console.log('BLOGPOSTLAYOUT');
 // util imports
 import { formatBlogPosts } from '@js/utils';
+
 
 const { frontmatter } = Astro.props;
 const { title, description, date, category, author, featured_image, robots } =
@@ -26,7 +28,8 @@ const relatedPosts = formattedPosts
 ---
 
 <MainLayout {title} {description} {featured_image} {frontmatter} {robots}>
-   <PostHeader {title} {description} {date} {category} {featured_image} {author} />
+<h1>TEEST BlogPostLayout</h1>
+   <!-- <PostHeader {title} {description} {date} {category} {featured_image} {author} />
    <div class="post-content">
       <div class="content">
          <slot />
@@ -45,5 +48,5 @@ const relatedPosts = formattedPosts
             )
          }
       </div>
-   </div>
+   </div> -->
 </MainLayout>

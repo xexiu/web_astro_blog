@@ -1,0 +1,36 @@
+---
+import { PostCard } from '@components/PostCard';
+import { slugify } from '@js/utils';
+import MainLayout from '@layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+import type { Post } from 'types/utils';
+
+// 1. Generate a new path for every collection entry
+
+export async function getStaticPaths() {
+   const blogEntries = await getCollection('blog');
+
+   return blogEntries.map((entry: Post) => ({
+      params: { category: slugify(entry.data.category) }, props: { blogEntries },
+   }));
+}
+
+// 2. For your template, you can get the entry directly from the prop
+const { category } = Astro.params;
+const { blogEntries } = Astro.props;
+const catPosts = blogEntries.filter((post: Post) => slugify(post.data.category) === category);
+---
+<MainLayout title={category}>
+   <section class="container" aria-label={`Posts about ${category}`}>
+      <h1 class="h1">Publicaciones sobre <span>{category}</span></h1>
+      <div class="post-container">
+         {
+            catPosts.map((post: Post) => (
+               <PostCard
+                  {post}
+               />
+            ))
+         }
+      </div>
+   </section>
+</MainLayout>

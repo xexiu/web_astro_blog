@@ -1,18 +1,18 @@
 ---
-import PostCard from '@components/PostCard.astro';
-import { formatBlogPosts, slugify } from '@js/utils';
+import { PostCard } from '@components/PostCard';
+import { slugify } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
 import type { Post } from 'types/utils';
 
 export async function getStaticPaths() {
-   const allPosts = await Astro.glob('../blog/*.md');
-   const formattedPosts = formatBlogPosts(allPosts as []);
+   const blogEntries = await getCollection('blog');
    const allAuthors = [
-      ...new Set(formattedPosts.map((post: Post) => post.frontmatter.author).flat()),
+      ...new Set(blogEntries.map((post: Post) => post.data.author).flat()),
    ];
 
    return allAuthors.map((author) => {
-      const authorPosts = formattedPosts.filter((post: Post) => post.frontmatter.author === author);
+      const authorPosts = blogEntries.filter((post: Post) => post.data.author === author);
 
       return {
          params: { author: slugify(author) },
@@ -34,9 +34,7 @@ const { posts, authorName } = Astro.props;
          {
             posts.map((post: Post) => (
                <PostCard
-                  frontmatter={post.frontmatter}
-                  url={post.url}
-                  tagType="h2"
+                  {post}
                />
             ))
          }

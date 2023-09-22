@@ -20,6 +20,7 @@
     /* colors */
     --bg-light-papaya: papayawhip;
     --hue: 235;
+    --color-red: rgb(217 13 13);
 
     /* Light Mode */
     --bkg-light: var(--hue) 25% 97%;
@@ -36,6 +37,7 @@
     --txt: var(--txt-light);
     --accent-mode: var(--accent-light);
     --muted: var(--muted-light);
+    --size-fluid-3: clamp(1.5rem, 3vw, 2rem);
 
     color-scheme: light;
 

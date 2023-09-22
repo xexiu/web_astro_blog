@@ -1,0 +1,30 @@
+---
+import { PostCard } from '@components/PostCard';
+import MainLayout from '@layouts/MainLayout.astro';
+import data from '@schemas/blog-data.json';
+import { getCollection } from 'astro:content';
+import type { Post } from 'types/utils';
+const blogEntries = await getCollection('blog');
+---
+
+<MainLayout title={data.title} description={data.description}>
+   <section class="container" aria-label="New Blog Posts">
+      <div class="post-container">
+         {blogEntries.map((post: Post) => <PostCard {post} />)}
+      </div>
+      <!-- <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+      <aside class="container" aria-label="Blog categories">
+         <h2 class="h3">Blog Categories</h2>
+         <CategoryCloud showCount={true}/>
+      </aside> -->
+   </section>
+</MainLayout>
+
+<style>
+   .post-container {
+      display: grid;
+      align-items: start;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--size-fluid-3);
+   }
+</style>

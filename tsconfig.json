@@ -8,6 +8,7 @@
   ],
   "allowJs": true,
   "compilerOptions": {
+    "jsx": "react-jsx",
     "types": [
       "bun-types"
     ],
@@ -28,6 +29,9 @@
       "@styles/*": [
         "src/styles/*"
       ],
+      "@images/*": [
+        "src/images/*"
+      ],
       "@js/*": [
         "src/js/*"
       ],
@@ -37,6 +41,7 @@
     },
     "verbatimModuleSyntax": true,
     "strictNullChecks": true,
+    "allowJs": true
   },
   "include": [
     "src",

@@ -2,7 +2,7 @@
   "extends": [
     "plugin:astro/recommended"
   ],
-  "parser": "@typescript-eslint/parser", // <-- SOLUTION to import type syntax error
+  "parser": "@typescript-eslint/parser",
   "overrides": [
     {
       "files": ["*.astro"],

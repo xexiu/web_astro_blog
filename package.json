@@ -13,7 +13,8 @@
     "astro": "astro",
     "lint": "stylelint **/*.css",
     "lint:fix": "bun run lint -- --fix",
-    "postcss:watch": "postcss src/style.css --dir public"
+    "postcss:watch": "postcss src/style.css --dir public",
+    "clean-install": "rm -rf node_modules/ && rm -rf package-lock.json && rm -rf bun.lockb && bun i"
   },
   "dependencies": {
     "@astrojs/mdx": "^1.1.0",
@@ -30,7 +31,6 @@
     "cssnano": "^6.0.1",
     "eslint-plugin-astro": "^0.29.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
-    "install": "^0.13.0",
     "postcss-extend": "^1.0.5",
     "postcss-mixins": "^9.0.4",
     "postcss-nesting": "^12.0.1",
@@ -38,15 +38,12 @@
     "postcss-simple-vars": "^7.0.1",
     "purgecss": "^5.0.0",
     "stylelint": "^15.10.3",
-    "stylelint-config-standard-scss": "^11.0.0",
-    "uncss": "^0.17.3"
+    "stylelint-config-standard-scss": "^11.0.0"
   },
   "devDependencies": {
     "bun-types": "^1.0.2",
-    "eslint": "^8.49.0"
+    "eslint": "^8.49.0",
+    "typescript": "^5.2.2"
   },
-  "module": "index.ts",
-  "peerDependencies": {
-    "typescript": "^5.0.0"
-  }
+  "module": "index.ts"
 }

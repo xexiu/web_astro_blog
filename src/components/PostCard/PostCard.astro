@@ -1,0 +1,114 @@
+---
+import TagHeading from '@components/TagHeading.astro';
+import { formatDate, slugify } from '@js/utils';
+import { PostCardCategory, PostCardContainer, PostCardImage } from '.';
+import PostCardTags from './PostCardTags.astro';
+
+const { post } = Astro.props;
+const { category, featured_image, title, date, author, description, tags } = post.data;
+---
+
+<PostCardContainer>
+   <PostCardImage
+      href={`/blog/${post.slug}`}
+      src={featured_image.src}
+      alt={featured_image.alt}
+      width="400"
+      height="250"
+      quality={80}
+      classes="post-card-img"
+   />
+   <PostCardCategory
+      href={`/blog/category/${slugify(category)}/`}
+      text={category}
+   />
+   <div class="post-card-content-container">
+      <div style="margin-top: 10px">
+         <a data-normal-link href={`/blog/${post.slug}`}>
+            <TagHeading tag="h3">{title}</TagHeading>
+         </a>
+         <div class="post-card-details">
+            <div class="post-card-author">
+               <a href={`/blog/author/${slugify(author)}/`}>{author}</a>
+            </div>
+            <span class="post-card-date">
+               {formatDate(date)}
+            </span>
+         </div>
+      </div>
+      <p class="card-excerpt">{description}</p>
+      <div class="post-card-tags">
+         <PostCardTags {tags} />
+      </div>
+   </div>
+</PostCardContainer>
+
+<style>
+   .post-card-content-container {
+      padding: 0 15px;
+      display: flex;
+      flex-flow: column;
+      height: calc(25vh);
+      position: relative;
+
+      a[data-normal-link] {
+         display: -webkit-box;
+         max-width: 100%;
+         -webkit-line-clamp: 3;
+         -webkit-box-orient: vertical;
+         overflow: hidden;
+         &::before {
+            content: "";
+         }
+         &:hover::before {
+            transform: scaleX(0);
+         }
+      }
+      .post-card-details {
+         position: relative;
+         .post-card-date {
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-size: max(0.68rem, min(calc(0.6rem + 0.17vw), 0.88rem));
+            color: #999;
+         }
+      }
+      .post-card-author {
+         font-size: var(--fs-sm);
+         margin-top: 5px;
+         width: 60%;
+         white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         a {
+            text-decoration: none;
+            color: black;
+            border-bottom: 1px solid #ccc;
+            &:hover {
+               border-bottom: 2px solid black;
+            }
+         }
+      }
+      .card-excerpt {
+         color: #555;
+         text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5);
+         font-size: var(--fs-sm);
+         margin-top: 5px;
+         display: -webkit-box;
+         max-width: 100%;
+         -webkit-line-clamp: 3;
+         -webkit-box-orient: vertical;
+         overflow: hidden;
+      }
+      .post-card-tags {
+         display: flex;
+         gap: 10px;
+         padding: 10px 0;
+         position: absolute;
+         bottom: 5px;
+         width: 92%;
+         overflow: hidden;
+      }
+   }
+</style>
