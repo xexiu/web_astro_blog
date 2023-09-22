@@ -7,7 +7,7 @@ const blog = defineCollection({
       tags: z.array(z.string()),
       category: z.string(),
       author: z.string(),
-      date: z.date(),
+      date: z.string(),
       featured_post: z.boolean(),
       featured_image: z.object({
          src: image().refine((img) => img.width >= 600 && img.height >= 400, {
