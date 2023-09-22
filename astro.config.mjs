@@ -5,7 +5,7 @@ import { defineConfig, passthroughImageService } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-   site: 'https://candid-malabi-159d6f.netlify.app',
+   site: 'https://xexiu.netlify.app',
    integrations: [partytown(), sitemap(), purgecss()],
    image: {
       service: passthroughImageService(),
