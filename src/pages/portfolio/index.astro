@@ -1,16 +1,16 @@
 ---
 import { PostCard } from '@components/PostCard';
 import MainLayout from '@layouts/MainLayout.astro';
-import data from '@schemas/blog-data.json';
+import data from '@schemas/portfolio-data.json';
 import { getCollection } from 'astro:content';
-import type { Post } from 'types/utils';
-const blogEntries = await getCollection('blog');
+
+const portfolioEntries = await getCollection('portfolio');
 ---
 
 <MainLayout title={data.title} description={data.description}>
    <section class="container" aria-label="Publicaciones Recientes">
       <div class="post-container">
-         {blogEntries.map((post: Post) => <PostCard {post} />)}
+         {portfolioEntries.map((entry) => <PostCard post={entry} />)}
       </div>
       <!-- <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
       <aside class="container" aria-label="Blog categories">

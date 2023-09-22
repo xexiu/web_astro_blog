@@ -1,5 +1,6 @@
 ---
 import { PostCard } from '@components/PostCard';
+import TagHeading from '@components/TagHeading.astro';
 import { slugify } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
@@ -22,7 +23,8 @@ const catPosts = blogEntries.filter((post: Post) => slugify(post.data.category) 
 ---
 <MainLayout title={category}>
    <section class="container" aria-label={`Posts about ${category}`}>
-      <h1 class="h1">Publicaciones sobre <span>{category}</span></h1>
+      <span>Publicaciones en la categoria:</span>
+      <TagHeading classes="posts-author" tag="h1">{category}</TagHeading>
       <div class="post-container">
          {
             catPosts.map((post: Post) => (

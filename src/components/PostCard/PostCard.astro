@@ -43,12 +43,12 @@ const { category, featured_image, title, date, author, description, tags } = pos
    </div>
 </PostCardContainer>
 
-<style>
+<style is:global>
    .post-card-content-container {
       padding: 0 15px;
       display: flex;
       flex-flow: column;
-      height: calc(25vh);
+      height: 45%;
       position: relative;
 
       a[data-normal-link] {
@@ -91,8 +91,7 @@ const { category, featured_image, title, date, author, description, tags } = pos
          }
       }
       .card-excerpt {
-         color: #555;
-         text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5);
+         color: #888;
          font-size: var(--fs-sm);
          margin-top: 5px;
          display: -webkit-box;
@@ -109,6 +108,17 @@ const { category, featured_image, title, date, author, description, tags } = pos
          bottom: 5px;
          width: 92%;
          overflow: hidden;
+      }
+   }
+
+   .dark {
+      .post-card-author {
+         a {
+            color: #eee;
+            &:hover {
+               border-bottom: 2px solid var(--color-red);
+            }
+         }
       }
    }
 </style>

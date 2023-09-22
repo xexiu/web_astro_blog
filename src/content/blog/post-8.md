@@ -4,7 +4,7 @@ title: Test 5
 date: 2022-11-25
 author: Bart Greenfelder
 description: Sometimes you just run out of ideas for sample blog posts. It’s no one’s fault, it’s just the way it is.
-category: JS
+category: Javascript
 featured_post: false
 tags:
   - css

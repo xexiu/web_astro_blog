@@ -101,3 +101,16 @@ main {
         height: 1px;
     }
 }
+
+.post-container {
+    display: grid;
+    align-items: start;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: var(--size-fluid-3);
+}
+
+@media screen and (width <= 500px) {
+    main {
+        padding: 15px 0;
+    }
+}

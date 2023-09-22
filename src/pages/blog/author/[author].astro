@@ -1,5 +1,6 @@
 ---
 import { PostCard } from '@components/PostCard';
+import TagHeading from '@components/TagHeading.astro';
 import { slugify } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
@@ -29,7 +30,8 @@ const { posts, authorName } = Astro.props;
 
 <MainLayout title={authorName}>
    <section class="container" aria-label={`Posts by ${authorName}`}>
-      <h1 class="h1">Posts by <span>{authorName}</span></h1>
+      <span>Publicaciones hechas por:</span>
+      <TagHeading classes="posts-author" tag="h1">{authorName}</TagHeading>
       <div class="post-container">
          {
             posts.map((post: Post) => (
@@ -41,3 +43,9 @@ const { posts, authorName } = Astro.props;
       </div>
    </section>
 </MainLayout>
+
+<style>
+   .posts-author {
+      margin-bottom: 10px;
+   }
+</style>
