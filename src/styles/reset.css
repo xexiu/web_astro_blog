@@ -74,6 +74,10 @@ code {
         monospace;
 }
 
+button {
+    all: unset;
+}
+
 /**
  * Address variable `h1` font-size and margin within `section` and `article`
  * contexts in Firefox 4+, Safari, and Chrome.

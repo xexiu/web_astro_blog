@@ -7,7 +7,7 @@ import './sidebar.css';
 
 <script>
 import { hideOnClickOutside, markAsCurrentPage } from '@js/utils';
-const navLinks = document.querySelectorAll('[data-navLink]');
+const navLinks = document.querySelectorAll('[data-sidebarLink]');
 const navToggleBurger = document.querySelector('label[for="nav-toggle"]') as HTMLElement;
 
 markAsCurrentPage(navLinks);
@@ -67,7 +67,7 @@ hideSideBarOnOutsideClick();
                      href={item.path}
                      style="primary"
                      isFilled={false}
-                     data-navLink
+                     data-sidebarLink
                   />
                </li>
             ))

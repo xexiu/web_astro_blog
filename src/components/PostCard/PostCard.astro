@@ -3,10 +3,25 @@ import TagHeading from '@components/TagHeading.astro';
 import { formatDate, slugify } from '@js/utils';
 import { PostCardCategory, PostCardContainer, PostCardImage } from '.';
 import PostCardTags from './PostCardTags.astro';
+import { Icon } from 'astro-icon';
 
 const { post } = Astro.props;
-const { category, featured_image, title, date, author, description, tags } = post.data;
+const { category, featured_image, title, date, author, description, tags } =
+   post.data;
 ---
+
+<script>
+   function savePost() {
+      const postsToSave = document.querySelectorAll('.save-post');
+      postsToSave?.forEach((postsToSave) => {
+         postsToSave.addEventListener('click', (event) => {
+            console.log('CLICKED');
+         });
+      });
+   }
+
+   savePost();
+</script>
 
 <PostCardContainer>
    <PostCardImage
@@ -23,6 +38,21 @@ const { category, featured_image, title, date, author, description, tags } = pos
       text={category}
    />
    <div class="post-card-content-container">
+      <div class="post-card-save">
+         <button
+            class="save-post save-popup"
+            aria-label={`Guarda: ${title}`}
+            data-saveid={`/blog/${post.slug}`}
+            aria-pressed="false"
+            data-popuptext="Guardar Publicación!"
+         >
+            <Icon
+               name="uil:save"
+               height="22"
+               width="22"
+            />
+         </button>
+      </div>
       <div style="margin-top: 10px">
          <a data-normal-link href={`/blog/${post.slug}`}>
             <TagHeading tag="h3">{title}</TagHeading>
@@ -108,6 +138,43 @@ const { category, featured_image, title, date, author, description, tags } = pos
          bottom: 5px;
          width: 92%;
          overflow: hidden;
+      }
+   }
+
+   .post-card-save {
+      position: absolute;
+      right: 0;
+      top: -25px;
+      cursor: pointer;
+
+      .save-post {
+         color: var(--color-red);
+      }
+   }
+
+   .save-popup {
+      height: 0;
+      position: relative;
+      cursor: pointer;
+
+      &:after {
+         content: attr(data-popuptext);
+         background: white;
+         border-radius: 3px;
+         opacity: 0;
+         top: -250px;
+         left: -240px;
+         position: absolute;
+         transition: 300ms ease;
+         white-space: nowrap;
+         max-height: 0;
+      }
+
+      &:hover:after {
+         opacity: 1;
+         top: -2em;
+         max-height: 200px;
+         padding: 0.4em;
       }
    }
 

@@ -8,6 +8,7 @@ import type { HeadProps } from 'types/interfaces';
 import MainFooter from './MainFooter.astro';
 import MainHead from './MainHead.astro';
 import MainHeader from './MainHeader.astro';
+import MainNav from './MainNav.astro';
 
 const {
    title = data.title,
@@ -24,6 +25,7 @@ const {
    <body>
       <MainHeader>
          <Logo />
+         <MainNav />
          <ToggleTheme style={{ marginLeft: 'auto' }} />
          <!-- <MainNav /> -->
       </MainHeader>
