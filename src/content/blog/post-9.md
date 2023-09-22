@@ -1,7 +1,7 @@
 ---
 
 title: Test 66666666666666666666
-date: 2022-11-25
+date: "2022-11-25"
 author: Bart Greenfelder
 description: Sometimes you just run out of ideas for sample blog posts. It’s no one’s fault, it’s just the way it is.
 category: Frameworks

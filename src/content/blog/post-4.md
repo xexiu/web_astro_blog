@@ -1,7 +1,7 @@
 ---
 
 title: Why is this CSS so weird?
-date: 2022-12-09
+date: "2022-12-09"
 author: Anna Dixon
 description: The global css file for this site is a bit different than I’d write things normally, but I’m trying to keep you from having to write a bunch of random classes.
 category: CSS
