@@ -7,15 +7,15 @@
 @import "partials/_buttons";
 @import "partials/_root";
 
-:root > * {
-    display: none;
-}
+/* :root > * {
+    display: none; <Toggle Theme should be activated in MainLayout.astro -->
+} */
 
 .light > * {
     display: block;
 }
 
-.dark {
+/* .dark {
     > * {
         display: block;
     }
@@ -50,7 +50,7 @@
             }
         }
     }
-}
+} */
 
 body {
     line-height: 1.5;

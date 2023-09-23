@@ -1,0 +1,21 @@
+---
+import { Image } from 'astro:assets';
+interface Props {
+    src: string;
+    width: number | `${number}` | undefined;
+    height: number | `${number}` | undefined;
+    alt: string;
+    classes: string;
+}
+
+const { src, width = '400', height = '250', alt = 'Image', classes, ...rest } = Astro.props;
+---
+
+<Image
+    {src}
+    {width}
+    {height}
+    {alt}
+    class:list={['post-detail-card-img', classes]}
+    {...rest}
+/>

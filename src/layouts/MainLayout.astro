@@ -1,6 +1,6 @@
 ---
 import Logo from '@components/Logo.astro';
-import ToggleTheme from '@components/ToggleTheme.astro';
+// import ToggleTheme from '@components/ToggleTheme.astro';
 import Sidebar from '@components/sidebar/Sidebar.astro';
 import data from '@schemas/index-data.json';
 import '@styles/global.css';
@@ -26,19 +26,12 @@ const {
       <MainHeader>
          <Logo />
          <MainNav />
-         <ToggleTheme style={{ marginLeft: 'auto' }} />
-         <!-- <MainNav /> -->
+         <!-- <ToggleTheme style={{ marginLeft: 'auto' }} /> -->
       </MainHeader>
-      <!-- Header -->
-      <!-- Nav -->
-      <!-- Header -->
       <main>
          <slot> Default Text</slot>
-         <!-- Sidebar -->
          <Sidebar />
-         <!--- Articles -->
       </main>
-      <!-- Footer -->
       <MainFooter />
       <script>
          declare global {

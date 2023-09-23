@@ -3,6 +3,7 @@ title: Test Final
 date: '2023-09-22T17:14:10+02:00'
 category: Javascript
 author: Sergiu Mironescu
+excerpt: "This is a short except about, This is a short except about, This is a short except about, This is a short except about"
 description: |-
   This is a final test!
 

@@ -1,14 +1,16 @@
 ---
-import { Image } from 'astro:assets';
+import CommonImage from '@components/CommonImage.astro';
 
-const { href, src, alt, classes, ...rest } = Astro.props;
+const { href, src, alt, classes, width, height, ...rest } = Astro.props;
 ---
 
 <a href={href} aria-hidden="true" tabindex="-1">
-   <Image
-      src={src}
-      alt={alt}
-      class:list={['post-card-img', classes]}
+   <CommonImage
+      {src}
+      {alt}
+      {width}
+      {height}
+      {classes}
       {...rest}
    />
 </a>

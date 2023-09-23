@@ -1,4 +1,6 @@
 ---
+import CommonImage from '@components/CommonImage.astro';
+import { Markdown } from 'astro-remote';
 import { getCollection } from 'astro:content';
 
 // 1. Generate a new path for every collection entry
@@ -10,9 +12,9 @@ export async function getStaticPaths() {
    }));
 }
 
+
 // 2. For your template, you can get the entry directly from the prop
 const { entry } = Astro.props;
-const { Content } = await entry.render();
 ---
 <h1>{entry.data.title}</h1>
-<Content />
+<Markdown content={entry.data.description} components={{ img: CommonImage }} sanitize={{ allowComponents: true }} />
