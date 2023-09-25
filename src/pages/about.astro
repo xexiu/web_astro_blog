@@ -1,28 +1,31 @@
 ---
+import CommonImage from '@components/CommonImage.astro';
 import SocialIcons from '@components/SocialIcons.astro';
 import MainLayout from '@layouts/MainLayout.astro';
 import data from '@schemas/about-data.json';
-import { Image } from 'astro:assets';
 ---
 
 <MainLayout title={data.title} description={data.description}>
    <section class="container" aria-label="Sobre Mi">
       <div class="content">
          <div class="image-container">
-            <Image
+            <CommonImage
                src={data.avatar.src}
                alt={data.avatar.alt}
                width="200"
                height="200"
                quality={80}
-               class="hero-image"
+               classes="hero-image"
             />
          </div>
          <div class="text-container">
             <h1>Sobre Mí</h1>
-            <p>
-               Soy un desarrollador Full Stack especializado en JavaScript, HTML, CSS y Node.js. También tengo experiencia en Python y he trabajado con tecnologías como React, React Native, Blockchain, WEB3, dApps y smart contracts. ¡Explora mi blog para obtener información y consejos sobre estos temas y más!
-            </p>
+            <span>
+               <!-- eslint-disable max-len -->
+               <p>Soy un desarrollador Full Stack especializado en JavaScript, HTML, CSS y Node.js</p>
+               <p>También tengo experiencia en Python y he trabajado con tecnologías como React, React Native, Blockchain, WEB3, dApps y smart contracts.</p>
+               <p>¡Explora mi blog para obtener información y consejos sobre estos temas y más!</p>
+            </span>
          </div>
       </div>
       <SocialIcons {data} classes="social-icons" />

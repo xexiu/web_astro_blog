@@ -93,6 +93,14 @@ body {
 main {
     padding: 15px 0 0 100px;
 
+    img {
+        max-inline-size: 100%;
+        block-size: auto;
+        object-fit: cover;
+        object-position: top center;
+    }
+
+
     &::after {
         content: "";
         display: inline-block;

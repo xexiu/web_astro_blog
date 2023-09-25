@@ -2,13 +2,16 @@
 import { Image } from 'astro:assets';
 interface Props {
     src: string;
-    width: number | `${number}` | undefined;
-    height: number | `${number}` | undefined;
+    width?: number | `${number}` | undefined;
+    height?: number | `${number}` | undefined;
     alt: string;
-    classes: string;
+    classes?: string;
+    quality?: number;
+    loading?: 'lazy' | 'eager';
+    srcset?: string;
 }
 
-const { src, width = '400', height = '250', alt = 'Image', classes, ...rest } = Astro.props;
+const { src, width = '400', height = '400', alt = 'Image', classes, ...rest } = Astro.props;
 ---
 
 <Image
@@ -16,6 +19,6 @@ const { src, width = '400', height = '250', alt = 'Image', classes, ...rest } = 
     {width}
     {height}
     {alt}
-    class:list={['post-detail-card-img', classes]}
+    class:list={['image', classes]}
     {...rest}
 />

@@ -1,0 +1,41 @@
+---
+import CommonImage from '@components/CommonImage.astro';
+import type { ImageOutputFormat } from 'astro';
+import { getImage } from 'astro:assets';
+
+type Props = {
+  src: ImageMetadata;
+  alt: string;
+  format?: ImageOutputFormat;
+  sizes: number[];
+};
+
+async function generateResponsiveImage({
+   src,
+   format,
+   sizes,
+}: Omit<Props, 'alt'>) {
+   const imgSrcSet = sizes.map(async (size) => {
+      const image = await getImage({ src, width: size, height: size, format });
+
+      return `${image.src} ${size}w`;
+   });
+
+   const imgSrc = await getImage({ src, width: Math.max(...sizes), height: Math.min(...sizes), format });
+
+   return {
+      srcSet: await Promise.all(imgSrcSet),
+      imgSrc: imgSrc.src,
+      height: Math.min(...sizes)
+   };
+}
+
+const { src, sizes = [50, 100, 200, 400, 700, 900, 1100], format, alt, ...rest } = Astro.props;
+const { srcSet, imgSrc } = await generateResponsiveImage({
+   src,
+   sizes,
+   format,
+});
+---
+
+<CommonImage src={src} srcset={srcSet.join(', ')} alt={alt} src={imgSrc} {...rest} aria-label={alt} loading="lazy"/>

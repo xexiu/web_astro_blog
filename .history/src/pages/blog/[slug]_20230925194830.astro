@@ -1,5 +1,6 @@
 ---
 import ResponsiveImage from '@components/ResponsiveImage.astro';
+import Welcome from '@components/Welcome.astro';
 import MainLayout from '@layouts/MainLayout.astro';
 import { Markdown } from 'astro-remote';
 import { getCollection } from 'astro:content';
@@ -13,10 +14,12 @@ export async function getStaticPaths() {
    }));
 }
 
+
 // 2. For your template, you can get the entry directly from the prop
 const { entry } = Astro.props;
 ---
 <MainLayout title={entry.data.title} description={entry.data.excerpt}>
    <h1>{entry.data.title}</h1>
-   <Markdown content={entry.body} components={{ img: ResponsiveImage }} />
+   <!-- <Content components={{ Img: ResponsiveImage }} /> -->
+   <Markdown content={entry.body} components={{ img: ResponsiveImage, Welcome }} />
 </MainLayout>

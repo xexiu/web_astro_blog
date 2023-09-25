@@ -46,7 +46,7 @@
   "include": [
     "src",
     "modules.d.ts"
-  ],
+, "scripts/replaceAssetPaths.js"  ],
   "exclude": [
     "node_modules"
   ],

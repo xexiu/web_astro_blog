@@ -1,9 +1,9 @@
 ---
 // library imports
-import { Image } from 'astro:assets';
 
 // utils imports
 import { formatDate, slugify } from '../js/utils';
+import CommonImage from './CommonImage.astro';
 
 const { category, title, author, date, featured_image } = Astro.props;
 ---
@@ -20,12 +20,12 @@ const { category, title, author, date, featured_image } = Astro.props;
          }
       </p>
    </div>
-   <Image
+   <CommonImage
       src={featured_image.src}
       alt={featured_image.alt}
       width="1200"
       height="600"
       quality={80}
-      class="featured-image"
+      classes="featured-image"
    />
 </header>
