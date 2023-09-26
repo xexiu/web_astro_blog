@@ -1,16 +1,16 @@
 ---
+title: Markdown Cheat Sheet
+date: 2023-09-22T17:14:10+02:00
+category: general
 excerpt: This is a short except about, This is a short except about, This is a
   short except about, This is a short except about
+author: Sergiu Mironescu
+featured_post: false
+tags:
+  - markdown
 featured_image:
   alt: featured
   src: src/images/screen-shot-2023-08-31-at-08.19.44-am-2-.png
-author: Sergiu Mironescu
-date: 2023-09-22T17:14:10+02:00
-featured_post: false
-title: Markdown Cheat Sheet
-tags:
-  - markdown
-category: general
 ---
 ```astro
   import Welcome from "../../components/Welcome.astro";
@@ -23,6 +23,10 @@ category: general
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
 
 ![alt text](/src/images/hero-img.png "alt title")
+
+[An Internal Link](/about)
+
+[This is an external link to genome.gov](https://www.genome.gov/)
 
 ## Headings
 
