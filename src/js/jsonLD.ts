@@ -12,15 +12,15 @@ export default function jsonLDGenerator({ type, post, url }) {
           "@type": "WebPage",
           "@id": "${url}"
         },
-        "headline": "${post.title}",
-        "description": "${post.description}",
-        "image": "${post.featured_image.src}",
+        "headline": "${post.data.title}",
+        "description": "${post.data.excerpt}",
+        "image": "${post.data.featured_image.src.src}",
         "author": {
           "@type": "Person",
-          "name": "${post.author}",
-          "url": "${import.meta.env.SITE}/author/${slugify(post.author)}"
+          "name": "${post.data.author}",
+          "url": "${import.meta.env.SITE}/author/${slugify(post.data.author)}"
         },
-        "datePublished": "${post.date}"
+        "datePublished": "${post.data.date}"
       }
     </script>`;
    }

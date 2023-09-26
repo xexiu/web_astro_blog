@@ -9,7 +9,7 @@ tags:
   - solidjs
 featured_image:
   alt: featured
-  src: /src/images/screen-shot-2023-08-31-at-08.19.44-am-2-.png
+  src: src/images/screen-shot-2023-08-31-at-08.19.44-am-2-.png
 ---
 
 heyy

@@ -7,6 +7,11 @@ publish_mode: editorial_workflow
 media_folder: "src/images" # Media files will be stored in the repo under static/images/uploads
 public_folder: "/src/images" # The src attribute for uploaded media will begin with /images/uploads
 
+site_url: https://xexiu.netlify.app/
+display_url: https://xexiu.netlify.app/
+
+logo_url: /images/logo.png
+
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog
     label: "Blog" # Used in the UI

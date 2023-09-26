@@ -9,11 +9,9 @@ featured_post: false
 tags:
   - solidjs
 featured_image:
-  src: /src/images/Screenshot 2021-10-25 at 16.40.38.png
+  src: src/images/Screenshot 2021-10-25 at 16.40.38.png
   alt: alt text
 ---
 Image:
-
-
 
 ![Alt text](/src/images/pic_ts.jpeg "text title")
