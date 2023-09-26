@@ -66,8 +66,7 @@ export default defineConfig({
                },
             ],
          },
-         previewStyles: ['/src/styles/blog.css'],
-         disableIdentityWidgetInjection: true
+         previewStyles: ['/src/styles/blog.css']
       })
    ],
    image: {
