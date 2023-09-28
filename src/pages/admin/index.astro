@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
+      <title>Content Managment System</title>
+      <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" is:inline></script>
+   </head>
+   <body>
+      <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js" is:inline></script>
+      <script>
+         import { initCMS, CMS_CONFIG, netlifyIdentityLoad } from './cms';
+         const options = {
+            cms: CMS,
+            config: CMS_CONFIG,
+            previewStyles: ['/src/styles/blog.css'],
+            identity: window.netlifyIdentity
+         };
+         initCMS(options);
+         netlifyIdentityLoad(window.netlifyIdentity);
+      </script>
+   </body>
+</html>

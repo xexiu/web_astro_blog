@@ -1,0 +1,33 @@
+# this file must be in root as per fix for: https://github.com/decaporg/decap-cms/issues/6862
+# the config is just an example. For the oficial config check -> pages/admin
+
+backend:
+  name: git-gateway
+  branch: master # Branch to update (optional; defaults to master)
+
+media_folder: "src/images" # Media files will be stored in the repo under static/images/uploads
+public_folder: "/src/images" # The src attribute for uploaded media will begin with /images/uploads
+
+local_backend: true
+
+collections:
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Blog" # Used in the UI
+    folder: "src/content/blog" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Category", name: "category", widget: "string"}
+      - {label: "Excerpt", name: "excerpt", widget: "string"}
+      - {label: "Author", name: "author", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Featured Post", name: "featured_post", widget: "boolean"}
+      - {label: "Tags", name: "tags", widget: "list"}
+      - label: "Featured Image"
+        name: "featured_image"
+        widget: "object"
+        fields:
+          - {name: src, label: Image, widget: image}
+          - {name: alt, label: Alt text, widget: string}
