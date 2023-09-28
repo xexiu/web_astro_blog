@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
    <head>
@@ -10,15 +11,17 @@
    <body>
       <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js" is:inline></script>
       <script>
-         import { initCMS, CMS_CONFIG, netlifyIdentityLoad } from './cms';
-         const options = {
-            cms: CMS,
-            config: CMS_CONFIG,
-            previewStyles: ['/src/styles/blog.css'],
-            identity: window.netlifyIdentity
-         };
-         initCMS(options);
+         import { netlifyIdentityLoad } from './cms';
+
+         const previewStyles = ['/src/styles/blog.css'];
+         previewStyles.forEach(([style, opts]: any) => CMS.registerPreviewStyle(style, opts));
          netlifyIdentityLoad(window.netlifyIdentity);
       </script>
    </body>
 </html>
+
+<style is:inline>
+   img[alt="Logo"] {
+      width: 250px;
+   }
+</style>

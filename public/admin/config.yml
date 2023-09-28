@@ -1,12 +1,14 @@
-# this file must be in root as per fix for: https://github.com/decaporg/decap-cms/issues/6862
-# the config is just an example. For the oficial config check -> pages/admin
-
 backend:
   name: git-gateway
   branch: master # Branch to update (optional; defaults to master)
 
 media_folder: "src/images" # Media files will be stored in the repo under static/images/uploads
 public_folder: "/src/images" # The src attribute for uploaded media will begin with /images/uploads
+
+site_url: 'https://xexiu.netlify.app'
+display_url: 'https://xexiu.netlify.app'
+logo_url: 'https://xexiu.netlify.app/logo.png'
+show_preview_links: true
 
 local_backend: true
 
