@@ -1,7 +1,7 @@
 export const CMS_CONFIG = {
    backend: {
       name: 'git-gateway',
-      branch: 'main',
+      branch: 'master',
    },
    publish_mode: 'simple',
    local_backend: true,
