@@ -9,7 +9,7 @@ export const CMS_CONFIG = {
    public_folder: '/src/images',
    site_url: 'https://xexiu.netlify.app',
    display_url: 'https://xexiu.netlify.app',
-   logo_url: 'https://xexiu.netlify.app/public/logo.png',
+   logo_url: 'https://xexiu.netlify.app/logo.png',
    show_preview_links: true,
    collections: [
       {
