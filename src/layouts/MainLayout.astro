@@ -4,6 +4,7 @@ import Logo from '@components/Logo.astro';
 import Sidebar from '@components/sidebar/Sidebar.astro';
 import data from '@schemas/index-data.json';
 import '@styles/global.css';
+import { ViewTransitions } from 'astro:transitions';
 import type { HeadProps } from 'types/interfaces';
 import MainFooter from './MainFooter.astro';
 import MainHead from './MainHead.astro';
@@ -22,6 +23,7 @@ const {
 <!doctype html>
 <html lang="es">
    <MainHead {title} {description} {featured_image} {frontmatter} {robots} />
+   <ViewTransitions />
    <body>
       <MainHeader>
          <Logo />

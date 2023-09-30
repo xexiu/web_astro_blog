@@ -12,6 +12,7 @@ featured_image:
   alt: featured
   src: src/images/screen-shot-2023-08-31-at-08.19.44-am-2-.png
 ---
+
 ```astro
   import Welcome from "../../components/Welcome.astro";
 
@@ -20,7 +21,9 @@ featured_image:
   <Welcome text="Sergiu" />
 ```
 
-Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro. TEST3
+I need to highlight these <mark>very important words</mark>
+
+Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro. TEST3🥰
 
 ![alt text](/src/images/hero-img.png "alt title")
 
@@ -142,3 +145,7 @@ I need to highlight these ==very important words==.
 H\~2\~O
 
 X^2^
+
+```javascript
+const a = 'test';
+```

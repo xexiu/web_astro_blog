@@ -1,12 +1,11 @@
 ---
+import CopyrightFooter from '@components/CopyrightFooter.astro';
 import Link from '@components/Link.astro';
 ---
 
 <footer>
    <div>
-      <small>
-         Copyright &copy; <span id="copyright"></span> | All rights reserved
-      </small>
+      <CopyrightFooter />
       <small>
          <Link
             href="/rss.xml"
@@ -23,14 +22,6 @@ import Link from '@components/Link.astro';
       </small>
    </div>
 </footer>
-
-<script>
-   const element = document.querySelector('#copyright');
-
-   if (element !== null) {
-      element.textContent = new Date().getFullYear().toString();
-   }
-</script>
 
 <style>
    :where(footer) {

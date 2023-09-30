@@ -1,57 +1,17 @@
 ---
 import data from '@schemas/sidebar-data.json';
-import { Icon } from 'astro-icon';
-import Link from '@components/Link.astro';
+// import { Icon } from 'astro-icon';
 import './sidebar.css';
+import Link from '@components/Link.astro';
 ---
 
-<script>
-import { hideOnClickOutside, markAsCurrentPage } from '@js/utils';
-const navLinks = document.querySelectorAll('[data-sidebarLink]');
-const navToggleBurger = document.querySelector('label[for="nav-toggle"]') as HTMLElement;
-
-markAsCurrentPage(navLinks);
-
-function hideSideBarOnOutsideClick() {
-   const outsideClick = (event: Event) => {
-      event.stopPropagation();
-      const sidebar = document.getElementById('nav-bar') as HTMLElement;
-      hideOnClickOutside(sidebar, (event: Event, element: HTMLElement) => {
-         const { target } = event;
-         const sidebarToggle = element.querySelector('#nav-toggle') as HTMLInputElement;
-         const navFooterSidebarToggle = element.querySelector('#nav-footer-toggle') as HTMLInputElement;
-
-         if (!sidebar.contains(target as HTMLElement)) {
-            // Check if the sidebar is in an open state
-            if (!sidebarToggle.checked) {
-               navFooterSidebarToggle.checked = false;
-               const timer = setTimeout(() => {
-                  sidebarToggle.checked = true;
-                  removeClickListener();
-                  clearTimeout(timer);
-               }, 200);
-            }
-         }
-      });
-   };
-
-   const removeClickListener = () => {
-      document.removeEventListener('click', outsideClick);
-   };
-
-   navToggleBurger.addEventListener('click', outsideClick);
-}
-
-hideSideBarOnOutsideClick();
-</script>
-
-<aside aria-label="sidebar" id="nav-bar">
+<xe-sidebar aria-label="sidebar" id="nav-bar">
    <input id="nav-toggle" type="checkbox" checked />
    <div id="nav-header">
       <label for="nav-toggle"><span id="nav-toggle-burger"></span></label>
    </div>
-   <nav id="nav-content">
-      <ul>
+   <nav id="nav-content" aria-label="Sidebar Navigation">
+      <ul aria-label="Sidebar Navigation Links">
          {
             data.map((item) => (
                <li class="nav-button">
@@ -68,6 +28,7 @@ hideSideBarOnOutsideClick();
                      style="primary"
                      isFilled={false}
                      data-sidebarLink
+                     aria-label={item.name}
                   />
                </li>
             ))
@@ -75,7 +36,7 @@ hideSideBarOnOutsideClick();
       </ul>
       <div id="nav-content-highlight"></div>
    </nav>
-   <input id="nav-footer-toggle" type="checkbox" />
+   <!-- <input id="nav-footer-toggle" type="checkbox" />
    <div id="nav-footer">
       <div id="nav-footer-heading">
          <div id="nav-footer-avatar">
@@ -98,5 +59,54 @@ hideSideBarOnOutsideClick();
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.</lorem
          >
       </div>
-   </div>
-</aside>
+   </div> -->
+</xe-sidebar>
+
+<script>
+   import { hideOnClickOutside, markAsCurrentPage } from '@js/utils';
+
+   class Sidebar extends HTMLElement {
+      constructor() {
+         super();
+         const navToggleBurger = this.querySelector('label[for="nav-toggle"]') as HTMLElement;
+         const links = this.querySelectorAll('[data-sidebarLink]');
+
+         const timer = setTimeout(() => {
+            markAsCurrentPage(links);
+            clearTimeout(timer);
+         }, 50);
+
+         const outsideClick = (event: Event) => {
+            event.stopPropagation();
+            hideOnClickOutside(this, (event: Event, element: HTMLElement) => {
+               const { target } = event;
+               const sidebarToggle = element.querySelector('#nav-toggle') as HTMLInputElement;
+               const navFooterSidebarToggle = element.querySelector('#nav-footer-toggle') as HTMLInputElement;
+
+               if (!this.contains(target as HTMLElement)) {
+                  // Check if the sidebar is in an open state
+                  if (!sidebarToggle.checked) {
+                     if(navFooterSidebarToggle) {
+                        navFooterSidebarToggle.checked = false;
+                     }
+
+                     const timer = setTimeout(() => {
+                        sidebarToggle.checked = true;
+                        removeClickListener();
+                        clearTimeout(timer);
+                     }, 200);
+                  }
+               }
+            });
+         };
+
+         const removeClickListener = () => {
+            document.removeEventListener('click', outsideClick);
+         };
+
+         navToggleBurger.addEventListener('click', outsideClick);
+      }
+   }
+
+   customElements.define('xe-sidebar', Sidebar);
+</script>

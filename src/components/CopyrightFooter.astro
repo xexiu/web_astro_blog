@@ -1,0 +1,29 @@
+---
+interface Props {
+    copyright?: string;
+}
+const { copyright = new Date().getFullYear().toString() } = Astro.props;
+---
+
+<xe-footer-copyright>
+    Copyright &copy; <span id="copyright">{copyright}</span> | All rights
+    reserved
+</xe-footer-copyright>
+
+<script>
+    class CopyrightFooter extends HTMLElement {
+       constructor() {
+          super();
+
+          const element = this.querySelector('#copyright') as HTMLElement;
+
+          if (element) {
+             const copyright = element?.innerText;
+
+             element.textContent = copyright;
+          }
+       }
+    }
+
+    customElements.define('xe-footer-copyright', CopyrightFooter);
+</script>

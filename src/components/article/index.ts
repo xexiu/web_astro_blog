@@ -1,0 +1,1 @@
+export { default as ArticleNavigation } from '@components/article/ArticleNavigation.astro';

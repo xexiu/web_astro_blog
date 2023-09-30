@@ -19,22 +19,13 @@ import data from '@schemas/main-nav-data.json';
                   style="primary"
                   isFilled={false}
                   data-navLink
+                  aria-label={item.name}
                />
             </li>
          ))
       }
    </ul>
 </nav>
-
-<script>
-   const navLinks = document.querySelectorAll('[data-navLink]');
-
-   navLinks.forEach((link) => {
-      if (link.getAttribute('href') === window.location.pathname) {
-         link.setAttribute('aria-current', 'page');
-      }
-   });
-</script>
 
 <style>
    .header-main-nav {

@@ -15,6 +15,21 @@
     display: block;
 }
 
+html::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 5px;
+  }
+
+  html::-webkit-scrollbar-track {
+    background: var(--color-dark);
+    box-shadow: inset 0 0 6px rgb(0 0 0 / 30%);
+  }
+
+  html::-webkit-scrollbar-thumb {
+    background: var(--color-red:);
+    border-radius: 5px;
+  }
+
 /* .dark {
     > * {
         display: block;
@@ -91,7 +106,7 @@ body {
 }
 
 main {
-    padding: 15px 0 0 100px;
+    margin: 15px 0 0 100px;
 
     img {
         max-inline-size: 100%;
@@ -118,7 +133,20 @@ main {
 }
 
 @media screen and (width <= 500px) {
+    .logomark {
+        margin-left: 45px;
+    }
+
+    header {
+        position: sticky;
+        top: 0;
+        height: 50px;
+        z-index: 100;
+        width: 100%;
+        background-color: var(--bg-light-papaya);
+    }
+
     main {
-        padding: 15px 0;
+        margin: 15px 0;
     }
 }
