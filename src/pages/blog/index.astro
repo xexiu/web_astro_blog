@@ -1,8 +1,9 @@
 ---
-import { PostCard } from '@components/PostCard';
+import { PostCard } from '@components/postcard';
 import MainLayout from '@layouts/MainLayout.astro';
 import data from '@schemas/blog-data.json';
 import { getCollection } from 'astro:content';
+
 const blogEntries = await getCollection('blog');
 ---
 
@@ -17,4 +18,4 @@ const blogEntries = await getCollection('blog');
          <CategoryCloud showCount={true}/>
       </aside> -->
    </section>
-</MainLayout>@components/postcard
+</MainLayout>

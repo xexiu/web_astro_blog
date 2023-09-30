@@ -1,5 +1,5 @@
 ---
-import { PostCard } from '@components/PostCard';
+import { PostCard } from '@components/postcard';
 import { slugify } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
@@ -7,7 +7,7 @@ import type { Post } from 'types/utils';
 
 export async function getStaticPaths() {
    const blogEntries = await getCollection('blog');
-   const blogTags = blogEntries.flatMap((entry: Post) => entry.data.tags);
+   const blogTags = blogEntries.flatMap((entry: any) => entry.data.tags);
 
    return blogTags.map((tag: string) => ({
       params: { tag: slugify(tag) }, props: { blogEntries },
@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.params;
 const { blogEntries } = Astro.props;
-const tagPosts = blogEntries.filter((entry: Post) => entry.data.tags.includes(tag));
+const tagPosts = blogEntries.filter((entry: Post) => entry.data.tags.includes(tag as string));
 ---
 
 <MainLayout title={tag}>
@@ -32,4 +32,4 @@ const tagPosts = blogEntries.filter((entry: Post) => entry.data.tags.includes(ta
          }
       </div>
    </section>
-</MainLayout>@components/postcard
+</MainLayout>

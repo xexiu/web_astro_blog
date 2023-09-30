@@ -1,4 +1,6 @@
 export type Post = {
+   id: string;
+   body: any;
    slug: string;
    data: {
       category: string;
@@ -8,6 +10,7 @@ export type Post = {
       date: Date;
       author: string;
       featured_post: boolean;
+      isPrivate: boolean;
       featured_image: object
    }
 }

@@ -1,5 +1,5 @@
 ---
-import { PostCard } from '@components/PostCard';
+import { PostCard } from '@components/postcard';
 import TagHeading from '@components/TagHeading.astro';
 import { slugify } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
@@ -11,7 +11,7 @@ import type { Post } from 'types/utils';
 export async function getStaticPaths() {
    const blogEntries = await getCollection('blog');
 
-   return blogEntries.map((entry: Post) => ({
+   return blogEntries.map((entry) => ({
       params: { category: slugify(entry.data.category) }, props: { blogEntries },
    }));
 }
@@ -35,4 +35,4 @@ const catPosts = blogEntries.filter((post: Post) => slugify(post.data.category) 
          }
       </div>
    </section>
-</MainLayout>@components/postcard
+</MainLayout>

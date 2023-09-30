@@ -1,5 +1,5 @@
 ---
-import { PostCard } from '@components/PostCard';
+import { PostCard } from '@components/postcard';
 import MainLayout from '@layouts/MainLayout.astro';
 import data from '@schemas/portfolio-data.json';
 import { getCollection } from 'astro:content';
@@ -18,4 +18,4 @@ const portfolioEntries = await getCollection('portfolio');
          <CategoryCloud showCount={true}/>
       </aside> -->
    </section>
-</MainLayout>@components/postcard
+</MainLayout>

@@ -1,5 +1,5 @@
 ---
-import { PostCard } from '@components/PostCard';
+import { PostCard } from '@components/postcard';
 import TagHeading from '@components/TagHeading.astro';
 import { slugify } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
@@ -9,11 +9,11 @@ import type { Post } from 'types/utils';
 export async function getStaticPaths() {
    const blogEntries = await getCollection('blog');
    const allAuthors = [
-      ...new Set(blogEntries.map((post: Post) => post.data.author).flat()),
+      ...new Set(blogEntries.map((post) => post.data.author).flat()),
    ];
 
    return allAuthors.map((author) => {
-      const authorPosts = blogEntries.filter((post: Post) => post.data.author === author);
+      const authorPosts = blogEntries.filter((post) => post.data.author === author);
 
       return {
          params: { author: slugify(author) },
@@ -49,4 +49,3 @@ const { posts, authorName } = Astro.props;
       margin-bottom: 10px;
    }
 </style>
-@components/postcard
