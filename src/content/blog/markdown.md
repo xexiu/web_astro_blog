@@ -53,14 +53,6 @@ Here is a sample of some basic Markdown syntax that can be used when writing Mar
 
   Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.
 
-## Images
-
-  Image small:
-  ![This is a placeholder image description](/src/images/pic_ts.jpeg)
-
-  Image big:
-  ![This is a placeholder image description](/src/images/mnt1.png)
-
 ## Blockquotes
 
   The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a `footer` or `cite` element, and optionally with in-line changes such as annotations and abbreviations.
