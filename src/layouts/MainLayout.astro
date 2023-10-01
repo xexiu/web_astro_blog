@@ -1,14 +1,14 @@
 ---
 import Logo from '@components/Logo.astro';
 // import ToggleTheme from '@components/ToggleTheme.astro';
-import Sidebar from '@components/sidebar/Sidebar.astro';
+// import Sidebar from '@components/sidebar/Sidebar.astro';
 import data from '@schemas/index-data.json';
 import '@styles/global.css';
 import type { HeadProps } from 'types/interfaces';
 import MainFooter from './MainFooter.astro';
 import MainHead from './MainHead.astro';
 import MainHeader from './MainHeader.astro';
-// import MainNav from './MainNav.astro';
+import MainNav from './MainNav.astro';
 
 const {
    title = data.title,
@@ -24,13 +24,13 @@ const {
    <MainHead {title} {description} {featured_image} {frontmatter} {robots} />
    <body>
       <MainHeader>
-         <Logo />
-         <!-- <MainNav /> -->
+         <!-- <Logo /> -->
+         <MainNav />
          <!-- <ToggleTheme style={{ marginLeft: 'auto' }} /> -->
       </MainHeader>
       <main>
          <slot> Default Text</slot>
-         <Sidebar />
+         <!-- <Sidebar /> -->
       </main>
       <MainFooter />
    </body>

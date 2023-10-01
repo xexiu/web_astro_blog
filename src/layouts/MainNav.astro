@@ -1,43 +1,122 @@
 ---
 import Link from '@components/Link.astro';
 import data from '@schemas/main-nav-data.json';
+import { Icon } from 'astro-icon';
+import logo from '../../public/logo.png';
+import CommonImage from '@components/CommonImage.astro';
 ---
+<p class="logo"><a href="/" aria-label="Inicio"><CommonImage src={logo} alt="Logo" width={100} height={62}/></a></p>
+<input type="checkbox" id="click" />
+<label for="click" class="menu-btn">
+   <Icon name="jam:menu" height="36" width="36" />
+</label>
 
-<nav class="header-main-nav" aria-label="primary">
-   <ul>
-      {
-         data.map((item) => (
-            <li>
-               <Link
-                  icon={{
-                     name: item.iconName,
-                     side: 'left',
-                     width: '30',
-                     height: '30'
-                  }}
-                  href={item.path}
-                  style="primary"
-                  isFilled={false}
-                  data-navLink
-                  aria-label={item.name}
-               />
-            </li>
-         ))
+<xe-navigation-main data-main-nav>
+   <nav class="header-main-nav" aria-label="Navagación Principal">
+      <ul class="nav__links">
+         {
+            data.map((item) => (
+               <li>
+                  <Link
+                     text={item.name}
+                     href={item.path}
+                     style="primary"
+                     isFilled={false}
+                     data-navLink
+                     aria-label={item.name}
+                  />
+               </li>
+            ))
+         }
+      </ul>
+   </nav>
+</xe-navigation-main>
+
+<script>
+   import { markAsCurrentPage } from '@js/utils';
+
+   class NavigationMain extends HTMLElement {
+      constructor() {
+         super();
+         const links = this.querySelectorAll('[data-navlink]');
+
+         const timer = setTimeout(() => {
+            markAsCurrentPage(links);
+            clearTimeout(timer);
+         }, 10);
       }
-   </ul>
-</nav>
+   }
+
+   customElements.define('xe-navigation-main', NavigationMain);
+</script>
 
 <style>
-   .header-main-nav {
-      display: flex;
-      margin-left: 20px;
-      ul {
-         display: flex;
-         align-items: center;
+   #click {
+      display: none;
+   }
+   .nav__links {
+      list-style: none;
+   }
 
-            a[data-navLink] {
-            color: #222;
-         }
+   .nav__links li {
+      display: inline-block;
+      padding: 0 5px;
+   }
+
+   .nav__links li a {
+      transition: all 0.3s ease 0s;
+      text-decoration: none;
+      border: 1px solid #ccc;
+      padding: 9px;
+      border-radius: 20px;
+      color: #222;
+      &:hover {
+         cursor: pointer;
+         box-shadow: var(--shadow-md);
+      }
+   }
+
+   .nav__links li a[aria-current="page"] {
+      color: rgb(217 13 13);
+   }
+
+   .menu-btn {
+      color: #222;
+      display: none;
+      cursor: pointer;
+      padding-left: 10px;
+   }
+
+   @media screen and (width <= 650px) {
+      [data-main-nav] .nav__links {
+         position: fixed;
+         top: 80px;
+         left: -100%;
+         background-color: var(--bg-light-papaya);
+         height: 100vh;
+         width: 100%;
+         display: block;
+         text-align: center;
+         transition: all 0.3s ease;
+         z-index: 10;
+      }
+
+      #click:not(:checked) ~ [data-main-nav] .nav__links {
+         left: -100%;
+      }
+
+      #click:checked ~ [data-main-nav] .nav__links {
+         left: 0%;
+      }
+
+      [data-main-nav] .nav__links li {
+         display: block;
+         margin-top: 40px;
+      }
+
+      .menu-btn {
+         display: flex;
+         margin-left: auto;
       }
    }
 </style>

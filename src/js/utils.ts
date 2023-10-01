@@ -82,9 +82,9 @@ export function hideOnClickOutside(element: HTMLElement, cb: Function):void {
 }
 
 export function markAsCurrentPage(elements: NodeListOf<Element>) {
-   elements.forEach((link) => {
+   elements.forEach((link: HTMLLinkElement) => {
       if (link.getAttribute('href') === window.location.pathname) {
-         link.parentElement?.setAttribute('aria-current', 'page');
+         link.setAttribute('aria-current', 'page');
       }
    });
 }

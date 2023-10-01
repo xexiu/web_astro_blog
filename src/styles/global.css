@@ -70,11 +70,10 @@ html::-webkit-scrollbar {
 body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-    min-height: 100vh;
     max-width: 1248px;
     background-color: var(--bg-light-papaya);
     margin: 0 auto;
-    padding: 0 10px;
+    padding: 0 30px;
     position: relative;
     font-family: 'Golos Text', cursive;
 
@@ -106,7 +105,7 @@ body {
 }
 
 main {
-    margin: 15px 0 0 100px;
+    margin: 15px 0 0;
 
     img {
         max-inline-size: 100%;
