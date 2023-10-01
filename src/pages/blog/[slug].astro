@@ -82,7 +82,7 @@ const { entry, nextEntry, prevEntry } = Astro.props;
                <xe-article-speech>
                   <button class="listen-article" data-article-text={entry.body} title="Escuchar artículo" data-paused="false"></button>
                </xe-article-speech>
-               <button title="Compartir artículo">
+               <button title="Compartir artículo" data-article-title={entry.data.title} data-article-url={entry.slug}>
                   <Icon
                      name="octicon:share-16"
                      height="18"
@@ -103,37 +103,38 @@ const { entry, nextEntry, prevEntry } = Astro.props;
 
 
    <script>
-   document.querySelector('.share-article')
-   .addEventListener('click', (event) => {
+   const shareBtn = document.querySelector('.share-article') as HTMLElement;
 
-         // Fallback, Tries to use API only
-         // if navigator.share function is
-         // available
-         debugger;
+   shareBtn?.addEventListener('click', (event: Event) => {
+      event.preventDefault();
+      const { articleTitle } = shareBtn.dataset;
+      const { articleUrl } = shareBtn.dataset;
 
-         if (navigator.share) {
-            navigator.share({
+      // Fallback, Tries to use API only
+      // if navigator.share function is
+      // available
 
-               // Title that occurs over
-               // web share dialog
-               title: 'GeeksForGeeks',
+      if (navigator.share) {
+         navigator.share({
+            // Title that occurs over
+            // web share dialog
+            title: articleTitle,
 
-               // URL to share
-               url: 'https://geeksforgeeks.org'
-            }).then(() => {
-               console.log('Thanks for sharing!');
-            }).catch((err) => {
+            // URL to share
+            url: articleUrl
+         }).then(() => {
+            console.log('Thanks for sharing!');
+         }).catch((err) => {
 
-               // Handle errors, if occurred
-               console.log(
-                  'Error while using Web share API:');
-               console.log(err);
-            });
-         } else {
-
-            // Alerts user if API not available
-            alert('Browser doesn\'t support this API !');
-         }
+            // Handle errors, if occurred
+            console.log(
+               'Error while using Web share API:');
+            console.log(err);
+         });
+      } else {
+         // Alerts user if API not available
+         alert('Browser doesn\'t support this API !');
+      }
    });
    </script>
 
