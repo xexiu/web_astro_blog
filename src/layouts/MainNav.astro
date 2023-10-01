@@ -90,7 +90,7 @@ import CommonImage from '@components/CommonImage.astro';
    @media screen and (width <= 650px) {
       [data-main-nav] .nav__links {
          position: fixed;
-         top: 80px;
+         top: 75px;
          left: -100%;
          background-color: var(--bg-light-papaya);
          height: 100vh;
@@ -98,7 +98,7 @@ import CommonImage from '@components/CommonImage.astro';
          display: block;
          text-align: center;
          transition: all 0.3s ease;
-         z-index: 10;
+         z-index: 20;
       }
 
       #click:not(:checked) ~ [data-main-nav] .nav__links {
