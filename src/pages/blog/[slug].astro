@@ -57,8 +57,18 @@ const { entry, nextEntry, prevEntry } = Astro.props;
          <h1 class="article-main-heading">{entry.data.title}</h1>
          <h2 class="article-main-heading-excerpt">{entry.data.excerpt}</h2>
          <div class="author-info">
-            <span class="author"><a data-normal-link href={`/blog/author/${slugify(entry.data.author)}/`}>{entry.data.author}</a></span>
-            <span class="reading-time">Lectura de {readingTime(entry.body).time} min - {formatDate(entry.data.date)}</span>
+            <span class="author"
+            ><a
+                  data-normal-link
+                  href={`/blog/author/${slugify(entry.data.author)}/`}
+               >{entry.data.author}</a
+               ></span
+            >
+            <span class="reading-time"
+            >Lectura de {readingTime(entry.body).time} min - {
+                  formatDate(entry.data.date)
+               }</span
+            >
          </div>
          <Markdown
             content={entry.body}
@@ -103,7 +113,15 @@ const { entry, nextEntry, prevEntry } = Astro.props;
       padding-bottom: 20px;
    }
    .reading-time {
-    color: #777;
-    font-size: .8em;
+      color: #777;
+      font-size: 0.8em;
+   }
+
+   @media screen and (width <= 500px),
+      screen and (width >= 600px),
+      screen and (width >= 400px) {
+      .article-content-wrapper {
+         padding: 5px;
+      }
    }
 </style>

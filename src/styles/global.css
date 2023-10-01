@@ -132,6 +132,10 @@ main {
 }
 
 @media screen and (width <= 500px) {
+    body {
+        padding: 0 10px;
+    }
+
     .logomark {
         margin-left: 45px;
     }
