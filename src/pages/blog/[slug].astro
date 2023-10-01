@@ -1,6 +1,6 @@
 ---
-import { ArticleNavigation } from '@components/article';
 import Breadcrumbs from '@components/Breadcrumbs.astro';
+import { ArticleNavigation } from '@components/article';
 import CodeBlock from '@components/markdown/CodeBlock.astro';
 import MarkdownImages from '@components/markdown/MarkdownImages.astro';
 import NormalizeLinks from '@components/markdown/NormalizeLinks.astro';
@@ -8,6 +8,7 @@ import MainLayout from '@layouts/MainLayout.astro';
 import '@styles/blog.css';
 import { Markdown } from 'astro-remote';
 import { getCollection } from 'astro:content';
+import { ViewTransitions } from 'astro:transitions';
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -34,13 +35,14 @@ const { entry, nextEntry, prevEntry } = Astro.props;
    featured_image={entry.data.featured_image}
    frontmatter={entry}
 >
+   <ViewTransitions />
    <Breadcrumbs
       links={[
          { name: 'Inicio', path: '/' },
          { name: 'Blog', path: '/blog' },
          {
             name: entry.data.title,
-            path: entry.slug,
+            path: `/blog/${entry.slug}`,
             linkIsActive: 'is-active',
          },
       ]}
@@ -82,8 +84,11 @@ const { entry, nextEntry, prevEntry } = Astro.props;
    }
 
    .article-main-heading-excerpt {
-    font-weight: 200;
-    color: #666;
-    padding: 15px 0;
-}
+      font-weight: 200;
+      color: #666;
+      padding: 0 0 15px 0;
+      text-align: center;
+      line-height: 30px;
+      font-size: 1em;
+   }
 </style>
