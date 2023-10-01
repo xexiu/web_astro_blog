@@ -5,7 +5,11 @@ import { Icon } from 'astro-icon';
 import logo from '../../public/logo.png';
 import CommonImage from '@components/CommonImage.astro';
 ---
-<p class="logo"><a href="/" aria-label="Inicio"><CommonImage src={logo} alt="Logo" width={100} height={62}/></a></p>
+
+<p class="logo">
+   <a href="/" aria-label="Inicio"
+   ><CommonImage src={logo} alt="Logo" width={100} height={62} /></a>
+</p>
 <input type="checkbox" id="click" />
 <label for="click" class="menu-btn">
    <Icon name="jam:menu" height="36" width="36" />
@@ -90,7 +94,7 @@ import CommonImage from '@components/CommonImage.astro';
    @media screen and (width <= 650px) {
       [data-main-nav] .nav__links {
          position: fixed;
-         top: 75px;
+         top: 0;
          left: -100%;
          background-color: var(--bg-light-papaya);
          height: 100vh;
@@ -98,7 +102,7 @@ import CommonImage from '@components/CommonImage.astro';
          display: block;
          text-align: center;
          transition: all 0.3s ease;
-         z-index: 20;
+         z-index: 19;
       }
 
       #click:not(:checked) ~ [data-main-nav] .nav__links {
@@ -114,9 +118,22 @@ import CommonImage from '@components/CommonImage.astro';
          margin-top: 40px;
       }
 
+      #click:checked ~ .menu-btn {
+         position: fixed;
+      }
+
       .menu-btn {
          display: flex;
          margin-left: auto;
+         top: 43px;
+         right: 30px;
+         z-index: 20;
+      }
+   }
+   @media screen and (width <= 500px) {
+      .menu-btn {
+         top: 12px;
+         right: 10px;
       }
    }
 </style>
