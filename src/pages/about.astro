@@ -3,6 +3,7 @@ import CommonImage from '@components/CommonImage.astro';
 import SocialIcons from '@components/SocialIcons.astro';
 import MainLayout from '@layouts/MainLayout.astro';
 import data from '@schemas/about-data.json';
+import socialIcons from '@schemas/social-icons.json';
 ---
 
 <MainLayout title={data.title} description={data.description}>
@@ -28,11 +29,11 @@ import data from '@schemas/about-data.json';
             </span>
          </div>
       </div>
-      <SocialIcons {data} classes="social-icons" />
+      <SocialIcons data={socialIcons} classes="social-icons" />
    </section>
 </MainLayout>
 
-<style is:inline>
+<style>
    .container {
       display: flex;
       flex-direction: column;
@@ -60,17 +61,6 @@ import data from '@schemas/about-data.json';
       width: 200px;
       height: 200px;
       box-shadow: var(--shadow-md);
-   }
-
-   .social-icons {
-      display: flex;
-      justify-content: center;
-      margin: 20px 0;
-   }
-
-   .social-icons a {
-      margin: 0 10px;
-      color: black;
    }
 
    h1 {

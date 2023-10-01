@@ -88,3 +88,20 @@ export function markAsCurrentPage(elements: NodeListOf<Element>) {
       }
    });
 }
+
+export function readingTime(text: string) {
+   // Split the text into an array of words
+   const wordsArray = text.split(' ');
+
+   // Count the number of words in the array
+   const wordCount = wordsArray.length;
+
+   // Calculate the estimated reading time
+   const wordsPerMinute = 200;
+   const readingTime = Math.ceil(wordCount / wordsPerMinute);
+
+   return {
+      wordCount,
+      time: readingTime
+   };
+}

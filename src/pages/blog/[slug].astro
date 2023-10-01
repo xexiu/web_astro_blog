@@ -4,6 +4,7 @@ import { ArticleNavigation } from '@components/article';
 import CodeBlock from '@components/markdown/CodeBlock.astro';
 import MarkdownImages from '@components/markdown/MarkdownImages.astro';
 import NormalizeLinks from '@components/markdown/NormalizeLinks.astro';
+import { formatDate, readingTime, slugify } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
 import '@styles/blog.css';
 import { Markdown } from 'astro-remote';
@@ -55,6 +56,10 @@ const { entry, nextEntry, prevEntry } = Astro.props;
       <div class:list={['article-content']}>
          <h1 class="article-main-heading">{entry.data.title}</h1>
          <h2 class="article-main-heading-excerpt">{entry.data.excerpt}</h2>
+         <div class="author-info">
+            <span class="author"><a data-normal-link href={`/blog/author/${slugify(entry.data.author)}/`}>{entry.data.author}</a></span>
+            <span class="reading-time">Lectura de {readingTime(entry.body).time} min - {formatDate(entry.data.date)}</span>
+         </div>
          <Markdown
             content={entry.body}
             sanitize={{ allowComponents: true }}
@@ -64,7 +69,7 @@ const { entry, nextEntry, prevEntry } = Astro.props;
    </article>
 </MainLayout>
 
-<style is:inline>
+<style>
    .article-content-wrapper {
       padding: 25px;
    }
@@ -75,7 +80,7 @@ const { entry, nextEntry, prevEntry } = Astro.props;
    .article-top-prev-next-wrapper {
       display: flex;
       justify-content: space-between;
-      height: 50px;
+      height: 25px;
    }
    .article-main-heading {
       text-align: center;
@@ -90,5 +95,15 @@ const { entry, nextEntry, prevEntry } = Astro.props;
       text-align: center;
       line-height: 30px;
       font-size: 1em;
+   }
+   .author-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      padding-bottom: 20px;
+   }
+   .reading-time {
+    color: #777;
+    font-size: .8em;
    }
 </style>

@@ -31,7 +31,7 @@ const { posts, authorName } = Astro.props;
 <MainLayout title={authorName}>
    <section class="container" aria-label={`Posts by ${authorName}`}>
       <span>Publicaciones hechas por:</span>
-      <TagHeading classes="posts-author" tag="h1">{authorName}</TagHeading>
+      <TagHeading classes="post-author" tag="h1">{authorName}</TagHeading>
       <div class="post-container">
          {
             posts.map((post: Post) => (
@@ -45,7 +45,7 @@ const { posts, authorName } = Astro.props;
 </MainLayout>
 
 <style>
-   .posts-author {
+   .post-author {
       margin-bottom: 10px;
    }
 </style>

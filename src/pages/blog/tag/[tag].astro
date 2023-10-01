@@ -1,4 +1,5 @@
 ---
+import TagHeading from '@components/TagHeading.astro';
 import { PostCard } from '@components/postcard';
 import { slugify } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
@@ -21,7 +22,8 @@ const tagPosts = blogEntries.filter((entry: Post) => entry.data.tags.includes(ta
 
 <MainLayout title={tag}>
    <section class="container" aria-label={`Posts about ${tag}`}>
-      <h1 class="h1">Publicaciones del blog etiquetadas con <span>{tag}</span></h1>
+      <span>Publicaciones etiquetadas con:</span>
+      <TagHeading classes="post-tags" tag="h1">{tag}</TagHeading>
       <div class="post-container">
          {
             tagPosts.map((post: Post) => (
@@ -33,3 +35,9 @@ const tagPosts = blogEntries.filter((entry: Post) => entry.data.tags.includes(ta
       </div>
    </section>
 </MainLayout>
+
+<style>
+   .post-tags {
+      margin-bottom: 10px;
+   }
+</style>

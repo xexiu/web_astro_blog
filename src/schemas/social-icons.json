@@ -1,0 +1,32 @@
+[
+    {
+        "email": {
+            "iconName": "mdi:email-edit-outline",
+            "path": "mailto:sergiu.mironescu@gmail.com"
+        }
+    },
+    {
+        "linkedin": {
+            "iconName": "la:linkedin",
+            "path": "https://www.linkedin.com/in/smironescu/"
+        }
+    },
+    {
+        "stack": {
+            "iconName": "jam:stackoverflow",
+            "path": "https://stackoverflow.com/users/2193382/sergio-mironescu-iancu"
+        }
+    },
+    {
+        "twitter": {
+            "iconName": "gg:twitter",
+            "path": "https://twitter.com/xexiudev"
+        }
+    },
+    {
+        "twitter": {
+            "iconName": "charm:github",
+            "path": "https://github.com/xexiu"
+        }
+    }
+]

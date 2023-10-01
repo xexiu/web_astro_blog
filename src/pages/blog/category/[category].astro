@@ -24,7 +24,7 @@ const catPosts = blogEntries.filter((post: Post) => slugify(post.data.category) 
 <MainLayout title={category}>
    <section class="container" aria-label={`Posts about ${category}`}>
       <span>Publicaciones en la categoria:</span>
-      <TagHeading classes="posts-author" tag="h1">{category}</TagHeading>
+      <TagHeading classes="post-category" tag="h1">{category}</TagHeading>
       <div class="post-container">
          {
             catPosts.map((post: Post) => (
@@ -36,3 +36,9 @@ const catPosts = blogEntries.filter((post: Post) => slugify(post.data.category) 
       </div>
    </section>
 </MainLayout>
+
+<style>
+   .post-category {
+      margin-bottom: 10px;
+   }
+</style>

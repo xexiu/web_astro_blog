@@ -5,7 +5,7 @@ const{ data, classes } = Astro.props;
 
 <div class={classes}>
    {
-      data['social-icons'].map((social: object) => {
+      data.map((social: object) => {
          return Object.keys(social as []).map((s: string) => (
             <Link
                icon={{
@@ -24,3 +24,16 @@ const{ data, classes } = Astro.props;
       })
    }
 </div>
+
+<style>
+   .social-icons {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+   }
+
+   .social-icons a {
+      margin: 0 10px;
+      color: black;
+   }
+</style>

@@ -21,7 +21,6 @@ const { prevEntry, nextEntry } = Astro.props;
                isFilled={false}
                data-sidebarLink
                aria-label={`Prev article: ${prevEntry.data.title}`}
-               classes="btn-blue"
             />
          </h5>
       </div>
@@ -39,7 +38,6 @@ const { prevEntry, nextEntry } = Astro.props;
                isFilled={false}
                data-sidebarLink
                aria-label={`Prev article: ${nextEntry.data.title}`}
-               classes="btn-blue"
             />
          </h5>
       </div>
@@ -77,19 +75,20 @@ const { prevEntry, nextEntry } = Astro.props;
    .prev-article {
       justify-content: flex-start;
       & span {
-         padding-left: 15px;
+         padding-left: 25px;
+         font-size: 15px;
       }
       &:before {
-         background: white;
+         background: #222;
          bottom: 0;
          clip-path: polygon(50% 0, 0 50%, 50% 100%);
          content: "";
          position: absolute;
-         top: 15px;
+         top: 7px;
          left: 8px;
          transition: background 0.2s linear;
          width: 15px;
-         height: 15px;
+         height: 10px;
          z-index: 1;
       }
    }
@@ -97,19 +96,21 @@ const { prevEntry, nextEntry } = Astro.props;
    .next-article {
       justify-content: flex-end;
       & span {
-         padding-right: 15px;
+         padding-right: 25px;
+         text-align: end;
+         font-size: 15px;
       }
       &:before {
-         background: white;
+         background: #222;
          bottom: 0;
          clip-path: polygon(50% 50%, -50% -50%, 0 100%);
          content: "";
          position: absolute;
-         top: 15px;
+         top: 7px;
          right: 0px;
          transition: background 0.2s linear;
          width: 15px;
-         height: 15px;
+         height: 10px;
          z-index: 1;
       }
    }
