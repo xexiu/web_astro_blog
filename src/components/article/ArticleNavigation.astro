@@ -16,7 +16,7 @@ const { prevEntry, nextEntry } = Astro.props;
          <h5>
             <Link
                text={prevEntry.data.title}
-               href={prevEntry.slug}
+               href={`/blog/${prevEntry.slug}`}
                style="primary"
                isFilled={false}
                data-sidebarLink
@@ -33,7 +33,7 @@ const { prevEntry, nextEntry } = Astro.props;
          <h5>
             <Link
                text={nextEntry.data.title}
-               href={nextEntry.slug}
+               href={`/blog/${nextEntry.slug}`}
                style="primary"
                isFilled={false}
                data-sidebarLink
