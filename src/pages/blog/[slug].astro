@@ -82,12 +82,11 @@ const { entry, nextEntry, prevEntry } = Astro.props;
                <xe-article-speech>
                   <button class="listen-article" data-article-text={entry.body} title="Escuchar artículo" data-paused="false"></button>
                </xe-article-speech>
-               <button title="Compartir artículo" data-article-title={entry.data.title} data-article-url={entry.slug}>
+               <button class="share-article" title="Compartir artículo" data-article-title={entry.data.title} data-article-url={`/blog/${entry.slug}`}>
                   <Icon
                      name="octicon:share-16"
                      height="18"
                      width="18"
-                     class="share-article"
                   />
                </button>
             </ArticleTools>
