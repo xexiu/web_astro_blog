@@ -1,15 +1,23 @@
 ---
 import Breadcrumbs from '@components/Breadcrumbs.astro';
-import { ArticleNavigation } from '@components/article';
+import {
+   ArticleAuthor,
+   ArticleAuthorContainer,
+   ArticleInfoContainer,
+   ArticleNavigation,
+   ArticleReadingTime,
+   ArticleTools,
+} from '@components/article';
 import CodeBlock from '@components/markdown/CodeBlock.astro';
 import MarkdownImages from '@components/markdown/MarkdownImages.astro';
 import NormalizeLinks from '@components/markdown/NormalizeLinks.astro';
-import { formatDate, readingTime, slugify } from '@js/utils';
+import PostCardTags from '@components/postcard/PostCardTags.astro';
 import MainLayout from '@layouts/MainLayout.astro';
 import '@styles/blog.css';
 import { Markdown } from 'astro-remote';
 import { getCollection } from 'astro:content';
 import { ViewTransitions } from 'astro:transitions';
+import { Icon } from 'astro-icon';
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -56,20 +64,34 @@ const { entry, nextEntry, prevEntry } = Astro.props;
       <div class:list={['article-content']}>
          <h1 class="article-main-heading">{entry.data.title}</h1>
          <h2 class="article-main-heading-excerpt">{entry.data.excerpt}</h2>
-         <div class="author-info">
-            <span class="author"
-            ><a
-                  data-normal-link
-                  href={`/blog/author/${slugify(entry.data.author)}/`}
-               >{entry.data.author}</a
-               ></span
-            >
-            <span class="reading-time"
-            >Lectura de {readingTime(entry.body).time} min - {
-                  formatDate(entry.data.date)
-               }</span
-            >
-         </div>
+         <PostCardTags tags={entry.data.tags} />
+         <ArticleInfoContainer>
+            <ArticleAuthorContainer>
+               <ArticleAuthor post={entry} />
+               <ArticleReadingTime post={entry} />
+            </ArticleAuthorContainer>
+            <ArticleTools>
+               <button title="Guardar artículo">
+                  <Icon
+                     name="uil:save"
+                     height="18"
+                     width="18"
+                     class="save-article"
+                  />
+               </button>
+               <xe-article-speech>
+                  <button class="listen-article" data-article-text={entry.body} title="Escuchar artículo" data-paused="false"></button>
+               </xe-article-speech>
+               <button title="Compartir artículo">
+                  <Icon
+                     name="octicon:share-16"
+                     height="18"
+                     width="18"
+                     class="share-article"
+                  />
+               </button>
+            </ArticleTools>
+         </ArticleInfoContainer>
          <Markdown
             content={entry.body}
             sanitize={{ allowComponents: true }}
@@ -79,7 +101,106 @@ const { entry, nextEntry, prevEntry } = Astro.props;
    </article>
 </MainLayout>
 
+
+   <script>
+   document.querySelector('.share-article')
+   .addEventListener('click', (event) => {
+
+         // Fallback, Tries to use API only
+         // if navigator.share function is
+         // available
+         debugger;
+
+         if (navigator.share) {
+            navigator.share({
+
+               // Title that occurs over
+               // web share dialog
+               title: 'GeeksForGeeks',
+
+               // URL to share
+               url: 'https://geeksforgeeks.org'
+            }).then(() => {
+               console.log('Thanks for sharing!');
+            }).catch((err) => {
+
+               // Handle errors, if occurred
+               console.log(
+                  'Error while using Web share API:');
+               console.log(err);
+            });
+         } else {
+
+            // Alerts user if API not available
+            alert('Browser doesn\'t support this API !');
+         }
+   });
+   </script>
+
+<script>
+class ArticleSpeech extends HTMLElement {
+   constructor() {
+      super();
+      const icon = this.querySelector('.listen-article') as any;
+      const utterance = new SpeechSynthesisUtterance();
+      utterance.text = icon.dataset.articleText;
+      utterance.voice = window.speechSynthesis.getVoices()[0];
+
+      window.speechSynthesis.cancel();
+
+      icon?.addEventListener('click', (event: Event) => {
+         event.preventDefault();
+
+         if(icon.classList.contains('pause')) {
+            this.pause();
+            icon.classList.toggle('pause');
+         } else {
+            this.play(utterance);
+            icon.classList.toggle('pause');
+         }
+      });
+
+      utterance.addEventListener('end', (event: Event) => {
+         event.preventDefault();
+         icon.classList.toggle('pause');
+      });
+   }
+
+   play(text: SpeechSynthesisUtterance) {
+      if (this.dataset.paused === 'true') {
+         this.dataset.paused = 'false';
+         window.speechSynthesis.resume();
+      } else {
+         window.speechSynthesis.speak(text);
+      }
+   }
+
+   pause() {
+      window.speechSynthesis.pause();
+      this.dataset.paused = 'true';
+   }
+}
+
+customElements.define('xe-article-speech', ArticleSpeech);
+</script>
+
 <style>
+   .listen-article {
+      border-color: transparent transparent transparent #202020;
+      border-style: solid;
+      border-width: 8px 0 7px 13px;
+      box-sizing: border-box;
+      cursor: pointer;
+      height: 16px;
+      transition: all 0.1s ease;
+      will-change: border-width;
+      display: block;
+      &.pause {
+         border-style: double;
+         border-width: 0px 0 0px 13px;
+      }
+   }
+
    .article-content-wrapper {
       padding: 25px;
    }
@@ -105,16 +226,6 @@ const { entry, nextEntry, prevEntry } = Astro.props;
       text-align: center;
       line-height: 30px;
       font-size: 1em;
-   }
-   .author-info {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      padding-bottom: 20px;
-   }
-   .reading-time {
-      color: #777;
-      font-size: 0.8em;
    }
 
    @media screen and (width <= 500px),

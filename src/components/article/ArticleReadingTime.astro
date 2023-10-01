@@ -1,0 +1,22 @@
+---
+import { formatDate, readingTime } from '@js/utils';
+import type { Post } from 'types/utils';
+
+interface Props {
+   post: Post;
+}
+
+const { post }: Props = Astro.props;
+---
+<span class="reading-time"
+>Lectura de {readingTime(post.body).time} min - {
+      formatDate(post.data.date.toString())
+   }</span
+>
+
+<style>
+    .reading-time {
+      color: #777;
+      font-size: 0.8em;
+   }
+</style>

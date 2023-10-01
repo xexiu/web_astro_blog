@@ -7,7 +7,7 @@ export type Post = {
       title: string;
       description: string;
       tags: string[];
-      date: Date;
+      date: Date | string;
       author: string;
       featured_post: boolean;
       isPrivate: boolean;

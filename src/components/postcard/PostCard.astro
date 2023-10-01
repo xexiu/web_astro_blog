@@ -40,11 +40,10 @@ const { category, featured_image, title, date, author, excerpt, tags } =
    <div class="post-card-content-container">
       <div class="post-card-save">
          <button
-            class="save-post save-popup"
+            class="save-post"
             aria-label={`Guarda: ${title}`}
             data-saveid={`/blog/${post.slug}`}
-            aria-pressed="false"
-            data-popuptext="Guardar Publicación!"
+            title="Guardar publicación!"
          >
             <Icon
                name="uil:save"
@@ -133,7 +132,6 @@ const { category, featured_image, title, date, author, excerpt, tags } =
       }
       .post-card-tags {
          display: flex;
-         gap: 10px;
          padding: 10px 0;
          bottom: 5px;
          width: 92%;
@@ -144,37 +142,14 @@ const { category, featured_image, title, date, author, excerpt, tags } =
    .post-card-save {
       position: absolute;
       right: 0;
-      top: -25px;
       cursor: pointer;
+      background-color: #222;
+      top: -46px;
+      border-radius: 8px;
+      padding: 9px;
 
       .save-post {
-         color: var(--color-red);
-      }
-   }
-
-   .save-popup {
-      height: 0;
-      position: relative;
-      cursor: pointer;
-
-      &:after {
-         content: attr(data-popuptext);
-         background: white;
-         border-radius: 3px;
-         opacity: 0;
-         top: -250px;
-         left: -240px;
-         position: absolute;
-         transition: 300ms ease;
-         white-space: nowrap;
-         max-height: 0;
-      }
-
-      &:hover:after {
-         opacity: 1;
-         top: -2em;
-         max-height: 200px;
-         padding: 0.4em;
+         color: #fefefe;
       }
    }
 </style>
