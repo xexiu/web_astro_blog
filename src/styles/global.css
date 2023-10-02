@@ -8,12 +8,8 @@
 @import "partials/_root";
 @import "tooltip";
 
-/* :root > * {
-    display: none; <Toggle Theme should be activated in MainLayout.astro -->
-} */
-
-.light > * {
-    display: block;
+html {
+    scroll-behavior: smooth;
 }
 
 html::-webkit-scrollbar {
@@ -29,6 +25,14 @@ html::-webkit-scrollbar-track {
 html::-webkit-scrollbar-thumb {
     background: var(--color-red:);
     border-radius: 5px;
+}
+
+/* :root > * {
+    display: none; <Toggle Theme should be activated in MainLayout.astro -->
+} */
+
+.light > * {
+    display: block;
 }
 
 /* .dark {

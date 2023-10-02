@@ -1,6 +1,7 @@
 .tooltip {
 	position: relative;
 	text-align: center;
+	z-index: 100;
 }
 
 .tooltip::after {
@@ -73,13 +74,15 @@
 
 .tooltip[data-tooltip-placement="left"]::after {
 	content: attr(title);
-	top: 0;
+	top: -35px;
 	left: 0;
 	transform: translateX(calc(-100% - 10px));
+	z-index: 100;
 }
 
 .tooltip[data-tooltip-placement="left"]::before {
 	top: 50%;
 	left: 0;
 	transform: translate(calc(-100% - 5px), -50%) rotate(45deg);
+	z-index: 100;
 }

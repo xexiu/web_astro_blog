@@ -36,6 +36,11 @@
     padding-left: 10px;
 }
 
+.logo-img {
+    max-width: 100%;
+    height: auto;
+}
+
 @media screen and (width <= 650px) {
     [data-main-nav] .nav__links {
         position: fixed;
