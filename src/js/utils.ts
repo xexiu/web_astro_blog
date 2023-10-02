@@ -105,3 +105,25 @@ export function readingTime(text: string) {
       time: readingTime
    };
 }
+
+export function isInViewport(el: HTMLElement): boolean {
+   const rect = el.getBoundingClientRect();
+
+   return (
+      rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+   );
+}
+
+export function isInViewPortScrolling(el: HTMLElement): any {
+   function scrollObserver() {
+      document.removeEventListener('scroll', scrollObserver);
+
+      return isInViewport(el);
+   }
+
+   document.addEventListener('scroll', scrollObserver, { passive: true });
+
+}

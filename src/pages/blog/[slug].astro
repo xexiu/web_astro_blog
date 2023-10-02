@@ -1,5 +1,5 @@
 ---
-import Breadcrumbs from '@components/Breadcrumbs.astro';
+import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
 import {
    ArticleAuthor,
    ArticleAuthorContainer,
@@ -71,7 +71,11 @@ const { entry, nextEntry, prevEntry } = Astro.props;
             <Markdown
                content={entry.body}
                sanitize={{ allowComponents: true }}
-               components={{ img: MarkdownImages, CodeBlock, a: NormalizeLinks }}
+               components={{
+                  img: MarkdownImages,
+                  CodeBlock,
+                  a: NormalizeLinks,
+               }}
             />
          </div>
          <ArticleInfoContainer>
@@ -80,23 +84,34 @@ const { entry, nextEntry, prevEntry } = Astro.props;
                <ArticleReadingTime post={entry} />
             </ArticleAuthorContainer>
             <ArticleTools>
-               <button title="Guardar artículo">
-                  <Icon
-                     name="uil:save"
-                     height="18"
-                     width="18"
-                     class="save-article"
-                  />
+               <button
+                  title="Guardar artículo"
+                  class="tooltip save-article"
+                  data-tooltip-placement="top"
+                  aria-label="Guardar Archive"
+               >
+                  <Icon name="uil:save" height="18" width="18" />
                </button>
-               <xe-article-speech>
-                  <button class="listen-article" data-article-text={entry.body} title="Escuchar artículo" data-paused="false"></button>
+               <xe-article-speech
+                  class="tooltip"
+                  title="Escuchar artículo"
+                  data-tooltip-placement="top"
+               >
+                  <button
+                     aria-label="Escuchar artículo"
+                     class="listen-article"
+                     data-article-text={entry.body}
+                     data-paused="false"></button>
                </xe-article-speech>
-               <button class="share-article" title="Compartir artículo" data-article-title={entry.data.title} data-article-url={`/blog/${entry.slug}`}>
-                  <Icon
-                     name="octicon:share-16"
-                     height="18"
-                     width="18"
-                  />
+               <button
+                  class="share-article tooltip"
+                  title="Compartir artículo"
+                  data-article-title={entry.data.title}
+                  data-article-url={`/blog/${entry.slug}`}
+                  aria-label="Compartir artículo"
+                  data-tooltip-placement="left"
+               >
+                  <Icon name="octicon:share-16" height="18" width="18" />
                </button>
             </ArticleTools>
          </ArticleInfoContainer>
@@ -104,8 +119,7 @@ const { entry, nextEntry, prevEntry } = Astro.props;
    </article>
 </MainLayout>
 
-
-   <script>
+<script>
    const shareBtn = document.querySelector('.share-article') as HTMLElement;
 
    shareBtn?.addEventListener('click', (event: Event) => {
@@ -118,72 +132,73 @@ const { entry, nextEntry, prevEntry } = Astro.props;
       // available
 
       if (navigator.share) {
-         navigator.share({
-            // Title that occurs over
-            // web share dialog
-            title: articleTitle,
+         navigator
+            .share({
+               // Title that occurs over
+               // web share dialog
+               title: articleTitle,
 
-            // URL to share
-            url: articleUrl
-         }).then(() => {
-            console.log('Thanks for sharing!');
-         }).catch((err) => {
-
-            // Handle errors, if occurred
-            console.log(
-               'Error while using Web share API:');
-            console.log(err);
-         });
+               // URL to share
+               url: articleUrl,
+            })
+            .then(() => {
+               console.log('Thanks for sharing!');
+            })
+            .catch((err) => {
+               // Handle errors, if occurred
+               console.log('Error while using Web share API:');
+               console.log(err);
+            });
       } else {
          // Alerts user if API not available
          alert('Browser doesn\'t support this API !');
       }
    });
-   </script>
+</script>
 
 <script>
-class ArticleSpeech extends HTMLElement {
-   constructor() {
-      super();
-      const icon = this.querySelector('.listen-article') as any;
-      const utterance = new SpeechSynthesisUtterance();
-      utterance.text = icon.dataset.articleText;
-      utterance.voice = window.speechSynthesis.getVoices()[0];
+   class ArticleSpeech extends HTMLElement {
+      constructor() {
+         super();
+         const icon = this.querySelector('.listen-article') as any;
+         const utterance = new SpeechSynthesisUtterance();
+         utterance.text = icon.dataset.articleText;
+         utterance.voice = window.speechSynthesis.getVoices()[0];
 
-      window.speechSynthesis.cancel();
+         window.speechSynthesis.cancel();
 
-      icon?.addEventListener('click', (event: Event) => {
-         event.preventDefault();
+         icon?.addEventListener('click', (event: Event) => {
+            event.preventDefault();
 
-         if(icon.classList.contains('pause')) {
-            this.pause();
+            if (icon.classList.contains('pause')) {
+               this.pause();
+               icon.classList.toggle('pause');
+            } else {
+               this.play(utterance);
+               icon.classList.toggle('pause');
+            }
+         });
+
+         utterance.addEventListener('end', (event: Event) => {
+            event.preventDefault();
             icon.classList.toggle('pause');
+         });
+      }
+
+      play(text: SpeechSynthesisUtterance) {
+         if (this.dataset.paused === 'true') {
+            this.dataset.paused = 'false';
+            window.speechSynthesis.resume();
          } else {
-            this.play(utterance);
-            icon.classList.toggle('pause');
+            window.speechSynthesis.speak(text);
          }
-      });
+      }
 
-      utterance.addEventListener('end', (event: Event) => {
-         event.preventDefault();
-         icon.classList.toggle('pause');
-      });
-   }
-
-   play(text: SpeechSynthesisUtterance) {
-      if (this.dataset.paused === 'true') {
-         this.dataset.paused = 'false';
-         window.speechSynthesis.resume();
-      } else {
-         window.speechSynthesis.speak(text);
+      pause() {
+         window.speechSynthesis.pause();
+         this.dataset.paused = 'true';
       }
    }
 
-   pause() {
-      window.speechSynthesis.pause();
-      this.dataset.paused = 'true';
-   }
-}
-
-customElements.define('xe-article-speech', ArticleSpeech);
+   customElements.define('xe-article-speech', ArticleSpeech);
 </script>

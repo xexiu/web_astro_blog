@@ -23,6 +23,18 @@ const imagesrc = await images[cleanSrc] ? images[cleanSrc]() : images[`${RELATIV
 <Image
    src={imagesrc}
    {alt}
-   class:list={['image']}
+   class:list={['image markdown-image']}
    {...rest}
 />
+
+<script>
+import { isInViewport } from '@js/utils';
+
+var firstImage = document.querySelector('.markdown-image') as HTMLElement;
+
+if(isInViewport(firstImage)) {
+   firstImage.removeAttribute('loading');
+}
+
+
+</script>

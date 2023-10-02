@@ -1,0 +1,27 @@
+---
+import Link from '../Link.astro';
+import './breadcrumbs.css';
+
+interface Props {
+    links: { name: string; path: string, linkIsActive?: string }[];
+}
+
+const { links }: Props = Astro.props;
+
+---
+
+<nav class="breadcrumbs">
+   {
+      links.map((link: any) => (
+         <Link
+            text={link.name}
+            href={link.path}
+            style="primary"
+            isFilled={false}
+            data-sidebarLink
+            aria-label={link.name}
+            classes={`breadcrumbs__item ${link.linkIsActive ? link.linkIsActive : ''}`}
+         />
+      ))
+   }
+</nav>

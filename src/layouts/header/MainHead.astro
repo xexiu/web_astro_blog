@@ -1,7 +1,6 @@
 ---
 import Seo from '@components/Seo.astro';
 import data from '@schemas/index-data.json';
-import { Tooltips } from 'astro-tooltips';
 import type { HeadProps } from 'types/interfaces';
 
 const {
@@ -21,5 +20,4 @@ const {
    <meta name="description" content={description} />
    <Seo {title} {description} url={Astro.url} {featured_image} {frontmatter} {robots} />
    <title>{title}</title>
-   <Tooltips interactive={false} placement="bottom" />
 </head>
