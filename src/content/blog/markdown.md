@@ -137,8 +137,6 @@ H\~2\~O
 
 X^2^
 
-
-
 Hello
 
 ```javascript
