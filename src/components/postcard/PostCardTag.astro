@@ -1,0 +1,31 @@
+---
+import { slugify } from '@js/utils';
+
+interface Props {
+    tag: string;
+}
+const { tag } = Astro.props;
+---
+
+<a href={`/blog/tag/${slugify(tag)}/`} class="tag">
+   {tag}
+</a>
+
+<style>
+    .tag {
+        color: var(--color-red);
+        border: 2px solid #999;
+        border-radius: 2em;
+        display: inline-flex;
+        margin: 0;
+        padding: 0.1em 0.6em;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: var(--fs-sm);
+        &:hover {
+            background: linear-gradient(to right, #ff8a00, #da1b60);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+</style>

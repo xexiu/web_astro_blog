@@ -1,0 +1,49 @@
+---
+import { formatDate, slugify } from '@js/utils';
+
+interface Props {
+    author: string;
+    date: string;
+}
+
+const { author, date } = Astro.props;
+---
+
+<div class="post-card-details">
+   <div class="post-card-author">
+      <a href={`/blog/author/${slugify(author)}/`}>{author}</a>
+   </div>
+   <span class="post-card-date">
+      {formatDate(date)}
+   </span>
+</div>
+
+<style>
+    .post-card-details {
+        position: relative;
+
+        .post-card-date {
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-size: 14px;
+            color: #999;
+        }
+        .post-card-author {
+            font-size: 15px;
+            margin-top: 5px;
+            width: 60%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            a {
+                text-decoration: none;
+                color: black;
+                border-bottom: 1px solid #ccc;
+                &:hover {
+                    border-bottom: 2px solid black;
+                }
+            }
+        }
+    }
+</style>

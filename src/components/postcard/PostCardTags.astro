@@ -1,37 +1,27 @@
 ---
-import { slugify } from '@js/utils';
+import PostCardTag from './PostCardTag.astro';
 
 interface Props {
     tags: [];
 }
 const { tags } = Astro.props;
 ---
-
-{
-   tags.map((tag: string) => {
-      return (
-         <a href={`/blog/tag/${slugify(tag)}/`} class="tag">
-            {tag}
-         </a>
-      );
-   })
-}
+<div class="post-card-tags">
+   {
+      tags.map((tag: string) => {
+         return (
+            <PostCardTag {tag} />
+         );
+      })
+   }
+</div>
 
 <style>
-    .tag {
-        color: var(--color-red);
-        border: 2px solid #999;
-        border-radius: 2em;
-        display: inline-flex;
-        margin: 0;
-        padding: 0.1em 0.6em;
-        text-decoration: none;
-        text-transform: uppercase;
-        font-size: var(--fs-sm);
-        &:hover {
-            background: linear-gradient(to right, #ff8a00, #da1b60);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-    }
+    .post-card-tags {
+         display: flex;
+         padding: 10px 0;
+         bottom: 5px;
+         width: 92%;
+         overflow: hidden;
+      }
 </style>

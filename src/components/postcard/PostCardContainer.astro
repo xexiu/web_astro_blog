@@ -6,12 +6,12 @@ interface Props {
 const { classes, ...rest } = Astro.props as Props;
 ---
 
-<article class:list={['post-card', classes]} {...rest}>
+<article class:list={['post-card-container', classes]} {...rest}>
    <slot />
 </article>
 
 <style is:global>
-	.post-card {
+	.post-card-container {
 		position: relative;
 		background-color: blanchedalmond;
 		background-image: none;

@@ -1,0 +1,28 @@
+<div class="post-card-details-container">
+   <slot />
+</div>
+
+<style>
+    .post-card-details-container {
+        padding: 0 15px;
+        display: flex;
+        flex-flow: column;
+        height: 45%;
+        position: relative;
+        justify-content: space-between;
+
+        a[data-normal-link] {
+            display: -webkit-box;
+            max-width: 100%;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            &::before {
+                content: "";
+            }
+            &:hover::before {
+                transform: scaleX(0);
+            }
+        }
+    }
+</style>

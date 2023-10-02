@@ -1,0 +1,39 @@
+---
+import { Icon } from 'astro-icon';
+import type { Post } from 'types/utils';
+
+interface Props {
+    title: string;
+    post: Post;
+}
+
+const { title, post } = Astro.props;
+---
+
+<div class="post-card-save">
+   <button
+      data-tooltip-placement="top"
+      class="save-post tooltip"
+      aria-label={`Guarda: ${title}`}
+      data-saveid={`/blog/${post.slug}`}
+      title="Guardar publicación"
+   >
+      <Icon name="uil:save" height="22" width="22" />
+   </button>
+</div>
+
+<style>
+    .post-card-save {
+        position: absolute;
+        right: 0;
+        cursor: pointer;
+        background-color: #222;
+        top: -46px;
+        border-top-left-radius: 8px;
+        padding: 9px;
+
+        .save-post {
+            color: #fefefe;
+        }
+    }
+</style>

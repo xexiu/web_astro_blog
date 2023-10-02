@@ -1,0 +1,21 @@
+---
+interface Props {
+    excerpt: string;
+}
+const { excerpt } = Astro.props;
+---
+
+<p class="card-excerpt">{excerpt}</p>
+
+<style>
+    .card-excerpt {
+        color: #888;
+        font-size: var(--fs-sm);
+        margin-top: 5px;
+        display: -webkit-box;
+        max-width: 100%;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+</style>

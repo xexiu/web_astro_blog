@@ -1,9 +1,16 @@
 ---
-import TagHeading from '@components/TagHeading.astro';
-import { formatDate, slugify } from '@js/utils';
-import { PostCardCategory, PostCardContainer, PostCardImage } from '.';
-import PostCardTags from './PostCardTags.astro';
-import { Icon } from 'astro-icon';
+import TagHeading from '@components/common/TagHeading.astro';
+import { slugify } from '@js/utils';
+import {
+   PostCardCategory,
+   PostCardContainer,
+   PostCardImage,
+   PostCardDetailsContainer,
+   PostCardTags,
+   PostCardSave,
+   PostCardDetails,
+   PostCardExcerpt,
+} from '.';
 
 const { post } = Astro.props;
 const { category, featured_image, title, date, author, excerpt, tags } =
@@ -37,119 +44,15 @@ const { category, featured_image, title, date, author, excerpt, tags } =
       href={`/blog/category/${slugify(category)}/`}
       text={category}
    />
-   <div class="post-card-content-container">
-      <div class="post-card-save">
-         <button
-            class="save-post"
-            aria-label={`Guarda: ${title}`}
-            data-saveid={`/blog/${post.slug}`}
-            title="Guardar publicación!"
-         >
-            <Icon
-               name="uil:save"
-               height="22"
-               width="22"
-            />
-         </button>
-      </div>
+   <PostCardDetailsContainer>
+      <PostCardSave {title} {post} />
       <div style="margin-top: 10px">
          <a data-normal-link href={`/blog/${post.slug}`}>
             <TagHeading tag="h3">{title}</TagHeading>
          </a>
-         <div class="post-card-details">
-            <div class="post-card-author">
-               <a href={`/blog/author/${slugify(author)}/`}>{author}</a>
-            </div>
-            <span class="post-card-date">
-               {formatDate(date)}
-            </span>
-         </div>
+         <PostCardDetails {author} {date} />
       </div>
-      <p class="card-excerpt">{excerpt}</p>
-      <div class="post-card-tags">
-         <PostCardTags {tags} />
-      </div>
-   </div>
+      <PostCardExcerpt {excerpt} />
+      <PostCardTags {tags} />
+   </PostCardDetailsContainer>
 </PostCardContainer>
-
-<style>
-   .post-card-content-container {
-      padding: 0 15px;
-      display: flex;
-      flex-flow: column;
-      height: 45%;
-      position: relative;
-      justify-content: space-between;
-
-      a[data-normal-link] {
-         display: -webkit-box;
-         max-width: 100%;
-         -webkit-line-clamp: 2;
-         -webkit-box-orient: vertical;
-         overflow: hidden;
-         &::before {
-            content: "";
-         }
-         &:hover::before {
-            transform: scaleX(0);
-         }
-      }
-      .post-card-details {
-         position: relative;
-         .post-card-date {
-            position: absolute;
-            right: 0;
-            top: 0;
-            font-size: 14px;
-            color: #999;
-         }
-      }
-      .post-card-author {
-         font-size: 15px;
-         margin-top: 5px;
-         width: 60%;
-         white-space: nowrap;
-         overflow: hidden;
-         text-overflow: ellipsis;
-         a {
-            text-decoration: none;
-            color: black;
-            border-bottom: 1px solid #ccc;
-            &:hover {
-               border-bottom: 2px solid black;
-            }
-         }
-      }
-      .card-excerpt {
-         color: #888;
-         font-size: var(--fs-sm);
-         margin-top: 5px;
-         display: -webkit-box;
-         max-width: 100%;
-         -webkit-line-clamp: 3;
-         -webkit-box-orient: vertical;
-         overflow: hidden;
-      }
-      .post-card-tags {
-         display: flex;
-         padding: 10px 0;
-         bottom: 5px;
-         width: 92%;
-         overflow: hidden;
-      }
-   }
-
-   .post-card-save {
-      position: absolute;
-      right: 0;
-      cursor: pointer;
-      background-color: #222;
-      top: -46px;
-      border-top-left-radius: 8px;
-      padding: 9px;
-
-      .save-post {
-         color: #fefefe;
-      }
-   }
-</style>
