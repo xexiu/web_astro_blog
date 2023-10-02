@@ -1,18 +1,17 @@
 ---
 title: Markdown Cheat Sheet
-date: 2023-09-22T17:14:10+02:00
-category: general
 excerpt: This is a short except about, This is a short except about, This is a
   short except about, This is a short except about
 author: Sergiu Mironescu
-featured_post: false
 tags:
   - markdown
+category: general
+date: 2023-09-22T17:14:10+02:00
+featured_post: false
 featured_image:
   alt: featured
   src: src/images/screen-shot-2023-08-31-at-08.19.44-am-2-.png
 ---
-
 ```astro
   import Welcome from "../../components/Welcome.astro";
 
@@ -137,6 +136,10 @@ I need to highlight these ==very important words==.
 H\~2\~O
 
 X^2^
+
+
+
+Hello
 
 ```javascript
 const a = 'test';
