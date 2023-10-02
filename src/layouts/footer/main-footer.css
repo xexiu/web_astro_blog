@@ -1,0 +1,28 @@
+:where(footer) {
+    width: 100%;
+    padding: 10px;
+    font-size: var(--fs-sm);
+    border-top: 1px solid #ccc;
+    margin-top: 10px;
+
+    .footer-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1500px;
+        margin-inline: auto;
+        gap: var(--space-sm);
+
+        .xml-wrapper {
+            display: flex;
+        }
+
+        & a {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+        }
+    }
+
+}

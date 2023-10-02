@@ -64,7 +64,16 @@ const { entry, nextEntry, prevEntry } = Astro.props;
       <div class:list={['article-content']}>
          <h1 class="article-main-heading">{entry.data.title}</h1>
          <h2 class="article-main-heading-excerpt">{entry.data.excerpt}</h2>
-         <PostCardTags tags={entry.data.tags} />
+         <div class="tags-wrapper">
+            <PostCardTags tags={entry.data.tags} />
+         </div>
+         <div class="markdown-wrapper">
+            <Markdown
+               content={entry.body}
+               sanitize={{ allowComponents: true }}
+               components={{ img: MarkdownImages, CodeBlock, a: NormalizeLinks }}
+            />
+         </div>
          <ArticleInfoContainer>
             <ArticleAuthorContainer>
                <ArticleAuthor post={entry} />
@@ -91,11 +100,6 @@ const { entry, nextEntry, prevEntry } = Astro.props;
                </button>
             </ArticleTools>
          </ArticleInfoContainer>
-         <Markdown
-            content={entry.body}
-            sanitize={{ allowComponents: true }}
-            components={{ img: MarkdownImages, CodeBlock, a: NormalizeLinks }}
-         />
       </div>
    </article>
 </MainLayout>
@@ -183,56 +187,3 @@ class ArticleSpeech extends HTMLElement {
 
 customElements.define('xe-article-speech', ArticleSpeech);
 </script>
-
-<style>
-   .listen-article {
-      border-color: transparent transparent transparent #202020;
-      border-style: solid;
-      border-width: 8px 0 7px 13px;
-      box-sizing: border-box;
-      cursor: pointer;
-      height: 16px;
-      transition: all 0.1s ease;
-      will-change: border-width;
-      display: block;
-      &.pause {
-         border-style: double;
-         border-width: 0px 0 0px 13px;
-      }
-   }
-
-   .article-content-wrapper {
-      padding: 25px;
-   }
-   .article-content-wrapper a.markdown-link {
-      padding: 5px 0;
-      display: inline-block;
-   }
-   .article-top-prev-next-wrapper {
-      display: flex;
-      justify-content: space-between;
-      height: 25px;
-   }
-   .article-main-heading {
-      text-align: center;
-      font-size: 3em;
-      padding: 15px 0;
-   }
-
-   .article-main-heading-excerpt {
-      font-weight: 200;
-      color: #666;
-      padding: 0 0 15px 0;
-      text-align: center;
-      line-height: 30px;
-      font-size: 1em;
-   }
-
-   @media screen and (width <= 500px),
-      screen and (width >= 600px),
-      screen and (width >= 400px) {
-      .article-content-wrapper {
-         padding: 5px;
-      }
-   }
-</style>

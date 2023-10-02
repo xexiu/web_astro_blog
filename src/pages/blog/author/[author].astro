@@ -1,5 +1,5 @@
 ---
-import { PostCard } from '@components/postcard';
+import Posts from '@components/common/Posts.astro';
 import TagHeading from '@components/TagHeading.astro';
 import { slugify } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
@@ -32,15 +32,7 @@ const { posts, authorName } = Astro.props;
    <section class="container" aria-label={`Posts by ${authorName}`}>
       <span>Publicaciones hechas por:</span>
       <TagHeading classes="post-author" tag="h1">{authorName}</TagHeading>
-      <div class="post-container">
-         {
-            posts.map((post: Post) => (
-               <PostCard
-                  {post}
-               />
-            ))
-         }
-      </div>
+      <Posts entries={posts as Post[]} />
    </section>
 </MainLayout>
 

@@ -1,11 +1,12 @@
 export type Post = {
    id: string;
-   body: any;
    slug: string;
+   body: any;
+   collection: string;
    data: {
       category: string;
       title: string;
-      description: string;
+      excerpt: string;
       tags: string[];
       date: Date | string;
       author: string;

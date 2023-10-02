@@ -22,7 +22,6 @@ const blog = defineCollection({
 const portfolio = defineCollection({
    schema: ({ image }) => z.object({
       title: z.string().max(100),
-      description: z.string(),
       tags: z.array(z.string()),
       category: z.string(),
       author: z.string(),

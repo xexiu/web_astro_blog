@@ -10,6 +10,16 @@
         "path": "/blog"
     },
     {
+        "iconName": "dashicons:portfolio",
+        "name": "Portafolio",
+        "path": "/portfolio"
+    },
+    {
+        "iconName": "clarity:avatar-outline-badged",
+        "name": "Sobre Mí",
+        "path": "/about"
+    },
+    {
         "iconName": "bi:folder",
         "name": "Guardados",
         "path": "/saved/"

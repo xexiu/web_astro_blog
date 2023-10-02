@@ -1,0 +1,84 @@
+#click {
+    display: none;
+}
+
+.nav__links {
+    list-style: none;
+}
+
+.nav__links li {
+    display: inline-block;
+    padding: 0 5px;
+}
+
+.nav__links li a {
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    padding: 9px;
+    border-radius: 20px;
+    color: #222;
+
+    &:hover {
+        cursor: pointer;
+        box-shadow: var(--shadow-md);
+    }
+}
+
+.nav__links li a[aria-current="page"] {
+    color: rgb(217 13 13);
+}
+
+.menu-btn {
+    color: #222;
+    display: none;
+    cursor: pointer;
+    padding-left: 10px;
+}
+
+@media screen and (width <= 650px) {
+    [data-main-nav] .nav__links {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        background-color: var(--bg-light-papaya);
+        height: 100vh;
+        width: 100%;
+        display: block;
+        text-align: center;
+        transition: all 0.3s ease;
+        z-index: 19;
+    }
+
+    #click:not(:checked) ~ [data-main-nav] .nav__links {
+        left: -100%;
+    }
+
+    #click:checked ~ [data-main-nav] .nav__links {
+        left: 0%;
+    }
+
+    [data-main-nav] .nav__links li {
+        display: block;
+        margin-top: 40px;
+    }
+
+    #click:checked ~ .menu-btn {
+        position: fixed;
+    }
+
+    .menu-btn {
+        display: flex;
+        margin-left: auto;
+        top: 43px;
+        right: 30px;
+        z-index: 20;
+    }
+}
+
+@media screen and (width <= 500px) {
+    .menu-btn {
+        top: 12px;
+        right: 10px;
+    }
+}

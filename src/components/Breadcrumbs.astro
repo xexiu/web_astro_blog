@@ -1,6 +1,12 @@
 ---
 import Link from './Link.astro';
-const { links } = Astro.props;
+
+interface Props {
+    links: { name: string; path: string, linkIsActive?: string }[];
+}
+
+const { links }: Props = Astro.props;
+
 ---
 
 <nav class="breadcrumbs">
@@ -13,7 +19,7 @@ const { links } = Astro.props;
             isFilled={false}
             data-sidebarLink
             aria-label={link.name}
-            classes={`breadcrumbs__item ${link.linkIsActive}`}
+            classes={`breadcrumbs__item ${link.linkIsActive ? link.linkIsActive : ''}`}
          />
       ))
    }
@@ -21,14 +27,13 @@ const { links } = Astro.props;
 
 <style>
     .breadcrumbs {
-        margin: 0 25px;
         border: 1px solid #cbd2d9;
-        border-radius: 0.3rem;
         display: flex;
         flex-wrap: wrap;
         overflow: hidden;
         position: sticky;
-        top: 0;
+        top: 60px;
+        margin-top: -15px;
         z-index: 10;
         background-color: var(--bg-light-papaya);
     }
@@ -85,12 +90,6 @@ const { links } = Astro.props;
         background: #edf1f5;
     }
 
-    @media screen and (width <= 500px) {
-        .breadcrumbs {
-            top: 0;
-        }
-    }
-
     @media screen and (width <= 500px),
         screen and (width >= 600px),
         screen and (width >= 400px) {
@@ -99,9 +98,6 @@ const { links } = Astro.props;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-        }
-        .breadcrumbs {
-            margin: 0 5px;
         }
     }
 </style>

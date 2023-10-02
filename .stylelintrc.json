@@ -1,6 +1,9 @@
 {
     "defaultSeverity": "warning",
     "extends": "stylelint-config-standard-scss",
+    "ignoreFiles": [
+        "node_modules/*"
+    ],
     "rules": {
         "at-mixin-pattern": null,
         "at-rule-no-unknown": null,

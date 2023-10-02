@@ -1,14 +1,14 @@
 ---
-import Logo from '@components/Logo.astro';
+// import Logo from '@components/Logo.astro';
 // import ToggleTheme from '@components/ToggleTheme.astro';
 // import Sidebar from '@components/sidebar/Sidebar.astro';
 import data from '@schemas/index-data.json';
 import '@styles/global.css';
 import type { HeadProps } from 'types/interfaces';
-import MainFooter from './MainFooter.astro';
-import MainHead from './MainHead.astro';
-import MainHeader from './MainHeader.astro';
-import MainNav from './MainNav.astro';
+import MainFooter from '@layouts/footer/MainFooter.astro';
+import MainHead from '@layouts/header/MainHead.astro';
+import MainHeader from '@layouts/header/MainHeader.astro';
+import MainNav from '@layouts/nav/MainNav.astro';
 
 const {
    title = data.title,

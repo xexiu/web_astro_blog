@@ -1,6 +1,6 @@
 ---
 import TagHeading from '@components/TagHeading.astro';
-import { PostCard } from '@components/postcard';
+import Posts from '@components/common/Posts.astro';
 import { slugify } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
@@ -24,15 +24,7 @@ const tagPosts = blogEntries.filter((entry: Post) => entry.data.tags.includes(ta
    <section class="container" aria-label={`Posts about ${tag}`}>
       <span>Publicaciones etiquetadas con:</span>
       <TagHeading classes="post-tags" tag="h1">{tag}</TagHeading>
-      <div class="post-container">
-         {
-            tagPosts.map((post: Post) => (
-               <PostCard
-                  {post}
-               />
-            ))
-         }
-      </div>
+      <Posts entries={tagPosts as Post[]} />
    </section>
 </MainLayout>
 

@@ -1,0 +1,23 @@
+---
+import { PostCard } from '@components/postcard';
+import type { Post } from 'types/utils';
+
+interface Props {
+   entries: Post[]
+}
+
+const { entries } = Astro.props;
+---
+
+<div class="posts-container">
+   {entries.map((post) => <PostCard {post} />)}
+</div>
+
+<style>
+   .posts-container {
+      display: grid;
+      align-items: start;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: var(--size-fluid-3);
+   }
+</style>

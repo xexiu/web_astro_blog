@@ -93,6 +93,7 @@
         8.7px 20.7px 25.3px -1.8px hsl(var(--shadow) / var(--shadow-strength)),
         13.3px 31.4px 38.4px -2.1px hsl(var(--shadow) / var(--shadow-strength)),
         19.6px 46.3px 56.6px -2.5px hsl(var(--shadow) / var(--shadow-strength));
+    --shadow-bttm: 0 4px 2px -2px hsl(var(--shadow) / var(--shadow-strength));
 
     /* border */
     --border-sm: 1px;

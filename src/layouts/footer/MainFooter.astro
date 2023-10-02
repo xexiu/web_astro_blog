@@ -1,0 +1,27 @@
+---
+import CopyrightFooter from '@components/CopyrightFooter.astro';
+import Link from '@components/Link.astro';
+import SocialIcons from '@components/SocialIcons.astro';
+import socialIcons from '@schemas/social-icons.json';
+import './main-footer.css';
+---
+
+<footer>
+   <div class="footer-wrapper">
+      <CopyrightFooter />
+      <Link
+         href="/rss.xml"
+         text="Subscribe to RSS"
+         style="primary"
+         icon={{
+            name: 'tabler:rss',
+            side: 'right',
+            width: '16',
+            height: '16',
+         }}
+         data-normal-link
+         classes="xml-wrapper"
+      />
+   </div>
+   <SocialIcons data={socialIcons} classes="social-icons" />
+</footer>
