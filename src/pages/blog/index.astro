@@ -9,7 +9,7 @@ const blogEntries = await getCollection('blog');
 ---
 
 <MainLayout title={data.title} description={data.description}>
-   <section class="container" aria-label="Publicaciones Recientes">
+   <section class="container-blog-page" aria-label="Publicaciones Recientes">
       <Posts entries={blogEntries as Post[]} />
       <!-- <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
       <aside class="container" aria-label="Blog categories">
@@ -18,3 +18,9 @@ const blogEntries = await getCollection('blog');
       </aside> -->
    </section>
 </MainLayout>
+
+<style>
+   .container-blog-page {
+      margin-bottom: 10px;
+   }
+</style>
