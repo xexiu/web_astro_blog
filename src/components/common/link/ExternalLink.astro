@@ -1,0 +1,27 @@
+---
+import { Icon } from 'astro-icon';
+import type { LinkProps } from 'types/interfaces';
+import { BaseLink } from '.';
+
+
+const { text, icon, classes, href, style, isFilled, borderVisible, ...rest } =
+   Astro.props as LinkProps;
+---
+
+<BaseLink
+   classes={`${classes} external-link`}
+   {href}
+   {style}
+   {isFilled}
+   {borderVisible}
+   {...rest}
+>
+   {text ? <span>{text}</span> : <slot />}
+   <Icon
+      name="ri:external-link-fill"
+      height={icon?.height || 14}
+      width={icon?.width || 14}
+      class="external-link-icon"
+      alt="Link externo"
+   />
+</BaseLink>

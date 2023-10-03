@@ -225,46 +225,48 @@
 		display: block;
 
 		&.pause {
-		   border-style: double;
-		   border-width: 0 0 0 13px;
+			border-style: double;
+			border-width: 0 0 0 13px;
 		}
-	 }
+	}
 
-	 .tags-wrapper {
+	.tags-wrapper {
 		display: flex;
-	 }
+	}
 
-	 .markdown-wrapper {
+	.markdown-wrapper {
 		padding-top: 20px;
 		border-top: 1px solid #ccc;
-	 }
+	}
 
-	 .markdown-link {
+	.markdown-link {
+		display: flex;
 		padding: 5px 0;
-		display: inline-block;
-	 }
+		align-items: center;
+		gap: 5px;
+	}
 
-	 .article-top-prev-next-wrapper {
+	.article-top-prev-next-wrapper {
 		display: flex;
 		justify-content: space-between;
 		height: 25px;
 		margin-top: 10px;
-	 }
+	}
 
-	 .article-main-heading {
+	.article-main-heading {
 		text-align: center;
 		font-size: 3em;
 		padding: 15px 0;
-	 }
+	}
 
-	 .article-main-heading-excerpt {
+	.article-main-heading-excerpt {
 		font-weight: 200;
 		color: #666;
 		padding: 0 0 15px;
 		text-align: center;
 		line-height: 30px;
 		font-size: 18px;
-	 }
+	}
 }
 
 

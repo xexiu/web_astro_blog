@@ -1,0 +1,34 @@
+---
+export interface Props {
+   text?: string;
+   href: string;
+   style: 'primary' | 'secondary';
+   icon?: {
+      name: string;
+      side: 'left' | 'right';
+      width?: string | '24';
+      height?: string | '24';
+      class?: string;
+   };
+   isFilled?: boolean;
+   borderVisible?: boolean;
+   classes?: string;
+   target?: string;
+}
+
+const { href, classes, style, isFilled, borderVisible, ...rest } =
+    Astro.props;
+---
+
+<a
+   href={href}
+   class:list={[
+      'link',
+      classes,
+      style,
+      { filled: isFilled, bordered: borderVisible }
+   ]}
+   {...rest}
+>
+   <slot />
+</a>

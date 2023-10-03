@@ -7,7 +7,7 @@ export interface LinkProps {
       side: 'left' | 'right';
       width?: string | '24';
       height?: string | '24';
-      class?: string
+      class?: string;
    };
    isFilled?: boolean;
    borderVisible?: boolean;

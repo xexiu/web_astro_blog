@@ -1,0 +1,48 @@
+---
+import type { LinkProps } from 'types/interfaces';
+import ExternalLink from './ExternalLink.astro';
+import InternalLink from './InternalLink.astro';
+
+const {
+   text,
+   href,
+   style,
+   icon,
+   isFilled = true,
+   borderVisible = false,
+   classes,
+   ...rest
+} = Astro.props as LinkProps;
+
+const isExternalLink = !href.includes('xexiu') && href.includes('://');
+---
+
+{
+   isExternalLink ? (
+      <ExternalLink
+         {href}
+         {text}
+         {icon}
+         classes={`${classes} external-link`}
+         {style}
+         {isFilled}
+         {borderVisible}
+         {...rest}
+      >
+         <slot />
+      </ExternalLink>
+   ) : (
+      <InternalLink
+         {href}
+         {text}
+         {icon}
+         classes={`${classes} internal-link`}
+         {style}
+         {isFilled}
+         {borderVisible}
+         {...rest}
+      >
+         <slot />
+      </InternalLink>
+   )
+}

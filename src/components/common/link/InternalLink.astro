@@ -1,0 +1,25 @@
+---
+import { Icon } from 'astro-icon';
+import type { LinkProps } from 'types/interfaces';
+import { BaseLink } from '.';
+
+
+const { text, icon, classes, href, style, isFilled, borderVisible, ...rest } =
+   Astro.props as LinkProps;
+---
+
+<BaseLink classes={`${classes} internal-link`} {href} {style} {isFilled} {borderVisible} {...rest}>
+   {
+      icon && icon.side === 'left' && (
+         <Icon name={icon.name} height={icon.height} width={icon.width} class={icon.class} alt="Link externo" />
+      )
+   }
+
+   {text ? <span>{text}</span> : <slot />}
+
+   {
+      icon && icon.side === 'right' && (
+         <Icon name={icon.name} height={icon.height} width={icon.width} class={icon.class} alt="Link externo" />
+      )
+   }
+</BaseLink>
