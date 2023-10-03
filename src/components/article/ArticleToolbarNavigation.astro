@@ -17,7 +17,6 @@ const { prevEntry, nextEntry } = Astro.props;
             <Link
                text={prevEntry.data.title}
                href={`/blog/${prevEntry.slug}`}
-               style="primary"
                isFilled={false}
                data-normal-link
                aria-label={`Prev article: ${prevEntry.data.title}`}
@@ -34,7 +33,6 @@ const { prevEntry, nextEntry } = Astro.props;
             <Link
                text={nextEntry.data.title}
                href={`/blog/${nextEntry.slug}`}
-               style="primary"
                isFilled={false}
                data-normal-link
                aria-label={`Prev article: ${nextEntry.data.title}`}

@@ -15,8 +15,6 @@ featured_image:
 ```javascript
   import Welcome from "../../components/Welcome.astro";
 
-## This is a component
-
   <Welcome text="Sergiu" />
 ```
 

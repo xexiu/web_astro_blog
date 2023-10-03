@@ -15,7 +15,6 @@ const { author, date } = Astro.props;
       <Link
          text={author}
          href={`/blog/author/${slugify(author)}/`}
-         style="primary"
          isFilled={false}
          aria-label={author}
       />

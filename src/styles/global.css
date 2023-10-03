@@ -29,7 +29,7 @@ html::-webkit-scrollbar-thumb {
 
 html[data-current-page="/"] {
     .nav__links li a[href='/'] {
-        color: rgb(217 13 13);
+        color: var(--color-red);
         border-radius: 20px;
         box-shadow: var(--shadow-md);
         border: 1px solid #000;
@@ -38,7 +38,7 @@ html[data-current-page="/"] {
 
 html[data-current-page*="/blog"] {
     .nav__links li a[href*='/blog'] {
-        color: rgb(217 13 13);
+        color: var(--color-red);
         border-radius: 20px;
         box-shadow: var(--shadow-md);
         border: 1px solid #000;

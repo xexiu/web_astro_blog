@@ -1,23 +1,14 @@
 ---
 export interface Props {
-   text?: string;
    href: string;
    customStyle?: any;
-   icon?: {
-      name: string;
-      side: 'left' | 'right';
-      width?: string | '24';
-      height?: string | '24';
-      class?: string;
-   };
    isFilled?: boolean;
    borderVisible?: boolean;
    classes?: string;
    target?: string;
 }
 
-const { href, classes, customStyle, isFilled, borderVisible, ...rest } =
-    Astro.props;
+const { href, classes, customStyle, isFilled, borderVisible, ...rest } = Astro.props as Props;
 ---
 
 <a
