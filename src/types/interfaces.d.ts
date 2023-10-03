@@ -1,7 +1,7 @@
 export interface LinkProps {
    text?: string;
    href: string;
-   style: 'primary' | 'secondary';
+   customStyle: any;
    icon?: {
       name: string;
       side: 'left' | 'right';

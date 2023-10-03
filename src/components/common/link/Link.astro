@@ -6,11 +6,11 @@ import InternalLink from './InternalLink.astro';
 const {
    text,
    href,
-   style,
+   customStyle,
    icon,
    isFilled = true,
    borderVisible = false,
-   classes,
+   classes = 'link',
    ...rest
 } = Astro.props as LinkProps;
 
@@ -24,7 +24,7 @@ const isExternalLink = !href.includes('xexiu') && href.includes('://');
          {text}
          {icon}
          classes={`${classes} external-link`}
-         {style}
+         {customStyle}
          {isFilled}
          {borderVisible}
          {...rest}
@@ -37,7 +37,7 @@ const isExternalLink = !href.includes('xexiu') && href.includes('://');
          {text}
          {icon}
          classes={`${classes} internal-link`}
-         {style}
+         {customStyle}
          {isFilled}
          {borderVisible}
          {...rest}

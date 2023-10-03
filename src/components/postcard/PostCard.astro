@@ -11,6 +11,7 @@ import {
    PostCardDetails,
    PostCardExcerpt,
 } from '.';
+import { Link } from '@components/common/link';
 
 const { post } = Astro.props;
 const { category, featured_image, title, date, author, excerpt, tags } =
@@ -31,8 +32,14 @@ const { category, featured_image, title, date, author, excerpt, tags } =
 </script>
 
 <PostCardContainer>
-   <PostCardImage
+   <Link
       href={`/blog/${post.slug}`}
+      style="primary"
+      isFilled={false}
+      classes="post-link-wrapper"
+      text={title}
+   />
+   <PostCardImage
       src={featured_image.src}
       alt={featured_image.alt}
       width="400"
@@ -45,7 +52,7 @@ const { category, featured_image, title, date, author, excerpt, tags } =
       text={category}
    />
    <PostCardDetailsContainer>
-      <PostCardSave {title} {post} />
+      <!-- <PostCardSave {title} {post} /> -->
       <div style="margin-top: 10px">
          <a data-normal-link href={`/blog/${post.slug}`}>
             <TagHeading tag="h3">{title}</TagHeading>
@@ -56,3 +63,16 @@ const { category, featured_image, title, date, author, excerpt, tags } =
       <PostCardTags {tags} />
    </PostCardDetailsContainer>
 </PostCardContainer>
+
+<style>
+   .post-link-wrapper {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      cursor: pointer;
+      overflow-wrap: anywhere;
+   }
+</style>

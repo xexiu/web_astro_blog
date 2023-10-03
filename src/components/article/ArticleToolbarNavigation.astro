@@ -19,7 +19,7 @@ const { prevEntry, nextEntry } = Astro.props;
                href={`/blog/${prevEntry.slug}`}
                style="primary"
                isFilled={false}
-               data-sidebarLink
+               data-normal-link
                aria-label={`Prev article: ${prevEntry.data.title}`}
             />
          </h5>
@@ -36,7 +36,7 @@ const { prevEntry, nextEntry } = Astro.props;
                href={`/blog/${nextEntry.slug}`}
                style="primary"
                isFilled={false}
-               data-sidebarLink
+               data-normal-link
                aria-label={`Prev article: ${nextEntry.data.title}`}
             />
          </h5>
@@ -84,7 +84,7 @@ const { prevEntry, nextEntry } = Astro.props;
          clip-path: polygon(50% 0, 0 50%, 50% 100%);
          content: "";
          position: absolute;
-         top: 7px;
+         top: 5px;
          left: 8px;
          transition: background 0.2s linear;
          width: 15px;
@@ -106,7 +106,7 @@ const { prevEntry, nextEntry } = Astro.props;
          clip-path: polygon(50% 50%, -50% -50%, 0 100%);
          content: "";
          position: absolute;
-         top: 7px;
+         top: 5px;
          right: 0px;
          transition: background 0.2s linear;
          width: 15px;

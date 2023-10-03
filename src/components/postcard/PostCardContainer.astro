@@ -1,6 +1,8 @@
 ---
+import type { Post } from 'types/utils';
 interface Props {
 	classes?: string;
+	post: Post
 }
 
 const { classes, ...rest } = Astro.props as Props;
@@ -10,25 +12,31 @@ const { classes, ...rest } = Astro.props as Props;
    <slot />
 </article>
 
-<style is:global>
+<style>
 	.post-card-container {
 		position: relative;
-		background-color: blanchedalmond;
-		background-image: none;
-		background-position: 100%;
-		background-size: 400%;
-		border-radius: 7px;
+		background-color: #fff;
+		display: flex;
+		align-items: flex-start;
+		position: relative;
+		border-radius: 4px;
+		padding: 10px;
 		border: 1px solid #ccc;
 		box-shadow: inset 0 0 0 1px hsla(0, 0%, 100%, 0.1);
 		list-style: none;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		height: 520px;
-		transition: all 0.4s;
+		transition: all .2s;
+		width: 100%;
 		&:hover {
-			box-shadow: var(--shadow-md);
-			transform: scale(0.98);
-			transition: all 0.4s;
-			border: 1px solid #666;
+			box-shadow: 0 10px 42px rgba(25, 17, 34, 0.1);
+			text-decoration: none;
+			-webkit-transform: translateY(-4px);
+			transform: translateY(-4px);
+			transition: all .2s;
+		}
+	}
+	@media screen and (width <= 650px) {
+		.post-card-container {
+			flex-direction: column;
 		}
 	}
 </style>

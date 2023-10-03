@@ -27,6 +27,24 @@ html::-webkit-scrollbar-thumb {
     border-radius: 5px;
 }
 
+html[data-current-page="/"] {
+    .nav__links li a[href='/'] {
+        color: rgb(217 13 13);
+        border-radius: 20px;
+        box-shadow: var(--shadow-md);
+        border: 1px solid #000;
+    }
+}
+
+html[data-current-page*="/blog"] {
+    .nav__links li a[href*='/blog'] {
+        color: rgb(217 13 13);
+        border-radius: 20px;
+        box-shadow: var(--shadow-md);
+        border: 1px solid #000;
+    }
+}
+
 /* :root > * {
     display: none; <Toggle Theme should be activated in MainLayout.astro -->
 } */
@@ -73,14 +91,17 @@ html::-webkit-scrollbar-thumb {
 } */
 
 body {
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
     max-width: 1248px;
-    background-color: var(--bg-light-papaya);
+    background-color: hsl(var(--bkg));
     margin: 0 auto;
     padding: 0 10px;
     position: relative;
     font-family: 'Golos Text', cursive;
+    color: hsl(var(--txt));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+  text-rendering: optimizelegibility;
 
     a[data-normal-link] {
         color: $color-red;
@@ -110,7 +131,7 @@ body {
 }
 
 main {
-    margin: 15px 0 0;
+    margin: 77px 0 0;
     padding: 0 10px;
 
     img {

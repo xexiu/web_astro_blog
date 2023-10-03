@@ -14,10 +14,9 @@
 .nav__links li a {
     transition: all 0.3s ease 0s;
     text-decoration: none;
-    border: 1px solid #ccc;
-    padding: 9px;
+    padding: 10px;
     border-radius: 20px;
-    color: #222;
+    color: #f2f2f2;
 
     &:hover {
         cursor: pointer;
@@ -25,12 +24,8 @@
     }
 }
 
-.nav__links li a[aria-current="page"] {
-    color: rgb(217 13 13);
-}
-
 .menu-btn {
-    color: #222;
+    color: #fefefe;
     display: none;
     cursor: pointer;
     padding-left: 10px;
@@ -39,6 +34,7 @@
 .logo-img {
     max-width: 100%;
     height: auto;
+    filter: invert(100%) sepia(43%) saturate(3207%) hue-rotate(130deg) brightness(89%) contrast(93%);
 }
 
 @media screen and (width <= 650px) {
@@ -46,13 +42,13 @@
         position: fixed;
         top: 0;
         left: -100%;
-        background-color: var(--bg-light-papaya);
+        background-color: #222;
         height: 100vh;
         width: 100%;
         display: block;
         text-align: center;
         transition: all 0.3s ease;
-        z-index: 19;
+        z-index: 101;
     }
 
     #click:not(:checked) ~ [data-main-nav] .nav__links {
@@ -72,18 +68,15 @@
         position: fixed;
     }
 
+    .logo {
+        z-index: 102;
+    }
+
     .menu-btn {
         display: flex;
         margin-left: auto;
-        top: 43px;
-        right: 30px;
-        z-index: 20;
-    }
-}
-
-@media screen and (width <= 500px) {
-    .menu-btn {
-        top: 12px;
-        right: 10px;
+        top: 13px;
+        right: 0;
+        z-index: 1000;
     }
 }

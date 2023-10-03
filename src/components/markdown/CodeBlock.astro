@@ -3,10 +3,28 @@ import hljs from 'highlight.js';
 
 const { lang, code } = Astro.props;
 
-const highlightedCode = hljs.highlight(
-   code,
-   { language: lang === 'astro' ? 'javascript' : lang }
-).value;
+console.log('Code', Astro.props);
+
+const highlightedCode = hljs.highlight(code, {
+   language: lang === 'astro' ? 'javascript' : lang,
+}).value;
 ---
 
-<pre><code set:html={highlightedCode} /></pre>
+<pre><code lang={lang} set:html={highlightedCode}></code><small data-language={lang} /></pre>
+
+<style>
+small::before {
+   content: attr(data-language);
+    display: block;
+    height: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: 1px solid #ccc;
+    padding: 4px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    background-color: #222;
+    color: #f2f2f2;
+}
+</style>

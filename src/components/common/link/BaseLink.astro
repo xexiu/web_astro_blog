@@ -2,7 +2,7 @@
 export interface Props {
    text?: string;
    href: string;
-   style: 'primary' | 'secondary';
+   customStyle?: any;
    icon?: {
       name: string;
       side: 'left' | 'right';
@@ -16,18 +16,17 @@ export interface Props {
    target?: string;
 }
 
-const { href, classes, style, isFilled, borderVisible, ...rest } =
+const { href, classes, customStyle, isFilled, borderVisible, ...rest } =
     Astro.props;
 ---
 
 <a
    href={href}
    class:list={[
-      'link',
       classes,
-      style,
       { filled: isFilled, bordered: borderVisible }
    ]}
+   style={customStyle}
    {...rest}
 >
    <slot />

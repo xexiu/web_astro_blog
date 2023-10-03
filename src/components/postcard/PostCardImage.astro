@@ -1,29 +1,35 @@
 ---
 import CommonImage from '@components/CommonImage.astro';
 
-const { href, src, alt, classes, width, height, ...rest } = Astro.props;
+const { src, alt, classes, width, height, ...rest } = Astro.props;
 ---
 
-<a href={href} aria-hidden="true" tabindex="-1">
-   <CommonImage
-      {src}
-      {alt}
-      {width}
-      {height}
-      {classes}
-      {...rest}
-   />
-</a>
+<div class="container-img">
+   <CommonImage {src} {alt} {width} {height} {classes} {...rest} />
+</div>
 
 <style>
-   .post-card-img {
-      width: 100%;
-      height: 55%;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      border-top-right-radius: 5px;
-      border-top-left-radius: 5px;
-      box-shadow: var(--shadow-md);
+   .container-img {
+      width: 200px; /* Set your desired static width */
+      flex-shrink: 0;
+      height: 125px;
+      width: 200px;
+      border-radius: 5px;
+      position: relative;
+
+      img {
+         width: 100%;
+         height: 100%;
+         object-fit: fill;
+         object-position: center center;
+      }
+   }
+
+   @media screen and (width <= 650px) {
+      .container-img {
+         display: none;
+         height: 0;
+         visibility: hidden;
+      }
    }
 </style>

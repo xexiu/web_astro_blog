@@ -4,14 +4,14 @@ import type { LinkProps } from 'types/interfaces';
 import { BaseLink } from '.';
 
 
-const { text, icon, classes, href, style, isFilled, borderVisible, ...rest } =
+const { text, icon, classes, href, customStyle, isFilled, borderVisible, ...rest } =
    Astro.props as LinkProps;
 ---
 
 <BaseLink
-   classes={`${classes} external-link`}
+   classes={`${classes}`}
    {href}
-   {style}
+   {customStyle}
    {isFilled}
    {borderVisible}
    {...rest}
