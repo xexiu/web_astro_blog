@@ -1,5 +1,95 @@
 ---
+import MainLayout from "@layouts/MainLayout.astro";
+import data from "@schemas/blog-data.json";
+import WrapperSavedPosts from './WrapperSavedPosts.astro';
 
+console.log("TEEEST")
 ---
 
-<h1>SAVED</h1>
+<MainLayout title={data.title} description={data.description}>
+    <section
+        class="container-saved-posts-page"
+        aria-label="Publicaciones Guardadas"
+    >
+        <h2 style="text-align: center; margin-bottom: 10px;">
+            Publicaciones Guardadas
+        </h2>
+        <p style="text-align: center; margin-bottom: 10px">
+            Has guardado estas publicaciones. Si no se muestran publicaciones,
+            aún no has guardado ninguna.
+        </p>
+        <xe-saved-post>
+            <WrapperSavedPosts/>
+        </xe-saved-post>
+        <xe-btn-delete>
+            <button class="btn-blue btn-delete"
+                >Eliminar todas las publicaciones guardadas!</button
+            >
+        </xe-btn-delete>
+        <xe-saved-post>
+            <!-- <Posts entries={posts} /> -->
+        </xe-saved-post>
+        <!-- <Posts data-posts={JSON.stringify(blogEntries)} classes="posts-saved" entries={[]} client:load /> -->
+        <!-- <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+      <aside class="container" aria-label="Blog categories">
+         <h2 class="h3">Blog Categories</h2>
+         <CategoryCloud showCount={true}/>
+      </aside> -->
+
+        <script>
+            class SavedPosts extends HTMLElement {
+                constructor() {
+                    super();
+                    const btnDelete = this.querySelector(".btn-delete");
+                }
+            }
+            customElements.define("xe-saved-post", SavedPosts);
+        </script>
+
+        <script>
+            import { litenerHelper } from "@js/utils";
+            import { SaveArticle } from "@js/custom-elements";
+
+            class BtnDelete extends SaveArticle {
+                constructor() {
+                    super(".top-link-saved-items");
+                    const btnDelete = this.querySelector(".btn-delete");
+
+                    if (this.hasItems()) {
+                        btnDelete.classList.add("with-items");
+                        // const postsContainer = document.querySelector('.posts-saved');
+                        // const parsedPosts = Object.values(this.posts).map(post => JSON.parse(post));
+                        // const posts = parsedPosts.map(post => {
+                        //     return `<div>${post.data.title}</div>`
+                        // })
+                        // postsContainer.innerHTML = posts;
+                        // debugger
+                    }
+
+                    litenerHelper(btnDelete, "click", async (event) => {
+                        event.preventDefault();
+                        this.clearItems();
+                        this.markTopBtn();
+                        btnDelete.style.display = "none";
+                    });
+                }
+            }
+            customElements.define("xe-btn-delete", BtnDelete);
+        </script>
+
+        <style>
+            .btn-delete {
+                display: none;
+                margin: 0 auto;
+                text-align: center;
+            }
+            .with-items {
+                display: block;
+            }
+            .container-saved-posts-page {
+                margin-bottom: 10px;
+                display: block;
+            }
+        </style>
+    </section>
+</MainLayout>

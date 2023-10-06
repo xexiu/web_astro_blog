@@ -64,6 +64,20 @@ export function isVisible(elem: HTMLElement):boolean {
    return !!elem && !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
 }
 
+export function litenerHelper(element: HTMLElement, eventName: string, cb: Function):void {
+
+   const eventListener = (event: Event) => {
+      cb(event, element);
+      removeEventListener();
+   };
+
+   const removeEventListener = () => {
+      element.removeEventListener(eventName, eventListener);
+   };
+
+   element.addEventListener(eventName, eventListener);
+}
+
 export function hideOnClickOutside(element: HTMLElement, cb: Function):void {
    const outsideClickListener = (event: Event) => {
       const targetElement = event.target as HTMLElement;

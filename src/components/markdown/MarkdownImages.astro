@@ -32,7 +32,7 @@ import { isInViewport } from '@js/utils';
 
 var firstImage = document.querySelector('.markdown-image') as HTMLElement;
 
-if(isInViewport(firstImage)) {
+if(firstImage && isInViewport(firstImage)) {
    firstImage.removeAttribute('loading');
 }
 

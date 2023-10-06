@@ -36,6 +36,8 @@ export async function getStaticPaths() {
 
 // 2. For your template, you can get the entry directly from the prop
 const { entry, nextEntry, prevEntry } = Astro.props;
+const { body, render, ...restEntry } = entry;
+const postToSave = { id: entry.id, slug: entry.slug, ...restEntry };
 ---
 
 <MainLayout
@@ -83,15 +85,20 @@ const { entry, nextEntry, prevEntry } = Astro.props;
                <ArticleAuthor post={entry} />
                <ArticleReadingTime post={entry} />
             </ArticleAuthorContainer>
+            <!-- Deshacer  guardado -->
             <ArticleTools>
-               <button
-                  title="Guardar artículo"
-                  class="tooltip save-article"
-                  data-tooltip-placement="top"
-                  aria-label="Guardar Archive"
-               >
-                  <Icon name="uil:save" height="18" width="18" />
-               </button>
+               <xe-article-save>
+                  <button
+                     title="Guardar artículo"
+                     class="tooltip save-article"
+                     data-tooltip-placement="top"
+                     aria-label={`Guardar ${entry.data.title}`}
+                     data-post={JSON.stringify(postToSave)}
+                     data-post-id={`/blog/${entry.slug}`}
+                  >
+                     <Icon name="uil:save" height="18" width="18" />
+                  </button>
+               </xe-article-save>
                <xe-article-speech
                   class="tooltip"
                   title="Escuchar artículo"
@@ -118,6 +125,23 @@ const { entry, nextEntry, prevEntry } = Astro.props;
       </div>
    </article>
 </MainLayout>
+
+<style>
+   .save-article {
+      transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+   }
+   .saved {
+      color: var(--color-red);
+      transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+   }
+</style>
+
+<script>
+import { ArticleSpeech, SaveArticleDetails } from "@js/custom-elements";
+
+customElements.define('xe-article-save', SaveArticleDetails);
+customElements.define('xe-article-speech', ArticleSpeech);
+</script>
 
 <script>
    const shareBtn = document.querySelector('.share-article') as HTMLElement;
@@ -154,51 +178,4 @@ const { entry, nextEntry, prevEntry } = Astro.props;
          alert('Browser doesn\'t support this API !');
       }
    });
-</script>
-
-<script>
-   class ArticleSpeech extends HTMLElement {
-      constructor() {
-         super();
-         const icon = this.querySelector('.listen-article') as any;
-         const utterance = new SpeechSynthesisUtterance();
-         utterance.text = icon.dataset.articleText;
-         utterance.voice = window.speechSynthesis.getVoices()[0];
-
-         window.speechSynthesis.cancel();
-
-         icon?.addEventListener('click', (event: Event) => {
-            event.preventDefault();
-
-            if (icon.classList.contains('pause')) {
-               this.pause();
-               icon.classList.toggle('pause');
-            } else {
-               this.play(utterance);
-               icon.classList.toggle('pause');
-            }
-         });
-
-         utterance.addEventListener('end', (event: Event) => {
-            event.preventDefault();
-            icon.classList.toggle('pause');
-         });
-      }
-
-      play(text: SpeechSynthesisUtterance) {
-         if (this.dataset.paused === 'true') {
-            this.dataset.paused = 'false';
-            window.speechSynthesis.resume();
-         } else {
-            window.speechSynthesis.speak(text);
-         }
-      }
-
-      pause() {
-         window.speechSynthesis.pause();
-         this.dataset.paused = 'true';
-      }
-   }
-
-   customElements.define('xe-article-speech', ArticleSpeech);
 </script>

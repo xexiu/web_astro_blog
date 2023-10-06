@@ -1,15 +1,19 @@
 ---
 import { PostCard } from '@components/postcard';
 import type { Post } from 'types/utils';
+import { postsSaved, store } from '@js/savedPostsStore';
+import { useStore } from '@nanostores/preact';
 
 interface Props {
-   entries: Post[]
+   entries: Post[],
+   classes?: string;
 }
 
-const { entries } = Astro.props;
+const { entries, classes, ...rest } = Astro.props;
+console.log('POSTS')
 ---
 
-<div class="posts-container">
+<div class:list={["posts-container", classes]} {...rest}>
    {entries.map((post) => <PostCard {post} />)}
 </div>
 

@@ -11,19 +11,7 @@ const { copyright = new Date().getFullYear().toString() } = Astro.props;
 </xe-footer-copyright>
 
 <script>
-    class CopyrightFooter extends HTMLElement {
-       constructor() {
-          super();
-
-          const element = this.querySelector('#copyright') as HTMLElement;
-
-          if (element) {
-             const copyright = element?.innerText;
-
-             element.textContent = copyright;
-          }
-       }
-    }
+    import { CopyrightFooter } from "@js/custom-elements";
 
     customElements.define('xe-footer-copyright', CopyrightFooter);
 </script>

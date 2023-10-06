@@ -1,17 +1,17 @@
 ---
-import TagHeading from '@components/common/TagHeading.astro';
-import { slugify } from '@js/utils';
+import TagHeading from "@components/common/TagHeading.astro";
+import { slugify } from "@js/utils";
 import {
    PostCardCategory,
    PostCardContainer,
    PostCardImage,
    PostCardDetailsContainer,
    PostCardTags,
-   PostCardSave,
+   // PostCardSave,
    PostCardDetails,
    PostCardExcerpt,
-} from '.';
-import { Link } from '@components/common/link';
+} from ".";
+import { Link } from "@components/common/link";
 
 const { post } = Astro.props;
 const { category, featured_image, title, date, author, excerpt, tags } =
@@ -20,10 +20,10 @@ const { category, featured_image, title, date, author, excerpt, tags } =
 
 <script>
    function savePost() {
-      const postsToSave = document.querySelectorAll('.save-post');
+      const postsToSave = document.querySelectorAll(".save-post");
       postsToSave?.forEach((postsToSave) => {
-         postsToSave.addEventListener('click', (event) => {
-            console.log('CLICKED');
+         postsToSave.addEventListener("click", (event) => {
+            console.log("CLICKED");
          });
       });
    }
@@ -38,32 +38,40 @@ const { category, featured_image, title, date, author, excerpt, tags } =
       classes="post-link-wrapper"
       text={title}
    />
-   <PostCardImage
-      src={featured_image.src}
-      alt={featured_image.alt}
-      width="400"
-      height="250"
-      quality={80}
-      classes="post-card-img"
-   />
+   {
+      featured_image?.src && (
+         <PostCardImage
+            src={featured_image.src}
+            alt={featured_image.alt}
+            width="400"
+            height="250"
+            quality={80}
+            classes="post-card-img"
+         />
+      )
+   }
    <PostCardCategory
       href={`/blog/category/${slugify(category)}/`}
       text={category}
    />
    <PostCardDetailsContainer>
       <!-- <PostCardSave {title} {post} /> -->
-      <div style="margin-top: 10px">
-         <a data-normal-link href={`/blog/${post.slug}`}>
+      <div>
+         <a data-normal-link class="post-title" href={`/blog/${post.slug}`}>
             <TagHeading tag="h3">{title}</TagHeading>
          </a>
-         <PostCardDetails {author} {date} />
       </div>
+      <PostCardDetails {author} {date} />
       <PostCardExcerpt {excerpt} />
       <PostCardTags {tags} />
    </PostCardDetailsContainer>
 </PostCardContainer>
 
 <style>
+   .post-title {
+      padding: 0 0 20px;
+      display: flex;
+   }
    .post-link-wrapper {
       opacity: 0;
       position: absolute;
@@ -73,5 +81,8 @@ const { category, featured_image, title, date, author, excerpt, tags } =
       left: 0;
       cursor: pointer;
       overflow-wrap: anywhere;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
    }
 </style>

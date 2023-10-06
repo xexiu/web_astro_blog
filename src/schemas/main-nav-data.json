@@ -10,6 +10,7 @@
         "path": "/blog"
     },
     {
+        "classes": "top-link-saved-items",
         "iconName": "bi:folder",
         "name": "Guardados",
         "path": "/saved/"

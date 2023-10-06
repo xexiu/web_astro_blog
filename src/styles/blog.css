@@ -92,10 +92,6 @@
 		margin-left: 20px;
 	}
 
-	p {
-		font-size: 16px;
-	}
-
 	small,
 	.text_small {
 		font-size: 0.833rem;
@@ -123,6 +119,20 @@
 		color: inherit;
 	}
 
+	.code-lang::before {
+		content: attr(data-language);
+		display: block;
+		height: auto;
+		position: absolute;
+		right: 0;
+		top: 0;
+		border: 1px solid #ccc;
+		padding: 4px;
+		border-bottom-left-radius: 6px;
+		background-color: #222;
+		color: #f2f2f2;
+	}
+
 	/* Supporting Content */
 
 	p code {
@@ -132,7 +142,7 @@
 
 		font-size: 0.85em;
 		color: #f2f2f2;
-		background-color: #222;
+		background-color: #24292e;
 		padding: var(--padding-block) var(--padding-inline);
 		margin: calc(var(--padding-block) * -1) -0.125em;
 		border-radius: var(--border-radius);
@@ -152,9 +162,26 @@
 		--padding-block: 1rem;
 		--padding-inline: 2rem;
 
-		padding: 25px;
+		counter-reset: line;
+		padding: 15px 0;
 		overflow-y: hidden;
 		overflow-x: auto;
+	}
+
+	span.line{
+		counter-increment: line;
+	}
+
+	span.line::before{
+		content: counter(line);
+		display: inline-block;
+		color: white;
+		width: 1em;
+		margin: 0 10px;
+	}
+
+	code::before{
+		user-select: none;
 	}
 
 	mark {
@@ -265,73 +292,3 @@
 		font-size: 18px;
 	}
 }
-
-
-/* HIGHLIGHT */
-
-code.hljs{
-	display:block;
-	overflow-x:auto;
-	padding:1em;
-	padding:3px 5px
-}
-
-.hljs{
-	background:#f3f3f3;
-	color:#444;
-}
-
-.hljs-comment{
-	color:#697070;
-}
-
-.hljs-punctuation,.hljs-tag{
-	color:#444a;
-}
-
-.hljs-tag .hljs-attr,.hljs-tag .hljs-name{
-	color:#444;
-}
-
-.hljs-attribute,.hljs-doctag,.hljs-keyword,.hljs-meta .hljs-keyword,.hljs-name,.hljs-selector-tag{
-	font-weight:700;
-}
-
-.hljs-deletion,.hljs-number,.hljs-quote,.hljs-selector-class,.hljs-selector-id,.hljs-string,.hljs-template-tag,.hljs-type{
-	color:#800;
-}
-
-.hljs-section,.hljs-title{
-	color:#800;
-	font-weight:700;
-}
-
-.hljs-link,.hljs-operator,.hljs-regexp,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-symbol,.hljs-template-variable,.hljs-variable{
-	color:#ab5656;
-}
-
-.hljs-literal{
-	color:#695;
-}
-
-.hljs-addition,.hljs-built_in,.hljs-bullet,.hljs-code{
-	color:#397300;
-}
-
-.hljs-meta{
-	color:#1f7199;
-}
-
-.hljs-meta .hljs-string{
-	color:#38a;
-}
-
-.hljs-emphasis{
-	font-style:italic;
-}
-
-.hljs-strong{
-	font-weight:700;
-}
-
-/* ######### */

@@ -1,36 +1,16 @@
 ---
-import hljs from 'highlight.js';
+import { Code } from "astro:components";
 
 const { lang, code } = Astro.props;
 
 function getLineNumbers(code: string): number[] {
-   return code.split('\n').map((_, index) => index + 1);
+   return code.split("\n").map((_, index) => index + 1);
 }
 
 const lineNumbers = getLineNumbers(code);
-
-console.log('Code', getLineNumbers(code));
-
-const highlightedCode = hljs.highlight(code, {
-   language: lang === 'astro' ? 'javascript' : lang,
-}).value;
 ---
 
-<pre><code
-   data-line-numbers={lineNumbers} class=`language-${lang}` lang={lang} set:html={highlightedCode} /><small data-language={lang} /></pre>
-<style>
-   small::before {
-      content: attr(data-language);
-      display: block;
-      height: auto;
-      position: absolute;
-      right: 0;
-      top: 0;
-      border: 1px solid #ccc;
-      padding: 4px;
-      border-bottom-left-radius: 6px;
-      border-bottom-right-radius: 6px;
-      background-color: #222;
-      color: #f2f2f2;
-   }
-</style>
+<div style="position: relative">
+   <Code code={code} lang={lang} />
+   <small data-lines={lineNumbers} class="code-lang" data-language={lang}></small>
+</div>

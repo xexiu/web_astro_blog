@@ -11,7 +11,7 @@ export type Post = {
       date: Date | string;
       author: string;
       featured_post: boolean;
-      isPrivate: boolean;
+      is_private: boolean;
       featured_image: object
    }
 }

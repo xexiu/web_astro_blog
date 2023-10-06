@@ -29,6 +29,7 @@ collections:
       - {label: "Category", name: "category", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Featured Post", name: "featured_post", widget: "boolean"}
+      - {label: "Private Post", name: "is_private", widget: "boolean"}
       - label: "Featured Image"
         name: "featured_image"
         widget: "object"

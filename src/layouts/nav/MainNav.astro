@@ -1,15 +1,15 @@
 ---
-import CommonImage from '@components/CommonImage.astro';
-import { Link } from '@components/common/link';
-import data from '@schemas/main-nav-data.json';
-import { Icon } from 'astro-icon';
-import logo from '../../../public/logo-min.png';
-import './main-nav.css';
+import CommonImage from "@components/CommonImage.astro";
+import { Link } from "@components/common/link";
+import data from "@schemas/main-nav-data.json";
+import { Icon } from "astro-icon";
+import logo from "../../../public/logo-min.png";
+import "./main-nav.css";
 ---
 
 <p class="logo">
    <a href="/" aria-label="Inicio"
-   ><CommonImage
+      ><CommonImage
          classes="logo-img"
          src={logo}
          alt="Logo"
@@ -26,17 +26,68 @@ import './main-nav.css';
 <nav class="header-main-nav" aria-label="Navagación Principal" data-main-nav>
    <ul class="nav__links">
       {
-         data.map((item) => (
-            <li>
-               <Link
-                  text={item.name}
-                  href={item.path}
-                  isFilled={false}
-                  data-navLink
-                  aria-label={item.name}
-               />
-            </li>
-         ))
+         data.map((item) => {
+            if (item.classes === "top-link-saved-items") {
+               return (
+                  <li>
+                     <xe-top-save-btn>
+                        <Link
+                           text={item.name}
+                           href={item.path}
+                           isFilled={false}
+                           data-navLink
+                           aria-label={item.name}
+                           classes={`top-link ${item.classes}`}
+                           data-has-items="false"
+                           data-saved-items="0"
+                        />
+                     </xe-top-save-btn>
+                  </li>
+               );
+            }
+            return (
+               <li>
+                  <Link
+                     text={item.name}
+                     href={item.path}
+                     isFilled={false}
+                     data-navLink
+                     aria-label={item.name}
+                     classes={`top-link ${item.classes}`}
+                     data-has-items="false"
+                     data-saved-items="0"
+                  />
+               </li>
+            );
+         })
       }
    </ul>
 </nav>
+
+<script>
+   import { SaveArticle } from "@js/custom-elements";
+
+   customElements.define("xe-top-save-btn", SaveArticle);
+</script>
+
+<style>
+   .top-link {
+      position: relative;
+   }
+
+   .top-link-saved-items[data-has-items="true"] {
+      transition: ease-in 3s;
+   }
+
+   .top-link-saved-items[data-has-items="true"]::after {
+      content: attr(data-saved-items);
+      font-size: 14px;
+      position: absolute;
+      top: -10px;
+      right: 10px;
+      border: 1px solid var(--color-red);
+      padding: 2px 6px 2px 6px;
+      border-radius: 15px;
+      transition: ease-in 3s;
+   }
+</style>

@@ -98,10 +98,14 @@ body {
     position: relative;
     font-family: 'Golos Text', cursive;
     color: hsl(var(--txt));
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-synthesis: none;
-  text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-synthesis: none;
+    text-rendering: optimizelegibility;
+
+    p {
+        font-size: 16px;
+    }
 
     a[data-normal-link] {
         color: $color-red;
