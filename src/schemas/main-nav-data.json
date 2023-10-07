@@ -8,11 +8,5 @@
         "iconName": "clarity:blocks-group-outline-alerted",
         "name": "Blog",
         "path": "/blog"
-    },
-    {
-        "classes": "top-link-saved-items",
-        "iconName": "bi:folder",
-        "name": "Guardados",
-        "path": "/saved/"
     }
 ]

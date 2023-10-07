@@ -46,8 +46,6 @@ export class SaveArticleDetails extends SaveArticle {
       function performActions(event: Event) {
          event.preventDefault();
 
-         postsSaved.set([...postsSaved.get(), {'test': 1}])
-
          if (!!Object.keys(this.posts).length) {
             if (this.posts[postId]) {
                this.removeItem(saveBtn, this.posts, postId);

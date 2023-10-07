@@ -1,7 +1,7 @@
 # Configure Netlify builds.
 [build]
   publish = "dist/"
-  command = "bun run build"
+  command = "astro build --no-hmr --adapter @astro/node"
 
 # Request bots not to index the admin section.
 [[headers]]

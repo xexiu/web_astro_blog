@@ -1,7 +1,7 @@
 ---
-import Seo from '@components/Seo.astro';
-import data from '@schemas/index-data.json';
-import type { HeadProps } from 'types/interfaces';
+import Seo from "@components/Seo.astro";
+import data from "@schemas/index-data.json";
+import type { HeadProps } from "types/interfaces";
 
 const {
    title = data.title,
@@ -9,7 +9,7 @@ const {
    featured_image,
    frontmatter,
    robots,
-} = Astro.props as  HeadProps;
+} = Astro.props as HeadProps;
 ---
 
 <head>
@@ -18,6 +18,13 @@ const {
    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
    <meta name="generator" content={Astro.generator} />
    <meta name="description" content={description} />
-   <Seo {title} {description} url={Astro.url} {featured_image} {frontmatter} {robots} />
+   <Seo
+      {title}
+      {description}
+      url={Astro.url}
+      {featured_image}
+      {frontmatter}
+      {robots}
+   />
    <title>{title}</title>
 </head>

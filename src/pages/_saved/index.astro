@@ -1,9 +1,6 @@
 ---
 import MainLayout from "@layouts/MainLayout.astro";
 import data from "@schemas/blog-data.json";
-import WrapperSavedPosts from './WrapperSavedPosts.astro';
-
-console.log("TEEEST")
 ---
 
 <MainLayout title={data.title} description={data.description}>
@@ -18,9 +15,6 @@ console.log("TEEEST")
             Has guardado estas publicaciones. Si no se muestran publicaciones,
             aún no has guardado ninguna.
         </p>
-        <xe-saved-post>
-            <WrapperSavedPosts/>
-        </xe-saved-post>
         <xe-btn-delete>
             <button class="btn-blue btn-delete"
                 >Eliminar todas las publicaciones guardadas!</button

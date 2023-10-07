@@ -1,5 +1,5 @@
 ---
-title: Markdown Cheat Sheet
+title: Markdown Cheat Sheet2
 excerpt: This is a short except about, This is a short except about, This is a
   short except about, This is a short except about
 author: Sergiu Mironescu

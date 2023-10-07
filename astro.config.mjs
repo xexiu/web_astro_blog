@@ -4,8 +4,6 @@ import sitemap from '@astrojs/sitemap';
 import purgecss from 'astro-purgecss';
 import { defineConfig, squooshImageService } from 'astro/config';
 
-import preact from "@astrojs/preact";
-
 // https://astro.build/config
 export default defineConfig({
   vite: {
@@ -16,7 +14,7 @@ export default defineConfig({
     }
   },
   site: 'http://xexiu.netlify.app',
-  integrations: [partytown(), sitemap(), purgecss(), mdx(), preact()],
+  integrations: [partytown(), sitemap(), purgecss(), mdx()],
   image: {
     service: squooshImageService()
   }

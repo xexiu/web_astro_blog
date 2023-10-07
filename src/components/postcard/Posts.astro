@@ -1,8 +1,6 @@
 ---
 import { PostCard } from '@components/postcard';
 import type { Post } from 'types/utils';
-import { postsSaved, store } from '@js/savedPostsStore';
-import { useStore } from '@nanostores/preact';
 
 interface Props {
    entries: Post[],
@@ -10,7 +8,6 @@ interface Props {
 }
 
 const { entries, classes, ...rest } = Astro.props;
-console.log('POSTS')
 ---
 
 <div class:list={["posts-container", classes]} {...rest}>
