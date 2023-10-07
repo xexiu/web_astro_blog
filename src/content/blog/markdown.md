@@ -1,5 +1,5 @@
 ---
-title: Markdown Cheat Sheet2
+title: Markdown Cheat Sheet3
 excerpt: This is a short except about, This is a short except about, This is a
   short except about, This is a short except about
 author: Sergiu Mironescu
@@ -8,6 +8,7 @@ tags:
 category: general
 date: 2023-09-22T17:14:10+02:00
 featured_post: false
+is_private: false
 featured_image:
   alt: featured
   src: src/images/screen-shot-2023-08-31-at-08.19.44-am-2-.png
@@ -113,8 +114,6 @@ Here is a sample of some basic Markdown syntax that can be used when writing Mar
   * Cheese
 
 Here's a sentence with a footnote. [^1]
-
-
 
 HELLOOOOOO
 

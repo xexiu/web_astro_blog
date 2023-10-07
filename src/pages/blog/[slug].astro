@@ -87,18 +87,6 @@ const postToSave = { id: entry.id, slug: entry.slug, ...restEntry };
             </ArticleAuthorContainer>
             <!-- Deshacer  guardado -->
             <ArticleTools>
-               <xe-article-save>
-                  <button
-                     title="Guardar artículo"
-                     class="tooltip save-article"
-                     data-tooltip-placement="top"
-                     aria-label={`Guardar ${entry.data.title}`}
-                     data-post={JSON.stringify(postToSave)}
-                     data-post-id={`/blog/${entry.slug}`}
-                  >
-                     <Icon name="uil:save" height="18" width="18" />
-                  </button>
-               </xe-article-save>
                <xe-article-speech
                   class="tooltip"
                   title="Escuchar artículo"
@@ -125,16 +113,6 @@ const postToSave = { id: entry.id, slug: entry.slug, ...restEntry };
       </div>
    </article>
 </MainLayout>
-
-<style>
-   .save-article {
-      transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-   }
-   .saved {
-      color: var(--color-red);
-      transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-   }
-</style>
 
 <script>
 import { ArticleSpeech, SaveArticleDetails } from "@js/custom-elements";
