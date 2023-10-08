@@ -5,7 +5,6 @@
         "node_modules/*"
     ],
     "rules": {
-        "at-mixin-pattern": null,
         "at-rule-no-unknown": null,
         "custom-property-pattern": "^([a-z][a-z0-9]*)(-[a-z0-9]+)*$",
         "no-descending-specificity": null,

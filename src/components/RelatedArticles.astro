@@ -1,0 +1,50 @@
+---
+import type { Post } from 'types/utils';
+import TagHeading from './common/TagHeading.astro';
+import { PostCardContainer, PostCardDetails } from './postcard';
+import { Link } from './common/link';
+
+const { relatedArticles } = Astro.props;
+---
+
+{
+   relatedArticles.length > 0 && (
+      <aside
+         class="container-related-posts"
+         aria-label="Related posts"
+      >
+         <TagHeading
+            classes="related-articles-heading"
+            tag="h3"
+            style="text-align: center; margin-bottom: 20px"
+         >
+            Artículos Relacionados
+         </TagHeading>
+         {relatedArticles.map((relatedArticle: Post) => (
+            <PostCardContainer>
+               <Link
+                  href={`/blog/${relatedArticle.slug}`}
+                  isFilled={false}
+                  classes="post-link-wrapper"
+                  text={relatedArticle.data.title}
+               />
+               <div>
+                  <a
+                     data-normal-link
+                     class="post-title"
+                     href={`/blog/${relatedArticle.slug}`}
+                  >
+                     <TagHeading tag="h4">
+                        {relatedArticle.data.title}
+                     </TagHeading>
+                     <PostCardDetails
+                        author={relatedArticle.data.author}
+                        date={relatedArticle.data.date as string}
+                     />
+                  </a>
+               </div>
+            </PostCardContainer>
+         ))}
+      </aside>
+   )
+}

@@ -18,8 +18,11 @@ import { Markdown } from 'astro-remote';
 import { getCollection } from 'astro:content';
 import { ViewTransitions } from 'astro:transitions';
 import { Icon } from 'astro-icon';
+import { findRelatedPostsByTag } from '@js/utils';
+import RelatedArticles from '@components/RelatedArticles.astro';
 
 // 1. Generate a new path for every collection entry
+
 export async function getStaticPaths() {
    const blogEntries = await getCollection('blog');
 
@@ -30,11 +33,13 @@ export async function getStaticPaths() {
          indexEntry,
          nextEntry: blogEntries[indexEntry + 1],
          prevEntry: blogEntries[indexEntry - 1],
+         relatedArticles: findRelatedPostsByTag(entry.data, 3, blogEntries),
       },
    }));
 }
 
-const { entry, nextEntry, prevEntry } = Astro.props;
+const { entry, nextEntry, prevEntry, relatedArticles } = Astro.props;
+const { title, tags, excerpt } = entry.data;
 ---
 
 <MainLayout
@@ -49,7 +54,7 @@ const { entry, nextEntry, prevEntry } = Astro.props;
          { name: 'Inicio', path: '/' },
          { name: 'Blog', path: '/blog' },
          {
-            name: entry.data.title,
+            name: title,
             path: `/blog/${entry.slug}`,
             linkIsActive: 'is-active',
          },
@@ -61,11 +66,12 @@ const { entry, nextEntry, prevEntry } = Astro.props;
       </div>
 
       <div class:list={['article-content']}>
-         <h1 class="article-main-heading">{entry.data.title}</h1>
-         <h2 class="article-main-heading-excerpt">{entry.data.excerpt}</h2>
+         <h1 class="article-main-heading">{title}</h1>
+         <h2 class="article-main-heading-excerpt">{excerpt}</h2>
          <div class="tags-wrapper">
-            <PostCardTags tags={entry.data.tags} />
+            <PostCardTags {tags} />
          </div>
+         <RelatedArticles {relatedArticles} />
          <div class="markdown-wrapper">
             <Markdown
                content={entry.body}
@@ -97,7 +103,7 @@ const { entry, nextEntry, prevEntry } = Astro.props;
                <button
                   class="share-article tooltip"
                   title="Compartir artículo"
-                  data-article-title={entry.data.title}
+                  data-article-title={title}
                   data-article-url={`/blog/${entry.slug}`}
                   aria-label="Compartir artículo"
                   data-tooltip-placement="left"
@@ -110,10 +116,41 @@ const { entry, nextEntry, prevEntry } = Astro.props;
    </article>
 </MainLayout>
 
-<script>
-import { ArticleSpeech } from "@js/custom-elements";
+<style is:inline>
+   .share-article {
+      width: 18px;
+      height: 18px;
+   }
+   .container-related-posts article {
+      margin: 5px 0;
+   }
+   .container-related-posts {
+      & .post-card-details {
+         gap: 0px;
+         .post-card-author {
+            margin-right: 5px;
+         }
+      }
+   }
+   .post-link-wrapper {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      cursor: pointer;
+      overflow-wrap: anywhere;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+   }
+</style>
 
-customElements.define('xe-article-speech', ArticleSpeech);
+<script>
+   import { ArticleSpeech } from '@js/custom-elements';
+
+   customElements.define('xe-article-speech', ArticleSpeech);
 </script>
 
 <script>
@@ -139,12 +176,12 @@ customElements.define('xe-article-speech', ArticleSpeech);
                url: articleUrl,
             })
             .then(() => {
-               console.log('Thanks for sharing!');
+               // console.log('Thanks for sharing!');
             })
             .catch((err) => {
                // Handle errors, if occurred
-               console.log('Error while using Web share API:');
-               console.log(err);
+               // console.log('Error while using Web share API:');
+               // console.log(err);
             });
       } else {
          // Alerts user if API not available

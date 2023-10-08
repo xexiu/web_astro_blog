@@ -5,6 +5,7 @@ excerpt: This is a short except about, This is a short except about, This is a
 author: Sergiu Mironescu
 tags:
   - markdown
+  - solidjs
 category: general
 date: 2023-09-22T17:14:10+02:00
 featured_post: false

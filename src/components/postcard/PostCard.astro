@@ -1,35 +1,23 @@
 ---
-import TagHeading from "@components/common/TagHeading.astro";
-import { slugify } from "@js/utils";
+import TagHeading from '@components/common/TagHeading.astro';
+import { Link } from '@components/common/link';
+import { slugify } from '@js/utils';
 import {
    PostCardCategory,
    PostCardContainer,
-   PostCardImage,
-   PostCardDetailsContainer,
-   PostCardTags,
    // PostCardSave,
    PostCardDetails,
+   PostCardDetailsContainer,
    PostCardExcerpt,
-} from ".";
-import { Link } from "@components/common/link";
+   PostCardImage,
+   PostCardTags,
+} from '.';
 
 const { post } = Astro.props;
 const { category, featured_image, title, date, author, excerpt, tags } =
    post.data;
 ---
 
-<script>
-   function savePost() {
-      const postsToSave = document.querySelectorAll(".save-post");
-      postsToSave?.forEach((postsToSave) => {
-         postsToSave.addEventListener("click", (event) => {
-            console.log("CLICKED");
-         });
-      });
-   }
-
-   savePost();
-</script>
 
 <PostCardContainer>
    <Link
@@ -55,7 +43,6 @@ const { category, featured_image, title, date, author, excerpt, tags } =
       text={category}
    />
    <PostCardDetailsContainer>
-      <!-- <PostCardSave {title} {post} /> -->
       <div>
          <a data-normal-link class="post-title" href={`/blog/${post.slug}`}>
             <TagHeading tag="h3">{title}</TagHeading>

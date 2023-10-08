@@ -1,15 +1,22 @@
 ---
+import Link from '@components/common/link/Link.astro';
 import { slugify } from '@js/utils';
 
 interface Props {
     tag: string;
+    classes?: string;
 }
-const { tag } = Astro.props;
+const { tag, classes = '', ...rest } = Astro.props;
 ---
 
-<a href={`/blog/tag/${slugify(tag)}/`} class="tag">
-   {tag}
-</a>
+<Link
+   text={tag}
+   href={`/blog/tag/${slugify(tag)}/`}
+   borderVisible={true}
+   isFilled={false}
+   classes={`${classes} tag`}
+   {...rest}
+/>
 
 <style>
     .tag {
@@ -22,6 +29,8 @@ const { tag } = Astro.props;
         text-decoration: none;
         text-transform: uppercase;
         font-size: var(--fs-sm);
+        margin: 5px 2px;
+        position: relative;
         &:hover {
             background: linear-gradient(to right, #ff8a00, #da1b60);
             -webkit-background-clip: text;

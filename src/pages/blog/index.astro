@@ -1,26 +1,38 @@
 ---
-import { Posts } from '@components/postcard';
+import { PostCardTags, Posts } from '@components/postcard';
 import MainLayout from '@layouts/MainLayout.astro';
 import data from '@schemas/blog-data.json';
 import { getCollection } from 'astro:content';
 import type { Post } from 'types/utils';
 
 const blogEntries = await getCollection('blog');
+const blogTags = blogEntries.flatMap((entry: any) => entry.data.tags) as [];
+const uniqueTags = [...new Set(blogTags)] as [];
+const tagCounts = {};
+blogTags.forEach((tag) => {
+   if (tagCounts[tag]) {
+      tagCounts[tag]++;
+   } else {
+      tagCounts[tag] = 1 as never;
+   }
+});
 ---
 
 <MainLayout title={data.title} description={data.description}>
    <section class="container-blog-page" aria-label="Publicaciones Recientes">
+      <div class="blog-page-tags">
+         <PostCardTags tags={uniqueTags} {tagCounts} classes="blog-page-tag" />
+      </div>
       <Posts entries={blogEntries as Post[]} />
-      <!-- <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
-      <aside class="container" aria-label="Blog categories">
-         <h2 class="h3">Blog Categories</h2>
-         <CategoryCloud showCount={true}/>
-      </aside> -->
+      <!-- <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} /> -->
    </section>
 </MainLayout>
 
 <style>
    .container-blog-page {
       margin-bottom: 10px;
+      .blog-page-tags {
+         margin-bottom: 20px;
+      }
    }
 </style>

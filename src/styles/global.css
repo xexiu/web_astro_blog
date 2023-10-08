@@ -1,15 +1,12 @@
-/* stylelint-disable at-mixin-pattern */
-
 @import "reset";
 @import "partials/_variables";
-@import "partials/_mixins";
 @import "partials/_buttons";
 @import "partials/_root";
 @import "tooltip";
 
 html {
     scroll-behavior: smooth;
-    scrollbar-gutter: auto | stable && both-edges?;
+    scrollbar-gutter: auto;
 }
 
 html::-webkit-scrollbar {
@@ -23,7 +20,7 @@ html::-webkit-scrollbar-track {
 }
 
 html::-webkit-scrollbar-thumb {
-    background: var(--color-red:);
+    background: var(--color-red);
     border-radius: 5px;
 }
 
@@ -91,10 +88,10 @@ html[data-current-page*="/blog"] {
 } */
 
 @font-face {
-  font-family: 'Golos Text';
-  font-display: fallback;
-  src: url('/fonts/golos-text-font-familiy/Golos-Text_Regular.woff') format('woff'),
-            url('/fonts/golos-text-font-familiy/Golos-Text_Regular.ttf') format('ttf');
+    font-family: 'Golos Text';
+    font-display: fallback;
+    src: url('/fonts/golos-text-font-familiy/Golos-Text_Regular.woff') format('woff'),
+        url('/fonts/golos-text-font-familiy/Golos-Text_Regular.ttf') format('ttf');
 }
 
 body {

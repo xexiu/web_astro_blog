@@ -26,7 +26,7 @@ export class SaveArticle extends HTMLElement {
          this.topBtn.dataset.hasItems = !!Object.keys(this.posts).length ? 'true' : 'false';
          this.topBtn.dataset.savedItems = String(Object.keys(this.posts).length);
       } else {
-         Error('No top button provided!')
+         Error('No top button provided!');
       }
    }
 }

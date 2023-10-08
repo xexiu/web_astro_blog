@@ -1,11 +1,11 @@
 ---
 
-title: Running out of sample post ideas for thd effs sfggds eeffg in 3 lines with the elipsis css!!!!!!!!!!
+title: TEST3 Running out of sample post ideas for thd effs sfggds eeffg in 3 lines with the elipsis css!!!
 date: 2023-09-22T17:14:10+02:00
 author: Victoria Greenfelder
 excerpt: Sometimes you just run out of ideas for sample blog posts. It’s no one’s fault, it’s just the way it is.
 category: General
-slug: "post-2"
+slug: "post-3"
 featured_post: false
 tags:
   - css

@@ -29,9 +29,7 @@
 	--color-red-rgb: 255, 22, 57;
 	--color-yellow: #ffbe2d;
 	--color-yellow-rgb: 255, 190, 45;
-}
 
-:root {
 	color-scheme: light;
 
 	--theme-accent: var(--color-orange);
@@ -47,6 +45,8 @@
 	--theme-code-inline-bg: var(--color-gray-100);
 	--theme-code-text: var(--color-gray-100);
 	--theme-code-bg: var(--color-gray-700);
+	--user-font-scale: 1rem - 16px;
+	--max-width: calc(100% - 2rem);
 }
 
 /* body {
@@ -72,11 +72,6 @@
 ::selection {
 	color: var(--theme-accent);
 	background-color: rgb(var(--theme-accent-rgb) var(--theme-accent-opacity));
-}
-
-:root {
-	--user-font-scale: 1rem - 16px;
-	--max-width: calc(100% - 2rem);
 }
 
 @media (width >= 50em) {

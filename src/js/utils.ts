@@ -1,4 +1,4 @@
-import type { Post } from 'types/utils';
+import type { Post, PostData } from 'types/utils';
 
 export function updateTheme(value: string):void {
    document.documentElement.classList.remove('light', 'dark');
@@ -18,46 +18,12 @@ export function slugify(text: string):string {
 }
 
 export function formatDate(date: string):string {
-   return new Date(date).toLocaleDateString('en-US', {
-      timeZone: 'UTC',
+   return new Date(date).toLocaleDateString('es-ES', {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
    });
-}
-
-export function formatBlogPosts(posts: Post[], {
-   filterOutDrafts = true,
-   filterOutFuturePosts = true,
-   sortByDate = true,
-   limit = undefined,
-} = {}): Post[] {
-
-   const filteredPosts = posts.reduce((acc: Post[], post: Post) => {
-      const { date, draft } = post.frontmatter;
-      // filterOutDrafts if true
-      if (filterOutDrafts && draft) return acc;
-
-      // filterOutFuturePosts if true
-      if (filterOutFuturePosts && new Date(date) > new Date()) return acc;
-
-      // add post to acc
-      acc.push(post);
-
-      return acc;
-   }, []);
-
-   // sortByDate or randomize
-   if (sortByDate) {
-      filteredPosts.sort((a: any, b: any) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
-   } else {
-      filteredPosts.sort(() => Math.random() - 0.5);
-   }
-
-   // limit if number is passed
-   if (typeof limit === 'number') {
-      return filteredPosts.slice(0, limit);
-   }
-
-   return filteredPosts;
-
 }
 
 export function isVisible(elem: HTMLElement):boolean {
@@ -140,4 +106,29 @@ export function isInViewPortScrolling(el: HTMLElement): any {
 
    document.addEventListener('scroll', scrollObserver, { passive: true });
 
+}
+
+export function findRelatedPostsByTag(currentPost: PostData, maxRelatedPosts = 3, blogPosts: Post[]) {
+   const relatedPosts = [];
+
+   // Iterate through all blog posts
+   for (const post of blogPosts) {
+      // Skip the current post itself
+      if (post.data.title === currentPost.title) continue;
+
+      // Calculate the number of common tags between the current post and the target post
+      const commonTags = currentPost.tags.filter((tag) =>
+         post.data.tags.includes(tag)
+      );
+
+      // You can adjust the threshold for similarity as per your requirements
+      if (commonTags.length >= 1) {
+         relatedPosts.push(post as never);
+      }
+
+      // Break when we reach the maximum number of related posts
+      if (relatedPosts.length >= maxRelatedPosts) break;
+   }
+
+   return relatedPosts;
 }

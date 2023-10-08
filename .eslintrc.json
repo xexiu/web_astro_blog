@@ -1,6 +1,8 @@
 {
+  "root":true,
   "extends": [
-    "plugin:astro/recommended"
+    "plugin:astro/recommended",
+    "/Users/smironescu/.eslintrc"
   ],
   "parser": "@typescript-eslint/parser",
   "overrides": [

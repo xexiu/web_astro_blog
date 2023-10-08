@@ -2,26 +2,48 @@
 import PostCardTag from './PostCardTag.astro';
 
 interface Props {
-    tags: [];
+   tags: [];
+   tagCounts?: object;
+   classes?: string;
 }
-const { tags } = Astro.props;
+const { tags, tagCounts, ...rest } = Astro.props;
 ---
+
 <div class="post-card-tags">
    {
       tags.map((tag: string) => {
+         const count = (tagCounts && tagCounts[tag]) || '0';
+
          return (
-            <PostCardTag {tag} />
+            <span class="tag-container">
+               <PostCardTag {tag} data-number-tag={count} {...rest} />
+               {tagCounts && <span class="tag-count">{count}</span>}
+            </span>
          );
       })
    }
 </div>
 
 <style>
-    .post-card-tags {
-         display: flex;
-         padding: 10px 0;
-         bottom: 5px;
-         width: 92%;
-         overflow: hidden;
+   .post-card-tags {
+      padding: 10px 0;
+      bottom: 5px;
+      width: 100%;
+      overflow: hidden;
+   }
+   .tag-container {
+      position: relative;
+      .tag-count {
+         color: transparent;
+         text-shadow: 0 2px 3px rgb(255 255 255 / 80%);
+         background-clip: text;
+         background-color: #222;
+         border: 2px solid #999;
+         border-radius: 2em;
+         padding: 0 7px;
+         margin-left: -5px;
+         vertical-align: middle;
+         margin-right: 10px;
       }
+   }
 </style>
