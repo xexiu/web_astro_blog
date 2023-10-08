@@ -19,10 +19,7 @@ export function slugify(text: string):string {
 
 export function formatDate(date: string):string {
    return new Date(date).toLocaleDateString('es-ES', {
-      weekday: 'long',
-      day: 'numeric',
-      month: 'short',
-      year: 'numeric',
+      timeZone: 'GMT',
    });
 }
 
