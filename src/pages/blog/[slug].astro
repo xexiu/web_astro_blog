@@ -34,10 +34,7 @@ export async function getStaticPaths() {
    }));
 }
 
-// 2. For your template, you can get the entry directly from the prop
 const { entry, nextEntry, prevEntry } = Astro.props;
-const { body, render, ...restEntry } = entry;
-const postToSave = { id: entry.id, slug: entry.slug, ...restEntry };
 ---
 
 <MainLayout
@@ -85,7 +82,6 @@ const postToSave = { id: entry.id, slug: entry.slug, ...restEntry };
                <ArticleAuthor post={entry} />
                <ArticleReadingTime post={entry} />
             </ArticleAuthorContainer>
-            <!-- Deshacer  guardado -->
             <ArticleTools>
                <xe-article-speech
                   class="tooltip"
@@ -115,9 +111,8 @@ const postToSave = { id: entry.id, slug: entry.slug, ...restEntry };
 </MainLayout>
 
 <script>
-import { ArticleSpeech, SaveArticleDetails } from "@js/custom-elements";
+import { ArticleSpeech } from "@js/custom-elements";
 
-customElements.define('xe-article-save', SaveArticleDetails);
 customElements.define('xe-article-speech', ArticleSpeech);
 </script>
 

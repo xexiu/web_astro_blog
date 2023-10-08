@@ -23,7 +23,6 @@
     "@astrojs/partytown": "^2.0.0",
     "@astrojs/rss": "^3.0.0",
     "@astrojs/sitemap": "^3.0.0",
-    "@fontsource/golos-text": "^5.0.8",
     "@types/mdx": "^2.0.7",
     "@typescript-eslint/parser": "^6.7.0",
     "astro": "^3.2.0",

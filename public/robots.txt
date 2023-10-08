@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://xexiu.netlify.app/sitemap-index.xml

@@ -1,25 +1,45 @@
 ---
-import { Link } from '@components/common/link';
-const{ data, classes } = Astro.props;
+import { Link } from "@components/common/link";
+
+interface IconProps {
+   iconName: string;
+   path: string;
+}
+interface SocialIcons {
+   email?: IconProps;
+   linkedin?: IconProps;
+   stack?: IconProps;
+   twitter?: IconProps;
+   github?: IconProps;
+}
+interface Props {
+   data: SocialIcons[];
+   classes?: string;
+   style?: string;
+   linkClass?: string;
+}
+const { data, classes, style, linkClass, ...rest } = Astro.props;
 ---
 
-<div class={classes}>
+<div class:list={["social-icons", classes]} {style}>
    {
       data.map((social: object) => {
          return Object.keys(social as []).map((s: string) => (
             <Link
                icon={{
                   name: social[s].iconName,
-                  side: 'left',
-                  width: '22',
-                  height: '22',
+                  side: "left",
+                  width: "22",
+                  height: "22",
                }}
                text=""
                href={social[s].path}
                isFilled={false}
                target="_blank"
-               alt={social[s].iconName}
+               title={s}
+               classes={linkClass}
                aria-label={social[s].iconName}
+               {...rest}
             />
          ));
       })

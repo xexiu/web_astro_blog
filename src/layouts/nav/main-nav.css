@@ -1,3 +1,10 @@
+.header-main-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+}
+
 #click {
     display: none;
 }
@@ -37,6 +44,10 @@
 }
 
 @media screen and (width <= 650px) {
+    .header-main-nav .header-social-icons {
+        display: none;
+    }
+
     [data-main-nav] .nav__links {
         position: fixed;
         top: 0;
@@ -58,6 +69,14 @@
         left: 0%;
     }
 
+    #click:checked ~ [data-main-nav] .header-social-icons {
+        display: flex;
+        left: calc(5px - 71vw);
+        position: absolute;
+        z-index: 102;
+        bottom: calc(70px - 100vh);
+    }
+
     [data-main-nav] .nav__links li {
         display: block;
         margin-top: 40px;
@@ -75,7 +94,7 @@
         display: flex;
         margin-left: auto;
         top: 13px;
-        right: 0;
+        right: 20px;
         z-index: 1000;
     }
 }

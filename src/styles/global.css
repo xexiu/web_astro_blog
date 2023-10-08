@@ -1,7 +1,6 @@
 /* stylelint-disable at-mixin-pattern */
 
 @import "reset";
-@import '@fontsource/golos-text';
 @import "partials/_variables";
 @import "partials/_mixins";
 @import "partials/_buttons";
@@ -10,6 +9,7 @@
 
 html {
     scroll-behavior: smooth;
+    scrollbar-gutter: auto | stable && both-edges?;
 }
 
 html::-webkit-scrollbar {
@@ -90,13 +90,20 @@ html[data-current-page*="/blog"] {
     }
 } */
 
+@font-face {
+  font-family: 'Golos Text';
+  font-display: fallback;
+  src: url('/fonts/golos-text-font-familiy/Golos-Text_Regular.woff') format('woff'),
+            url('/fonts/golos-text-font-familiy/Golos-Text_Regular.ttf') format('ttf');
+}
+
 body {
     max-width: 1248px;
     background-color: hsl(var(--bkg));
     margin: 0 auto;
     padding: 0 10px;
     position: relative;
-    font-family: 'Golos Text', cursive;
+    font-family: 'Golos Text', "Lucida Grande", Tahoma, sans-serif;
     color: hsl(var(--txt));
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

@@ -18,9 +18,6 @@ const jsonLD = jsonLDGenerator({
 });
 ---
 
-<!-- SEO -->
-<link rel="canonical" href={url} />
-
 <!-- Open Graph -->
 <meta property="og:site_name" content="Bienvenid@ a mi blog de desarrollo Full Stack - Sergiu Mironescu" />
 <meta property="og:title" content={title} />
@@ -46,6 +43,9 @@ const jsonLD = jsonLDGenerator({
 <meta name="twitter:domain" content={import.meta.env.SITE} />
 
 {robots && <meta name="robots" content="noindex, nofollow" />}
+
+<!-- SEO -->
+<link rel="canonical" href={url} />
 
 <!-- JSON LD -->
 <Fragment set:html={jsonLD} />

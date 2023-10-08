@@ -2,13 +2,16 @@
 // import Logo from '@components/Logo.astro';
 // import ToggleTheme from '@components/ToggleTheme.astro';
 // import Sidebar from '@components/sidebar/Sidebar.astro';
-import data from '@schemas/index-data.json';
-import '@styles/global.css';
-import type { HeadProps } from 'types/interfaces';
+import Logo from '@components/Logo.astro';
+import SocialIcons from '@components/SocialIcons.astro';
 import MainFooter from '@layouts/footer/MainFooter.astro';
 import MainHead from '@layouts/header/MainHead.astro';
 import MainHeader from '@layouts/header/MainHeader.astro';
 import MainNav from '@layouts/nav/MainNav.astro';
+import data from '@schemas/index-data.json';
+import socialIcons from '@schemas/social-icons.json';
+import '@styles/global.css';
+import type { HeadProps } from 'types/interfaces';
 
 const {
    title = data.title,
@@ -24,8 +27,10 @@ const {
    <MainHead {title} {description} {featured_image} {frontmatter} {robots} />
    <body>
       <MainHeader>
-         <!-- <Logo /> -->
-         <MainNav />
+         <Logo />
+         <MainNav>
+            <SocialIcons data={socialIcons} classes="header-social-icons" linkClass='tooltip' data-tooltip-placement="bottom" />
+         </MainNav>
          <!-- <ToggleTheme style={{ marginLeft: 'auto' }} /> -->
       </MainHeader>
       <main>
@@ -35,3 +40,9 @@ const {
       <MainFooter />
    </body>
 </html>
+
+<style is:inline>
+   #header .header-social-icons a {
+      color: #f2f2f2;
+   }
+</style>
