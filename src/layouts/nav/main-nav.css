@@ -74,7 +74,7 @@
         left: calc(5px - 71vw);
         position: absolute;
         z-index: 102;
-        bottom: calc(70px - 100vh);
+        bottom: calc(100px - 90vh);
     }
 
     [data-main-nav] .nav__links li {
