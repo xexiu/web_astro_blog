@@ -81,28 +81,36 @@ export class SaveArticleDetails extends SaveArticle {
 export class ArticleSpeech extends HTMLElement {
    constructor() {
       super();
-      const icon = this.querySelector('.listen-article') as any;
+      const btn = this.querySelector('.listen-article') as HTMLButtonElement;
       const utterance = new SpeechSynthesisUtterance();
-      utterance.text = icon.dataset.articleText;
+
+      window.speechSynthesis.onvoiceschanged = function() {
+         const voices = window.speechSynthesis.getVoices();
+         utterance.voice = voices.filter(function(voice) { return voice.name == 'Flo (Spanish (Spain))"'; })[0];
+      };
+
+      utterance.lang = 'es-ES';
+      debugger;
+      utterance.text = btn.dataset.articleText as string;
       utterance.voice = window.speechSynthesis.getVoices()[0];
 
       window.speechSynthesis.cancel();
 
-      icon?.addEventListener('click', (event: Event) => {
+      btn?.addEventListener('click', (event: Event) => {
          event.preventDefault();
 
-         if (icon.classList.contains('pause')) {
+         if (btn.classList.contains('pause')) {
             this.pause();
-            icon.classList.toggle('pause');
+            btn.classList.toggle('pause');
          } else {
             this.play(utterance);
-            icon.classList.toggle('pause');
+            btn.classList.toggle('pause');
          }
       });
 
       utterance.addEventListener('end', (event: Event) => {
          event.preventDefault();
-         icon.classList.toggle('pause');
+         btn.classList.toggle('pause');
       });
    }
 

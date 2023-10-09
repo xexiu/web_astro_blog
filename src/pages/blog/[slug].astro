@@ -97,7 +97,7 @@ const { title, tags, excerpt } = entry.data;
                   <button
                      aria-label="Escuchar artículo"
                      class="listen-article"
-                     data-article-text={entry.body}
+                     data-article-text={`título: ${title}, descripción: ${excerpt}, artículo: ${entry.body}`}
                      data-paused="false"></button>
                </xe-article-speech>
                <button
