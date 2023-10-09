@@ -18,7 +18,6 @@ const { category, featured_image, title, date, author, excerpt, tags } =
    post.data;
 ---
 
-
 <PostCardContainer>
    <Link
       href={`/blog/${post.slug}`}
@@ -43,21 +42,34 @@ const { category, featured_image, title, date, author, excerpt, tags } =
       text={category}
    />
    <PostCardDetailsContainer>
-      <div>
-         <a data-normal-link class="post-title" href={`/blog/${post.slug}`}>
-            <TagHeading tag="h3">{title}</TagHeading>
-         </a>
-      </div>
+      <TagHeading tag="h3">
+         <Link
+            href={`/blog/${post.slug}`}
+            isFilled={false}
+            classes="post-title"
+            text={title}
+         />
+      </TagHeading>
       <PostCardDetails {author} {date} />
       <PostCardExcerpt {excerpt} />
       <PostCardTags {tags} />
    </PostCardDetailsContainer>
 </PostCardContainer>
 
-<style>
-   .post-title {
-      padding: 8px 0;
+<style is:global>
+   #main-body .post-title {
+      padding: 0 0 5px 0;
       display: flex;
+      color: #222;
+      text-decoration: none;
+      position: relative;
+      & span {
+         display: -webkit-box;
+         max-width: 100%;
+         -webkit-line-clamp: 3;
+         -webkit-box-orient: vertical;
+         overflow: hidden;
+      }
    }
    .post-link-wrapper {
       opacity: 0;
@@ -71,5 +83,8 @@ const { category, featured_image, title, date, author, excerpt, tags } =
       width: 100%;
       height: 100%;
       z-index: 10;
+   }
+   #main-body .post-link-wrapper:hover ~ * .post-title {
+      color: var(--color-red);
    }
 </style>

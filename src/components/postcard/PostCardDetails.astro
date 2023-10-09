@@ -11,7 +11,7 @@ const { author, date } = Astro.props;
 ---
 
 <div class="post-card-details">
-   <div class="post-card-author">
+   <div class="post-card-author" title={author} aria-label={author}>
       <Link
          text={author}
          href={`/blog/author/${slugify(author)}/`}
@@ -19,7 +19,7 @@ const { author, date } = Astro.props;
          aria-label={author}
       />
    </div>
-   <span class="post-card-date">
+   <span class="post-card-date" title={formatDate(date)} aria-label={formatDate(date)}>
       {formatDate(date)}
    </span>
 </div>
@@ -30,10 +30,14 @@ const { author, date } = Astro.props;
         display: flex;
         gap: 10px;
         align-items: flex-end;
+        max-width: 100%;
 
         .post-card-date {
             font-size: 14px;
             color: #999;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .post-card-author {
             font-size: 15px;

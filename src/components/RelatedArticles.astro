@@ -1,8 +1,8 @@
 ---
 import type { Post } from 'types/utils';
 import TagHeading from './common/TagHeading.astro';
-import { PostCardContainer, PostCardDetails } from './postcard';
-import { Link } from './common/link';
+import { PostCardContainer, PostCardDetails, PostCardDetailsContainer } from '@components/postcard';
+import { Link } from '@components/common/link';
 
 const { relatedArticles } = Astro.props;
 ---
@@ -28,23 +28,37 @@ const { relatedArticles } = Astro.props;
                   classes="post-link-wrapper"
                   text={relatedArticle.data.title}
                />
-               <div>
-                  <a
-                     data-normal-link
-                     class="post-title"
+               <TagHeading tag="h4">
+                  <Link
                      href={`/blog/${relatedArticle.slug}`}
-                  >
-                     <TagHeading tag="h4">
-                        {relatedArticle.data.title}
-                     </TagHeading>
-                     <PostCardDetails
-                        author={relatedArticle.data.author}
-                        date={relatedArticle.data.date as string}
-                     />
-                  </a>
-               </div>
+                     isFilled={false}
+                     classes="post-title"
+                     text={relatedArticle.data.title}
+                     data-normal-link
+                  />
+               </TagHeading>
+               <PostCardDetails
+                  author={relatedArticle.data.author}
+                  date={relatedArticle.data.date as string}
+               />
             </PostCardContainer>
          ))}
       </aside>
    )
 }
+
+<style is:inline>
+   .container-related-posts article {
+      margin: 5px 0;
+   }
+   .container-related-posts {
+      & .post-card-details {
+         gap: 0px;
+         margin-left: auto;
+         padding-left: 10px;
+         .post-card-author {
+            margin-right: 5px;
+         }
+      }
+   }
+</style>

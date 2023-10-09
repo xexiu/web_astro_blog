@@ -8,20 +8,29 @@ const { src, alt, classes, width, height, ...rest } = Astro.props;
    <CommonImage {src} {alt} {width} {height} {classes} {...rest} />
 </div>
 
+<script>
+   import { isInViewport } from '@js/utils';
+
+   var cardImages = document.querySelectorAll('.post-card-img') as NodeListOf<HTMLElement>;
+
+   cardImages.forEach((cardImage) => {
+      const isInViewPort = isInViewport(cardImage, true);
+
+      if(cardImage && isInViewPort) {
+         cardImage.removeAttribute('loading');
+      }
+   });
+</script>
+
 <style>
    .container-img {
-      width: 200px; /* Set your desired static width */
       flex-shrink: 0;
-      height: 125px;
-      width: 200px;
       border-radius: 5px;
       position: relative;
 
       img {
-         width: 100%;
+         width: 200px;
          height: 100%;
-         object-fit: fill;
-         object-position: center center;
       }
    }
 

@@ -5,36 +5,28 @@ interface Props {
    src: ImageMetadata;
    alt: string;
    classes?: string;
-};
+}
 
 const RELATIVE_PATH = '../../';
 
-const {
-   src,
-   alt,
-   ...rest
-}: Props = Astro.props;
+const { src, alt, ...rest }: Props = Astro.props;
 
 const images = import.meta.glob('../../images/*');
 const cleanSrc = (src as any).replace('/src/', RELATIVE_PATH);
-const imagesrc = await images[cleanSrc] ? images[cleanSrc]() : images[`${RELATIVE_PATH}images/default.png`]() as Record<string,any>;
+const imagesrc = (await images[cleanSrc])
+   ? images[cleanSrc]()
+   : (images[`${RELATIVE_PATH}images/default.png`]() as Record<string, any>);
 ---
 
-<Image
-   src={imagesrc}
-   {alt}
-   class:list={['image markdown-image']}
-   {...rest}
-/>
+<Image src={imagesrc} {alt} class:list={['image markdown-image']} {...rest} />
 
 <script>
-import { isInViewport } from '@js/utils';
+   import { isInViewport } from '@js/utils';
 
-var firstImage = document.querySelector('.markdown-image') as HTMLElement;
+   var firstImage = document.querySelector('.markdown-image') as HTMLElement;
+   const isInViewPort = isInViewport(firstImage, true);
 
-if(firstImage && isInViewport(firstImage)) {
-   firstImage.removeAttribute('loading');
-}
-
-
+   if (firstImage && isInViewPort) {
+      firstImage.removeAttribute('loading');
+   }
 </script>

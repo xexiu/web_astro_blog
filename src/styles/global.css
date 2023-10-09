@@ -101,10 +101,10 @@ body {
     padding: 0 10px;
     position: relative;
     font-family: 'Golos Text', "Lucida Grande", Tahoma, sans-serif;
+    font-weight: normal;
     color: hsl(var(--txt));
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-synthesis: none;
     text-rendering: optimizelegibility;
 
     p {
