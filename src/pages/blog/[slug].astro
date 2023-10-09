@@ -20,6 +20,8 @@ import { ViewTransitions } from 'astro:transitions';
 import { Icon } from 'astro-icon';
 import { findRelatedPostsByTag } from '@js/utils';
 import RelatedArticles from '@components/RelatedArticles.astro';
+import TagHeading from '@components/common/TagHeading.astro';
+import FormCommentGiscus from '@components/FormCommentGiscus.astro';
 
 // 1. Generate a new path for every collection entry
 
@@ -66,8 +68,12 @@ const { title, tags, excerpt } = entry.data;
       </div>
 
       <div class:list={['article-content']}>
-         <h1 class="article-main-heading">{title}</h1>
-         <h2 class="article-main-heading-excerpt">{excerpt}</h2>
+         <TagHeading tag="h1" classes="article-main-heading">
+            {title}
+         </TagHeading>
+         <TagHeading tag="h2" classes="article-main-heading-excerpt">
+            {excerpt}
+         </TagHeading>
          <div class="tags-wrapper">
             <PostCardTags {tags} />
          </div>
@@ -82,37 +88,38 @@ const { title, tags, excerpt } = entry.data;
                   a: NormalizeLinks,
                }}
             />
-         </div>
-         <ArticleInfoContainer>
-            <ArticleAuthorContainer>
-               <ArticleAuthor post={entry} />
-               <ArticleReadingTime post={entry} />
-            </ArticleAuthorContainer>
-            <ArticleTools>
-               <xe-article-speech
-                  class="tooltip"
-                  title="Escuchar artículo"
-                  data-tooltip-placement="top"
-               >
+            <ArticleInfoContainer>
+               <ArticleAuthorContainer>
+                  <ArticleAuthor post={entry} />
+                  <ArticleReadingTime post={entry} />
+               </ArticleAuthorContainer>
+               <ArticleTools>
+                  <xe-article-speech
+                     class="tooltip"
+                     title="Escuchar artículo"
+                     data-tooltip-placement="top"
+                  >
+                     <button
+                        aria-label="Escuchar artículo"
+                        class="listen-article"
+                        data-article-text={`título: ${title}, descripción: ${excerpt}, artículo: ${entry.body}`}
+                        data-paused="false"></button>
+                  </xe-article-speech>
                   <button
-                     aria-label="Escuchar artículo"
-                     class="listen-article"
-                     data-article-text={`título: ${title}, descripción: ${excerpt}, artículo: ${entry.body}`}
-                     data-paused="false"></button>
-               </xe-article-speech>
-               <button
-                  class="share-article tooltip"
-                  title="Compartir artículo"
-                  data-article-title={title}
-                  data-article-url={`/blog/${entry.slug}`}
-                  aria-label="Compartir artículo"
-                  data-tooltip-placement="left"
-               >
-                  <Icon name="octicon:share-16" height="18" width="18" />
-               </button>
-            </ArticleTools>
-         </ArticleInfoContainer>
+                     class="share-article tooltip"
+                     title="Compartir artículo"
+                     data-article-title={title}
+                     data-article-url={`/blog/${entry.slug}`}
+                     aria-label="Compartir artículo"
+                     data-tooltip-placement="left"
+                  >
+                     <Icon name="octicon:share-16" height="18" width="18" />
+                  </button>
+               </ArticleTools>
+            </ArticleInfoContainer>
+         </div>
       </div>
+      <FormCommentGiscus />
    </article>
 </MainLayout>
 

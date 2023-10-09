@@ -138,9 +138,10 @@
 		--padding-inline: 0.33rem;
 
 		font-size: 0.85em;
-		color: #f2f2f2;
-		background-color: #24292e;
+		color: #222;
+		background-color: #e9ebed;
 		padding: var(--padding-block) var(--padding-inline);
+		text-shadow: 0 2px 3px rgb(255 255 255 / 80%);
 		margin: calc(var(--padding-block) * -1) -0.125em;
 		border-radius: var(--border-radius);
 		word-break: break-word;
@@ -271,7 +272,7 @@
 
 	.markdown-wrapper {
 		padding: 5px 10px;
-		box-shadow: 0 0 24px -5px #222;
+		box-shadow: 0 0 24px -5px #999;
 		margin-top: 20px;
 		border-radius: 5px;
 

@@ -1,0 +1,74 @@
+<div class="container-comments">
+   <script
+      src="https://giscus.app/client.js"
+      data-repo="xexiu/web_astro_blog"
+      data-repo-id="R_kgDOKWNpWA"
+      data-category-id="DIC_kwDOKWNpWM4CZ-cd"
+      data-mapping="title"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="light"
+      data-lang="es"
+      data-loading="lazy"
+      crossorigin="anonymous"
+      async></script>
+</div>
+
+<style>
+   .container-comments {
+      margin: 20px 0;
+      position: relative;
+      &::before {
+         content: "";
+         position: absolute;
+         top: 94px;
+         left: 101px;
+         width: 175px;
+         background-color: hsl(var(--bkg));
+         display: block;
+         height: 20px;
+      }
+   }
+   .gsc-comments-count em {
+      display: none;
+   }
+
+   @media screen and (width <= 500px) {
+      .container-comments::before {
+         top: 125px;
+         left: 0;
+      }
+   }
+   @media screen and (width <= 370px) {
+      .container-comments::before {
+         left: 0;
+         top: 107px;
+         width: 54%;
+         height: 33px;
+      }
+   }
+   @media screen and (width <= 315px) {
+      .container-comments::before {
+         height: 27px;
+         left: 0;
+         top: 93px;
+         width: 55.5%;
+      }
+   }
+
+   @media screen and (width <= 265px) {
+      .container-comments::before {
+         height: 20px;
+         left: 0;
+         top: 83px;
+         width: 55.5%;
+      }
+   }
+   @media screen and (width <= 220px) {
+      .container-comments::before {
+         display: none;
+      }
+   }
+</style>

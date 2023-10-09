@@ -1,0 +1,115 @@
+<form id="subscribe-form" name="subscribe">
+   <fieldset>
+      <label for="name-field">Nombre</label>
+      <input
+         type="text"
+         name="name"
+         required="true"
+         id="name-field"
+         placeholder="John Mullins"
+      />
+   </fieldset>
+   <fieldset class="visually-hidden" aria-hidden="true">
+      <label for="last-name-subscribe-field">Last Name</label>
+      <input
+         type="text"
+         id="last-name-subscribe-field"
+         name="last_name"
+         autocomplete="off"
+         tabindex="-1"
+      />
+   </fieldset>
+   <fieldset class="visually-hidden" aria-hidden="true">
+      <label for="email-field">Email:</label>
+      <input
+         type="email"
+         name="email"
+         id="email-field"
+         required="true"
+         placeholder="thecolonel@mustard.com"
+      />
+   </fieldset>
+   <fieldset>
+      <label for="email-field">Comentario</label>
+      <textarea
+         placeholder="Acuérdate, 'respect' primero :)!"
+         cols="30"
+         rows="5"
+         class="text-area"></textarea>
+   </fieldset>
+   <input class="submit-form btn-blue" type="submit" value="Añadir comentario" />
+</form>
+
+<script>
+const subscribeForm = document.getElementById('subscribe-form') as HTMLFormElement;
+
+subscribeForm?.addEventListener('submit', async (event) => {
+   // We are using JS so don't refresh the page.
+   event.preventDefault();
+
+   // Format the form data into an object
+   const formData = Object.fromEntries(new FormData(subscribeForm));
+
+   // Send the data to our netlify serverless function
+   await fetch('/.netlify/functions/form-comments', {
+      method: 'POST',
+      body: JSON.stringify({
+         name: formData.name,
+         email: formData.email,
+         last_name: formData.last_name
+      })
+   }).then((response) => response.json());
+
+   // Reset the form
+   subscribeForm.reset();
+});
+</script>
+
+<style>
+    form,
+    fieldset {
+        all: unset;
+    }
+    #subscribe-form {
+        display: flex;
+        flex-direction: column;
+    }
+    .visually-hidden {
+        position: absolute;
+        left: -9999px;
+    }
+    #name-field,
+    .text-area {
+        width: 100%;
+        background-color: #fff;
+        border: 0;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+        padding: 0.5rem;
+    }
+    #name-field:hover,
+    .text-area:hover {
+        outline: var(--color-red) 2px solid;
+    }
+    #name-field:focus-visible,
+    .text-area:focus-visible {
+        outline: var(--color-red) 2px dotted;
+    }
+    label[for="name-field"],
+    label[for="email-field"] {
+        text-transform: uppercase;
+        margin: 7px 0;
+        display: block;
+    }
+
+    .text-area {
+        resize: none;
+    }
+
+    .submit-form {
+        display: flex;
+        text-align: center;
+        align-self: flex-start;
+        margin-bottom: 10px;
+    }
+</style>
