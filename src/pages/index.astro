@@ -1,19 +1,234 @@
 ---
 import MainLayout from '@layouts/MainLayout.astro';
 import data from '@schemas/index-data.json';
+import SocialIcons from '@components/SocialIcons.astro';
+import socialIcons from '@schemas/social-icons.json';
+import TagHeading from '@components/common/TagHeading.astro';
 ---
 
 <MainLayout title={data.title} description={data.description}>
    <section class="container-index-page" aria-label="Inicio del sitio web">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
-        magnam quasi quaerat velit, fugiat ratione deserunt, aspernatur dolorum
-        deleniti exercitationem quisquam eveniet architecto fuga recusandae
-        facere? Ipsam rerum fuga odio!
+      <TagHeading classes="tag-heading" tag="h2">Sergiu Mironescu</TagHeading>
+      <span class="tag-heading-typing">
+         <span class="word">Mi pasión es:</span>
+         <TagHeading tag="h1" classes="typing-words">
+            <span>Diseño</span>
+            <span>Mundo</span>
+            <span>Desarrollar</span>
+            <span>Magia</span>
+            <span>Ideas.</span>
+         </TagHeading>
+      </span>
+      <SocialIcons
+         data={socialIcons}
+         classes="social-icons-landing"
+         linkClass="tooltip"
+         data-tooltip-placement="bottom"
+      />
    </section>
 </MainLayout>
 
-<style>
+<style is:inline>
     .container-index-page {
-        margin-bottom: 10px;
+        z-index: 2;
+        color: white;
+        text-transform: uppercase;
+        position: relative;
+    }
+    .typing-words span {
+        font-family: monospace;
+        position: absolute;
+        overflow: hidden;
+        white-space: nowrap;
+        visibility: hidden;
+        border-right: 4px solid transparent;
+        left: 0;
+        letter-spacing: 0.15em;
+    }
+    .typing-words span:nth-child(1) {
+        animation:
+            typing 1.2s steps(25) 1s,
+            typingReverse 1.2s steps(25) 1.7s,
+            blink-wait 1s step-end 1 0.1s,
+            blink-caret 0.6s step-end infinite;
+    }
+
+    .typing-words span:nth-child(2) {
+        animation:
+            typing 1.2s steps(25) 3.6s,
+            typingReverse 1.2s steps(25) 4.6s,
+            blink-wait 1s step-end 1 2.8s,
+            blink-caret 0.6s step-end infinite;
+    }
+
+    .typing-words span:nth-child(3) {
+        animation:
+            typing 1.2s steps(25) 6.5s,
+            typingReverse 1.2s steps(25) 7.5s,
+            blink-wait 1s step-end 1 5.4s,
+            blink-caret 0.6s step-end infinite;
+    }
+
+    .typing-words span:nth-child(4) {
+        animation:
+            typing 1.2s steps(25) 9.5s,
+            typingReverse 1.2s steps(25) 10.5s,
+            blink-wait 1s step-end 1 8.5s,
+            blink-caret 0.6s step-end infinite;
+    }
+
+    .typing-words span:nth-child(5) {
+        animation:
+            typing 1.2s steps(25) 12.5s forwards,
+            blink-wait 1s step-end 1 11.5s,
+            blink-caret 0.6s step-end 5 9.5s;
+    }
+
+    /* The typing effect */
+    @keyframes typing {
+        from {
+            width: 0;
+            visibility: hidden;
+        }
+        to {
+            width: 100%;
+            visibility: visible;
+            color: white;
+        }
+    }
+
+    @keyframes typingReverse {
+        from {
+            width: 100%;
+            visibility: visible;
+            color: white;
+        }
+        to {
+            width: 0;
+        }
+    }
+
+    @keyframes blink-wait {
+        from,
+        to {
+            width: 0;
+            visibility: hidden;
+        }
+        30%,
+        60% {
+            visibility: visible;
+        }
+    }
+
+    /* The typewriter cursor effect */
+    @keyframes blink-caret {
+        0% {
+            border-color: transparent;
+        }
+        50% {
+            border-color: transparent;
+        }
+        100% {
+            border-color: transparent;
+        }
+    }
+
+    #landing-main-body {
+        background-color: transparent;
+
+        .tag-heading-typing {
+            position: relative;
+            font-size: 20px;
+            display: flex;
+            max-width: 27rem;
+            flex-direction: column;
+        }
+
+        .tag-heading {
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            text-align: center;
+            display: flex;
+            color: white;
+            font-size: var(--fs-2xl);
+            font-weight: 800;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .social-icons-landing {
+            margin-top: 100px;
+            & a {
+                color: white;
+                border: 1px solid white;
+                height: 35px;
+                width: 35px;
+                padding: 5px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                transition: all 0.5s;
+                & svg {
+                    height: 35px;
+                    width: 35px;
+                }
+                &:hover {
+                    background-color: var(--color-red);
+                    transition: all 0.5s;
+                }
+            }
+        }
+    }
+
+    [data-current-page="/"] {
+        .nav__links li a[href="/"] {
+            color: white !important;
+            border: 1px solid white !important;
+        }
+
+        #header {
+            background-color: transparent;
+            box-shadow: none;
+        }
+
+        #footer,
+        .header-social-icons {
+            display: none;
+            visibility: hidden;
+            height: 0;
+        }
+    }
+    #homepage {
+        background-image: url("/land.jpeg");
+        background-size: cover;
+        background-position: center center;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        width: 100vw;
+        height: 100vh;
+        &::before {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+    }
+    #homepage,
+    #landing-main-body {
+        margin: 0;
+        padding: 0;
+    }
+
+    @media screen and (width <= 502px) {
+        .tag-heading-typing {
+            margin-left: 10%;
+        }
     }
 </style>

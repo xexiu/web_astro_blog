@@ -25,7 +25,7 @@ const {
 <!doctype html>
 <html lang="es" data-current-page={Astro.url.pathname}>
    <MainHead {title} {description} {featured_image} {frontmatter} {robots} />
-   <body id="main-body">
+   <body id=`${Astro.url.pathname === '/' ? 'landing-main-body' : 'main-body'}`>
       <MainHeader>
          <Logo />
          <MainNav>
@@ -33,7 +33,7 @@ const {
          </MainNav>
          <!-- <ToggleTheme style={{ marginLeft: 'auto' }} /> -->
       </MainHeader>
-      <main>
+      <main id=`${Astro.url.pathname === '/' ? 'homepage' : 'page'}`>
          <slot> Default Text</slot>
          <!-- <Sidebar /> -->
       </main>
