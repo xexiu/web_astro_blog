@@ -118,18 +118,16 @@
 		color: inherit;
 	}
 
-	.code-lang::before {
-		content: attr(data-language);
-		display: block;
-		height: auto;
+	.copy-clipboard-code {
 		position: absolute;
 		right: 0;
-		top: 0;
-		border: 1px solid #ccc;
-		padding: 4px;
-		border-bottom-left-radius: 6px;
-		background-color: #222;
+		top: -2px;
+		margin: 5px;
 		color: #f2f2f2;
+		cursor: pointer;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		padding: 2px;
 	}
 
 	/* Supporting Content */
@@ -148,21 +146,39 @@
 		word-break: break-word;
 	}
 
-	pre.astro-code > code {
+	::selection {
+		color: #f2f2f2;
+		background: var(--color-red)
+	}
+
+	pre code {
+		position:relative;
 		all: unset;
+	}
+
+	pre code::before {
+		content: "code";
+		text-transform: uppercase;
+		background-color: var(--color-red);
+		color: #fff;
+		border-bottom-right-radius: 10px;
+		padding: 7px 8px;
+		font-family: monospace;
+		position: absolute;
+		top: -35px;
+		left: 0
 	}
 
 	pre {
 		background: #f4f4f4;
-		border: 1px solid #ddd;
-		border-left: 3px solid #f36d33;
+		border-left: 3px solid var(--color-red);
 		position: relative;
 
 		--padding-block: 1rem;
 		--padding-inline: 2rem;
 
 		counter-reset: line;
-		padding: 15px 0;
+		padding: 35px 0 15px;
 		overflow-y: hidden;
 		overflow-x: auto;
 	}

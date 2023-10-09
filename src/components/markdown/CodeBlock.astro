@@ -1,5 +1,6 @@
 ---
 import { Code } from 'astro:components';
+import { Icon } from 'astro-icon';
 
 const { lang, code } = Astro.props;
 
@@ -10,7 +11,17 @@ function getLineNumbers(code: string): number[] {
 const lineNumbers = getLineNumbers(code);
 ---
 
-<div style="position: relative">
+<div style="position: relative" data-lines={lineNumbers} data-language={lang}>
    <Code code={code} lang={lang} />
-   <small data-lines={lineNumbers} class="code-lang" data-language={lang}></small>
+   <xe-copy-clipboard data-text={code}>
+      <span class="copy-clipboard-code tooltip" data-tooltip-placement="left" title="Guardar en el portapapeles">
+         <Icon name="ph:copy-light" height="16" width="16" />
+      </span>
+   </xe-copy-clipboard>
 </div>
+
+<script>
+import { CopyCode } from '@js/custom-elements';
+
+customElements.define('xe-copy-clipboard', CopyCode);
+</script>

@@ -90,7 +90,6 @@ export class ArticleSpeech extends HTMLElement {
       };
 
       utterance.lang = 'es-ES';
-      debugger;
       utterance.text = btn.dataset.articleText as string;
       utterance.voice = window.speechSynthesis.getVoices()[0];
 
@@ -139,6 +138,22 @@ export class CopyrightFooter extends HTMLElement {
          const copyright = element?.innerText;
 
          element.textContent = copyright;
+      }
+   }
+}
+
+export class CopyCode extends HTMLElement {
+   constructor() {
+      super();
+
+      const element = this.querySelector('.copy-clipboard-code') as HTMLElement;
+
+      if (element) {
+         element.addEventListener('click', async () => {
+            await navigator.clipboard.writeText(this.dataset.text as string).then(() => {
+               element.title = 'Guardado!';
+            });
+         });
       }
    }
 }
