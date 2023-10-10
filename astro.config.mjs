@@ -1,4 +1,3 @@
-import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import sitemap from '@astrojs/sitemap';
 import purgecss from 'astro-purgecss';
@@ -16,7 +15,7 @@ export default defineConfig({
       }
    },
    site: 'http://xexiu.netlify.app',
-   integrations: [partytown(), sitemap(), purgecss(), mdx()],
+   integrations: [partytown(), sitemap(), purgecss()],
    image: {
       service: squooshImageService()
    },
