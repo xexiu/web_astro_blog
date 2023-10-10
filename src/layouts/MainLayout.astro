@@ -26,7 +26,18 @@ const {
 <html lang="es" data-current-page={Astro.url.pathname}>
    <MainHead {title} {description} {featured_image} {frontmatter} {robots} />
    <body id=`${Astro.url.pathname === '/' ? 'landing-main-body' : 'main-body'}`>
-
+      <MainHeader>
+         <Logo />
+         <MainNav>
+            <SocialIcons data={socialIcons} classes="header-social-icons" linkClass='tooltip' data-tooltip-placement="bottom" />
+         </MainNav>
+         <!-- <ToggleTheme style={{ marginLeft: 'auto' }} /> -->
+      </MainHeader>
+      <main id=`${Astro.url.pathname === '/' ? 'homepage' : 'page'}`>
+         <slot> Default Text</slot>
+         <!-- <Sidebar /> -->
+      </main>
+      <MainFooter />
    </body>
 </html>
 
