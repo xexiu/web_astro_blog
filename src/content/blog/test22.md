@@ -6,6 +6,7 @@ excerpt: This is a short except about, This is a short except about, This is
   a   short except about, This is a short except about
 author: Sergiu M
 featured_post: false
+is_private: false
 tags:
   - solidjs
 featured_image:

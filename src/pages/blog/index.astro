@@ -1,12 +1,30 @@
 ---
-import { PostCardTags, Posts } from '@components/postcard';
+import Tabs from '@components/Tabs.astro';
+import { PostCardTags } from '@components/postcard';
 import MainLayout from '@layouts/MainLayout.astro';
 import data from '@schemas/blog-data.json';
 import { getCollection } from 'astro:content';
-import type { Post } from 'types/utils';
 
-const blogEntries = await getCollection('blog');
-const blogTags = blogEntries.flatMap((entry: any) => entry.data.tags) as [];
+const blogs = {
+   latest: [],
+   pinned: [],
+   private: []
+
+};
+await getCollection('blog', (entry) => {
+   if(!entry.data.featured_post && !entry.data.is_private) {
+      blogs.latest.push(entry as never);
+   } else if(entry.data.is_private) {
+      blogs.private.push(entry as never);
+   } else if(entry.data.featured_post) {
+      blogs.pinned.push(entry as never);
+   }
+
+   return blogs;
+});
+const blogTags = [...blogs.latest, ...blogs.pinned, ...blogs.private]
+   .filter((entry: any) => !entry.data.is_private)
+   .flatMap((entry: any) => entry.data.tags) as [];
 const uniqueTags = [...new Set(blogTags)] as [];
 const tagCounts = {};
 blogTags.forEach((tag) => {
@@ -21,9 +39,10 @@ blogTags.forEach((tag) => {
 <MainLayout title={data.title} description={data.description}>
    <section class="container-blog-page" aria-label="Publicaciones Recientes">
       <div class="blog-page-tags">
+         <Tabs elements={blogs} />
          <PostCardTags tags={uniqueTags} {tagCounts} classes="blog-page-tag" />
       </div>
-      <Posts entries={blogEntries as Post[]} />
+      <!-- <Posts entries={blogs.latest as Post[]} /> -->
       <!-- <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} /> -->
    </section>
 </MainLayout>

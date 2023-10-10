@@ -26,6 +26,18 @@
    </body>
 </html>
 
+<script>
+import { setCookie } from '@js/utils';
+declare global {
+    interface Window { netlifyIdentity: any; }
+}
+
+if (window.netlifyIdentity as any) {
+   localStorage.setItem('isAdmin', !!window.netlifyIdentity.currentUser() as any);
+   setCookie('isAdmin', 'true', 30);
+}
+</script>
+
 <style is:inline>
    img[alt="Logo"] {
       width: 250px;

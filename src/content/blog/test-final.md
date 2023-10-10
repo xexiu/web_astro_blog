@@ -5,6 +5,7 @@ category: Javascript
 author: Sergiu Mironescu
 excerpt: This is a short except about, This is a short except about, This is a short, except about, This is a short except about
 featured_post: false
+is_private: false
 tags:
   - solidjs
 featured_image:

@@ -7,6 +7,7 @@ excerpt: Sometimes you just run out of ideas for sample blog posts. It’s no on
 category: General
 slug: "post-3"
 featured_post: false
+is_private: false
 tags:
   - css
   - js

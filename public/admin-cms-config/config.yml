@@ -21,15 +21,17 @@ collections:
     create: true # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     preview_path: 'blog/{{slug}}'
-    fields: # The fields for each document, usually in front matter
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Excerpt", name: "excerpt", widget: "string"}
-      - {label: "Author", name: "author", widget: "string"}
-      - {label: "Tags", name: "tags", widget: "list"}
-      - {label: "Category", name: "category", widget: "string"}
+    fields: # The fields for each document, usually in front matter^
+      - {label: "Title", name: "title", widget: "string", pattern: ['^.{20,100}$', "Must have at least 20 characters and max 100"], hint: "Must have at least 20 characters and max 100"}
+      - {label: "Excerpt", name: "excerpt", widget: "string", pattern: ['^.{50,90}$', "Must have at least 50 characters and max 90"], hint: "Must have at least 50 characters and max 90"}
+      - {label: "Author", name: "author", widget: "string", pattern: ['^.{10,50}$', "Must have at least 10 characters and max 50"], hint: "Must have at least 10 characters and max 50"}
+      - {label: "Tags", name: "tags", widget: "list", default: ["javascript, css, html, react"], pattern: ['^\s*(?:[^,\n]+,){0,3}[^,\n]+\s*$', "Must have at least 1 tag and max 4. Please separate multiple tags with comma."], hint: "Must have at least 1 tag and max 4. Please separate multiple tags with comma."}
+      - {label: "Category", name: "category", widget: "select", options: ["GENERAL", "CSS", "HTML", "JAVASCRIPT", "FULLSTACK", "FRONTEND", "BACKEND", "REACTJS", "REACT NATIVE", "ASTRO", "BLOCKCHAIN", "MLL", "IA", "WEB3"]}
       - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Featured Post", name: "featured_post", widget: "boolean"}
-      - {label: "Private Post", name: "is_private", widget: "boolean"}
+      - {label: "Is Featured?", name: "featured_post", widget: "boolean", required: false}
+      - {label: "Is Private?", name: "is_private", widget: "boolean", required: false}
+      - {label: "Is Portfolio?", name: "is_portfolio", widget: "boolean", required: false}
+      - {label: "Portfolio URL", name: "portfolio_url", widget: "string", required: false}
       - label: "Featured Image"
         name: "featured_image"
         widget: "object"

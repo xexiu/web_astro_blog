@@ -157,3 +157,34 @@ export class CopyCode extends HTMLElement {
       }
    }
 }
+
+export class TabActions extends HTMLElement {
+   constructor() {
+      super();
+
+      const tabBtns = this.querySelectorAll('[data-tab') as NodeListOf<Element>;
+      const tabsContent = this.querySelectorAll('[data-tab-content]');
+
+      tabBtns?.forEach((tabBtn: HTMLButtonElement) => {
+         tabBtn?.addEventListener('click', (event: Event) => {
+            event.preventDefault();
+            if (tabBtn.classList.contains('active')) return;
+
+            const tabId = tabBtn.getAttribute('data-tab');
+
+            tabBtns.forEach((btn) => {
+               btn.classList.remove('active');
+            });
+            tabsContent.forEach((content) => {
+               content.classList.remove('active-content');
+            });
+
+            tabBtn.classList.add('active');
+            const correspondingContent = document.querySelector(
+               `[data-tab-content="${tabId}"]`,
+            );
+            correspondingContent?.classList.add('active-content');
+         });
+      });
+   }
+}

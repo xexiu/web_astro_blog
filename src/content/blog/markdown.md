@@ -6,10 +6,10 @@ author: Sergiu Mironescu
 tags:
   - markdown
   - solidjs
-category: general
+category: FULLSTACK
 date: 2023-09-22T17:14:10+02:00
 featured_post: false
-is_private: false
+is_private: true
 featured_image:
   alt: featured
   src: src/images/screen-shot-2023-08-31-at-08.19.44-am-2-.png
@@ -56,12 +56,12 @@ Here is a sample of some basic Markdown syntax that can be used when writing Mar
 
   The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a `footer` or `cite` element, and optionally with in-line changes such as annotations and abbreviations.
 
-####### Blockquote without attribution
+\####### Blockquote without attribution
 
 > Tiam, ad mint andaepu dandae nostion secatur sequo quae.\
 > **Note** that you can use *Markdown syntax* within a blockquote.
 
-####### Blockquote with attribution
+\####### Blockquote with attribution
 
 > Don't communicate by sharing memory, share memory by communicating.
 
@@ -90,19 +90,19 @@ Here is a sample of some basic Markdown syntax that can be used when writing Mar
 
 ## List Types
 
-####### Ordered List
+\####### Ordered List
 
 1. First item
 2. Second item
 3. Third item
 
-####### Unordered List
+\####### Unordered List
 
 * List item
 * Another item
 * And another item
 
-####### Nested list
+\####### Nested list
 
 * Fruit
 

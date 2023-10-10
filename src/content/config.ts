@@ -7,6 +7,8 @@ const blog = defineCollection({
       tags: z.array(z.string()).min(1).max(4),
       category: z.string(),
       is_private: z.boolean().optional(),
+      is_portfolio: z.boolean().optional(),
+      portfolio_url: z.string().optional(),
       author: z.string(),
       date: z.date(),
       featured_post: z.boolean().optional(),

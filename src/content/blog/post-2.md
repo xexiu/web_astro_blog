@@ -6,7 +6,8 @@ author: Victoria Greenfelder
 excerpt: Sometimes you just run out of ideas for sample blog posts. It’s no one’s fault, it’s just the way it is.
 category: General
 slug: "post-2"
-featured_post: false
+featured_post: true
+is_private: false
 tags:
   - css
   - js

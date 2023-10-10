@@ -1,0 +1,120 @@
+---
+import type { Post } from 'types/utils';
+import { Posts } from './postcard';
+import { Icon } from 'astro-icon';
+
+const { elements } = Astro.props;
+const isAdmin = !!Astro.cookies.get('isAdmin');
+
+console.log('TABS', isAdmin);
+---
+
+<xe-tabs>
+   <div class="tabs-container">
+      <div class="tabs-head">
+         <button
+            class="btn-blue tab-head active"
+            data-tab="latest-tab"
+            data-pressed="true">Últimos artículos</button
+         >
+         <button
+            class="btn-blue tab-head"
+            data-tab="pinned-tab"
+            data-pressed="false">Destacados</button
+         >
+         <button
+            class="btn-blue tab-head"
+            data-tab="private-tab"
+            data-pressed="false">Privados</button
+         >
+      </div>
+
+      <div class="tab-container">
+         <div class="tab-item active-content" data-tab-content="latest-tab">
+            <Posts entries={elements.latest as Post[]} />
+         </div>
+
+         <div class="tab-item" data-tab-content="pinned-tab">
+            <Posts entries={elements.pinned as Post[]} />
+         </div>
+
+         <div
+            class="tab-item"
+            data-tab-content="private-tab"
+            data-private-tab="true"
+         >
+            {
+               isAdmin ? (
+                  <Posts entries={elements.private as Post[]} />
+               ) : (
+                  <div class="private-layout">
+                     <span>Este contenido es privado</span>
+                     <Icon
+                        name="carbon:virtual-private-cloud"
+                        height={44}
+                        width={44}
+                        class="contenido-privado-icon"
+                        alt="Contenido Privado"
+                     />
+                  </div>
+               )
+            }
+         </div>
+      </div>
+   </div>
+</xe-tabs>
+
+<script>
+    import { TabActions } from '@js/custom-elements';
+
+    customElements.define('xe-tabs', TabActions);
+</script>
+
+<style>
+    .tabs-container {
+        margin: 20px 0;
+        .tabs-head {
+            display: flex;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        .tab-head {
+            margin-right: 10px;
+            &:hover {
+                box-shadow: none;
+            }
+        }
+        .tab-item {
+            display: none;
+        }
+
+        .active-content {
+            display: block;
+        }
+
+        .active {
+            box-shadow: var(--shadow-md);
+            cursor: pointer;
+            display: block;
+            text-shadow: 0 2px 3px rgb(255 255 255 / 40%);
+            &:hover {
+                box-shadow: var(--shadow-md);
+            }
+        }
+    }
+
+    .private-layout {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f0f0f0;
+        font-size: var(--fs-lg);
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .contenido-privado-icon {
+        margin: 0 auto;
+    }
+</style>

@@ -1,4 +1,5 @@
 ---
+export const prerender = true;
 import Posts from '@components/postcard/Posts.astro';
 import TagHeading from '@components/common/TagHeading.astro';
 import { slugify } from '@js/utils';
@@ -9,7 +10,7 @@ import type { Post } from 'types/utils';
 // 1. Generate a new path for every collection entry
 
 export async function getStaticPaths() {
-   const blogEntries = await getCollection('blog');
+   const blogEntries = await getCollection('blog', (entry) => !entry.data.is_private);
 
    return blogEntries.map((entry) => ({
       params: { category: slugify(entry.data.category) }, props: { blogEntries },
