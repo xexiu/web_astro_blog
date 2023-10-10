@@ -19,7 +19,5 @@ export default defineConfig({
    image: {
       service: squooshImageService()
    },
-   adapter: netlify({
-      functionPerRoute: true
-   })
+   adapter: netlify()
 });
