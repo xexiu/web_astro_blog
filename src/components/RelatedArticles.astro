@@ -7,15 +7,14 @@ import { Link } from '@components/common/link';
 const isAdmin = !!Astro.cookies.get('isAdmin');
 
 const { relatedArticles } = Astro.props;
-const blogs = relatedArticles.filter((entry: Post) => isAdmin ? entry : !entry.data.is_private);
+const blogs = relatedArticles.filter((entry: Post) =>
+   isAdmin ? entry : !entry.data.is_private,
+);
 ---
 
 {
    relatedArticles.length > 0 && (
-      <aside
-         class="container-related-posts"
-         aria-label="Related posts"
-      >
+      <aside class="container-related-posts" aria-label="Related posts">
          <TagHeading
             classes="related-articles-heading"
             tag="h3"
@@ -51,8 +50,11 @@ const blogs = relatedArticles.filter((entry: Post) => isAdmin ? entry : !entry.d
 }
 
 <style is:inline>
-   .container-related-posts article {
-      margin: 5px 0;
+   .container-related-posts {
+      margin-top: 20px;
+      & article {
+         margin: 5px 0;
+      }
    }
    .container-related-posts {
       & .post-card-details {
