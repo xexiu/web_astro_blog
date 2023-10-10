@@ -7,8 +7,10 @@ import MainLayout from '@layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
 import type { Post } from 'types/utils';
 
+const isAdmin = !!Astro.cookies.get('isAdmin');
+
 export async function getStaticPaths() {
-   const blogEntries = await getCollection('blog', (entry) => !entry.data.is_private);
+   const blogEntries = await getCollection('blog');
    const blogTags = blogEntries.flatMap((entry: any) => entry.data.tags);
 
    return blogTags.map((tag: string) => ({
@@ -16,9 +18,12 @@ export async function getStaticPaths() {
    }));
 }
 
+
 const { tag } = Astro.params;
 const { blogEntries } = Astro.props;
-const tagPosts = blogEntries.filter((entry: Post) => entry.data.tags.includes(tag as string));
+
+const blogs = blogEntries.filter((entry: Post) => isAdmin ? entry : !entry.data.is_private);
+const tagPosts = blogs.filter((entry: Post) => entry.data.tags.includes(tag as string));
 ---
 
 <MainLayout title={tag}>

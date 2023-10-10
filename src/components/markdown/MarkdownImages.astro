@@ -24,9 +24,8 @@ const imagesrc = (await images[cleanSrc])
    import { isInViewport } from '@js/utils';
 
    var firstImage = document.querySelector('.markdown-image') as HTMLElement;
-   const isInViewPort = isInViewport(firstImage, true);
 
-   if (firstImage && isInViewPort) {
+   if (firstImage && isInViewport(firstImage, true)) {
       firstImage.removeAttribute('loading');
    }
 </script>

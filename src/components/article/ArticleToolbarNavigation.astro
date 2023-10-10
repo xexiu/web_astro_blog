@@ -7,11 +7,27 @@ interface Props {
    prevEntry: Post;
 }
 
+const isAdmin = !!Astro.cookies.get('isAdmin');
+
 const { prevEntry, nextEntry } = Astro.props;
+let prev = null;
+let next = null;
+
+if(isAdmin && prevEntry?.data.is_private) {
+   prev = prevEntry as any;
+} else if(prevEntry) {
+   prev = !prevEntry.data.is_private as any;
+}
+
+if(isAdmin && nextEntry?.data.is_private) {
+   next = nextEntry as any;
+} else if(nextEntry) {
+   next = !nextEntry.data.is_private as any;
+}
 ---
 
 {
-   prevEntry && (
+   prev && (
       <div class="prev-article">
          <h5>
             <Link
@@ -27,7 +43,7 @@ const { prevEntry, nextEntry } = Astro.props;
 }
 
 {
-   nextEntry && (
+   next && (
       <div class="next-article">
          <h5>
             <Link

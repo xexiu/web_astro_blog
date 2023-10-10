@@ -1,10 +1,13 @@
 ---
 import type { Post } from 'types/utils';
 import TagHeading from './common/TagHeading.astro';
-import { PostCardContainer, PostCardDetails, PostCardDetailsContainer } from '@components/postcard';
+import { PostCardContainer, PostCardDetails } from '@components/postcard';
 import { Link } from '@components/common/link';
 
+const isAdmin = !!Astro.cookies.get('isAdmin');
+
 const { relatedArticles } = Astro.props;
+const blogs = relatedArticles.filter((entry: Post) => isAdmin ? entry : !entry.data.is_private);
 ---
 
 {
@@ -20,7 +23,7 @@ const { relatedArticles } = Astro.props;
          >
             Artículos Relacionados
          </TagHeading>
-         {relatedArticles.map((relatedArticle: Post) => (
+         {blogs.map((relatedArticle: Post) => (
             <PostCardContainer>
                <Link
                   href={`/blog/${relatedArticle.slug}`}

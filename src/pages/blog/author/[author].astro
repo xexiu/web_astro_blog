@@ -7,6 +7,8 @@ import MainLayout from '@layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
 import type { Post } from 'types/utils';
 
+const isAdmin = !!Astro.cookies.get('isAdmin');
+
 export async function getStaticPaths() {
    const blogEntries = await getCollection('blog');
    const allAuthors = [
@@ -27,13 +29,14 @@ export async function getStaticPaths() {
 }
 
 const { posts, authorName } = Astro.props;
+const blogs = posts.filter((entry: Post) => isAdmin ? entry : !entry.data.is_private);
 ---
 
 <MainLayout title={authorName}>
    <section class="container" aria-label={`Posts by ${authorName}`}>
       <span>Publicaciones hechas por:</span>
       <TagHeading classes="post-author" tag="h1">{authorName}</TagHeading>
-      <Posts entries={posts as Post[]} />
+      <Posts entries={blogs as Post[]} />
    </section>
 </MainLayout>
 

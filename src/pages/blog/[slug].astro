@@ -24,8 +24,6 @@ import RelatedArticles from '@components/RelatedArticles.astro';
 import TagHeading from '@components/common/TagHeading.astro';
 import FormCommentGiscus from '@components/FormCommentGiscus.astro';
 
-// 1. Generate a new path for every collection entry
-
 export async function getStaticPaths() {
    const blogEntries = await getCollection('blog');
 

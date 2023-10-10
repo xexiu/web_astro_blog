@@ -3,6 +3,7 @@ import partytown from '@astrojs/partytown';
 import sitemap from '@astrojs/sitemap';
 import purgecss from 'astro-purgecss';
 import { defineConfig, squooshImageService } from 'astro/config';
+import netlify from '@astrojs/netlify/functions';
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,5 +19,8 @@ export default defineConfig({
    integrations: [partytown(), sitemap(), purgecss(), mdx()],
    image: {
       service: squooshImageService()
-   }
+   },
+   adapter: netlify({
+      functionPerRoute: true
+   })
 });

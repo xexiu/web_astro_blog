@@ -7,7 +7,7 @@ import MainLayout from '@layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
 import type { Post } from 'types/utils';
 
-// 1. Generate a new path for every collection entry
+const isAdmin = !!Astro.cookies.get('isAdmin');
 
 export async function getStaticPaths() {
    const blogEntries = await getCollection('blog', (entry) => !entry.data.is_private);
@@ -20,7 +20,8 @@ export async function getStaticPaths() {
 // 2. For your template, you can get the entry directly from the prop
 const { category } = Astro.params;
 const { blogEntries } = Astro.props;
-const catPosts = blogEntries.filter((post: Post) => slugify(post.data.category) === category);
+const blogs = blogEntries.filter((entry: Post) => isAdmin ? entry : !entry.data.is_private);
+const catPosts = blogs.filter((post: Post) => slugify(post.data.category) === category);
 ---
 <MainLayout title={category}>
    <section class="container" aria-label={`Posts about ${category}`}>
