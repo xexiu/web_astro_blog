@@ -2,32 +2,30 @@
 export const prerender = true;
 import Posts from '@components/postcard/Posts.astro';
 import TagHeading from '@components/common/TagHeading.astro';
-import { slugify } from '@js/utils';
+import { slugify, getPostsFor } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
-import type { Post } from 'types/utils';
+import { getCollectionFor } from '@js/server/utils';
 
 const isAdmin = !!Astro.cookies.get('isAdmin');
 
 export async function getStaticPaths() {
-   const blogEntries = await getCollection('blog', (entry) => !entry.data.is_private);
+   const blogEntries = await getCollection('blog');
 
    return blogEntries.map((entry) => ({
-      params: { category: slugify(entry.data.category) }, props: { blogEntries },
+      params: { category: slugify(entry.data.category) }
    }));
 }
 
-// 2. For your template, you can get the entry directly from the prop
 const { category } = Astro.params;
-const { blogEntries } = Astro.props;
-const blogs = blogEntries.filter((entry: Post) => isAdmin ? entry : !entry.data.is_private);
-const catPosts = blogs.filter((post: Post) => slugify(post.data.category) === category);
+const blogs = await getCollectionFor('blog', isAdmin, getCollection);
+const catPosts = getPostsFor(blogs, category);
 ---
 <MainLayout title={category}>
    <section class="container" aria-label={`Posts about ${category}`}>
       <span>Publicaciones en la categoria:</span>
       <TagHeading classes="post-category" tag="h1">{category}</TagHeading>
-      <Posts entries={catPosts as Post[]} />
+      <Posts entries={catPosts} />
    </section>
 </MainLayout>
 

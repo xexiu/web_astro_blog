@@ -1,5 +1,5 @@
 ---
-import PostCardTag from './PostCardTag.astro';
+import Tag from '@components/tags/Tag.astro';
 
 interface Props {
    tags: [];
@@ -16,7 +16,7 @@ const { tags, tagCounts, ...rest } = Astro.props;
 
          return (
             <span class="tag-container">
-               <PostCardTag {tag} data-number-tag={count} {...rest} />
+               <Tag {tag} data-number-tag={count} {...rest} />
                {tagCounts && <span class="tag-count">{count}</span>}
             </span>
          );

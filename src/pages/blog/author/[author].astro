@@ -2,10 +2,10 @@
 export const prerender = true;
 import Posts from '@components/postcard/Posts.astro';
 import TagHeading from '@components/common/TagHeading.astro';
-import { slugify } from '@js/utils';
+import { getPostsFor } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
-import type { Post } from 'types/utils';
+import { getCollectionFor } from '@js/server/utils';
 
 const isAdmin = !!Astro.cookies.get('isAdmin');
 
@@ -16,27 +16,22 @@ export async function getStaticPaths() {
    ];
 
    return allAuthors.map((author) => {
-      const authorPosts = blogEntries.filter((post) => post.data.author === author);
-
       return {
-         params: { author: slugify(author) },
-         props: {
-            authorName: author,
-            posts: authorPosts,
-         },
+         params: { author }
       };
    });
 }
 
-const { posts, authorName } = Astro.props;
-const blogs = posts.filter((entry: Post) => isAdmin ? entry : !entry.data.is_private);
+const { author } = Astro.params;
+const blogs = await getCollectionFor('blog', isAdmin, getCollection);
+const authorPosts = getPostsFor(blogs, author);
 ---
 
-<MainLayout title={authorName}>
-   <section class="container" aria-label={`Posts by ${authorName}`}>
+<MainLayout title={author}>
+   <section class="container" aria-label={`Posts by ${author}`}>
       <span>Publicaciones hechas por:</span>
-      <TagHeading classes="post-author" tag="h1">{authorName}</TagHeading>
-      <Posts entries={blogs as Post[]} />
+      <TagHeading classes="post-author" tag="h1">{author}</TagHeading>
+      <Posts entries={authorPosts} />
    </section>
 </MainLayout>
 

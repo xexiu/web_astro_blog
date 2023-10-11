@@ -1,4 +1,4 @@
-import type { Post, PostData } from 'types/utils';
+import type { Post, PostData, Blog } from 'types/utils';
 
 export function updateTheme(value: string):void {
    document.documentElement.classList.remove('light', 'dark');
@@ -58,7 +58,7 @@ export function hideOnClickOutside(element: HTMLElement, cb: Function):void {
    document.addEventListener('click', outsideClickListener);
 }
 
-export function markAsCurrentPage(elements: NodeListOf<Element>) {
+export function markAsCurrentPage(elements: NodeListOf<Element>):void {
    elements.forEach((link: HTMLLinkElement) => {
       if (link.getAttribute('href') === window.location.pathname) {
          link.setAttribute('aria-current', 'page');
@@ -66,7 +66,7 @@ export function markAsCurrentPage(elements: NodeListOf<Element>) {
    });
 }
 
-export function readingTime(text: string) {
+export function readingTime(text: string): object {
    // Split the text into an array of words
    const wordsArray = text.split(' ');
 
@@ -83,7 +83,7 @@ export function readingTime(text: string) {
    };
 }
 
-export function isInViewport(el: HTMLElement, partiallyVisible = false): boolean {
+export function isInViewport(el: HTMLElement, partiallyVisible = false):boolean {
    const { top, left, bottom, right } = el.getBoundingClientRect();
    const { innerHeight, innerWidth } = window;
 
@@ -94,7 +94,7 @@ export function isInViewport(el: HTMLElement, partiallyVisible = false): boolean
       : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth;
 }
 
-export function isInViewPortScrolling(el: HTMLElement): any {
+export function isInViewPortScrolling(el: HTMLElement):void {
    function scrollObserver() {
       document.removeEventListener('scroll', scrollObserver);
 
@@ -105,7 +105,7 @@ export function isInViewPortScrolling(el: HTMLElement): any {
 
 }
 
-export function findRelatedPostsByTag(currentPost: PostData, maxRelatedPosts = 3, blogPosts: Post[]) {
+export function findRelatedPostsByTag(currentPost: PostData, maxRelatedPosts = 3, blogPosts: Post[]): Post[] {
    const relatedPosts = [];
 
    // Iterate through all blog posts
@@ -130,7 +130,7 @@ export function findRelatedPostsByTag(currentPost: PostData, maxRelatedPosts = 3
    return relatedPosts;
 }
 
-export function setCookie(name: string, value: string, days:number) {
+export function setCookie(name: string, value: string, days:number):void {
    var expires = '';
 
    if (days) {
@@ -142,7 +142,7 @@ export function setCookie(name: string, value: string, days:number) {
    document.cookie = name + '=' + (value || '')  + expires + '; path=/';
 }
 
-export function getCookie(name:string) {
+export function getCookie(name:string):string {
    var nameEQ = name + '=';
    var ca = document.cookie.split(';');
 
@@ -152,9 +152,39 @@ export function getCookie(name:string) {
       if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
    }
 
-   return null;
+   return '';
 }
 
-export function eraseCookie(name: string) {
+export function eraseCookie(name: string):void {
    document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+export function getTagsFor(isAdmin: boolean, collection: Blog):[] {
+   return [...collection.latest, ...collection.pinned, ...collection.private]
+      .filter((entry: any) => isAdmin ? entry : !entry.data.is_private)
+      .flatMap((entry: any) => entry.data.tags) as [];
+}
+
+export function getPostsFor(blog: Blog, t: string | [] | undefined , helper = slugify):Post[] {
+   return [...blog.latest, ...blog.pinned, ...blog.private].filter((entry: Post) => {
+      if (t instanceof Array) {
+         return entry.data.tags.includes(t as any);
+      }
+
+      return helper ? helper(entry.data.category) === t : entry.data.author === t;
+   });
+}
+
+export function getTagCounts(tags: []): object {
+   const tagCounts = {};
+
+   tags.forEach((tag: string) => {
+      if (tagCounts[tag]) {
+         tagCounts[tag]++;
+      } else {
+         tagCounts[tag] = 1 as never;
+      }
+   });
+
+   return tagCounts;
 }

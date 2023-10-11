@@ -8,6 +8,7 @@ featured_post: false
 is_private: false
 tags:
   - solidjs
+  - tagprivate
 featured_image:
   alt: featured
   src: src/images/screen-shot-2023-08-31-at-08.19.44-am-2-.png

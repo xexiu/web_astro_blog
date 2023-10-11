@@ -10,8 +10,8 @@ import {
    PostCardDetailsContainer,
    PostCardExcerpt,
    PostCardImage,
-   PostCardTags,
 } from '.';
+import Tags from '@components/tags/Tags.astro';
 
 const { post } = Astro.props;
 const { category, featured_image, title, date, author, excerpt, tags } =
@@ -52,7 +52,7 @@ const { category, featured_image, title, date, author, excerpt, tags } =
       </TagHeading>
       <PostCardDetails {author} {date} />
       <PostCardExcerpt {excerpt} />
-      <PostCardTags {tags} />
+      <Tags {tags} />
    </PostCardDetailsContainer>
 </PostCardContainer>
 

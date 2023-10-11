@@ -1,47 +1,50 @@
 ---
-import Tabs from '@components/Tabs.astro';
-import { PostCardTags } from '@components/postcard';
 import MainLayout from '@layouts/MainLayout.astro';
 import data from '@schemas/blog-data.json';
 import { getCollection } from 'astro:content';
+import type { Post } from 'types/utils';
+import { Posts } from '@components/postcard';
+import Tabs from '@components/Tabs/Tabs.astro';
+import { getCollectionFor } from '@js/server/utils';
+import { Icon } from 'astro-icon';
+import { getTagCounts, getTagsFor } from '@js/utils';
+import Tags from '@components/tags/Tags.astro';
 
-const blogs = {
-   latest: [],
-   pinned: [],
-   private: []
-
-};
-await getCollection('blog', (entry) => {
-   if(!entry.data.featured_post && !entry.data.is_private) {
-      blogs.latest.push(entry as never);
-   } else if(entry.data.is_private) {
-      blogs.private.push(entry as never);
-   } else if(entry.data.featured_post) {
-      blogs.pinned.push(entry as never);
-   }
-
-   return blogs;
-});
-const blogTags = [...blogs.latest, ...blogs.pinned, ...blogs.private]
-   .filter((entry: any) => !entry.data.is_private)
-   .flatMap((entry: any) => entry.data.tags) as [];
+const isAdmin = !!Astro.cookies.get('isAdmin');
+const blogs = await getCollectionFor('blog', isAdmin, getCollection);
+const blogTags = getTagsFor(isAdmin, blogs);
+const tagCounts = getTagCounts(blogTags);
 const uniqueTags = [...new Set(blogTags)] as [];
-const tagCounts = {};
-blogTags.forEach((tag) => {
-   if (tagCounts[tag]) {
-      tagCounts[tag]++;
-   } else {
-      tagCounts[tag] = 1 as never;
-   }
-});
+const keys = Object.keys(blogs);
 ---
 
 <MainLayout title={data.title} description={data.description}>
    <section class="container-blog-page" aria-label="Publicaciones Recientes">
       <div class="blog-page-tags">
-         <Tabs elements={blogs} />
+         <Tabs {keys} tabTitles={['Últimos artículos', 'Destacados', 'Privados']}>
+            {(key: string) => {
+               if(key === 'private' && !isAdmin) {
+                  return <div class="private-layout">
+                     <span>Este contenido es privado</span>
+                     <Icon
+                        name="carbon:virtual-private-cloud"
+                        height={44}
+                        width={44}
+                        class="contenido-privado-icon"
+                        alt="Contenido Privado"
+                     />
+                  </div>;
+               }
+
+               return <Fragment>
+                  <Posts entries={blogs[key] as Post[]} />
+                  <div class="post-card-tags">
+                     <Tags tags={uniqueTags} {tagCounts} classes="blog-page-tag" />
+                  </div>
+               </Fragment>;
+            }}
+         </Tabs>
       </div>
-      <!-- <Posts entries={blogs.latest as Post[]} /> -->
       <!-- <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} /> -->
    </section>
 </MainLayout>
@@ -52,5 +55,23 @@ blogTags.forEach((tag) => {
       .blog-page-tags {
          margin-bottom: 20px;
       }
+      .post-card-tags {
+         display: flex;
+         padding: 10px 0;
+      }
+      .private-layout {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f0f0f0;
+        font-size: var(--fs-lg);
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .contenido-privado-icon {
+        margin: 0 auto;
+    }
    }
 </style>

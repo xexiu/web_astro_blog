@@ -6,6 +6,7 @@ author: Sergiu Mironescu
 tags:
   - markdown
   - solidjs
+  - tagprivate
 category: FULLSTACK
 date: 2023-09-22T17:14:10+02:00
 featured_post: false

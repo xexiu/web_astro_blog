@@ -22,3 +22,9 @@ export type Post = {
    collection: string;
    data: PostData
 }
+
+export type Blog = {
+   latest: Post[];
+   pinned: Post[];
+   private: Post[];
+}

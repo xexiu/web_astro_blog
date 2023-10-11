@@ -12,7 +12,7 @@ import {
 import CodeBlock from '@components/markdown/CodeBlock.astro';
 import MarkdownImages from '@components/markdown/MarkdownImages.astro';
 import NormalizeLinks from '@components/markdown/NormalizeLinks.astro';
-import PostCardTags from '@components/postcard/PostCardTags.astro';
+import Tags from '@components/tags/Tags.astro';
 import MainLayout from '@layouts/MainLayout.astro';
 import '@styles/blog.css';
 import { Markdown } from 'astro-remote';
@@ -74,7 +74,7 @@ const { title, tags, excerpt } = entry.data;
             {excerpt}
          </TagHeading>
          <div class="tags-wrapper">
-            <PostCardTags {tags} />
+            <Tags {tags} />
          </div>
          <div class="markdown-wrapper">
             <Markdown

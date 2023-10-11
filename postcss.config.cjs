@@ -1,13 +1,14 @@
 module.exports = {
-   plugins: {
-      'postcss-mixins': {},
-      'postcss-extend': {},
-      'postcss-nesting': {},
-      'postcss-preset-env': {
+   plugins: [
+      require('postcss-mixins'),
+      require('postcss-extend'),
+      require('postcss-for'),
+      require('postcss-nesting'),
+      require('postcss-preset-env', {
          'stage': 0
-      },
-      'postcss-simple-vars': {},
-      cssnano: {},
-      autoprefixer: {},
-   }
+      }),
+      require('postcss-simple-vars'),
+      require('cssnano'),
+      require('autoprefixer')
+   ]
 };

@@ -2,35 +2,33 @@
 export const prerender = true;
 import TagHeading from '@components/common/TagHeading.astro';
 import Posts from '@components/postcard/Posts.astro';
-import { slugify } from '@js/utils';
+import { getCollectionFor } from '@js/server/utils';
+import { getPostsFor, slugify } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
-import type { Post } from 'types/utils';
 
 const isAdmin = !!Astro.cookies.get('isAdmin');
 
 export async function getStaticPaths() {
-   const blogEntries = await getCollection('blog');
-   const blogTags = blogEntries.flatMap((entry: any) => entry.data.tags);
+   const blogs = await getCollection('blog');
+   const blogTags = blogs.flatMap((entry: any) => entry.data.tags);
 
    return blogTags.map((tag: string) => ({
-      params: { tag: slugify(tag) }, props: { blogEntries },
+      params: { tag: slugify(tag) }
    }));
 }
 
-
 const { tag } = Astro.params;
-const { blogEntries } = Astro.props;
 
-const blogs = blogEntries.filter((entry: Post) => isAdmin ? entry : !entry.data.is_private);
-const tagPosts = blogs.filter((entry: Post) => entry.data.tags.includes(tag as string));
+const blogs = await getCollectionFor('blog', isAdmin, getCollection);
+const tagPosts = getPostsFor(blogs, tag);
 ---
 
 <MainLayout title={tag}>
    <section class="container" aria-label={`Posts about ${tag}`}>
       <span>Publicaciones etiquetadas con:</span>
       <TagHeading classes="post-tags" tag="h1">{tag}</TagHeading>
-      <Posts entries={tagPosts as Post[]} />
+      <Posts entries={tagPosts} />
    </section>
 </MainLayout>
 
