@@ -31,13 +31,13 @@ const { tabTitles, keys, classes = '' } = Astro.props;
 </div>
 
 <style>
-   @for $i from 0 to 7 {
-      .tabs-container:has(.radio-tab-$i:checked) .panel-$i {
+   .tabs-container:has(.radio-tab-0:checked) .panel-0,
+   .tabs-container:has(.radio-tab-1:checked) .panel-1,
+   .tabs-container:has(.radio-tab-2:checked) .panel-2 {
          visibility: visible;
          display: inline-block;
          opacity: 1;
       }
-   }
 
    .tabs-nav {
       display: flex;
