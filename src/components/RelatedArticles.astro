@@ -3,17 +3,16 @@ import type { Post } from 'types/utils';
 import TagHeading from './common/TagHeading.astro';
 import { PostCardContainer, PostCardDetails } from '@components/postcard';
 import { Link } from '@components/common/link';
+import { getRelatedArticles } from '@js/utils';
 
 const isAdmin = !!Astro.cookies.get('isAdmin');
 
 const { relatedArticles } = Astro.props;
-const blogs = relatedArticles.filter((entry: Post) =>
-   isAdmin ? entry : !entry.data.is_private,
-);
+const _relatedArticles = getRelatedArticles(isAdmin, relatedArticles);
 ---
 
 {
-   relatedArticles.length > 0 && (
+   _relatedArticles.length > 0 && (
       <aside class="container-related-posts" aria-label="Related posts">
          <TagHeading
             classes="related-articles-heading"
@@ -22,7 +21,7 @@ const blogs = relatedArticles.filter((entry: Post) =>
          >
             Artículos Relacionados
          </TagHeading>
-         {blogs.map((relatedArticle: Post) => (
+         {_relatedArticles.map((relatedArticle: Post) => (
             <PostCardContainer>
                <Link
                   href={`/blog/${relatedArticle.slug}`}

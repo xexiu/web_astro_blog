@@ -7,14 +7,12 @@ import { Posts } from '@components/postcard';
 import Tabs from '@components/Tabs/Tabs.astro';
 import { getCollectionFor } from '@js/server/utils';
 import { Icon } from 'astro-icon';
-import { getTagCounts, getTagsFor } from '@js/utils';
+import { getTagsFor } from '@js/utils';
 import Tags from '@components/tags/Tags.astro';
 
 const isAdmin = !!Astro.cookies.get('isAdmin');
 const blogs = await getCollectionFor('blog', isAdmin, getCollection);
 const blogTags = getTagsFor(isAdmin, blogs);
-const tagCounts = getTagCounts(blogTags);
-const uniqueTags = [...new Set(blogTags)] as [];
 const keys = Object.keys(blogs);
 ---
 
@@ -39,7 +37,7 @@ const keys = Object.keys(blogs);
                return <Fragment>
                   <Posts entries={blogs[key] as Post[]} />
                   <div class="post-card-tags">
-                     <Tags tags={uniqueTags} {tagCounts} classes="blog-page-tag" />
+                     <Tags tags={blogTags} showCountBadge={true} classes="blog-page-tag" />
                   </div>
                </Fragment>;
             }}

@@ -1,4 +1,4 @@
-import type { Blog } from 'types/utils';
+import type { Blog, Post } from 'types/utils';
 
 export async function getCollectionFor(collectionName: string, isAdmin: boolean, serverFunction: Function) {
    const blogs: Blog = {
@@ -7,7 +7,7 @@ export async function getCollectionFor(collectionName: string, isAdmin: boolean,
       private: []
 
    };
-   await serverFunction(collectionName, (entry) => {
+   await serverFunction(collectionName, (entry: Post) => {
       if(!entry.data.featured_post && !entry.data.is_private) {
          blogs.latest.push(entry);
       } else if(entry.data.is_private) {

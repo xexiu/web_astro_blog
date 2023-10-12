@@ -34,12 +34,18 @@ export async function getStaticPaths() {
          indexEntry,
          nextEntry: blogEntries[indexEntry + 1],
          prevEntry: blogEntries[indexEntry - 1],
-         relatedArticles: findRelatedPostsByTag(entry.data, 3, blogEntries),
+         relatedArticles: findRelatedPostsByTag({ currentPost: entry.data, maxRelatedPosts: 3, blogPosts: blogEntries }),
       },
    }));
 }
 
 const { entry, nextEntry, prevEntry, relatedArticles } = Astro.props;
+const isAdmin = !!Astro.cookies.get('isAdmin');
+
+if(!isAdmin && entry.data.is_private) {
+   return Astro.redirect('/404');
+}
+
 const { title, tags, excerpt } = entry.data;
 ---
 

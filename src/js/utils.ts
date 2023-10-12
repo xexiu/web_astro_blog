@@ -1,12 +1,12 @@
 import type { Post, PostData, Blog } from 'types/utils';
 
-export function updateTheme(value: string):void {
+export function updateTheme(value: string): void {
    document.documentElement.classList.remove('light', 'dark');
    document.documentElement.classList.add(value);
    localStorage.setItem('theme', value);
 }
 
-export function slugify(text: string):string {
+export function slugify(text: string): string {
    return text
       .toString()
       .toLowerCase()
@@ -17,17 +17,17 @@ export function slugify(text: string):string {
       .replace(/-+$/, '');
 }
 
-export function formatDate(date: string):string {
+export function formatDate(date: string): string {
    return new Date(date).toLocaleDateString('es-ES', {
       timeZone: 'GMT',
    });
 }
 
-export function isVisible(elem: HTMLElement):boolean {
+export function isVisible(elem: HTMLElement): boolean {
    return !!elem && !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
 }
 
-export function litenerHelper(element: HTMLElement, eventName: string, cb: Function):void {
+export function litenerHelper(element: HTMLElement, eventName: string, cb: Function): void {
 
    const eventListener = (event: Event) => {
       cb(event, element);
@@ -41,7 +41,7 @@ export function litenerHelper(element: HTMLElement, eventName: string, cb: Funct
    element.addEventListener(eventName, eventListener);
 }
 
-export function hideOnClickOutside(element: HTMLElement, cb: Function):void {
+export function hideOnClickOutside(element: HTMLElement, cb: Function): void {
    const outsideClickListener = (event: Event) => {
       const targetElement = event.target as HTMLElement;
 
@@ -58,7 +58,7 @@ export function hideOnClickOutside(element: HTMLElement, cb: Function):void {
    document.addEventListener('click', outsideClickListener);
 }
 
-export function markAsCurrentPage(elements: NodeListOf<Element>):void {
+export function markAsCurrentPage(elements: NodeListOf<Element>): void {
    elements.forEach((link: HTMLLinkElement) => {
       if (link.getAttribute('href') === window.location.pathname) {
          link.setAttribute('aria-current', 'page');
@@ -83,18 +83,18 @@ export function readingTime(text: string): object {
    };
 }
 
-export function isInViewport(el: HTMLElement, partiallyVisible = false):boolean {
+export function isInViewport(el: HTMLElement, partiallyVisible = false): boolean {
    const { top, left, bottom, right } = el.getBoundingClientRect();
    const { innerHeight, innerWidth } = window;
 
    return partiallyVisible
       ? ((top > 0 && top < innerHeight) ||
-        (bottom > 0 && bottom < innerHeight)) &&
-        ((left > 0 && left < innerWidth) || (right > 0 && right < innerWidth))
+         (bottom > 0 && bottom < innerHeight)) &&
+      ((left > 0 && left < innerWidth) || (right > 0 && right < innerWidth))
       : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth;
 }
 
-export function isInViewPortScrolling(el: HTMLElement):void {
+export function isInViewPortScrolling(el: HTMLElement): void {
    function scrollObserver() {
       document.removeEventListener('scroll', scrollObserver);
 
@@ -105,7 +105,8 @@ export function isInViewPortScrolling(el: HTMLElement):void {
 
 }
 
-export function findRelatedPostsByTag(currentPost: PostData, maxRelatedPosts = 3, blogPosts: Post[]): Post[] {
+export function findRelatedPostsByTag({ currentPost, maxRelatedPosts, minCommonTags = 2, blogPosts }:
+   { currentPost: PostData, maxRelatedPosts: number, minCommonTags?: number, blogPosts: Post[] }): Post[] {
    const relatedPosts = [];
 
    // Iterate through all blog posts
@@ -119,7 +120,7 @@ export function findRelatedPostsByTag(currentPost: PostData, maxRelatedPosts = 3
       );
 
       // You can adjust the threshold for similarity as per your requirements
-      if (commonTags.length >= 1) {
+      if (commonTags.length >= minCommonTags) {
          relatedPosts.push(post as never);
       }
 
@@ -130,7 +131,7 @@ export function findRelatedPostsByTag(currentPost: PostData, maxRelatedPosts = 3
    return relatedPosts;
 }
 
-export function setCookie(name: string, value: string, days:number):void {
+export function setCookie(name: string, value: string, days: number): void {
    var expires = '';
 
    if (days) {
@@ -139,33 +140,33 @@ export function setCookie(name: string, value: string, days:number):void {
       expires = '; expires=' + date.toUTCString();
    }
 
-   document.cookie = name + '=' + (value || '')  + expires + '; path=/';
+   document.cookie = name + '=' + (value || '') + expires + '; path=/';
 }
 
-export function getCookie(name:string):string {
+export function getCookie(name: string): string {
    var nameEQ = name + '=';
    var ca = document.cookie.split(';');
 
-   for(var i = 0;i < ca.length;i++) {
+   for (var i = 0; i < ca.length; i++) {
       var c = ca[i];
-      while (c.charAt(0) == ' ') c = c.substring(1,c.length);
-      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
    }
 
    return '';
 }
 
-export function eraseCookie(name: string):void {
+export function eraseCookie(name: string): void {
    document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
-export function getTagsFor(isAdmin: boolean, collection: Blog):[] {
+export function getTagsFor(isAdmin: boolean, collection: Blog): [] {
    return [...collection.latest, ...collection.pinned, ...collection.private]
       .filter((entry: any) => isAdmin ? entry : !entry.data.is_private)
       .flatMap((entry: any) => entry.data.tags) as [];
 }
 
-export function getPostsFor(blog: Blog, t: string | [] | undefined , helper = slugify):Post[] {
+export function getPostsFor(blog: Blog, t: string | [] | undefined, helper = slugify): Post[] {
    return [...blog.latest, ...blog.pinned, ...blog.private].filter((entry: Post) => {
       if (t instanceof Array) {
          return entry.data.tags.includes(t as any);
@@ -173,6 +174,21 @@ export function getPostsFor(blog: Blog, t: string | [] | undefined , helper = sl
 
       return helper ? helper(entry.data.category) === t : entry.data.author === t;
    });
+}
+
+export function getAllPostsFor(blog: Blog) {
+   const posts = [...blog.latest, ...blog.pinned, ...blog.private];
+
+   return posts.map((entry: Post, index: number) => ({
+      params: { slug: entry.slug },
+      props: {
+         entry,
+         indexEntry: index,
+         nextEntry: posts[index + 1],
+         prevEntry: posts[index - 1],
+         relatedArticles: findRelatedPostsByTag({ currentPost: entry.data, maxRelatedPosts: 3, blogPosts: posts }),
+      }
+   }));
 }
 
 export function getTagCounts(tags: []): object {
@@ -187,4 +203,10 @@ export function getTagCounts(tags: []): object {
    });
 
    return tagCounts;
+}
+
+export function getRelatedArticles(isAdmin: boolean, relatedArticles: Post[]): Post[] {
+   return relatedArticles.filter((entry: Post) =>
+      isAdmin ? entry : !entry.data.is_private,
+   );
 }
