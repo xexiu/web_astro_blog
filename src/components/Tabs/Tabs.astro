@@ -2,9 +2,9 @@
 import TabTitle from './TabTitle.astro';
 
 interface Props {
-   tabTitles: string[],
-   keys: string[],
-   classes?: string
+   tabTitles: string[];
+   keys: string[];
+   classes?: string;
 }
 
 const { tabTitles, keys, classes = '' } = Astro.props;
@@ -13,7 +13,9 @@ const { tabTitles, keys, classes = '' } = Astro.props;
 <div class:list={[`tabs-container tabs ${classes}`]}>
    <nav class="tabs-nav">
       {
-         tabTitles.map((tabTitle: string, index: number) => <TabTitle {tabTitle} {index} firstChecked={index === 0} />)
+         tabTitles.map((tabTitle: string, index: number) => (
+            <TabTitle {tabTitle} {index} firstChecked={index === 0} />
+         ))
       }
    </nav>
 
@@ -30,21 +32,15 @@ const { tabTitles, keys, classes = '' } = Astro.props;
    </div>
 </div>
 
-<style define:vars={{ keys }}>
-   @each $i in 0, 1, 2 {
+<style>
+   @each $val, $i in 0, 1, 2, 3, 4, 5, 6 {
       .tabs-container:has(.radio-tab-$i:checked) .panel-$i {
          visibility: visible;
          display: inline-block;
          opacity: 1;
+         color: $i;
       }
-}
-   /* @for $i from 0 to 7 {
-      .tabs-container:has(.radio-tab-$i:checked) .panel-$i {
-         visibility: visible;
-         display: inline-block;
-         opacity: 1;
-      }
-   } */
+   }
 
    .tabs-nav {
       display: flex;
