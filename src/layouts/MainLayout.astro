@@ -27,7 +27,11 @@ const {
    <MainHead {title} {description} {featured_image} {frontmatter} {robots} />
    <body id=`${Astro.url.pathname === '/' ? 'landing-main-body' : 'main-body'}`>
       <MainHeader>
-         <Logo />
+         <div class="left-section">
+            <Logo>
+               <slot name="search-bar" slot="search-bar" />
+            </Logo>
+         </div>
          <MainNav>
             <SocialIcons data={socialIcons} classes="header-social-icons" linkClass='tooltip' data-tooltip-placement="bottom" />
          </MainNav>
@@ -42,6 +46,10 @@ const {
 </html>
 
 <style is:inline>
+   .left-section {
+      display: flex;
+      align-items: center;
+   }
    #header .header-social-icons a {
       color: #f2f2f2;
    }

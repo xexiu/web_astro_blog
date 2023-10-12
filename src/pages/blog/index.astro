@@ -9,14 +9,17 @@ import { getCollectionFor } from '@js/server/utils';
 import { Icon } from 'astro-icon';
 import { getTagsFor } from '@js/utils';
 import Tags from '@components/tags/Tags.astro';
+import SearchBar from '@components/SearchBar.astro';
 
 const isAdmin = !!Astro.cookies.get('isAdmin');
 const blogs = await getCollectionFor('blog', isAdmin, getCollection);
 const blogTags = getTagsFor(isAdmin, blogs);
 const keys = Object.keys(blogs);
+
 ---
 
 <MainLayout title={data.title} description={data.description}>
+   <SearchBar data={[...blogs.latest, ...blogs.pinned]} slot="search-bar" />
    <section class="container-blog-page" aria-label="Publicaciones Recientes">
       <div class="blog-page-tags">
          <Tabs {keys} tabTitles={['Últimos artículos', 'Destacados', 'Privados']}>

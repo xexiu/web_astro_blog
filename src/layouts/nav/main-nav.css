@@ -44,7 +44,7 @@
 }
 
 @media screen and (width <= 650px) {
-    .header-main-nav .header-social-icons {
+    .header-main-nav .header-social-icons, #main-body:has(#click:checked) .search-box-container {
         display: none;
     }
 
