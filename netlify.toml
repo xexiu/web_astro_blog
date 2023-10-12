@@ -1,7 +1,7 @@
 # Configure Netlify builds.
 [build]
   publish = "dist/"
-  command = "bun run build"
+  command = "npm run build"
   functions = "netlify/functions"
 
 # Request bots not to index the admin section.
