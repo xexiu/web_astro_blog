@@ -129,7 +129,7 @@ const { title, tags, excerpt, category } = entry.data;
                   <Modal id="shareSocial" ariaLabel="Compartir en las redes">
                      <Icon name="octicon:share-16" height="18" width="18" slot="open-modal" />
                      <SocialShareTitle slot="modal-title" />
-                     <SocialShareOptions slot="modal-main" linkUrl={entry.slug} title={title} />
+                     <SocialShareOptions slot="modal-main" linkUrl={`https://xexiu.netlify.app/blog/${entry.slug}`} title={title} />
                      <SocialShareFooter slot="modal-footer" text={`https://xexiu.netlify.app/blog/${entry.slug}`} />
                   </Modal>
                </ArticleTools>
