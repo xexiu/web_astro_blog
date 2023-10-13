@@ -67,6 +67,7 @@
 
     #click:checked ~ [data-main-nav] .nav__links {
         left: 0%;
+        padding-top: 20px;
     }
 
     #click:checked ~ [data-main-nav] .header-social-icons {
