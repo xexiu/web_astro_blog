@@ -14,10 +14,12 @@ const lineNumbers = getLineNumbers(code);
 <div style="position: relative" data-lines={lineNumbers} data-language={lang}>
    <Code code={code} lang={lang} />
    <xe-copy-clipboard data-text={code}>
-      <CopyClipboard icon={{
-         width: '16',
-         height: '16'
-      }}/>
+      <div class="container-copyboard">
+         <CopyClipboard icon={{
+            width: '16',
+            height: '16'
+         }}/>
+      </div>
    </xe-copy-clipboard>
 </div>
 

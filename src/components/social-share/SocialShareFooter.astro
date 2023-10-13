@@ -11,13 +11,15 @@ const { text } = Astro.props;
 <xe-copy-clipboard-social data-text={text}>
    <div class="social-footer" id="main-social-footer">
       <div>{text}</div>
-      <CopyClipboard
-         disableTooltip
-         icon={{
-            width: '22',
-            height: '22',
-         }}
-      />
+      <div class="social-share-container">
+         <CopyClipboard
+            disableTooltip
+            icon={{
+               width: '22',
+               height: '22',
+            }}
+         />
+      </div>
    </div>
 </xe-copy-clipboard-social>
 
@@ -31,6 +33,14 @@ const { text } = Astro.props;
         border-radius: 4px;
         padding: 0 5px;
         border: 1px solid #757171;
+
+        .social-share-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+        }
 
         .copy-input {
             width: 100%;

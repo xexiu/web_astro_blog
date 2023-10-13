@@ -117,16 +117,23 @@
 		color: inherit;
 	}
 
-	.copy-clipboard-code {
+	.container-copyboard {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 25px;
+		height: 25px;
 		position: absolute;
 		right: 0;
 		top: -2px;
 		margin: 5px;
 		color: #f2f2f2;
 		cursor: pointer;
-		border: 1px solid #ccc;
-		border-radius: 4px;
-		padding: 2px;
+	}
+
+	.copy-clipboard-code {
+		width: 25px;
+		height: 25px;
 	}
 
 	/* Supporting Content */
