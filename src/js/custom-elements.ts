@@ -1,3 +1,5 @@
+import type { Post } from 'types/utils';
+
 export class SaveArticle extends HTMLElement {
    topBtn: HTMLElement | null;
    storagePosts: string | null;
@@ -186,5 +188,88 @@ export class TabActions extends HTMLElement {
             correspondingContent?.classList.add('active-content');
          });
       });
+   }
+}
+
+export class SearchBarHelper extends HTMLElement {
+   list: HTMLUListElement;
+
+   constructor() {
+      super();
+      this.list = this.querySelector('#list') as HTMLUListElement;
+      const searchInput = document.querySelector('.input-search');
+
+      const rawData: string | undefined = this.dataset.text;
+
+      let data: Post[] = [];
+
+      if (rawData) {
+         try {
+            data = JSON.parse(rawData);
+
+            if (!Array.isArray(data)) {
+               throw new Error('Parsed data is not an array');
+            }
+         } catch (error) {
+            throw new Error('Error parsing data: SearchBarHelper', error);
+         }
+      }
+
+      searchInput?.addEventListener('input', (e: InputEvent) => {
+         this.list.innerHTML = '';
+         const { value } = e.target as HTMLInputElement;
+
+         if (value && value.trim().length > 0) {
+            const searchTerm = value.trim().toLowerCase();
+
+            const filteredData = data && data
+               .filter((d: Post) => d.data.title.toLowerCase().includes(searchTerm))
+               .map((d: Post) => ({ slug: d.slug, data: { title: d.data.title } }));
+
+            this.setList(filteredData as Post[]);
+         } else {
+            this.list.innerHTML = '';
+         }
+      });
+   }
+
+   setList(results: Post[]): void {
+      if (results.length === 0) {
+         this.noResults();
+      }
+
+      for (const post of results) {
+         // creating a li element for each result item
+         const resultItem = document.createElement('li');
+         const resultLink = document.createElement('a');
+         resultLink.href = `/blog/${post.slug}`;
+
+         // adding a class to each item of the results
+         resultItem.classList.add('result-item');
+
+         // grabbing the name of the current point of the loop and adding the name as the list item's text
+         const text = document.createTextNode(post.data.title);
+         resultLink.appendChild(text);
+
+         // appending the text to the result item
+         resultItem.appendChild(resultLink);
+
+         // appending the result item to the list
+         this.list.appendChild(resultItem);
+      }
+   }
+
+   noResults() {
+      // create an element for the error; a list item ("li")
+      const error = document.createElement('li');
+      // adding a class name of "error-message" to our error element
+      error.classList.add('error-message');
+
+      // creating text for our element
+      const text = document.createTextNode('Resultados no encontrados!');
+      // appending the text to our element
+      error.appendChild(text);
+      // appending the error to our list element
+      this.list.appendChild(error);
    }
 }

@@ -1,0 +1,51 @@
+---
+import type { Post } from 'types/utils';
+import SearchIcon from '@components/search-bar/SearchIcon.astro';
+import SearchInput from '@components/search-bar/SearchInput.astro';
+import SearchResults from '@components/search-bar/SearchResults.astro';
+
+interface Props {
+   data: Post[];
+   classes?: string;
+}
+
+const { data, classes = '' } = Astro.props;
+---
+
+<xe-search-bar data-text={JSON.stringify(data)}>
+   <div class="search-box-container" class:list={[classes]}>
+      <SearchIcon />
+      <SearchInput />
+      <SearchResults />
+   </div>
+</xe-search-bar>
+
+<script>
+   import { SearchBarHelper } from '@js/custom-elements';
+
+   customElements.define('xe-search-bar', SearchBarHelper);
+</script>
+
+<style is:inline>
+   .search-box-container {
+      position: relative;
+      z-index: 10000;
+      display: flex;
+      height: 62px;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+   }
+
+   .search-box-container:has(#radio-input:checked) .input-search {
+      opacity: 1;
+      visibility: visible;
+      height: 62px;
+   }
+
+   .search-box-container:has(#radio-input:checked) .results-container {
+      opacity: 1;
+      visibility: visible;
+      height: auto;
+   }
+</style>

@@ -1,0 +1,71 @@
+<input type="checkbox" id="radio-input" data-modal="close" />
+<label for="radio-input" class="label-checkbox"></label>
+
+<style>
+    #radio-input {
+        width: 0;
+        height: 0;
+        visibility: hidden;
+        display: none;
+    }
+
+    label[for="radio-input"] {
+        width: 22px;
+        height: 22px;
+        position: relative;
+        display: block;
+        cursor: pointer;
+        color: white;
+        border: 2px solid white;
+        border-radius: 50%;
+        margin-top: 5px;
+        transition: all 1s;
+
+        &::before {
+            content: "";
+            position: absolute;
+            right: 7px;
+            top: 20px;
+            width: 2px;
+            height: 10px;
+            border: 2px solid white;
+            animation: beforeAnimation 0.5s forwards;
+        }
+    }
+    #radio-input:checked + label[for="radio-input"]::before {
+        content: "";
+        display: none;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    #radio-input:checked + label[for="radio-input"]::after {
+        content: "X";
+        font-size: 18px;
+        color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        animation: afterAnimation 0.5s forwards;
+    }
+
+    @keyframes beforeAnimation {
+        from {
+            transform: translate(0, -1em) rotate(0) translate(0, 0.875em);
+        }
+
+        to {
+            transform: translate(0, -1em) rotate(-45deg) translate(0, 0.875em);
+        }
+    }
+
+    @keyframes afterAnimation {
+        from {
+            transform: translate(-50%, -50%) scale(0);
+        }
+
+        to {
+            transform: translate(-50%, -50%) scale(1);
+        }
+    }
+</style>

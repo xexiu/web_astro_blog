@@ -29,7 +29,7 @@ const {
       <MainHeader>
          <div class="left-section">
             <Logo>
-               <slot name="search-bar" slot="search-bar" />
+               {Astro.url.pathname === '/blog' && <slot name="search-bar" slot="search-bar" />}
             </Logo>
          </div>
          <MainNav>

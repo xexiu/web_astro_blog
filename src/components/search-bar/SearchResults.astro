@@ -1,0 +1,39 @@
+<div class="results-container">
+   <ul class="results-list" id="list"></ul>
+</div>
+
+<style is:inline>
+    .results-container {
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgb(0 0 0 / 20%);
+        left: -120px;
+        position: absolute;
+        top: 120px;
+        width: 100vw;
+        z-index: 100000;
+        opacity: 0;
+        height: 0;
+        visibility: hidden;
+        padding: 0 20px;
+        transition:
+            opacity 0.8s,
+            height 0.8s;
+    }
+
+    .results-list {
+        list-style: none;
+        margin: 0;
+    }
+
+    .result-item a {
+        text-decoration: none;
+        color: #222;
+        border-top: 1px solid #ddd;
+        padding: 10px 0;
+        display: flex;
+    }
+
+    .result-item a:hover {
+        color: var(--color-red);
+    }
+</style>
