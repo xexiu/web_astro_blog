@@ -19,10 +19,16 @@ import { Markdown } from 'astro-remote';
 import { getCollection } from 'astro:content';
 import { ViewTransitions } from 'astro:transitions';
 import { Icon } from 'astro-icon';
-import { findRelatedPostsByTag } from '@js/utils';
+import { findRelatedPostsByTag, slugify } from '@js/utils';
 import RelatedArticles from '@components/RelatedArticles.astro';
 import TagHeading from '@components/common/TagHeading.astro';
 import FormCommentGiscus from '@components/FormCommentGiscus.astro';
+import { PostCardCategory } from '@components/postcard';
+import ArticleContainer from '@components/article/ArticleContainer.astro';
+import Modal from '@components/modal/Modal.astro';
+import SocialShareTitle from '@components/social-share/SocialShareTitle.astro';
+import SocialShareOptions from '@components/social-share/SocialShareOptions.astro';
+import SocialShareFooter from '@components/social-share/SocialShareFooter.astro';
 
 export async function getStaticPaths() {
    const blogEntries = await getCollection('blog');
@@ -34,7 +40,11 @@ export async function getStaticPaths() {
          indexEntry,
          nextEntry: blogEntries[indexEntry + 1],
          prevEntry: blogEntries[indexEntry - 1],
-         relatedArticles: findRelatedPostsByTag({ currentPost: entry.data, maxRelatedPosts: 3, blogPosts: blogEntries }),
+         relatedArticles: findRelatedPostsByTag({
+            currentPost: entry.data,
+            maxRelatedPosts: 3,
+            blogPosts: blogEntries,
+         }),
       },
    }));
 }
@@ -42,11 +52,11 @@ export async function getStaticPaths() {
 const { entry, nextEntry, prevEntry, relatedArticles } = Astro.props;
 const isAdmin = !!Astro.cookies.get('isAdmin');
 
-if(!isAdmin && entry.data.is_private) {
+if (!isAdmin && entry.data.is_private) {
    return Astro.redirect('/404');
 }
 
-const { title, tags, excerpt } = entry.data;
+const { title, tags, excerpt, category } = entry.data;
 ---
 
 <MainLayout
@@ -67,9 +77,16 @@ const { title, tags, excerpt } = entry.data;
          },
       ]}
    />
-   <article class="article-content-wrapper" transition:animate="slide">
+   <ArticleContainer ariaLabel={title}>
       <div class="article-top-prev-next-wrapper">
          <ArticleNavigation {prevEntry} {nextEntry} />
+      </div>
+
+      <div class="category-containter">
+         <PostCardCategory
+            href={`/blog/category/${slugify(category)}/`}
+            text={category}
+         />
       </div>
 
       <div class:list={['article-content']}>
@@ -109,26 +126,27 @@ const { title, tags, excerpt } = entry.data;
                         data-article-text={`título: ${title}, descripción: ${excerpt}, artículo: ${entry.body}`}
                         data-paused="false"></button>
                   </xe-article-speech>
-                  <button
-                     class="share-article tooltip"
-                     title="Compartir artículo"
-                     data-article-title={title}
-                     data-article-url={`/blog/${entry.slug}`}
-                     aria-label="Compartir artículo"
-                     data-tooltip-placement="left"
-                  >
-                     <Icon name="octicon:share-16" height="18" width="18" />
-                  </button>
+                  <Modal id="shareSocial" ariaLabel="Compartir en las redes">
+                     <Icon name="octicon:share-16" height="18" width="18" slot="open-modal" />
+                     <SocialShareTitle slot="modal-title" />
+                     <SocialShareOptions slot="modal-main" linkUrl={entry.slug} title={title} />
+                     <SocialShareFooter slot="modal-footer" text={`https://xexiu.netlify.app/blog/${entry.slug}`} />
+                  </Modal>
                </ArticleTools>
             </ArticleInfoContainer>
          </div>
       </div>
       <RelatedArticles {relatedArticles} />
       <FormCommentGiscus />
-   </article>
+   </ArticleContainer>
 </MainLayout>
 
 <style>
+   .category-containter {
+      padding: 10px 0;
+      margin: 10px 0;
+      position: relative;
+   }
    .share-article {
       width: 18px;
       height: 18px;
@@ -149,18 +167,10 @@ const { title, tags, excerpt } = entry.data;
       const { articleTitle } = shareBtn.dataset;
       const { articleUrl } = shareBtn.dataset;
 
-      // Fallback, Tries to use API only
-      // if navigator.share function is
-      // available
-
       if (navigator.share) {
          navigator
             .share({
-               // Title that occurs over
-               // web share dialog
                title: articleTitle,
-
-               // URL to share
                url: articleUrl,
             })
             .then(() => {
@@ -171,9 +181,6 @@ const { title, tags, excerpt } = entry.data;
                // console.log('Error while using Web share API:');
                // console.log(err);
             });
-      } else {
-         // Alerts user if API not available
-         alert('Browser doesn\'t support this API !');
       }
    });
 </script>

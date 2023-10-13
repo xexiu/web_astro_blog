@@ -1,0 +1,18 @@
+---
+interface Props {
+    ariaLabel: string;
+    classes?: string;
+}
+
+const { ariaLabel, classes } = Astro.props;
+---
+
+<section class="section-container" class:list={classes} aria-label={ariaLabel}>
+   <slot />
+</section>
+
+<style>
+    .section-container {
+        margin-bottom: 10px;
+    }
+</style>

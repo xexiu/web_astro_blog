@@ -1,0 +1,14 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+
+interface Props {
+    ariaLabel: string;
+    classes?: string;
+}
+const { ariaLabel, classes } = Astro.props;
+---
+
+<article class="article-content-wrapper" class:list={classes} transition:animate="slide" aria-label={ariaLabel}>
+   <ViewTransitions />
+   <slot />
+</article>

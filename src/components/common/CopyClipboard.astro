@@ -1,0 +1,88 @@
+---
+import { Icon } from 'astro-icon';
+
+interface Props {
+   disableTooltip?: boolean;
+   disableIcon?: boolean;
+   classes?: string;
+   icon?: {
+      name?: string;
+      side?: 'left' | 'right';
+      width?: string | '24';
+      height?: string | '24';
+      class?: string;
+   };
+}
+const defaultIconProps = {
+   name: 'ph:copy-light',
+   height: '22',
+   width: '22',
+};
+
+const {
+   disableTooltip = false,
+   disableIcon = false,
+   icon = defaultIconProps,
+   classes,
+} = Astro.props;
+const _icon = {
+   ...defaultIconProps,
+   ...icon,
+};
+---
+
+<button
+   id="copy-clipboard"
+   class={`copy-clipboard-code ${!disableTooltip ? 'tooltip' : ''}`}
+   data-tooltip-placement="left"
+   title="Guardar en el portapapeles"
+>
+   {
+      !disableIcon && icon && (
+         <Icon
+            name={_icon.name}
+            height={_icon.height}
+            width={_icon.width}
+            class="feedback-icon"
+         />
+      )
+   }
+   {
+      disableIcon && (
+         <span class="btn-blue feedback" class:list={[classes]}>
+            Copiar
+         </span>
+      )
+   }
+</button>
+
+<style is:inline>
+   #copy-clipboard {
+      cursor: pointer;
+
+      .btn-grey:hover {
+         cursor: auto;
+      }
+
+      .feedback-text {
+         width: 100%;
+         height: 100%;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         color: #999;
+         text-shadow: 0 -1px 0 rgb(0 0 0 / 30%);
+      }
+
+      .feedback-icon {
+         height: 100%;
+         width: 100%;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
+   }
+   #copy-clipboard .feedback-text:hover {
+      cursor: auto;
+   }
+</style>

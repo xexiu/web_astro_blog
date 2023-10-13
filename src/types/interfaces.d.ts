@@ -13,6 +13,7 @@ export interface LinkProps {
    borderVisible?: boolean;
    classes?: string;
    target: string;
+   isExternalLink?: boolean;
 }
 
 export interface HeadProps {

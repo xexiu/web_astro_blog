@@ -1,4 +1,5 @@
 import type { Post } from 'types/utils';
+import { litenerHelper } from './utils';
 
 export class SaveArticle extends HTMLElement {
    topBtn: HTMLElement | null;
@@ -144,19 +145,54 @@ export class CopyrightFooter extends HTMLElement {
    }
 }
 
-export class CopyCode extends HTMLElement {
+export class BaseCopyCode extends HTMLElement {
+   private text: string | undefined;
+
    constructor() {
       super();
-
+      this.text = this.dataset.text;
       const element = this.querySelector('.copy-clipboard-code') as HTMLElement;
+      const feedbackDiv = this.querySelector('.feedback') as HTMLElement;
+      const icon = this.querySelector('.feedback-icon') as HTMLElement;
 
       if (element) {
-         element.addEventListener('click', async () => {
-            await navigator.clipboard.writeText(this.dataset.text as string).then(() => {
-               element.title = 'Guardado!';
-            });
-         });
+         this.copyCoadToClipboard(element, feedbackDiv, icon);
       }
+   }
+   copyCoadToClipboard(element: HTMLElement, feedbackDiv: HTMLElement, icon: HTMLElement) {
+      litenerHelper(element, 'click', async (event: Event) => {
+         event.preventDefault();
+         await navigator.clipboard.writeText(this.text as string).then(() => {
+            element.title = 'Copiado!';
+
+            if(icon) {
+               icon.remove();
+               const spanEl = document.createElement('span');
+               spanEl.classList.add('feedback-text');
+               spanEl.innerHTML = '&#10004;';
+               element.appendChild(spanEl);
+            }
+
+            if (feedbackDiv) {
+               feedbackDiv.classList.remove('btn-blue');
+               feedbackDiv.classList.add('btn-grey');
+               feedbackDiv.innerText = 'Copiado';
+            }
+         });
+      });
+   }
+}
+
+export class CopyCode extends BaseCopyCode {
+   constructor() {
+      super();
+   }
+}
+
+export class SocialShareCopyCode extends BaseCopyCode {
+
+   constructor() {
+      super();
    }
 }
 

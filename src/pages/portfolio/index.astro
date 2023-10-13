@@ -1,21 +1,30 @@
 ---
-import { PostCard } from '@components/postcard';
+import { Posts } from '@components/postcard';
+import { getCollectionFor } from '@js/server/utils';
 import MainLayout from '@layouts/MainLayout.astro';
 import data from '@schemas/portfolio-data.json';
 import { getCollection } from 'astro:content';
+import Modal from '@components/modal/Modal.astro';
+import SocialShareTitle from '@components/social-share/SocialShareTitle.astro';
+import SocialShareOptions from '@components/social-share/SocialShareOptions.astro';
+import SocialShareFooter from '@components/social-share/SocialShareFooter.astro';
 
-const portfolioEntries = await getCollection('portfolio');
+const isAdmin = !!Astro.cookies.get('isAdmin');
+const portfolios = await getCollectionFor('portfolio', isAdmin, getCollection);
 ---
 
 <MainLayout title={data.title} description={data.description}>
    <section class="container" aria-label="Publicaciones Recientes">
       <div class="post-container">
-         {portfolioEntries.map((entry) => <PostCard post={entry} />)}
+         <Fragment>
+            <Posts entries={portfolios} />
+         </Fragment>
       </div>
-      <!-- <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
-      <aside class="container" aria-label="Blog categories">
-         <h2 class="h3">Blog Categories</h2>
-         <CategoryCloud showCount={true}/>
-      </aside> -->
+      <Modal id="shareSocial" ariaLabel="Compartir en las redes">
+         <div slot="open-modal">Open</div>
+         <SocialShareTitle slot="modal-title" />
+         <SocialShareOptions slot="modal-main" />
+         <SocialShareFooter slot="modal-footer" />
+      </Modal>
    </section>
 </MainLayout>

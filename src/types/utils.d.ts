@@ -15,12 +15,34 @@ export type PostData = {
    featured_image: PostDataFeaturedImage;
 }
 
+export type PortFolioData = {
+   category: string;
+   title: string;
+   excerpt: string;
+   tags: string[];
+   date: Date | string;
+   author: string;
+   github_project_link: string;
+   featured_portfolio?: boolean;
+   demo_link?: string;
+   video_link?: string;
+   featured_image: PostDataFeaturedImage;
+}
+
 export type Post = {
    id: string;
    slug: string;
    body: any;
    collection: string;
    data: PostData
+}
+
+export type PortFolio = {
+   id: string;
+   slug: string;
+   body: any;
+   collection: string;
+   data: PortFolioData
 }
 
 export type Blog = {

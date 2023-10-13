@@ -1,6 +1,6 @@
 ---
 import { Code } from 'astro:components';
-import { Icon } from 'astro-icon';
+import CopyClipboard from '@components/common/CopyClipboard.astro';
 
 const { lang, code } = Astro.props;
 
@@ -14,9 +14,10 @@ const lineNumbers = getLineNumbers(code);
 <div style="position: relative" data-lines={lineNumbers} data-language={lang}>
    <Code code={code} lang={lang} />
    <xe-copy-clipboard data-text={code}>
-      <span class="copy-clipboard-code tooltip" data-tooltip-placement="left" title="Guardar en el portapapeles">
-         <Icon name="ph:copy-light" height="16" width="16" />
-      </span>
+      <CopyClipboard icon={{
+         width: '16',
+         height: '16'
+      }}/>
    </xe-copy-clipboard>
 </div>
 

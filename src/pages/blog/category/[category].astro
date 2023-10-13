@@ -6,6 +6,7 @@ import { slugify, getPostsFor } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
 import { getCollectionFor } from '@js/server/utils';
+import SectionContainer from '@components/section/SectionContainer.astro';
 
 const isAdmin = !!Astro.cookies.get('isAdmin');
 
@@ -13,20 +14,25 @@ export async function getStaticPaths() {
    const blogEntries = await getCollection('blog');
 
    return blogEntries.map((entry) => ({
-      params: { category: slugify(entry.data.category) }
+      params: { category: slugify(entry.data.category) },
    }));
 }
 
 const { category } = Astro.params;
 const blogs = await getCollectionFor('blog', isAdmin, getCollection);
-const catPosts = getPostsFor({ propertyName: 'category', blog: blogs, property: String(category) });
+const catPosts = getPostsFor({
+   propertyName: 'category',
+   blog: blogs,
+   property: String(category),
+});
 ---
+
 <MainLayout title={category}>
-   <section class="container" aria-label={`Posts about ${category}`}>
+   <SectionContainer ariaLabel={`Posts about ${category}`}>
       <span>Publicaciones en la categoria:</span>
       <TagHeading classes="post-category" tag="h1">{category}</TagHeading>
       <Posts entries={catPosts} />
-   </section>
+   </SectionContainer>
 </MainLayout>
 
 <style>

@@ -1,0 +1,102 @@
+---
+import { isPlainString } from '@js/utils';
+import { Icon } from 'astro-icon';
+
+interface Props {
+  id: string;
+  ariaLabel: string;
+  classes?: string;
+}
+const { id, classes, ariaLabel } = Astro.props;
+
+if (!isPlainString(id)) {
+   throw new Error('Invalid Props: id must be a plain string.');
+}
+---
+
+<button onclick={`window.${id}.showModal()`}><slot name="open-modal" /></button>
+
+<dialog
+   id={id}
+   class="dialog-container"
+   class:list={classes}
+   aria-label={ariaLabel}
+>
+   <header class="modal-header">
+      <slot name="modal-title" />
+   </header>
+   <section>
+      <slot name="modal-main" />
+   </section>
+   <footer>
+      <slot name="modal-footer" />
+   </footer>
+   <form method="dialog">
+      <button class="close-btn-modal" aria-label="Close Modal">
+         <Icon
+            name="ep:close"
+            height={22}
+            width={22}
+            class="close-btn-modal-icon"
+            alt="Close Modal"
+            slot="close"
+         />
+      </button>
+   </form>
+</dialog>
+
+<style>
+  @keyframes fadeOpacityIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  dialog {
+    border: 0;
+    opacity: 0;
+    border-radius: 5px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    &::backdrop {
+      position: fixed;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      background: rgba(0, 0, 0, 0.9);
+    }
+  }
+  dialog[open] {
+    transition: opacity 1s;
+    animation: fadeOpacityIn 1s forwards;
+    cursor: auto;
+  }
+  .dialog-container {
+    position: relative;
+    padding: 15px;
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #ddd;
+    }
+  }
+  .close-btn-modal {
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    .close-btn-modal-icon {
+      opacity: 0.6;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+</style>

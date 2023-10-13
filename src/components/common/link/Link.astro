@@ -10,12 +10,11 @@ const {
    icon,
    isFilled = true,
    borderVisible = false,
+   isExternalLink = false,
    classes = 'link',
    ...rest
 } = Astro.props as LinkProps;
 
-const whitelistDomains = ['xexiu', 'sergiu.mironescu', 'linkedin.com/in/smironescu', 'stackoverflow.com/users/2193382/sergio-mironescu-iancu'];
-const isExternalLink = !whitelistDomains.find((whiteListDomain) => !!href.includes(whiteListDomain)) && !!href.includes('://');
 ---
 
 {

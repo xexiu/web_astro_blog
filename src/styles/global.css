@@ -124,8 +124,6 @@ body {
     font-family: 'Golos Text', "Lucida Grande", Tahoma, sans-serif;
     font-weight: normal;
     color: hsl(var(--txt));
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizelegibility;
 
     p {

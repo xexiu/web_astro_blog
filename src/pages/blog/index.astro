@@ -2,7 +2,6 @@
 import MainLayout from '@layouts/MainLayout.astro';
 import data from '@schemas/blog-data.json';
 import { getCollection } from 'astro:content';
-import type { Post } from 'types/utils';
 import { Posts } from '@components/postcard';
 import Tabs from '@components/Tabs/Tabs.astro';
 import { getCollectionFor } from '@js/server/utils';
@@ -10,69 +9,75 @@ import { Icon } from 'astro-icon';
 import { getTagsFor } from '@js/utils';
 import Tags from '@components/tags/Tags.astro';
 import SearchBar from '@components/search-bar/SearchBar.astro';
+import SectionContainer from '@components/section/SectionContainer.astro';
 
 const isAdmin = !!Astro.cookies.get('isAdmin');
 const blogs = await getCollectionFor('blog', isAdmin, getCollection);
 const blogTags = getTagsFor(isAdmin, blogs);
 const keys = Object.keys(blogs);
-
 ---
 
 <MainLayout title={data.title} description={data.description}>
    <SearchBar data={[...blogs.latest, ...blogs.pinned]} slot="search-bar" />
-   <section class="container-blog-page" aria-label="Publicaciones Recientes">
-      <div class="blog-page-tags">
-         <Tabs {keys} tabTitles={['Últimos artículos', 'Destacados', 'Privados']}>
-            {(key: string) => {
-               if(key === 'private' && !isAdmin) {
-                  return <div class="private-layout">
-                     <span>Este contenido es privado</span>
-                     <Icon
-                        name="carbon:virtual-private-cloud"
-                        height={44}
-                        width={44}
-                        class="contenido-privado-icon"
-                        alt="Contenido Privado"
-                     />
-                  </div>;
-               }
+   <SectionContainer ariaLabel="Publicaciones Recientes">
+      <div class="blog-page">
+         <Tabs
+            {keys}
+            tabTitles={['Últimos artículos', 'Destacados', 'Privados']}
+         >
+            {
+               (key: string) => {
+                  if (key === 'private' && !isAdmin) {
+                     return (
+                        <div class="private-layout">
+                           <span>Este contenido es privado</span>
+                           <Icon
+                              name="carbon:virtual-private-cloud"
+                              height={44}
+                              width={44}
+                              class="contenido-privado-icon"
+                              alt="Contenido Privado"
+                           />
+                        </div>
+                     );
+                  }
 
-               return <Fragment>
-                  <Posts entries={blogs[key] as Post[]} />
-                  <div class="post-card-tags">
-                     <Tags tags={blogTags} showCountBadge={true} classes="blog-page-tag" />
-                  </div>
-               </Fragment>;
-            }}
+                  return (
+                     <Fragment>
+                        <Posts entries={blogs[key]} />
+                        <div class="post-card-tags">
+                           <Tags
+                              tags={blogTags}
+                              showCountBadge={true}
+                              classes="blog-page-tag"
+                           />
+                        </div>
+                     </Fragment>
+                  );
+               }
+            }
          </Tabs>
       </div>
-      <!-- <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} /> -->
-   </section>
+   </SectionContainer>
 </MainLayout>
 
-<style>
-   .container-blog-page {
-      margin-bottom: 10px;
-      .blog-page-tags {
-         margin-bottom: 20px;
-      }
-      .post-card-tags {
-         display: flex;
-         padding: 10px 0;
-      }
-      .private-layout {
-        width: 100%;
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #f0f0f0;
-        font-size: var(--fs-lg);
-        text-align: center;
-        box-sizing: border-box;
-    }
+<style is:inline>
+   .post-card-tags {
+      display: flex;
+      padding: 10px 0;
+   }
+   .private-layout {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f0f0f0;
+      font-size: var(--fs-lg);
+      text-align: center;
+      box-sizing: border-box;
+   }
 
-    .contenido-privado-icon {
-        margin: 0 auto;
-    }
+   .contenido-privado-icon {
+      margin: 0 auto;
    }
 </style>

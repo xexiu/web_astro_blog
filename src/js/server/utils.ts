@@ -1,13 +1,24 @@
 import type { Blog, Post } from 'types/utils';
 
-export async function getCollectionFor(collectionName: string, isAdmin: boolean, serverFunction: Function) {
+export async function getCollectionFor(collectionName: string, isAdmin: boolean, serverFunction: Function): Promise<any> {
+   switch(collectionName) {
+   case 'blog':
+      return await buildWithBlogs(isAdmin, serverFunction);
+   default:
+      return await serverFunction(collectionName);
+   }
+
+}
+
+export async function buildWithBlogs(isAdmin: boolean, serverFunction: Function): Promise<Blog> {
    const blogs: Blog = {
       latest: [],
       pinned: [],
       private: []
 
    };
-   await serverFunction(collectionName, (entry: Post) => {
+
+   await serverFunction('blog', (entry: Post) => {
       if(!entry.data.featured_post && !entry.data.is_private) {
          blogs.latest.push(entry);
       } else if(entry.data.is_private) {
