@@ -11,12 +11,14 @@ const { src, alt, classes, width, height, ...rest } = Astro.props;
 <script>
    import { isInViewport } from '@js/utils';
 
-   var cardImages = document.querySelectorAll('.post-card-img') as NodeListOf<HTMLElement>;
+   var cardImages = document.querySelectorAll(
+      '.post-card-img',
+   ) as NodeListOf<HTMLElement>;
 
    cardImages.forEach((cardImage) => {
       const isInViewPort = isInViewport(cardImage, true);
 
-      if(cardImage && isInViewPort) {
+      if (cardImage && isInViewPort) {
          cardImage.removeAttribute('loading');
       }
    });
@@ -27,9 +29,11 @@ const { src, alt, classes, width, height, ...rest } = Astro.props;
       flex-shrink: 0;
       border-radius: 5px;
       position: relative;
+      max-width: 200px;
+      max-height: 130px;
 
       img {
-         width: 200px;
+         width: 100%;
          height: 100%;
       }
    }

@@ -29,7 +29,7 @@ const uniqueTags = [...new Set(tags)] as [];
    }
 </div>
 
-<style>
+<style is:inline>
    .post-card-tags {
       width: 100%;
       overflow: hidden;
@@ -37,10 +37,9 @@ const uniqueTags = [...new Set(tags)] as [];
    .tag-container {
       position: relative;
       .tag-count {
-         color: transparent;
+         color: #666;
          text-shadow: 0 2px 3px rgb(255 255 255 / 80%);
          background-clip: text;
-         background-color: #222;
          border: 1px solid #999;
          border-radius: 2em;
          padding: 0 7px;
