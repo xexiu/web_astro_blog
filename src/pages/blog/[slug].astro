@@ -160,7 +160,7 @@ const { title, tags, excerpt, category } = entry.data;
 </script>
 
 <script>
-   const shareBtn = document.querySelector('.share-article') as HTMLElement;
+   const shareBtn = document.querySelector('#share-article') as HTMLElement;
 
    shareBtn?.addEventListener('click', (event: Event) => {
       event.preventDefault();
@@ -181,6 +181,8 @@ const { title, tags, excerpt, category } = entry.data;
                // console.log('Error while using Web share API:');
                // console.log(err);
             });
+      } else {
+         alert('BLAAA');
       }
    });
 </script>
