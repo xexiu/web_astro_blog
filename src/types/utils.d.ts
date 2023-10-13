@@ -28,3 +28,17 @@ export type Blog = {
    pinned: Post[];
    private: Post[];
 }
+
+export type RelatedArticles = {
+   currentPost: PostData,
+   maxRelatedPosts: number,
+   minCommonTags?: number,
+   blogPosts: Post[]
+}
+
+export type PostFor = {
+   propertyName: string,
+   blog: Blog,
+   property: string,
+   helper?: Function
+}

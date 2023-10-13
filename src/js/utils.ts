@@ -1,4 +1,4 @@
-import type { Post, PostData, Blog } from 'types/utils';
+import type { Post, PostData, Blog, RelatedArticles, PostFor } from 'types/utils';
 
 export function updateTheme(value: string): void {
    document.documentElement.classList.remove('light', 'dark');
@@ -105,8 +105,7 @@ export function isInViewPortScrolling(el: HTMLElement): void {
 
 }
 
-export function findRelatedPostsByTag({ currentPost, maxRelatedPosts, minCommonTags = 2, blogPosts }:
-   { currentPost: PostData, maxRelatedPosts: number, minCommonTags?: number, blogPosts: Post[] }): Post[] {
+export function findRelatedPostsByTag({ currentPost, maxRelatedPosts, minCommonTags = 2, blogPosts }: RelatedArticles): Post[] {
    const relatedPosts = [];
 
    // Iterate through all blog posts
@@ -166,13 +165,15 @@ export function getTagsFor(isAdmin: boolean, collection: Blog): [] {
       .flatMap((entry: any) => entry.data.tags) as [];
 }
 
-export function getPostsFor(blog: Blog, t: string | [] | undefined, helper = slugify): Post[] {
+export function getPostsFor({ propertyName, blog, property, helper = slugify }: PostFor): Post[] {
    return [...blog.latest, ...blog.pinned, ...blog.private].filter((entry: Post) => {
-      if (t instanceof Array) {
-         return entry.data.tags.includes(t as any);
+      if (propertyName === 'tags') {
+         return entry.data.tags.includes(property as any);
+      } else if(propertyName === 'category') {
+         return helper(entry.data.category) === property;
       }
 
-      return helper ? helper(entry.data.category) === t : entry.data.author === t;
+      return entry.data.author === property;
    });
 }
 

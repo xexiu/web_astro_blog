@@ -1,4 +1,5 @@
 ---
+export const prerender = true;
 import TagHeading from '@components/common/TagHeading.astro';
 import Posts from '@components/postcard/Posts.astro';
 import { getCollectionFor } from '@js/server/utils';
@@ -20,7 +21,7 @@ export async function getStaticPaths() {
 const { tag } = Astro.params;
 
 const blogs = await getCollectionFor('blog', isAdmin, getCollection);
-const tagPosts = getPostsFor(blogs, tag);
+const tagPosts = getPostsFor({ propertyName: 'tags', blog: blogs, property: String(tag) });
 ---
 
 <MainLayout title={tag}>

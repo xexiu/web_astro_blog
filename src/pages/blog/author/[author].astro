@@ -1,7 +1,8 @@
 ---
+export const prerender = true;
 import Posts from '@components/postcard/Posts.astro';
 import TagHeading from '@components/common/TagHeading.astro';
-import { getPostsFor } from '@js/utils';
+import { getPostsFor, slugify } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
 import { getCollectionFor } from '@js/server/utils';
@@ -16,20 +17,21 @@ export async function getStaticPaths() {
 
    return allAuthors.map((author) => {
       return {
-         params: { author }
+         props: { authorName: author },
+         params: { author: slugify(author) }
       };
    });
 }
 
-const { author } = Astro.params;
+const { authorName } = Astro.props;
 const blogs = await getCollectionFor('blog', isAdmin, getCollection);
-const authorPosts = getPostsFor(blogs, author);
+const authorPosts = getPostsFor({ propertyName: 'author', blog: blogs, property: authorName });
 ---
 
-<MainLayout title={author}>
-   <section class="container" aria-label={`Posts by ${author}`}>
+<MainLayout title={authorName}>
+   <section class="container" aria-label={`Posts by ${authorName}`}>
       <span>Publicaciones hechas por:</span>
-      <TagHeading classes="post-author" tag="h1">{author}</TagHeading>
+      <TagHeading classes="post-author" tag="h1">{authorName}</TagHeading>
       <Posts entries={authorPosts} />
    </section>
 </MainLayout>
