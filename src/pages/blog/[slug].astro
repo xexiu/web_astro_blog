@@ -29,6 +29,8 @@ import Modal from '@components/modal/Modal.astro';
 import SocialShareTitle from '@components/social-share/SocialShareTitle.astro';
 import SocialShareOptions from '@components/social-share/SocialShareOptions.astro';
 import SocialShareFooter from '@components/social-share/SocialShareFooter.astro';
+import SearchBar from '@components/search-bar/SearchBar.astro';
+import { getCollectionFor } from '@js/server/utils';
 
 export async function getStaticPaths() {
    const blogEntries = await getCollection('blog');
@@ -51,6 +53,7 @@ export async function getStaticPaths() {
 
 const { entry, nextEntry, prevEntry, relatedArticles } = Astro.props;
 const isAdmin = !!Astro.cookies.get('isAdmin');
+const blogs = await getCollectionFor('blog', isAdmin, getCollection);
 
 if (!isAdmin && entry.data.is_private) {
    return Astro.redirect('/404');
@@ -65,6 +68,7 @@ const { title, tags, excerpt, category } = entry.data;
    featured_image={entry.data.featured_image}
    frontmatter={entry}
 >
+   <SearchBar data={[...blogs.latest, ...blogs.pinned]} slot="search-bar" />
    <ViewTransitions />
    <Breadcrumbs
       links={[

@@ -44,7 +44,11 @@
 }
 
 @media screen and (width <= 650px) {
-    .header-main-nav .header-social-icons, #main-body:has(#click:checked) .search-box-container {
+    .header-main-nav .header-social-icons {
+        display: none;
+    }
+
+    #main-body:has(#click:checked) .search-box-container {
         display: none;
     }
 
