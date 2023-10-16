@@ -6,7 +6,7 @@ interface Props {
    tags: [];
    tagCounts?: object;
    classes?: string;
-   showCountBadge?: boolean
+   showCountBadge?: boolean;
 }
 const { tags, tagCounts, showCountBadge = false, ...rest } = Astro.props;
 
@@ -32,10 +32,14 @@ const uniqueTags = [...new Set(tags)] as [];
 <style is:inline>
    .post-card-tags {
       width: 100%;
-      overflow: hidden;
+      overflow: auto;
+      white-space: nowrap;
+      display: flex;
    }
    .tag-container {
-      position: relative;
+      display: inline-block;
+      white-space: nowrap;
+      margin-right: 10px;
       .tag-count {
          color: #666;
          text-shadow: 0 2px 3px rgb(255 255 255 / 80%);
