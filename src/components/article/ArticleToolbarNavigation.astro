@@ -89,7 +89,7 @@ if(isAdmin && nextEntry?.data.is_private) {
    .prev-article {
       justify-content: flex-start;
       & span {
-         padding-left: 25px;
+         padding-left: 15px;
          font-size: 15px;
       }
       &:before {
@@ -99,7 +99,7 @@ if(isAdmin && nextEntry?.data.is_private) {
          content: "";
          position: absolute;
          top: 5px;
-         left: 8px;
+         left: 0;
          transition: background 0.2s linear;
          width: 15px;
          height: 10px;
@@ -110,7 +110,7 @@ if(isAdmin && nextEntry?.data.is_private) {
    .next-article {
       justify-content: flex-end;
       & span {
-         padding-right: 25px;
+         padding-right: 15px;
          text-align: end;
          font-size: 15px;
       }
@@ -121,7 +121,7 @@ if(isAdmin && nextEntry?.data.is_private) {
          content: "";
          position: absolute;
          top: 5px;
-         right: 0px;
+         right: -7px;
          transition: background 0.2s linear;
          width: 15px;
          height: 10px;

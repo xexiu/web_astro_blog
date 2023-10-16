@@ -119,23 +119,46 @@ const { title, tags, excerpt, category } = entry.data;
                   <ArticleReadingTime post={entry} />
                </ArticleAuthorContainer>
                <ArticleTools>
-                  <xe-article-speech
-                     class="tooltip"
-                     title="Escuchar artículo"
-                     data-tooltip-placement="top"
-                  >
-                     <button
-                        aria-label="Escuchar artículo"
-                        class="listen-article"
-                        data-article-text={`título: ${title}, descripción: ${excerpt}, artículo: ${entry.body}`}
-                        data-paused="false"></button>
-                  </xe-article-speech>
-                  <Modal id="shareSocial" ariaLabel="Compartir en las redes">
-                     <Icon name="octicon:share-16" height="18" width="18" slot="open-modal" />
-                     <SocialShareTitle slot="modal-title" />
-                     <SocialShareOptions slot="modal-main" linkUrl={`https://xexiu.netlify.app/blog/${entry.slug}`} title={title} />
-                     <SocialShareFooter slot="modal-footer" text={`https://xexiu.netlify.app/blog/${entry.slug}`} />
-                  </Modal>
+                  <div class="article-speech-container">
+                     <xe-article-speech
+                        class="tooltip xe-article-speech"
+                        title="Escuchar artículo"
+                        data-tooltip-placement="top"
+                     >
+                        <button
+                           aria-label="Escuchar artículo"
+                           class="listen-article"
+                           data-article-text={`título: ${title}, descripción: ${excerpt}, artículo: ${entry.body}`}
+                           data-paused="false"
+                        >
+                        </button>
+                     </xe-article-speech>
+                  </div>
+                  <div class="article-share-container">
+                     <Modal
+                        id="shareSocial"
+                        ariaLabel="Compartir en las redes"
+                        modalBtnClass="modal-button"
+                     >
+                        <Icon
+                           name="octicon:share-16"
+                           height="28"
+                           width="28"
+                           slot="open-modal"
+                           class="icon-share-modal"
+                        />
+                        <SocialShareTitle slot="modal-title" />
+                        <SocialShareOptions
+                           slot="modal-main"
+                           linkUrl={`https://xexiu.netlify.app/blog/${entry.slug}`}
+                           title={title}
+                        />
+                        <SocialShareFooter
+                           slot="modal-footer"
+                           text={`https://xexiu.netlify.app/blog/${entry.slug}`}
+                        />
+                     </Modal>
+                  </div>
                </ArticleTools>
             </ArticleInfoContainer>
          </div>
@@ -144,18 +167,6 @@ const { title, tags, excerpt, category } = entry.data;
       <FormCommentGiscus />
    </ArticleContainer>
 </MainLayout>
-
-<style>
-   .category-containter {
-      padding: 10px 0;
-      margin: 10px 0;
-      position: relative;
-   }
-   .share-article {
-      width: 18px;
-      height: 18px;
-   }
-</style>
 
 <script>
    import { ArticleSpeech } from '@js/custom-elements';

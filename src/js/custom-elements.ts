@@ -98,7 +98,7 @@ export class ArticleSpeech extends HTMLElement {
 
       window.speechSynthesis.cancel();
 
-      btn?.addEventListener('click', (event: Event) => {
+      this?.addEventListener('click', (event: Event) => {
          event.preventDefault();
 
          if (btn.classList.contains('pause')) {
