@@ -48,4 +48,8 @@ const { data, classes = '' } = Astro.props;
       visibility: visible;
       height: auto;
    }
+
+   #main-body:has(#click:checked) .search-box-container {
+        display: none;
+   }
 </style>

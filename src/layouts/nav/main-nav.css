@@ -44,10 +44,6 @@
 }
 
 @media screen and (width <= 650px) {
-    #main-body:has(#click:checked) .search-box-container {
-        display: none;
-    }
-
     #main-body:has(#click:checked) .header-main-nav {
         width: 100%;
     }
@@ -81,10 +77,6 @@
 
     #click:checked ~ .menu-btn {
         position: fixed;
-    }
-
-    .logo {
-        z-index: 102;
     }
 
     .menu-btn {
