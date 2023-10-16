@@ -151,7 +151,8 @@ const { title, tags, excerpt, category } = entry.data;
                         <SocialShareOptions
                            slot="modal-main"
                            linkUrl={`https://xexiu.netlify.app/blog/${entry.slug}`}
-                           title={title}
+                           {title}
+                           {excerpt}
                         />
                         <SocialShareFooter
                            slot="modal-footer"

@@ -4,10 +4,6 @@ import { getCollectionFor } from '@js/server/utils';
 import MainLayout from '@layouts/MainLayout.astro';
 import data from '@schemas/portfolio-data.json';
 import { getCollection } from 'astro:content';
-import Modal from '@components/modal/Modal.astro';
-import SocialShareTitle from '@components/social-share/SocialShareTitle.astro';
-import SocialShareOptions from '@components/social-share/SocialShareOptions.astro';
-import SocialShareFooter from '@components/social-share/SocialShareFooter.astro';
 
 const isAdmin = !!Astro.cookies.get('isAdmin');
 const portfolios = await getCollectionFor('portfolio', isAdmin, getCollection);
@@ -20,11 +16,5 @@ const portfolios = await getCollectionFor('portfolio', isAdmin, getCollection);
             <Posts entries={portfolios} />
          </Fragment>
       </div>
-      <Modal id="shareSocial" ariaLabel="Compartir en las redes">
-         <div slot="open-modal">Open</div>
-         <SocialShareTitle slot="modal-title" />
-         <SocialShareOptions slot="modal-main" />
-         <SocialShareFooter slot="modal-footer" />
-      </Modal>
    </section>
 </MainLayout>

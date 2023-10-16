@@ -1,0 +1,38 @@
+{
+    "facebook": {
+        "icon": {
+            "name": "jam:facebook"
+        },
+        "shareLink": "https://www.facebook.com/sharer.php?u={__url__}"
+    },
+    "linkedin": {
+        "icon": {
+            "name": "dashicons:linkedin"
+        },
+        "shareLink": "https://www.linkedin.com/shareArticle?mini=true&url={__url__}&title={__title__}&summary={__excerpt__}"
+    },
+    "reddit": {
+        "icon": {
+            "name": "la:reddit"
+        },
+        "shareLink": "https://www.reddit.com/submit?url={__url__}&title={__title__}"
+    },
+    "telegram": {
+        "icon": {
+            "name": "iconoir:telegram"
+        },
+        "shareLink": "https://t.me/share/url?url={__url__}&text={__excerpt__}"
+    },
+    "twitter": {
+        "icon": {
+            "name": "brandico:twitter"
+        },
+        "shareLink": "https://twitter.com/intent/tweet?url={__url__}&text=${__title__}"
+    },
+    "whatsapp": {
+        "icon": {
+            "name": "mdi:whatsapp"
+        },
+        "shareLink": "https://api.whatsapp.com/send?text={__excerpt__} {__url__}"
+    }
+}

@@ -8,9 +8,9 @@ interface Props {
 const { text } = Astro.props;
 ---
 
-<xe-copy-clipboard-social data-text={text}>
+<xe-copy-clipboard-social class="social-footer-container" data-text={text}>
    <div class="social-footer" id="main-social-footer">
-      <div>{text}</div>
+      <div class="social-text-link">{text}</div>
       <div class="social-share-container">
          <CopyClipboard
             disableTooltip
@@ -24,6 +24,16 @@ const { text } = Astro.props;
 </xe-copy-clipboard-social>
 
 <style>
+    .social-footer-container,
+    .social-text-link {
+        display: flex;
+    }
+    .social-text-link {
+        max-width: 250px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
     .social-footer {
         display: flex;
         align-items: center;

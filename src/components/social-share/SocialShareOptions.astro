@@ -1,53 +1,65 @@
 ---
 import { Link } from '@components/common/link';
+import data from './share-data.json';
+import { formatString } from '@js/utils';
 
 interface Props {
-    linkUrl: string;
-    title: string;
+   linkUrl: string;
+   title: string;
+   excerpt: string;
 }
 
-const { linkUrl, title } = Astro.props;
+const { linkUrl, title, excerpt } = Astro.props;
+const socials = Object.keys(data);
 ---
-
-<!--
-         https://www.facebook.com/sharer.php?u=LINKref=social-share
-         https://twitter.com/intent/tweet?url=https://www.example.com/page&text=Check%20out%20this%20awesome%20page?ref=social-share
-         https://www.reddit.com/submit?url=[URL]&title=[Title]
-         https://www.linkedin.com/shareArticle?mini=true&url=[URL]&title=[Title]&summary=[Summary]&source=[Source]
-         https://api.whatsapp.com/send?text=[Your message] [URL]
-         https://t.me/share/url?url=[URL]&text=[Your message]
-      -->
 
 <div class="share__modal__options" slot="social-options">
    <ul class="list">
-      <li class="list__item">
-         <Link
-            icon={{
-               name: 'brandico:twitter',
-               side: 'left',
-               width: '22',
-               height: '22',
-            }}
-            href={`https://twitter.com/intent/tweet?url=${linkUrl}?ref=social-share-twitter&text=${encodeURIComponent(title)}`}
-            alt="Share on Twitter (X)"
-            isFilled={false}
-            aria-label="Share on Twitter (X)"
-            data-icon="twitter"
-            isExternalLink={false}
-            target="_blank"
-         />
-      </li>
+      {
+         socials.map((social) => {
+            const socialData = data[social];
+
+            return (
+               <li class="list__item">
+                  <Link
+                     icon={{
+                        name: socialData.icon.name,
+                        side: 'left',
+                        width: '22',
+                        height: '22',
+                     }}
+                     href={formatString(
+                        socialData.shareLink,
+                        {
+                           __url__: encodeURIComponent(`${linkUrl}?ref=social-share-${social}`),
+                           __title__: encodeURIComponent(title),
+                           __excerpt__: encodeURIComponent(excerpt)
+                        }
+                     )}
+                     alt={`Share on ${social}`}
+                     isFilled={false}
+                     aria-label={`Share on ${social}`}
+                     data-icon={social}
+                     isExternalLink={false}
+                     target="_blank"
+                  />
+               </li>
+            );
+         })
+      }
    </ul>
 </div>
 
 <style>
-    .share__modal__options {
-      margin-top: 10px;
+   .share__modal__options {
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
    }
    .list {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      row-gap: 1.5em;
+      grid-template-columns: repeat(6, 1fr);
+      row-gap: 1em;
       column-gap: 1em;
       padding: 0;
       margin: 0;
@@ -66,8 +78,10 @@ const { linkUrl, title } = Astro.props;
       height: 44px;
       width: 44px;
       color: #222;
+      transition: all 0.5s;
       &:hover {
-         border: 1px solid #666;
+         background-color: var(--color-red);
+         transition: all 0.5s;
       }
       a {
          display: flex;
@@ -78,6 +92,14 @@ const { linkUrl, title } = Astro.props;
          text-decoration: none;
          padding: 10px 0;
          color: #222;
+         &:hover {
+            color: white;
+         }
+      }
+   }
+   @media screen and (width <= 650px) {
+      .list {
+         grid-template-columns: repeat(3, 1fr);
       }
    }
 </style>

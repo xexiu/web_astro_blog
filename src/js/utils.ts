@@ -213,9 +213,29 @@ export function getRelatedArticles(isAdmin: boolean, relatedArticles: Post[]): P
 }
 
 export function isPlainString(input: string): boolean {
-   // Define a regular expression pattern that allows only letters and numbers
    const pattern = /^[a-zA-Z0-9\s]*$/;
 
-   // Use the test method to check if the input matches the pattern
    return pattern.test(input);
+}
+
+export function formatString(template: string, options: object): string {
+   const regex = /\{(__\w+__)}/g;
+   const matches = template.match(regex);
+
+   if (matches) {
+      matches.forEach((match) => {
+         const placeholder = match.slice(1, -1);
+
+
+         for (const key in options) {
+            if (placeholder === key) {
+               // eslint-disable-next-line no-param-reassign
+               template = template.replace(match, options[key]);
+               break;
+            }
+         }
+      });
+   }
+
+   return template;
 }
