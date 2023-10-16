@@ -10,7 +10,7 @@ html {
 }
 
 html::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
     border-radius: 5px;
 }
 

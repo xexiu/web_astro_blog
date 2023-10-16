@@ -32,9 +32,8 @@ const {
                <slot name="search-bar" slot="search-bar" />
             </Logo>
          </div>
-         <MainNav>
-            <SocialIcons data={socialIcons} classes="header-social-icons" linkClass='tooltip' data-tooltip-placement="bottom" />
-         </MainNav>
+         <SocialIcons data={socialIcons} classes="header-social-icons" linkClass='tooltip' data-tooltip-placement="bottom" />
+         <MainNav />
          <!-- <ToggleTheme style={{ marginLeft: 'auto' }} /> -->
       </MainHeader>
       <main id=`${Astro.url.pathname === '/' ? 'homepage' : 'page'}`>

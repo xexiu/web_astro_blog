@@ -46,7 +46,7 @@ const { data, classes, style, linkClass, ...rest } = Astro.props;
    }
 </div>
 
-<style>
+<style is:inline>
    .social-icons {
       display: flex;
       justify-content: center;
@@ -56,5 +56,19 @@ const { data, classes, style, linkClass, ...rest } = Astro.props;
    .social-icons a {
       margin: 0 5px;
       color: black;
+   }
+   @media screen and (width <= 650px) {
+      .main-header .header-social-icons {
+         display: none;
+      }
+      #main-body:has(#click:checked) .header-social-icons {
+         display: flex;
+         left: 0;
+         position: absolute;
+         z-index: 102;
+         bottom: calc(100px - 90vh);
+         left: 50%;
+         transform: translate(-50%, -50%);
+      }
    }
 </style>

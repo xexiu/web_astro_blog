@@ -2,7 +2,7 @@
 import MainLayout from '@layouts/MainLayout.astro';
 import data from '@schemas/blog-data.json';
 import { getCollection } from 'astro:content';
-import { Posts } from '@components/postcard';
+import Posts from '@components/postcard/Posts.astro';
 import Tabs from '@components/Tabs/Tabs.astro';
 import { getCollectionFor } from '@js/server/utils';
 import { Icon } from 'astro-icon';

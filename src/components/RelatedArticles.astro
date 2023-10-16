@@ -1,9 +1,10 @@
 ---
 import type { Post } from 'types/utils';
 import TagHeading from './common/TagHeading.astro';
-import { PostCardContainer, PostCardDetails } from '@components/postcard';
 import { Link } from '@components/common/link';
 import { getRelatedArticles } from '@js/utils';
+import PostCardContainer from './postcard/PostCardContainer.astro';
+import PostCardDetails from './postcard/PostCardDetails.astro';
 
 const isAdmin = !!Astro.cookies.get('isAdmin');
 

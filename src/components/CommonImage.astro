@@ -20,5 +20,6 @@ const { src, width = '400', height = '400', alt = 'Image', classes, ...rest } = 
     {height}
     {alt}
     class:list={['image', classes]}
+    onerror="this.onerror=null;this.src='https://xexiu.netlify.app/broken-image-min.jpeg';"
     {...rest}
 />
