@@ -6,11 +6,9 @@ export const onRequest = defineMiddleware(
 
       if(isAdmin && isAdmin.value) {
          context.cookies.set('isAdmin', 'true');
+         context.locals.isAdmin = isAdmin;
 
       }
-
-      context.cookies.set('hello', 'hello');
-      context.locals.test = 1541;
 
       return next();
    });
