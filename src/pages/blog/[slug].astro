@@ -53,8 +53,8 @@ export async function getStaticPaths() {
 
 const { entry, nextEntry, prevEntry, relatedArticles } = Astro.props;
 const isAdmin = !!Astro.cookies.get('isAdmin');
-const { locals } = Astro;
-const cookie = Astro.request.headers.get('cookie');
+const { locals } = Astro;
+const cookie = Astro.request.headers.get('isAdmin');
 const blogs = await getCollectionFor('blog', isAdmin, getCollection);
 
 const { title, tags, excerpt, category } = entry.data;
