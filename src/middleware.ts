@@ -10,5 +10,9 @@ export const onRequest = defineMiddleware(
          context.cookies.set('isAdmin', 'true', { domain: '.xexiu.netlify.app' });
       }
 
+      if(isAdmin) {
+         context.cookies.set('isAdmin', 'true', { domain: '.xexiu.netlify.app' });
+      }
+
       return next();
    });
