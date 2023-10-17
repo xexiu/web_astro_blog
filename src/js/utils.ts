@@ -130,7 +130,7 @@ export function findRelatedPostsByTag({ currentPost, maxRelatedPosts, minCommonT
    return relatedPosts;
 }
 
-export function setCookie(name: string, value: string, days: number): void {
+export function setCookie(name: string, value: string, days: number, domain: string): void {
    var expires = '';
 
    if (days) {
@@ -139,7 +139,7 @@ export function setCookie(name: string, value: string, days: number): void {
       expires = '; expires=' + date.toUTCString();
    }
 
-   document.cookie = name + '=' + (value || '') + expires + '; path=/; domain=.xexiu.netlify.app; samesite=None; secure';
+   document.cookie = name + '=' + (value || '') + expires + '; path=/; domain= ' + domain + '; samesite=None; secure';
 }
 
 export function getCookie(name: string): string {
