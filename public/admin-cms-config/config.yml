@@ -23,7 +23,7 @@ collections:
     preview_path: 'blog/{{slug}}'
     fields: # The fields for each document, usually in front matter^
       - {label: "Title", name: "title", widget: "string", pattern: ['^.{20,100}$', "Must have at least 20 characters and max 100"], hint: "Must have at least 20 characters and max 100"}
-      - {label: "Excerpt", name: "excerpt", widget: "string", pattern: ['^.{50,90}$', "Must have at least 50 characters and max 90"], hint: "Must have at least 50 characters and max 90"}
+      - {label: "Excerpt", name: "excerpt", widget: "string", pattern: ['^.{50,100}$', "Must have at least 50 characters and max 100"], hint: "Must have at least 50 characters and max 100"}
       - {label: "Author", name: "author", widget: "string", pattern: ['^.{5,50}$', "Must have at least 5 characters and max 50"], hint: "Must have at least 5 characters and max 50"}
       - {label: "Tags", name: "tags", widget: "list", default: ["javascript, css, html, react"], pattern: ['^\s*(?:[^,\n]+,){0,3}[^,\n]+\s*$', "Must have at least 1 tag and max 4. Please separate multiple tags with comma."], hint: "Must have at least 1 tag and max 4. Please separate multiple tags with comma."}
       - {label: "Category", name: "category", widget: "select", options: ["GENERAL", "CSS", "HTML", "JAVASCRIPT", "FULLSTACK", "FRONTEND", "BACKEND", "REACTJS", "REACT NATIVE", "ASTRO", "BLOCKCHAIN", "MLL", "IA", "WEB3"]}
@@ -48,7 +48,7 @@ collections:
     preview_path: 'portfolio/{{slug}}'
     fields: # The fields for each document, usually in front matter^
       - {label: "Title", name: "title", widget: "string", pattern: ['^.{20,100}$', "Must have at least 20 characters and max 100"], hint: "Must have at least 20 characters and max 100"}
-      - {label: "Excerpt", name: "excerpt", widget: "string", pattern: ['^.{50,90}$', "Must have at least 50 characters and max 90"], hint: "Must have at least 50 characters and max 90"}
+      - {label: "Excerpt", name: "excerpt", widget: "string", pattern: ['^.{50,90}$', "Must have at least 50 characters and max 100"], hint: "Must have at least 50 characters and max 100"}
       - {label: "Author", name: "author", widget: "string", pattern: ['^.{5,50}$', "Must have at least 5 characters and max 50"], hint: "Must have at least 5 characters and max 50"}
       - {label: "Tags", name: "tags", widget: "list", default: ["javascript, css, html, react"], pattern: ['^\s*(?:[^,\n]+,){0,3}[^,\n]+\s*$', "Must have at least 1 tag and max 4. Please separate multiple tags with comma."], hint: "Must have at least 1 tag and max 4. Please separate multiple tags with comma."}
       - {label: "Category", name: "category", widget: "select", options: ["GENERAL", "CSS", "HTML", "JAVASCRIPT", "FULLSTACK", "FRONTEND", "BACKEND", "REACTJS", "REACT NATIVE", "ASTRO", "BLOCKCHAIN", "MLL", "IA", "WEB3"]}

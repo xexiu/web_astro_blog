@@ -1,9 +1,8 @@
 ---
-title: Test22
+title: Test22 Lorem ipsum dolor sit amet consectetur, adipisicing elit 34554435435435
 date: 2023-09-25T18:34:51.096Z
 category: general
-excerpt: This is a short except about, This is a short except about, This is
-  a   short except about, This is a short except about
+excerpt: This is a short except about sdssfsdsdsd sfdsdsd um dolor sit amet cons
 author: Sergiu M
 featured_post: false
 is_private: false

@@ -1,7 +1,6 @@
 ---
 title: Markdown Cheat Sheet3
-excerpt: This is a short except about, This is a short except about, This is a
-  short except about, This is a short except about
+excerpt: This is a short except about, This is a short except about, This is except dfdf
 author: Sergiu Mironescu
 tags:
   - markdown

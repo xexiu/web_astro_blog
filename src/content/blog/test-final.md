@@ -1,9 +1,9 @@
 ---
-title: Test Final
+title: Test Final Lorem ipsum dolor sit amet consectetur, adipisicing elit
 date: 2023-09-22T17:14:10+02:00
 category: Javascript
 author: Sergiu Mironescu
-excerpt: This is a short except about, This is a short except about, This is a short, except about, This is a short except about
+excerpt: This is a short except about, This is a short except about, This is a short
 featured_post: false
 is_private: false
 tags:
