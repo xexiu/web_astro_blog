@@ -139,7 +139,7 @@ export function setCookie(name: string, value: string, days: number): void {
       expires = '; expires=' + date.toUTCString();
    }
 
-   document.cookie = name + '=' + (value || '') + expires + '; path=/; domain=.xexiu.netlify.app; samesite=None; secure';
+   document.cookie = name + '=' + (value || '') + expires + '; path=/';
 }
 
 export function getCookie(name: string): string {
