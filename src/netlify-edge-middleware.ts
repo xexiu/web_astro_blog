@@ -7,6 +7,6 @@ export default function({ request, context }: { request: Request; context: Conte
    return {
       visitorCountry: context.geo.country.name,
       hasEdgeMiddleware: true,
-      isAdmin
+      isAdmin: isAdmin?.value || 'teeest'
    };
 }
