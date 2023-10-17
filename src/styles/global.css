@@ -168,3 +168,9 @@ main {
         object-position: top center;
     }
 }
+
+@media screen and (width <= 500px) {
+    main {
+        padding: 0;
+    }
+}
