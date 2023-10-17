@@ -32,7 +32,6 @@ const _icon = {
 ---
 
 <button
-   id="copy-clipboard"
    class={`copy-clipboard-code ${!disableTooltip ? 'tooltip' : ''}`}
    data-tooltip-placement="left"
    title="Guardar en el portapapeles"
@@ -57,7 +56,7 @@ const _icon = {
 </button>
 
 <style is:inline>
-   #copy-clipboard {
+   .copy-clipboard-code {
       cursor: pointer;
 
       .btn-grey:hover {
@@ -82,7 +81,7 @@ const _icon = {
          align-items: center;
       }
    }
-   #copy-clipboard .feedback-text:hover {
+   .copy-clipboard-code .feedback-text:hover {
       cursor: auto;
    }
 </style>
