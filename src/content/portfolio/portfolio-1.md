@@ -2,7 +2,7 @@
 title: Mi First Portfolio Project!!!!!!!!!!
 date: 2022-11-25
 author: Sergiu Mironescu
-excerpt: Sometimes you just run out of ideas for sample blog posts. It’s no one’s fault, it’s just the way it is.
+excerpt: Sometimes you just run out of ideas for sample blog posts. It’s no one’s fault, it’s just.
 category: JAVASCRIPT
 featured_portfolio: false
 github_project_link: https://github.com/xexiu/web_astro_blog/blob/master/src/pages/category/%5Bcategory%5D.astro
