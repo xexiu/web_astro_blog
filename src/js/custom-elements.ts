@@ -84,12 +84,22 @@ export class SaveArticleDetails extends SaveArticle {
 export class ArticleSpeech extends HTMLElement {
    constructor() {
       super();
+      let _voices = [] as any;
+      const _iOSvoices = [
+         { name: 'Flo (Spanish (Spain))"', voiceURI: 'com.apple.eloquence.es-ES.Flo', lang: 'es-ES', localService: true, default: true },
+      ];
       const btn = this.querySelector('.listen-article') as HTMLButtonElement;
       const utterance = new SpeechSynthesisUtterance();
 
       window.speechSynthesis.onvoiceschanged = function() {
-         const voices = window.speechSynthesis.getVoices();
-         utterance.voice = voices.filter(function(voice) { return voice.name == 'Flo (Spanish (Spain))"'; })[0];
+         _voices = window.speechSynthesis.getVoices();
+
+         if (_voices.length === 0) {
+            // use hard-coded list because speechSynthesis.getVoices() didn't work on IOS returns []
+            _voices = _iOSvoices;
+         }
+
+         utterance.voice = _voices.filter((voice: any) => voice.name == 'Flo (Spanish (Spain))"')[0];
       };
 
       utterance.lang = 'es-ES';
