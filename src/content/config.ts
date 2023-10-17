@@ -9,9 +9,9 @@ const blog = defineCollection({
          }
       ),
       excerpt: z.string().refine(
-         (value) => value.length >= 50 && value.length <= 100,
+         (value) => value.length >= 50 && value.length <= 150,
          {
-            message: 'Excerpt must have more or equal 50 characters and at most 100 characters',
+            message: 'Excerpt must have more or equal 50 characters and at most 150 characters',
          }
       ),
       tags: z.array(z.string()).min(1).max(4),
@@ -45,9 +45,9 @@ const portfolio = defineCollection({
          }
       ),
       excerpt: z.string().refine(
-         (value) => value.length >= 50 && value.length <= 100,
+         (value) => value.length >= 50 && value.length <= 150,
          {
-            message: 'Excerpt must have more or equal 50 characters and at most 100 characters',
+            message: 'Excerpt must have more or equal 50 characters and at most 150 characters',
          }
       ),
       tags: z.array(z.string()).min(1).max(4),
