@@ -34,7 +34,7 @@ declare global {
 
 if (window.netlifyIdentity as any) {
    localStorage.setItem('isAdmin', !!window.netlifyIdentity.currentUser() as any);
-   setCookie('isAdmin', 'true', 30, import.meta.env.PROD ? '.xexiu.netlify.app' : 'localhost');
+   setCookie('isAdmin', 'true', 30, import.meta.env.PROD ? 'xexiu.netlify.app' : 'localhost');
 }
 </script>
 
