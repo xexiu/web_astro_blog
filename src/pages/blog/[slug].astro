@@ -54,6 +54,7 @@ export async function getStaticPaths() {
 const { entry, nextEntry, prevEntry, relatedArticles } = Astro.props;
 const isAdmin = !!Astro.cookies.get('isAdmin');
 const blogs = await getCollectionFor('blog', isAdmin, getCollection);
+const { locals } = Astro;
 
 const { title, tags, excerpt, category } = entry.data;
 ---
@@ -78,6 +79,7 @@ const { title, tags, excerpt, category } = entry.data;
       ]}
    />
    <Debug answer={isAdmin} />
+   <Debug locals={locals} />
    <ArticleContainer ariaLabel={title}>
       <div class="article-top-prev-next-wrapper">
          <ArticleNavigation {prevEntry} {nextEntry} />

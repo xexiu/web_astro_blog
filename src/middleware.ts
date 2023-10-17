@@ -10,6 +10,7 @@ export const onRequest = defineMiddleware(
       }
 
       context.cookies.set('hello', 'hello');
+      context.locals.test = 1541;
 
       return next();
    });
