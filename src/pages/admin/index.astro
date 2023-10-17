@@ -26,6 +26,15 @@
    </body>
 </html>
 
+<script>
+import { setCookie } from '@js/utils';
+
+if(!import.meta.env.PRO) {
+   localStorage.setItem('isAdmin', 'true');
+   setCookie('isAdmin', 'true', 30);
+}
+</script>
+
 <style is:inline>
    img[alt="Logo"] {
       width: 250px;
