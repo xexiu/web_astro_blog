@@ -30,6 +30,7 @@ import SocialShareOptions from '@components/social-share/SocialShareOptions.astr
 import SocialShareFooter from '@components/social-share/SocialShareFooter.astro';
 import SearchBar from '@components/search-bar/SearchBar.astro';
 import { getCollectionFor } from '@js/server/utils';
+import { Debug } from 'astro:components';
 
 export async function getStaticPaths() {
    const blogEntries = await getCollection('blog');
@@ -76,6 +77,8 @@ const { title, tags, excerpt, category } = entry.data;
          },
       ]}
    />
+   <Debug answer={isAdmin} />
+   <Debug astro={Astro} />
    <ArticleContainer ariaLabel={title}>
       <div class="article-top-prev-next-wrapper">
          <ArticleNavigation {prevEntry} {nextEntry} />
