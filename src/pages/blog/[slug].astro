@@ -55,10 +55,6 @@ const { entry, nextEntry, prevEntry, relatedArticles } = Astro.props;
 const isAdmin = !!Astro.cookies.get('isAdmin');
 const blogs = await getCollectionFor('blog', isAdmin, getCollection);
 
-if (!isAdmin && entry.data.is_private) {
-   return Astro.redirect('/404');
-}
-
 const { title, tags, excerpt, category } = entry.data;
 ---
 
