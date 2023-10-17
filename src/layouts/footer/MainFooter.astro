@@ -2,6 +2,8 @@
 import CopyrightFooter from '@components/CopyrightFooter.astro';
 import { Link } from '@components/common/link';
 import './main-footer.css';
+
+const buildDate = __DATE__;
 ---
 
 <footer id="footer" class="main-footer">
@@ -20,4 +22,5 @@ import './main-footer.css';
          classes="xml-wrapper"
       />
    </div>
+   <span class="build-date">Build at: {buildDate}</span>
 </footer>

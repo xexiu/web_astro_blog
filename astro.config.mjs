@@ -4,11 +4,16 @@ import purgecss from 'astro-purgecss';
 import { defineConfig, squooshImageService } from 'astro/config';
 import netlify from '@astrojs/netlify/functions';
 import AstroPWA from '@vite-pwa/astro';
+import { manifest } from './src/pwa/manifest';
 
 // https://astro.build/config
 export default defineConfig({
    output: 'hybrid',
    vite: {
+      logLevel: 'info',
+      define: {
+         __DATE__: `'${new Date().toISOString()}'`,
+      },
       server: {
          watch: {
             ignored: ['**/.history/**']
@@ -19,43 +24,25 @@ export default defineConfig({
    integrations: [partytown(), sitemap(), purgecss(), AstroPWA({
       registerType: 'autoUpdate',
       injectRegister: 'inline',
-      manifest: {
-         name: 'Xexiu Dev',
-         short_name: 'Xe',
-         description: 'Full Stack, JavaScript, HTML, CSS, Node.js, Python, React, React Native, Blockchain, WEB3, dApps, smart contracts y más.',
-         theme_color: '#212129',
-         background_color: '#ffffff',
-         icons: [
-            {
-               src: 'icon-96x96.png',
-               sizes: '96x86',
-               type: 'image/png',
-            },
-            {
-               src: 'icon-72x72.png',
-               sizes: '72x62',
-               type: 'image/png',
-            },
-            {
-               src: 'favicon.svg',
-               sizes: '32x32',
-               type: 'image/svg',
-               purpose: 'any maskable',
-            },
-         ],
-      },
+      manifest,
       client: {
          installPrompt: true,
          periodicSyncForUpdates: 20,
       },
+      workbox: {
+         maximumFileSizeToCacheInBytes: 3000000,
+         cleanupOutdatedCaches: true,
+         navigateFallback: '/',
+         navigateFallbackDenylist: [/\/[api,admin]+\/.*/],
+         globPatterns: ['**/*.{css,ts,js,html,svg,png,ico,txt,astro}']
+      },
       devOptions: {
          enabled: true,
+         navigateFallbackAllowlist: [/^\/404$/],
       },
    })],
    image: {
       service: squooshImageService()
    },
-   adapter: netlify({
-      edgeMiddleware: true
-   })
+   adapter: netlify()
 });

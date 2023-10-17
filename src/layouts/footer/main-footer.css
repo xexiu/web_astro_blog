@@ -25,4 +25,10 @@
             text-decoration: none;
         }
     }
+
+    .build-date {
+        display: none;
+        visibility: hidden;
+        height: 0;
+    }
 }

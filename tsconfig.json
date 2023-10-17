@@ -1,6 +1,5 @@
 {
   "extends": "astro/tsconfigs/base",
-  "target": "es5",
   "lib": [
     "dom",
     "dom.iterable",
@@ -8,10 +7,12 @@
   ],
   "allowJs": true,
   "compilerOptions": {
+    "target": "es5",
     "jsx": "react-jsx",
     "types": [
       "bun-types",
-      "astro/client"
+      "astro/client",
+      "vite-plugin-pwa/info"
     ],
     "baseUrl": ".",
     "paths": {

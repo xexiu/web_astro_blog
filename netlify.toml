@@ -9,3 +9,7 @@
   for = "/admin/*"
   [headers.values]
     X-Robots-Tag = "noindex"
+  #MANIFEST
+  for = "/manifest.webmanifest"
+  [headers.values]
+    Content-Type = "application/manifest+json"
