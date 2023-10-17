@@ -1,5 +1,4 @@
 ---
-export const prerender = true;
 import TagHeading from '@components/common/TagHeading.astro';
 import Posts from '@components/postcard/Posts.astro';
 import SectionContainer from '@components/section/SectionContainer.astro';
@@ -15,7 +14,7 @@ export async function getStaticPaths() {
    const blogTags = blogs.flatMap((entry: any) => entry.data.tags);
 
    return blogTags.map((tag: string) => ({
-      params: { tag: slugify(tag) },
+      params: { tag: slugify(tag) }
    }));
 }
 
@@ -32,13 +31,15 @@ const tagPosts = getPostsFor({
 <MainLayout title={tag}>
    <SectionContainer ariaLabel={`Posts about ${tag}`}>
       <span>Publicaciones etiquetadas con:</span>
-      <TagHeading classes="post-tags" tag="h1">{tag}</TagHeading>
+      <TagHeading classes="post-tags" tag="h2">{tag}</TagHeading>
       <Posts entries={tagPosts} />
    </SectionContainer>
 </MainLayout>
 
 <style>
    .post-tags {
-      margin-bottom: 10px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      text-align: center;
    }
 </style>

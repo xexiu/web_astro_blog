@@ -1,5 +1,4 @@
 ---
-export const prerender = true;
 import Posts from '@components/postcard/Posts.astro';
 import TagHeading from '@components/common/TagHeading.astro';
 import { getPostsFor, slugify } from '@js/utils';
@@ -39,6 +38,8 @@ const authorPosts = getPostsFor({ propertyName: 'author', blog: blogs, property:
 
 <style>
    .post-author {
-      margin-bottom: 10px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      text-align: center;
    }
 </style>

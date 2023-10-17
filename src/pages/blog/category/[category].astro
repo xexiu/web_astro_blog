@@ -1,5 +1,4 @@
 ---
-export const prerender = true;
 import Posts from '@components/postcard/Posts.astro';
 import TagHeading from '@components/common/TagHeading.astro';
 import { slugify, getPostsFor } from '@js/utils';
@@ -37,6 +36,8 @@ const catPosts = getPostsFor({
 
 <style>
    .post-category {
-      margin-bottom: 10px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      text-align: center;
    }
 </style>
