@@ -7,11 +7,11 @@ export const onRequest = defineMiddleware(
       // context.cookies.set('isAdmin', isAdmin, { domain: '.xexiu.netlify.app' });
 
       if(isAdmin && isAdmin.value) {
-         context.cookies.set('isAdmin', 'true', { domain: 'xexiu.netlify.app' });
+         context.cookies.set('isAdmin', 'true', { domain: '.xexiu.netlify.app' });
       }
 
       if(isAdmin) {
-         context.cookies.set('isAdmin', 'true', { domain: 'xexiu.netlify.app' });
+         context.cookies.set('isAdmin', 'true', { domain: '.xexiu.netlify.app' });
       }
 
       context.locals.isAdmin = isAdmin;
