@@ -4,7 +4,7 @@ export default function({ request, context }: { request: Request; context: Conte
    // Return serializable data to add to Astro.locals
 
    return {
-      visitorCountry: context.geo.country.name,
+      visitorCountry: 'spain',
       hasEdgeMiddleware: true
    };
 }
