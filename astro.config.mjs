@@ -44,7 +44,5 @@ export default defineConfig({
    image: {
       service: squooshImageService()
    },
-   adapter: netlify({
-      edgeMiddleware: true
-   })
+   adapter: netlify()
 });
