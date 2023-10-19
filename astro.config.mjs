@@ -34,7 +34,7 @@ export default defineConfig({
          cleanupOutdatedCaches: true,
          navigateFallback: null,
          navigateFallbackDenylist: [/\/[api,admin,rss]+\/.*/],
-         globPatterns: ['**/*.{css,ts,js,svg,png,jpg,jpeg,gif,ico,txt,webp,woff,woff2,ttf,eot}']
+         globPatterns: ['**/*.{css,js,svg,png,jpg,jpeg,gif,ico,txt,webp,woff,woff2,ttf,eot}']
       },
       devOptions: {
          enabled: true,

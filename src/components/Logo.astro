@@ -9,8 +9,8 @@ import CommonImage from '@components/CommonImage.astro';
          classes="logo-img"
          src={logo}
          alt="Logo"
-         width={100}
-         height={62}
+         width={150}
+         height={93}
       /></a
    >
 </p>
@@ -20,6 +20,12 @@ import CommonImage from '@components/CommonImage.astro';
    .logo {
       display: block;
       width: 100px;
+      height: 62px;
       z-index: 102;
+
+      img {
+         width: 100%;
+         height: 100%;
+      }
    }
 </style>
