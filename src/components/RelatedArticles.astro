@@ -6,7 +6,7 @@ import { getRelatedArticles } from '@js/utils';
 import PostCardContainer from './postcard/PostCardContainer.astro';
 import PostCardDetails from './postcard/PostCardDetails.astro';
 
-const isAdmin = !!Astro.cookies.get('isAdmin');
+const isAdmin = !!Astro.cookies.get('isAdmin') || !!Astro.cookies.get('nf_jwt');
 
 const { relatedArticles } = Astro.props;
 const _relatedArticles = getRelatedArticles(isAdmin, relatedArticles);

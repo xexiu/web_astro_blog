@@ -11,7 +11,7 @@ import Tags from '@components/tags/Tags.astro';
 import SearchBar from '@components/search-bar/SearchBar.astro';
 import SectionContainer from '@components/section/SectionContainer.astro';
 
-const isAdmin = !!Astro.cookies.get('isAdmin');
+const isAdmin = !!Astro.cookies.get('isAdmin') || !!Astro.cookies.get('nf_jwt');
 const blogs = await getCollectionFor('blog', isAdmin, getCollection);
 const blogTags = getTagsFor(isAdmin, blogs);
 const keys = Object.keys(blogs);

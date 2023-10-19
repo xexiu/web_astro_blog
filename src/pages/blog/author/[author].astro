@@ -7,7 +7,7 @@ import { getCollection } from 'astro:content';
 import { getCollectionFor } from '@js/server/utils';
 import SectionContainer from '@components/section/SectionContainer.astro';
 
-const isAdmin = !!Astro.cookies.get('isAdmin');
+const isAdmin = !!Astro.cookies.get('isAdmin') || !!Astro.cookies.get('nf_jwt');
 
 export async function getStaticPaths() {
    const blogEntries = await getCollection('blog');

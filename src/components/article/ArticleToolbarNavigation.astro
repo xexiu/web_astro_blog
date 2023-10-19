@@ -7,7 +7,7 @@ interface Props {
    prevEntry: Post;
 }
 
-const isAdmin = !!Astro.cookies.get('isAdmin');
+const isAdmin = !!Astro.cookies.get('isAdmin') || !!Astro.cookies.get('nf_jwt');
 
 const { prevEntry, nextEntry } = Astro.props;
 let prev = null;

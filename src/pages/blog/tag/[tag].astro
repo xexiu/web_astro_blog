@@ -7,7 +7,7 @@ import { getPostsFor, slugify } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
 
-const isAdmin = !!Astro.cookies.get('isAdmin');
+const isAdmin = !!Astro.cookies.get('isAdmin') || !!Astro.cookies.get('nf_jwt');
 
 export async function getStaticPaths() {
    const blogs = await getCollection('blog');
