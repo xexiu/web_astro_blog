@@ -61,13 +61,13 @@ export const manifest = {
          purpose: 'maskable'
       },
       {
-         src: 'favicon-32x32-min.png',
+         src: 'favicon_32x32_min.png',
          sizes: '32x32',
          type: 'image/png',
          purpose: 'any',
       },
       {
-         src: 'favicon-32x32-min.png',
+         src: 'favicon_32x32_min.png',
          sizes: '32x32',
          type: 'image/png',
          purpose: 'maskable',
