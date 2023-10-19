@@ -33,7 +33,7 @@ export default defineConfig({
          maximumFileSizeToCacheInBytes: 3000000,
          cleanupOutdatedCaches: true,
          navigateFallback: '/',
-         navigateFallbackDenylist: [/\/[api,admin,rss]+\/.*/],
+         navigateFallbackDenylist: [/\/[api,admin,rss,/]+\/.*/],
          globPatterns: ['**/*.{css,js,svg,png,jpg,jpeg,gif,ico,txt,webp,woff,woff2,ttf,eot}']
       },
       devOptions: {
