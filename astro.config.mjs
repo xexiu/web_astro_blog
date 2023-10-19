@@ -32,7 +32,7 @@ export default defineConfig({
       workbox: {
          maximumFileSizeToCacheInBytes: 3000000,
          cleanupOutdatedCaches: true,
-         navigateFallback: null,
+         navigateFallback: '/',
          navigateFallbackDenylist: [/\/[api,admin,rss]+\/.*/],
          globPatterns: ['**/*.{css,js,svg,png,jpg,jpeg,gif,ico,txt,webp,woff,woff2,ttf,eot}']
       },
