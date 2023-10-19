@@ -39,6 +39,7 @@ const { data, classes, style, linkClass, ...rest } = Astro.props;
                title={s}
                classes={linkClass}
                aria-label={social[s].iconName}
+               rel="nofollow"
                {...rest}
             />
          ));
