@@ -6,6 +6,7 @@ import MainLayout from '@layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
 import { getCollectionFor } from '@js/server/utils';
 import SectionContainer from '@components/section/SectionContainer.astro';
+import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
 
 const isAdmin = !!Astro.cookies.get('isAdmin') || !!Astro.cookies.get('nf_jwt');
 
@@ -24,11 +25,23 @@ export async function getStaticPaths() {
 }
 
 const { authorName } = Astro.props;
+const { author } = Astro.params;
 const blogs = await getCollectionFor('blog', isAdmin, getCollection);
 const authorPosts = getPostsFor({ propertyName: 'author', blog: blogs, property: authorName });
 ---
 
 <MainLayout title={authorName}>
+   <Breadcrumbs
+      links={[
+         { name: 'Inicio', path: '/' },
+         { name: 'Blog', path: '/blog' },
+         {
+            name: authorName,
+            path: `/blog/author/${author}`,
+            linkIsActive: 'is-active',
+         },
+      ]}
+   />
    <SectionContainer ariaLabel={`Posts by ${authorName}`}>
       <span>Publicaciones hechas por:</span>
       <TagHeading classes="post-author" tag="h1">{authorName}</TagHeading>

@@ -1,4 +1,5 @@
 ---
+import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
 import TagHeading from '@components/common/TagHeading.astro';
 import Posts from '@components/postcard/Posts.astro';
 import SectionContainer from '@components/section/SectionContainer.astro';
@@ -29,6 +30,17 @@ const tagPosts = getPostsFor({
 ---
 
 <MainLayout title={tag}>
+   <Breadcrumbs
+      links={[
+         { name: 'Inicio', path: '/' },
+         { name: 'Blog', path: '/blog' },
+         {
+            name: tag as string,
+            path: `/blog/tag/${tag}`,
+            linkIsActive: 'is-active',
+         },
+      ]}
+   />
    <SectionContainer ariaLabel={`Posts about ${tag}`}>
       <span>Publicaciones etiquetadas con:</span>
       <TagHeading classes="post-tags" tag="h2">{tag}</TagHeading>

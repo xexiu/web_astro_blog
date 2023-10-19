@@ -57,6 +57,7 @@
     white-space: normal;
     overflow: visible;
     text-overflow: clip;
+    text-transform: capitalize;
 }
 
 .breadcrumbs__item.is-active {

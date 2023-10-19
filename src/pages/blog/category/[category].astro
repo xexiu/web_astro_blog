@@ -6,6 +6,7 @@ import MainLayout from '@layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
 import { getCollectionFor } from '@js/server/utils';
 import SectionContainer from '@components/section/SectionContainer.astro';
+import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
 
 const isAdmin = !!Astro.cookies.get('isAdmin') || !!Astro.cookies.get('nf_jwt');
 
@@ -27,6 +28,17 @@ const catPosts = getPostsFor({
 ---
 
 <MainLayout title={category}>
+   <Breadcrumbs
+      links={[
+         { name: 'Inicio', path: '/' },
+         { name: 'Blog', path: '/blog' },
+         {
+            name: category as string,
+            path: `/blog/category/${category}`,
+            linkIsActive: 'is-active',
+         },
+      ]}
+   />
    <SectionContainer ariaLabel={`Posts about ${category}`}>
       <span>Publicaciones en la categoria:</span>
       <TagHeading classes="post-category" tag="h1">{category}</TagHeading>
