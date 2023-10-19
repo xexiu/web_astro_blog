@@ -41,7 +41,6 @@
         "src/types/*"
       ]
     },
-    "verbatimModuleSyntax": true,
     "strictNullChecks": true,
     "allowJs": true
   },
