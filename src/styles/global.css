@@ -90,29 +90,29 @@ html[data-current-page*="/blog"] {
 @font-face {
     font-family: 'Golos Text';
     font-display: fallback;
-    src: url('/fonts/golos-text-font-familiy/Golos-Text_Regular.woff') format('woff'),
-        url('/fonts/golos-text-font-familiy/Golos-Text_Regular.ttf') format('ttf');
+    src: url('/assets/fonts/golos-text-font-familiy/Golos-Text_Regular.woff') format('woff'),
+        url('/assets/fonts/golos-text-font-familiy/Golos-Text_Regular.ttf') format('ttf');
 }
 
 @font-face {
     font-family: 'Golos Text Medium';
     font-display: fallback;
-    src: url('/fonts/golos-text-font-familiy/Golos-Text_Medium.woff') format('woff'),
-        url('/fonts/golos-text-font-familiy/Golos-Text_Medium.ttf') format('ttf');
+    src: url('/assets/fonts/golos-text-font-familiy/Golos-Text_Medium.woff') format('woff'),
+        url('/assets/fonts/golos-text-font-familiy/Golos-Text_Medium.ttf') format('ttf');
 }
 
 @font-face {
     font-family: 'Golos Text Bold';
     font-display: fallback;
-    src: url('/fonts/golos-text-font-familiy/Golos-Text_Bold.woff') format('woff'),
-        url('/fonts/golos-text-font-familiy/Golos-Text_Bold.ttf') format('ttf');
+    src: url('/assets/fonts/golos-text-font-familiy/Golos-Text_Bold.woff') format('woff'),
+        url('/assets/fonts/golos-text-font-familiy/Golos-Text_Bold.ttf') format('ttf');
 }
 
 @font-face {
     font-family: 'Golos Text Black';
     font-display: fallback;
-    src: url('/fonts/golos-text-font-familiy/Golos-Text_Black.woff') format('woff'),
-        url('/fonts/golos-text-font-familiy/Golos-Text_Black.ttf') format('ttf');
+    src: url('/assets/fonts/golos-text-font-familiy/Golos-Text_Black.woff') format('woff'),
+        url('/assets/fonts/golos-text-font-familiy/Golos-Text_Black.ttf') format('ttf');
 }
 
 body {

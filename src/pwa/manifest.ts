@@ -23,13 +23,13 @@ export const manifest = {
    ],
    screenshots: [
       {
-         'src': '/image-default_540x344-min.png',
+         'src': '/assets/images/image-default_540x344-min.png',
          'type': 'image/png',
          'sizes': '540x344',
          'form_factor': 'narrow'
       },
       {
-         'src': '/image-default_1024x652-min.png',
+         'src': '/assets/images/image-default_1024x652-min.png',
          'type': 'image/png',
          'sizes': '1024x652',
          'form_factor': 'wide'
@@ -37,37 +37,37 @@ export const manifest = {
    ],
    icons: [
       {
-         src: 'android-chrome-192x192.png',
+         src: 'assets/images/android-chrome-192x192.png',
          sizes: '192x192',
          type: 'image/png',
          purpose: 'any'
       },
       {
-         src: 'android-chrome-192x192.png',
+         src: 'assets/images/android-chrome-192x192.png',
          sizes: '192x192',
          type: 'image/png',
          purpose: 'maskable'
       },
       {
-         src: 'android-chrome-512x512.png',
+         src: 'assets/images/android-chrome-512x512.png',
          sizes: '512x512',
          type: 'image/png',
          purpose: 'any'
       },
       {
-         src: 'android-chrome-512x512.png',
+         src: 'assets/images/android-chrome-512x512.png',
          sizes: '512x512',
          type: 'image/png',
          purpose: 'maskable'
       },
       {
-         src: 'favicon_32x32_min.png',
+         src: 'assets/images/favicon_32x32_min.png',
          sizes: '32x32',
          type: 'image/png',
          purpose: 'any',
       },
       {
-         src: 'favicon_32x32_min.png',
+         src: 'assets/images/favicon_32x32_min.png',
          sizes: '32x32',
          type: 'image/png',
          purpose: 'maskable',
