@@ -4,11 +4,6 @@
   command = "bun run build"
   functions = "netlify/functions"
 
-# Request bots not to index the admin section.
-[[headers]]
-  for = "/admin/*"
-  [headers.values]
-    X-Robots-Tag = "noindex"
   #MANIFEST
 [[headers]]
   for = "/manifest.webmanifest"
