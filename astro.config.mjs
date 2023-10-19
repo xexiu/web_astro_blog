@@ -24,6 +24,8 @@ export default defineConfig({
    integrations: [partytown(), sitemap(), purgecss(), AstroPWA({
       registerType: 'autoUpdate',
       injectRegister: 'inline',
+      mode: 'production',
+      base: '/',
       manifest,
       client: {
          installPrompt: true,
