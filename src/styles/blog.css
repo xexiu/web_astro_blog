@@ -276,6 +276,10 @@
 		padding: 10px 0;
 		margin: 10px 0;
 		position: relative;
+
+		.post-card-link-cat {
+			border-bottom-right-radius: 0;
+		}
 	}
 
 	.article-speech-container, .article-share-container {
