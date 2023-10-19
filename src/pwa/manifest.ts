@@ -1,6 +1,7 @@
 export const manifest = {
    name: 'Xexiu Dev',
    short_name: 'Xe',
+   start_url: '/',
    description: 'Full Stack, JavaScript, HTML, CSS, Node.js, Python, React, React Native, Blockchain, WEB3, dApps, smart contracts y más.',
    lang: 'es',
    theme_color: '#212129',
