@@ -12,7 +12,6 @@ const {
 } = Astro.props;
 
 const featuredImg = featured_image?.src;
-console.log('HEY', featured_image);
 
 const jsonLD = jsonLDGenerator({
    type: frontmatter ? 'post' : 'website',
