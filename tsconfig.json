@@ -46,9 +46,11 @@
   },
   "include": [
     "src",
-    "modules.d.ts"
-, "scripts/replaceAssetPaths.js"  ],
+    "modules.d.ts",
+    "scripts/replaceAssetPaths.js"
+  ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "netlify"
   ],
 }

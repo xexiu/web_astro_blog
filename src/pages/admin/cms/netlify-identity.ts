@@ -20,6 +20,7 @@ export function netlifyIdentityLoad(identity: any) {
    identity.on('error', (err) => {
       localStorage.setItem('isAdmin', 'false');
       setCookie('isAdmin', 'false', 30);
+      // eslint-disable-next-line no-console
       console.log('CMS Identity', err);
    });
 

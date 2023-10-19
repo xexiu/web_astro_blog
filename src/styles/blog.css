@@ -186,8 +186,7 @@
 
 		counter-reset: line;
 		padding: 35px 0 15px;
-		overflow-y: hidden;
-		overflow-x: auto;
+		overflow: auto hidden;
 	}
 
 	span.line{
