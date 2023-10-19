@@ -23,15 +23,15 @@ export const manifest = {
    ],
    screenshots: [
       {
-         'src': '/image-default.png',
+         'src': '/image-default_540x344-min.png',
          'type': 'image/png',
-         'sizes': '540x720',
+         'sizes': '540x344',
          'form_factor': 'narrow'
       },
       {
-         'src': 'image-default.png',
+         'src': '/image-default_1024x652-min.png',
          'type': 'image/png',
-         'sizes': '1024x593',
+         'sizes': '1024x652',
          'form_factor': 'wide'
       }
    ],
@@ -61,13 +61,13 @@ export const manifest = {
          purpose: 'maskable'
       },
       {
-         src: 'favicon.svg',
+         src: 'favicon-32x32-min',
          sizes: '32x32',
          type: 'image/svg',
          purpose: 'any',
       },
       {
-         src: 'favicon.svg',
+         src: 'favicon-32x32-min',
          sizes: '32x32',
          type: 'image/svg',
          purpose: 'maskable',
