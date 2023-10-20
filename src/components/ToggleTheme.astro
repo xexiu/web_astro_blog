@@ -55,27 +55,27 @@ const { style }: Props = Astro.props;
 </style>
 
 <script>
-   import { updateTheme } from '@js/utils';
-   const select = document.getElementById(
-      'darkmode-toggle',
-   ) as HTMLInputElement;
-   const theme = localStorage.getItem('theme');
+import { updateTheme } from '@js/utils';
+const select = document.getElementById(
+   'darkmode-toggle'
+) as HTMLInputElement;
+const theme = localStorage.getItem('theme');
 
-   if (theme !== null) {
+if (theme !== null) {
+   select.checked = theme === 'dark' ? true : false;
+   select.dataset.theme = theme;
+}
+
+updateTheme(select.dataset.theme as string);
+
+if (select) {
+   select.addEventListener('change', (event: Event) => {
+      event.preventDefault();
+      const select = event.target as HTMLInputElement;
+      const theme = select.checked ? 'dark' : 'light';
       select.checked = theme === 'dark' ? true : false;
       select.dataset.theme = theme;
-   }
-
-   updateTheme(select.dataset.theme as string);
-
-   if (select) {
-      select.addEventListener('change', (event: Event) => {
-         event.preventDefault();
-         const select = event.target as HTMLInputElement;
-         const theme = select.checked ? 'dark' : 'light';
-         select.checked = theme === 'dark' ? true : false;
-         select.dataset.theme = theme;
-         updateTheme(theme);
-      });
-   }
+      updateTheme(theme);
+   });
+}
 </script>

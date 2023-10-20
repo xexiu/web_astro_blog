@@ -15,7 +15,7 @@ export async function getStaticPaths() {
    const blogEntries = await getCollection('blog');
 
    return blogEntries.map((entry) => ({
-      params: { category: slugify(entry.data.category) },
+      params: { category: slugify(entry.data.category) }
    }));
 }
 
@@ -24,7 +24,7 @@ const blogs = await getCollectionFor('blog', isAdmin, getCollection);
 const catPosts = getPostsFor({
    propertyName: 'category',
    blog: blogs,
-   property: String(category),
+   property: String(category)
 });
 ---
 
@@ -36,8 +36,8 @@ const catPosts = getPostsFor({
          {
             name: category as string,
             path: `/blog/category/${category}`,
-            linkIsActive: 'is-active',
-         },
+            linkIsActive: 'is-active'
+         }
       ]}
    />
    <SectionContainer ariaLabel={`Posts about ${category}`}>

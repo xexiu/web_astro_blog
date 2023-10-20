@@ -5,13 +5,13 @@ const blog = defineCollection({
       title: z.string().refine(
          (value) => value.length >= 20 && value.length <= 100,
          {
-            message: 'Title must have more or equal 50 characters and at most 100 characters',
+            message: 'Title must have more or equal 50 characters and at most 100 characters'
          }
       ),
       excerpt: z.string().refine(
          (value) => value.length >= 50 && value.length <= 150,
          {
-            message: 'Excerpt must have more or equal 50 characters and at most 150 characters',
+            message: 'Excerpt must have more or equal 50 characters and at most 150 characters'
          }
       ),
       tags: z.array(z.string()).min(1).max(4),
@@ -22,18 +22,18 @@ const blog = defineCollection({
       author: z.string().refine(
          (value) => value.length >= 5 && value.length <= 50,
          {
-            message: 'Author must have more or equal than 5 characters and at most 50 characters',
+            message: 'Author must have more or equal than 5 characters and at most 50 characters'
          }
       ),
       date: z.date(),
       featured_post: z.boolean().optional(),
       featured_image: z.object({
          src: image().refine((img) => img.width >= 200 && img.height >= 200, {
-            message: 'Cover image must be at least 200 pixels wide and 200 pixels tall!',
+            message: 'Cover image must be at least 200 pixels wide and 200 pixels tall!'
          }),
-         alt: z.string(),
-      }),
-   }),
+         alt: z.string()
+      })
+   })
 });
 
 const portfolio = defineCollection({
@@ -41,13 +41,13 @@ const portfolio = defineCollection({
       title: z.string().refine(
          (value) => value.length >= 20 && value.length <= 100,
          {
-            message: 'Title must have more or equal 50 characters and at most 100 characters',
+            message: 'Title must have more or equal 50 characters and at most 100 characters'
          }
       ),
       excerpt: z.string().refine(
          (value) => value.length >= 50 && value.length <= 150,
          {
-            message: 'Excerpt must have more or equal 50 characters and at most 150 characters',
+            message: 'Excerpt must have more or equal 50 characters and at most 150 characters'
          }
       ),
       tags: z.array(z.string()).min(1).max(4),
@@ -55,7 +55,7 @@ const portfolio = defineCollection({
       author: z.string().refine(
          (value) => value.length >= 5 && value.length <= 50,
          {
-            message: 'Author must have more or equal than 5 characters and at most 50 characters',
+            message: 'Author must have more or equal than 5 characters and at most 50 characters'
          }
       ),
       date: z.date(),
@@ -65,11 +65,11 @@ const portfolio = defineCollection({
       featured_portfolio: z.boolean().optional(),
       featured_image: z.object({
          src: image().refine((img) => img.width >= 200 && img.height >= 200, {
-            message: 'Cover image must be at least 200 pixels wide and 200 pixels tall!',
+            message: 'Cover image must be at least 200 pixels wide and 200 pixels tall!'
          }),
-         alt: z.string(),
-      }),
-   }),
+         alt: z.string()
+      })
+   })
 });
 
 export const collections = { blog, portfolio };

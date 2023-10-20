@@ -11,8 +11,8 @@ export function initCMS({ cms, config, previewStyles = [] }) {
          // Enable use of the Netlify CMS proxy server when working locally
          local_backend: true,
          ...mediaDefaults,
-         ...config,
-      },
+         ...config
+      }
    });
 
    /**

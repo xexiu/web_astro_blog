@@ -14,7 +14,7 @@ const isAdmin = isUserAdmin(cookie);
 export async function getStaticPaths() {
    const blogEntries = await getCollection('blog');
    const allAuthors = [
-      ...new Set(blogEntries.map((post) => post.data.author).flat()),
+      ...new Set(blogEntries.map((post) => post.data.author).flat())
    ];
 
    return allAuthors.map((author) => {
@@ -39,8 +39,8 @@ const authorPosts = getPostsFor({ propertyName: 'author', blog: blogs, property:
          {
             name: authorName,
             path: `/blog/author/${author}`,
-            linkIsActive: 'is-active',
-         },
+            linkIsActive: 'is-active'
+         }
       ]}
    />
    <SectionContainer ariaLabel={`Posts by ${authorName}`}>

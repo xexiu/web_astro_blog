@@ -7,15 +7,15 @@ interface Props {
 }
 
 const { post }: Props = Astro.props;
+const { time } = readingTime(post.body);
 ---
+
 <span class="reading-time"
->Lectura de {readingTime(post.body).time} min - {
-      formatDate(post.data.date.toString())
-   }</span
+>Lectura de {time} min - {formatDate(post.data.date.toString())}</span
 >
 
 <style>
-    .reading-time {
+   .reading-time {
       color: #777;
       font-size: 14px;
    }

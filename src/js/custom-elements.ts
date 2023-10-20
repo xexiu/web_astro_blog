@@ -86,7 +86,7 @@ export class ArticleSpeech extends HTMLElement {
       super();
       let _voices = [] as any;
       const _iOSvoices = [
-         { name: 'Flo (Spanish (Spain))"', voiceURI: 'com.apple.eloquence.es-ES.Flo', lang: 'es-ES', localService: true, default: true },
+         { name: 'Flo (Spanish (Spain))"', voiceURI: 'com.apple.eloquence.es-ES.Flo', lang: 'es-ES', localService: true, default: true }
       ];
       const btn = this.querySelector('.listen-article') as HTMLButtonElement;
       const utterance = new SpeechSynthesisUtterance();
@@ -229,7 +229,7 @@ export class TabActions extends HTMLElement {
 
             tabBtn.classList.add('active');
             const correspondingContent = document.querySelector(
-               `[data-tab-content="${tabId}"]`,
+               `[data-tab-content="${tabId}"]`
             );
             correspondingContent?.classList.add('active-content');
          });

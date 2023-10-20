@@ -19,7 +19,7 @@ export function slugify(text: string): string {
 
 export function formatDate(date: string): string {
    return new Date(date).toLocaleDateString('es-ES', {
-      timeZone: 'GMT',
+      timeZone: 'GMT'
    });
 }
 
@@ -66,7 +66,7 @@ export function markAsCurrentPage(elements: NodeListOf<Element>): void {
    });
 }
 
-export function readingTime(text: string): object {
+export function readingTime(text: string): { time: number; wordCount: number } {
    // Split the text into an array of words
    const wordsArray = text.split(' ');
 
@@ -187,7 +187,7 @@ export function getAllPostsFor(blog: Blog) {
          indexEntry: index,
          nextEntry: posts[index + 1],
          prevEntry: posts[index - 1],
-         relatedArticles: findRelatedPostsByTag({ currentPost: entry.data, maxRelatedPosts: 3, blogPosts: posts }),
+         relatedArticles: findRelatedPostsByTag({ currentPost: entry.data, maxRelatedPosts: 3, blogPosts: posts })
       }
    }));
 }
@@ -208,7 +208,7 @@ export function getTagCounts(tags: []): object {
 
 export function getRelatedArticles(isAdmin: boolean, relatedArticles: Post[]): Post[] {
    return relatedArticles.filter((entry: Post) =>
-      isAdmin ? entry : !entry.data.is_private,
+      isAdmin ? entry : !entry.data.is_private
    );
 }
 

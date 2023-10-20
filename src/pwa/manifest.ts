@@ -65,13 +65,13 @@ export const manifest = {
          src: 'assets/images/favicon_32x32_min.png',
          sizes: '32x32',
          type: 'image/png',
-         purpose: 'any',
+         purpose: 'any'
       },
       {
          src: 'assets/images/favicon_32x32_min.png',
          sizes: '32x32',
          type: 'image/png',
-         purpose: 'maskable',
-      },
-   ],
+         purpose: 'maskable'
+      }
+   ]
 };

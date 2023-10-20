@@ -6,7 +6,7 @@ import {
    ArticleInfoContainer,
    ArticleNavigation,
    ArticleReadingTime,
-   ArticleTools,
+   ArticleTools
 } from '@components/article';
 import CodeBlock from '@components/markdown/CodeBlock.astro';
 import MarkdownImages from '@components/markdown/MarkdownImages.astro';
@@ -44,9 +44,9 @@ export async function getStaticPaths() {
          relatedArticles: findRelatedPostsByTag({
             currentPost: entry.data,
             maxRelatedPosts: 3,
-            blogPosts: blogEntries,
-         }),
-      },
+            blogPosts: blogEntries
+         })
+      }
    }));
 }
 
@@ -76,8 +76,8 @@ const { title, tags, excerpt, category } = entry.data;
          {
             name: title,
             path: `/blog/${entry.slug}`,
-            linkIsActive: 'is-active',
-         },
+            linkIsActive: 'is-active'
+         }
       ]}
    />
    <ArticleContainer ariaLabel={title}>
@@ -109,7 +109,7 @@ const { title, tags, excerpt, category } = entry.data;
                components={{
                   img: MarkdownImages,
                   CodeBlock,
-                  a: NormalizeLinks,
+                  a: NormalizeLinks
                }}
             />
             <ArticleInfoContainer>
@@ -187,7 +187,7 @@ const { title, tags, excerpt, category } = entry.data;
          navigator
             .share({
                title: articleTitle,
-               url: articleUrl,
+               url: articleUrl
             })
             .then(() => {
                // console.log('Thanks for sharing!');

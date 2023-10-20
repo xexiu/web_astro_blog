@@ -26,7 +26,7 @@ const blogs = await getCollectionFor('blog', isAdmin, getCollection);
 const tagPosts = getPostsFor({
    propertyName: 'tags',
    blog: blogs,
-   property: String(tag),
+   property: String(tag)
 });
 ---
 
@@ -38,8 +38,8 @@ const tagPosts = getPostsFor({
          {
             name: tag as string,
             path: `/blog/tag/${tag}`,
-            linkIsActive: 'is-active',
-         },
+            linkIsActive: 'is-active'
+         }
       ]}
    />
    <SectionContainer ariaLabel={`Posts about ${tag}`}>

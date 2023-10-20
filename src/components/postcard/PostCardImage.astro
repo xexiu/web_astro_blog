@@ -9,19 +9,19 @@ const { src, alt, classes, width, height, ...rest } = Astro.props;
 </div>
 
 <script>
-   import { isInViewport } from '@js/utils';
+import { isInViewport } from '@js/utils';
 
-   var cardImages = document.querySelectorAll(
-      '.post-card-img',
-   ) as NodeListOf<HTMLElement>;
+var cardImages = document.querySelectorAll(
+   '.post-card-img'
+) as NodeListOf<HTMLElement>;
 
-   cardImages.forEach((cardImage) => {
-      const isInViewPort = isInViewport(cardImage, true);
+cardImages.forEach((cardImage) => {
+   const isInViewPort = isInViewport(cardImage, true);
 
-      if (cardImage && isInViewPort) {
-         cardImage.removeAttribute('loading');
-      }
-   });
+   if (cardImage && isInViewPort) {
+      cardImage.removeAttribute('loading');
+   }
+});
 </script>
 
 <style>

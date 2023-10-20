@@ -1,7 +1,7 @@
 export const CMS_CONFIG = {
    backend: {
       name: 'git-gateway',
-      branch: 'master',
+      branch: 'master'
    },
    publish_mode: 'simple',
    local_backend: true,
@@ -25,7 +25,7 @@ export const CMS_CONFIG = {
             {
                label: 'Publish Date',
                name: 'date',
-               widget: 'datetime',
+               widget: 'datetime'
             },
             { label: 'Category', name: 'category', widget: 'string' },
             { label: 'Excerpt', name: 'excerpt', widget: 'string' },
@@ -34,7 +34,7 @@ export const CMS_CONFIG = {
             {
                label: 'Featured Post',
                name: 'featured_post',
-               widget: 'boolean',
+               widget: 'boolean'
             },
             { label: 'Tags', name: 'tags', widget: 'list' },
             {
@@ -45,16 +45,16 @@ export const CMS_CONFIG = {
                   {
                      name: 'src',
                      label: 'Image',
-                     widget: 'image',
+                     widget: 'image'
                   },
                   {
                      name: 'alt',
                      label: 'Alt text',
-                     widget: 'string',
-                  },
-               ],
-            },
-         ],
-      },
-   ],
+                     widget: 'string'
+                  }
+               ]
+            }
+         ]
+      }
+   ]
 };

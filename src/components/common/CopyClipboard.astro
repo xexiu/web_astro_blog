@@ -16,18 +16,18 @@ interface Props {
 const defaultIconProps = {
    name: 'ph:copy-light',
    height: '22',
-   width: '22',
+   width: '22'
 };
 
 const {
    disableTooltip = false,
    disableIcon = false,
    icon = defaultIconProps,
-   classes,
+   classes
 } = Astro.props;
 const _icon = {
    ...defaultIconProps,
-   ...icon,
+   ...icon
 };
 ---
 
