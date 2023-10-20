@@ -1,5 +1,4 @@
 ---
-export const prerender = false; // Need for Astro.cookie in PROD
 import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
 import TagHeading from '@components/common/TagHeading.astro';
 import Posts from '@components/postcard/Posts.astro';
@@ -52,7 +51,7 @@ const tagPosts = getPostsFor({
 
 <style>
    .post-tags {
-      margin-bottom: 20px;
+      margin: 20px 0;
       text-transform: uppercase;
       text-align: center;
    }
