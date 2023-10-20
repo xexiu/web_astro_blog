@@ -1,13 +1,13 @@
 ---
-import type { Cookies, Post } from 'types/utils';
-import TagHeading from './common/TagHeading.astro';
 import { Link } from '@components/common/link';
 import { getRelatedArticles, isUserAdmin } from '@js/utils';
+import type { Post } from 'types/utils';
+import TagHeading from './common/TagHeading.astro';
 import PostCardContainer from './postcard/PostCardContainer.astro';
 import PostCardDetails from './postcard/PostCardDetails.astro';
 
-const isAdmin = isUserAdmin(Astro.cookies as Cookies);
-
+const cookie = Astro.request.headers.get('cookie');
+const isAdmin = isUserAdmin(cookie);
 const { relatedArticles } = Astro.props;
 const _relatedArticles = getRelatedArticles(isAdmin, relatedArticles);
 ---

@@ -7,9 +7,9 @@ import { getCollectionFor } from '@js/server/utils';
 import { getPostsFor, isUserAdmin, slugify } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
-import type { Cookies } from 'types/utils';
 
-const isAdmin = isUserAdmin(Astro.cookies as Cookies);
+const cookie = Astro.request.headers.get('cookie');
+const isAdmin = isUserAdmin(cookie);
 
 export async function getStaticPaths() {
    const blogs = await getCollection('blog');

@@ -4,7 +4,7 @@ import { isUserAdmin } from '@js/utils';
 import { getCollection } from 'astro:content';
 
 export async function GET(context) {
-   const isAdmin = isUserAdmin(context.cookies);
+   const isAdmin = isUserAdmin(context.request.headers.get('cookie'));
    const blogs = await getCollectionFor('blog', isAdmin, getCollection);
 
    return rss({

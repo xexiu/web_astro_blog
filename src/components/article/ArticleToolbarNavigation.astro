@@ -1,14 +1,15 @@
 ---
 import { Link } from '@components/common/link';
 import { isUserAdmin } from '@js/utils';
-import type { Cookies, Post } from 'types/utils';
+import type { Post } from 'types/utils';
 
 interface Props {
    nextEntry: Post;
    prevEntry: Post;
 }
 
-const isAdmin = isUserAdmin(Astro.cookies as Cookies);
+const cookie = Astro.request.headers.get('cookie');
+const isAdmin = isUserAdmin(cookie);
 
 const { prevEntry, nextEntry } = Astro.props;
 let prev = null;

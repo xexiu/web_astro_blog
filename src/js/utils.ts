@@ -240,6 +240,6 @@ export function formatString(template: string, options: object): string {
    return template;
 }
 
-export function isUserAdmin(cookies: any) {
+export function isUserAdmin(cookies: any): boolean {
    return /isAdmin=true/.test(cookies);
 }
