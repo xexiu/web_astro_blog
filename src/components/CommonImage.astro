@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 interface Props {
     src: string | any;
     width?: number | `${number}` | undefined;
@@ -7,17 +7,17 @@ interface Props {
     alt: string;
     classes?: string;
     quality?: number;
-    loading?: 'lazy' | 'eager';
+    loading?: "lazy" | "eager";
     srcset?: string;
 }
 
 const {
-   src,
-   width = '400',
-   height = '400',
-   alt = 'Image',
-   classes,
-   ...rest
+    src,
+    width = "400",
+    height = "400",
+    alt = "Image",
+    classes,
+    ...rest
 } = Astro.props;
 ---
 
@@ -26,7 +26,7 @@ const {
     {width}
     {height}
     {alt}
-    class:list={['image', classes]}
+    class:list={["image", classes]}
     onerror="this.onerror=null;this.src='https://xexiu.netlify.app/broken-image-min.jpeg';"
     {...rest}
 />
