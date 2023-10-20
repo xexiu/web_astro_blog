@@ -1,4 +1,5 @@
 import { defineMiddleware } from 'astro:middleware';
+export const prerender = false; //ADDED LINE
 
 export const onRequest = defineMiddleware((context, next) => {
    const isAdmin = context.cookies.get('isAdmin') || '' as any;
