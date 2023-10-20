@@ -13,6 +13,7 @@ import { Debug } from 'astro:components';
 import { getCollection } from 'astro:content';
 import type { Cookies } from 'types/utils';
 
+Astro.cookies.set("counter", "1");
 const isAdmin = isUserAdmin(Astro.cookies as Cookies);
 const blogs = await getCollectionFor('blog', isAdmin, getCollection);
 const blogTags = getTagsFor(isAdmin, blogs);
