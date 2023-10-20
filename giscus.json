@@ -1,6 +1,6 @@
 {
     "origins": [
-        "https://xexiu.netlify.app"
+        "https://xexiu.dev"
     ],
     "originsRegex": [
         "http://localhost:[0-9]+"

@@ -20,7 +20,7 @@ export default defineConfig({
          }
       }
    },
-   site: 'https://xexiu.netlify.app',
+   site: 'https://xexiu.dev',
    integrations: [partytown(), sitemap(), purgecss(), AstroPWA({
       registerType: 'autoUpdate',
       injectRegister: 'inline',

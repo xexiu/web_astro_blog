@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /admin*
-Sitemap: https://xexiu.netlify.app/sitemap-index.xml
+Sitemap: https://xexiu.dev/sitemap-index.xml

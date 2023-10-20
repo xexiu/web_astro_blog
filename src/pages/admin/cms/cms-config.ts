@@ -7,9 +7,9 @@ export const CMS_CONFIG = {
    local_backend: true,
    media_folder: 'src/images',
    public_folder: '/src/images',
-   site_url: 'https://xexiu.netlify.app',
-   display_url: 'https://xexiu.netlify.app',
-   logo_url: 'https://xexiu.netlify.app/assets/images/logo-min.png',
+   site_url: 'https://xexiu.dev',
+   display_url: 'https://xexiu.dev',
+   logo_url: 'https://xexiu.dev/assets/images/logo-min.png',
    show_preview_links: true,
    collections: [
       {
