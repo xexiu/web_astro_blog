@@ -13,7 +13,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "stylelint **/*.css",
-    "lint:fix": "bun run lint -- --fix && eslint --fix --ext .js,.jsx,.ts,.astro .",
+    "lint:fix": "bun run lint -- --fix && eslint --fix --ext .js,.jsx,.ts,.astro ./src",
     "postcss:watch": "postcss src/style.css --dir public",
     "clean-install": "rm -rf node_modules && rm -rf package-lock.json && rm -rf bun.lockb && rm -rf dist && bun i"
   },

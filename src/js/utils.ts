@@ -1,4 +1,4 @@
-import type { Post, Blog, RelatedArticles, PostFor, Cookies } from 'types/utils';
+import type { Blog, Cookies, Post, PostFor, RelatedArticles } from 'types/utils';
 
 export function updateTheme(value: string): void {
    document.documentElement.classList.remove('light', 'dark');
@@ -169,7 +169,7 @@ export function getPostsFor({ propertyName, blog, property, helper = slugify }: 
    return [...blog.latest, ...blog.pinned, ...blog.private].filter((entry: Post) => {
       if (propertyName === 'tags') {
          return entry.data.tags.includes(property as any);
-      } else if(propertyName === 'category') {
+      } else if (propertyName === 'category') {
          return helper(entry.data.category) === property;
       }
 

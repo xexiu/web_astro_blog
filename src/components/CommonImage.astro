@@ -11,7 +11,14 @@ interface Props {
     srcset?: string;
 }
 
-const { src, width = '400', height = '400', alt = 'Image', classes, ...rest } = Astro.props;
+const {
+   src,
+   width = '400',
+   height = '400',
+   alt = 'Image',
+   classes,
+   ...rest
+} = Astro.props;
 ---
 
 <Image
