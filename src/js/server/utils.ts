@@ -1,5 +1,3 @@
-export const prerender = false; // Need for Astro.cookie in PROD
-
 import type { Blog, Post } from 'types/utils';
 
 export async function getCollectionFor(collectionName: string, isAdmin: boolean, serverFunction: Function): Promise<any> {
@@ -31,8 +29,4 @@ export async function buildWithBlogs(isAdmin: boolean, serverFunction: Function)
    });
 
    return blogs;
-}
-
-export function isUserAdminCookie(cookies: any): boolean {
-   return /isAdmin=true/.test(cookies);
 }

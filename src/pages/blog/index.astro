@@ -1,18 +1,19 @@
 ---
+export const prerender = false; // Need for Astro.cookie in PROD
 import Tabs from '@components/Tabs/Tabs.astro';
 import Posts from '@components/postcard/Posts.astro';
 import SearchBar from '@components/search-bar/SearchBar.astro';
 import SectionContainer from '@components/section/SectionContainer.astro';
 import Tags from '@components/tags/Tags.astro';
-import { getCollectionFor, isUserAdminCookie } from '@js/server/utils';
-import { getTagsFor } from '@js/utils';
+import { getCollectionFor } from '@js/server/utils';
+import { getTagsFor, isUserAdmin } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
 import data from '@schemas/blog-data.json';
 import { Icon } from 'astro-icon';
 import { getCollection } from 'astro:content';
 
 const cookie = Astro.request.headers.get('cookie');
-const isAdmin = isUserAdminCookie(cookie);
+const isAdmin = isUserAdmin(cookie);
 const blogs = await getCollectionFor('blog', isAdmin, getCollection);
 const blogTags = getTagsFor(isAdmin, blogs);
 const keys = Object.keys(blogs);
