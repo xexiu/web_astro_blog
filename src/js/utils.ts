@@ -139,7 +139,7 @@ export function setCookie(name: string, value: string, days: number): void {
       expires = '; expires=' + date.toUTCString();
    }
 
-   document.cookie = name + '=' + (value || '') + expires + '; path=/';
+   document.cookie = name + '=' + (value || '') + expires + '; path=/; domain=.xexiu.dev; samesite=Lax; secure';
 }
 
 export function getCookie(name: string): string {
@@ -241,5 +241,5 @@ export function formatString(template: string, options: object): string {
 }
 
 export function isUserAdmin(cookies: Cookies) {
-   return !!cookies.get('isAdmin') && !!cookies.get('nf_jwt');
+   return !!cookies.get('isAdmin');
 }

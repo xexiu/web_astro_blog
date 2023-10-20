@@ -20,6 +20,13 @@
       <script>
          import { netlifyIdentityLoad } from "./cms";
 
+         declare const CMS: any;
+         declare global {
+            interface Window {
+               netlifyIdentity: any;
+            }
+         }
+
          CMS.registerPreviewStyle("/src/styles/blog.css");
          netlifyIdentityLoad(window.netlifyIdentity);
       </script>
