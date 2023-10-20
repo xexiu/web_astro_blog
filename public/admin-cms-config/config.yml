@@ -9,7 +9,7 @@ public_folder: "/src/images" # The src attribute for uploaded media will begin w
 
 site_url: 'https://xexiu.netlify.app'
 display_url: 'https://xexiu.netlify.app'
-logo_url: 'https://xexiu.netlify.app/logo-min.png'
+logo_url: 'https://xexiu.netlify.app/assets/images/logo-min.png'
 show_preview_links: true
 
 local_backend: true
