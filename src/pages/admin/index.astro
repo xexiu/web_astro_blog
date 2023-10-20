@@ -18,23 +18,23 @@
          src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"
          is:inline></script>
       <script>
-         import { netlifyIdentityLoad } from './cms';
+         import { netlifyIdentityLoad } from "./cms";
 
-         CMS.registerPreviewStyle('/src/styles/blog.css');
+         CMS.registerPreviewStyle("/src/styles/blog.css");
          netlifyIdentityLoad(window.netlifyIdentity);
       </script>
    </body>
 </html>
 
 <script>
-import { setCookie } from '@js/utils';
+   import { setCookie } from "@js/utils";
 
-if(!import.meta.env.PRO) {
-   localStorage.setItem('isAdmin', 'true');
-   localStorage.setItem('nf_jwt', 'localhost_123456');
-   setCookie('isAdmin', 'true', 30);
-   setCookie('nf_jwt', 'localhost_123456', 30);
-}
+   if (!import.meta.env.PROD) {
+      localStorage.setItem("isAdmin", "true");
+      localStorage.setItem("nf_jwt", "localhost_123456");
+      setCookie("isAdmin", "true", 30);
+      setCookie("nf_jwt", "localhost_123456", 30);
+   }
 </script>
 
 <style is:inline>
