@@ -12,14 +12,13 @@ import data from '@schemas/blog-data.json';
 import { Icon } from 'astro-icon';
 import { Debug } from 'astro:components';
 import { getCollection } from 'astro:content';
-import type { Cookies } from 'types/utils';
 
-Astro.cookies.set("counter", "1");
-const isAdmin = isUserAdmin(Astro.cookies as Cookies);
+const cookie = Astro.request.headers.get('cookie');
+
+const isAdmin = isUserAdmin(Astro.request.headers.get('cookie') as any);
 const blogs = await getCollectionFor('blog', isAdmin, getCollection);
 const blogTags = getTagsFor(isAdmin, blogs);
 const keys = Object.keys(blogs);
-const cookie = Astro.request.headers.get('cookie');
 const { locals } = Astro;
 ---
 

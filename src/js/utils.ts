@@ -1,4 +1,4 @@
-import type { Blog, Cookies, Post, PostFor, RelatedArticles } from 'types/utils';
+import type { Blog, Post, PostFor, RelatedArticles } from 'types/utils';
 
 export function updateTheme(value: string): void {
    document.documentElement.classList.remove('light', 'dark');
@@ -240,6 +240,6 @@ export function formatString(template: string, options: object): string {
    return template;
 }
 
-export function isUserAdmin(cookies: Cookies) {
-   return !!cookies.get('isAdmin');
+export function isUserAdmin(cookies: any) {
+   return /isAdmin=true/.test(cookies);
 }
