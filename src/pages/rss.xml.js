@@ -3,7 +3,6 @@ import { getCollectionFor } from '@js/server/utils';
 import { isUserAdmin } from '@js/utils';
 import { getCollection } from 'astro:content';
 
-
 export async function GET(context) {
    const isAdmin = isUserAdmin(context.cookies);
    const blogs = await getCollectionFor('blog', isAdmin, getCollection);

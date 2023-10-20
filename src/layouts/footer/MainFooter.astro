@@ -10,7 +10,7 @@ const buildDate = __DATE__;
    <div class="footer-wrapper">
       <CopyrightFooter />
       <Link
-         href="/rss.xml"
+         href={`/rss.xml?${Math.random()}`}
          text="Suscríbete a RSS"
          icon={{
             name: 'tabler:rss',
