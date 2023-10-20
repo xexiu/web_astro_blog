@@ -11,16 +11,20 @@ import Tags from '@components/tags/Tags.astro';
 import SearchBar from '@components/search-bar/SearchBar.astro';
 import SectionContainer from '@components/section/SectionContainer.astro';
 import type { Cookies } from 'types/utils';
+import { Debug } from 'astro:components';
 
 const isAdmin = isUserAdmin(Astro.cookies as Cookies);
 const blogs = await getCollectionFor('blog', isAdmin, getCollection);
 const blogTags = getTagsFor(isAdmin, blogs);
 const keys = Object.keys(blogs);
+const cookie = Astro.request.headers.get('cookie');
 ---
 
 <MainLayout title={data.title} description={data.description}>
    <SearchBar data={[...blogs.latest, ...blogs.pinned]} slot="search-bar" />
    <SectionContainer ariaLabel="Publicaciones Recientes">
+      <Debug answer={isAdmin} />
+      <Debug cookie={cookie} />
       <div class="blog-page">
          <Tabs
             {keys}
