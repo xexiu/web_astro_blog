@@ -18,7 +18,7 @@ import { Markdown } from 'astro-remote';
 import { getCollection } from 'astro:content';
 import { ViewTransitions } from 'astro:transitions';
 import { Icon } from 'astro-icon';
-import { findRelatedPostsByTag, slugify } from '@js/utils';
+import { findRelatedPostsByTag, isUserAdmin, slugify } from '@js/utils';
 import RelatedArticles from '@components/RelatedArticles.astro';
 import TagHeading from '@components/common/TagHeading.astro';
 import FormCommentGiscus from '@components/FormCommentGiscus.astro';
@@ -30,6 +30,7 @@ import SocialShareOptions from '@components/social-share/SocialShareOptions.astr
 import SocialShareFooter from '@components/social-share/SocialShareFooter.astro';
 import SearchBar from '@components/search-bar/SearchBar.astro';
 import { getCollectionFor } from '@js/server/utils';
+import type { Cookies } from 'types/utils';
 
 export async function getStaticPaths() {
    const blogEntries = await getCollection('blog');
@@ -54,7 +55,7 @@ const { entry, nextEntry, prevEntry, relatedArticles } = Astro.props;
 // Cookie not working in prod (but works locally) because of this:
 // https://answers.netlify.com/t/cookie-not-set-in-deployment-but-works-in-localhost/97069
 
-const isAdmin = !!Astro.cookies.get('isAdmin') || !!Astro.cookies.get('nf_jwt');
+const isAdmin = isUserAdmin(Astro.cookies as Cookies);
 const blogs = await getCollectionFor('blog', isAdmin, getCollection);
 
 const { title, tags, excerpt, category } = entry.data;

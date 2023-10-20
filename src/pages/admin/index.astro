@@ -31,7 +31,9 @@ import { setCookie } from '@js/utils';
 
 if(!import.meta.env.PRO) {
    localStorage.setItem('isAdmin', 'true');
+   localStorage.setItem('nf_jwt', 'localhost_123456');
    setCookie('isAdmin', 'true', 30);
+   setCookie('nf_jwt', 'localhost_123456', 30);
 }
 </script>
 

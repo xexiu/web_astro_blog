@@ -64,3 +64,8 @@ export type PostFor = {
    property: string,
    helper?: Function
 }
+
+export type Cookies = {
+   // eslint-disable-next-line no-unused-vars
+   get: (param: string) => string | undefined;
+}

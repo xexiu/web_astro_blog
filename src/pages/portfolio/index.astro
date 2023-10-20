@@ -1,11 +1,13 @@
 ---
 import Posts from '@components/postcard/Posts.astro';
 import { getCollectionFor } from '@js/server/utils';
+import { isUserAdmin } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
 import data from '@schemas/portfolio-data.json';
 import { getCollection } from 'astro:content';
+import type { Cookies } from 'types/utils';
 
-const isAdmin = !!Astro.cookies.get('isAdmin') || !!Astro.cookies.get('nf_jwt');
+const isAdmin = isUserAdmin(Astro.cookies as Cookies);
 const portfolios = await getCollectionFor('portfolio', isAdmin, getCollection);
 ---
 

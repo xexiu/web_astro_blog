@@ -1,14 +1,15 @@
 ---
 import Posts from '@components/postcard/Posts.astro';
 import TagHeading from '@components/common/TagHeading.astro';
-import { slugify, getPostsFor } from '@js/utils';
+import { slugify, getPostsFor, isUserAdmin } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
 import { getCollectionFor } from '@js/server/utils';
 import SectionContainer from '@components/section/SectionContainer.astro';
 import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
+import type { Cookies } from 'types/utils';
 
-const isAdmin = !!Astro.cookies.get('isAdmin') || !!Astro.cookies.get('nf_jwt');
+const isAdmin = isUserAdmin(Astro.cookies as Cookies);
 
 export async function getStaticPaths() {
    const blogEntries = await getCollection('blog');

@@ -6,12 +6,13 @@ import Posts from '@components/postcard/Posts.astro';
 import Tabs from '@components/Tabs/Tabs.astro';
 import { getCollectionFor } from '@js/server/utils';
 import { Icon } from 'astro-icon';
-import { getTagsFor } from '@js/utils';
+import { getTagsFor, isUserAdmin } from '@js/utils';
 import Tags from '@components/tags/Tags.astro';
 import SearchBar from '@components/search-bar/SearchBar.astro';
 import SectionContainer from '@components/section/SectionContainer.astro';
+import type { Cookies } from 'types/utils';
 
-const isAdmin = !!Astro.cookies.get('isAdmin') || !!Astro.cookies.get('nf_jwt');
+const isAdmin = isUserAdmin(Astro.cookies as Cookies);
 const blogs = await getCollectionFor('blog', isAdmin, getCollection);
 const blogTags = getTagsFor(isAdmin, blogs);
 const keys = Object.keys(blogs);
