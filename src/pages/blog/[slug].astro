@@ -30,7 +30,6 @@ import SocialShareOptions from '@components/social-share/SocialShareOptions.astr
 import SocialShareFooter from '@components/social-share/SocialShareFooter.astro';
 import SearchBar from '@components/search-bar/SearchBar.astro';
 import { getCollectionFor } from '@js/server/utils';
-import type { Cookies } from 'types/utils';
 
 export async function getStaticPaths() {
    const blogEntries = await getCollection('blog');

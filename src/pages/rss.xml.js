@@ -1,3 +1,5 @@
+export const prerender = false; // Need for Astro.cookie in PROD
+
 import rss from '@astrojs/rss';
 import { getCollectionFor } from '@js/server/utils';
 import { isUserAdmin } from '@js/utils';
