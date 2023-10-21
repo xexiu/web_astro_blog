@@ -174,31 +174,3 @@ const { title, tags, excerpt, category } = entry.data;
 
    customElements.define('xe-article-speech', ArticleSpeech);
 </script>
-
-<script>
-   const shareBtn = document.querySelector('#share-article') as HTMLElement;
-
-   shareBtn?.addEventListener('click', (event: Event) => {
-      event.preventDefault();
-      const { articleTitle } = shareBtn.dataset;
-      const { articleUrl } = shareBtn.dataset;
-
-      if (navigator.share) {
-         navigator
-            .share({
-               title: articleTitle,
-               url: articleUrl
-            })
-            .then(() => {
-               // console.log('Thanks for sharing!');
-            })
-            .catch((err) => {
-               // Handle errors, if occurred
-               // console.log('Error while using Web share API:');
-               // console.log(err);
-            });
-      } else {
-         alert('BLAAA');
-      }
-   });
-</script>
