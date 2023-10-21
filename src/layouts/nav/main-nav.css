@@ -31,6 +31,25 @@
     }
 }
 
+
+html[data-current-page="/"] {
+    .nav__links li a[href='/'] {
+        color: #00C2DB;
+        border-radius: 20px;
+        box-shadow: var(--shadow-md);
+        border: 1px solid #000;
+    }
+}
+
+html[data-current-page*="/blog"] {
+    .nav__links li a[href*='/blog'] {
+        color: #00C2DB;
+        border-radius: 20px;
+        box-shadow: var(--shadow-md);
+        border: 1px solid #000;
+    }
+}
+
 .menu-btn {
     color: #fefefe;
     display: none;

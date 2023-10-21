@@ -1,6 +1,5 @@
 ---
 export const prerender = false; // Need for Astro.cookie in PROD
-import Tabs from '@components/Tabs/Tabs.astro';
 import Posts from '@components/postcard/Posts.astro';
 import SearchBar from '@components/search-bar/SearchBar.astro';
 import SectionContainer from '@components/section/SectionContainer.astro';
@@ -9,6 +8,7 @@ import { getCollectionFor } from '@js/server/utils';
 import { getTagsFor, isUserAdmin } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
 import data from '@schemas/blog-data.json';
+import Tabs from '@xexiu/astro-tabs';
 import { Icon } from 'astro-icon';
 import { getCollection } from 'astro:content';
 
@@ -81,5 +81,13 @@ const keys = Object.keys(blogs);
 
    .contenido-privado-icon {
       margin: 0 auto;
+   }
+
+   .tab-wrapper:has(.radio-tab:checked) {
+      box-shadow: 0 2px 4px rgb(0 0 0 / 20%);
+      text-shadow: 0 2px 3px rgb(255 255 255 / 40%);
+      &:hover {
+         box-shadow: var(--shadow-md);
+      }
    }
 </style>

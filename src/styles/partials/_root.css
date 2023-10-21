@@ -22,6 +22,13 @@
     --hue: 235;
     --color-red: rgb(202 0 0);
     --color-dark: #212123;
+    --color-darken-grey: #595959;
+    --color-lighter-grey: #B0B0B0;
+    --bg-green: #90c520;
+    --bg-red: #d83c3c;
+    --bg-blue: #006075;
+    --bg-grey: #999;
+    --bg-dark: #212123;
 
     /* Light Mode */
     --bkg-light: var(--hue) 25% 97%;

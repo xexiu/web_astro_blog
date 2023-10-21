@@ -1,5 +1,4 @@
 @import "reset";
-@import "partials/_variables";
 @import "partials/_buttons";
 @import "partials/_root";
 @import "tooltip";
@@ -22,24 +21,6 @@ html::-webkit-scrollbar-track {
 html::-webkit-scrollbar-thumb {
     background: var(--color-red);
     border-radius: 5px;
-}
-
-html[data-current-page="/"] {
-    .nav__links li a[href='/'] {
-        color: var(--color-red);
-        border-radius: 20px;
-        box-shadow: var(--shadow-md);
-        border: 1px solid #000;
-    }
-}
-
-html[data-current-page*="/blog"] {
-    .nav__links li a[href*='/blog'] {
-        color: var(--color-red);
-        border-radius: 20px;
-        box-shadow: var(--shadow-md);
-        border: 1px solid #000;
-    }
 }
 
 /* :root > * {
@@ -131,7 +112,7 @@ body {
     }
 
     a[data-normal-link] {
-        color: $color-red;
+        color: var(--color-red);
         position: relative;
         transition: color .3s ease-in-out;
         text-decoration: none;
@@ -142,7 +123,7 @@ body {
             top: 100%;
             width: 100%;
             height: 1px;
-            background-color: $bg-blue;
+            background-color: var(--bg-blue);
             transform: scaleX(0);
             transition: transform .3s ease-in-out;
         }
