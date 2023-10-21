@@ -1,9 +1,9 @@
+import netlify from '@astrojs/netlify/functions';
 import partytown from '@astrojs/partytown';
 import sitemap from '@astrojs/sitemap';
+import AstroPWA from '@vite-pwa/astro';
 import purgecss from 'astro-purgecss';
 import { defineConfig, squooshImageService } from 'astro/config';
-import netlify from '@astrojs/netlify/functions';
-import AstroPWA from '@vite-pwa/astro';
 import { manifest } from './src/pwa/manifest';
 
 // https://astro.build/config
@@ -12,7 +12,7 @@ export default defineConfig({
    vite: {
       logLevel: 'info',
       define: {
-         __DATE__: `'${new Date().toISOString()}'`,
+         __DATE__: `'${new Date().toISOString()}'`
       },
       server: {
          watch: {
@@ -21,7 +21,11 @@ export default defineConfig({
       }
    },
    site: 'https://xexiu.dev',
-   integrations: [partytown(), sitemap(), purgecss(), AstroPWA({
+   integrations: [partytown({
+      config: {
+         forward: ['dataLayer.push']
+      }
+   }), sitemap(), purgecss(), AstroPWA({
       registerType: 'autoUpdate',
       injectRegister: 'inline',
       mode: 'production',
@@ -29,7 +33,7 @@ export default defineConfig({
       manifest,
       client: {
          installPrompt: true,
-         periodicSyncForUpdates: 20,
+         periodicSyncForUpdates: 20
       },
       workbox: {
          maximumFileSizeToCacheInBytes: 3000000,
@@ -40,8 +44,8 @@ export default defineConfig({
       },
       devOptions: {
          enabled: true,
-         navigateFallbackAllowlist: [/^\/404$/],
-      },
+         navigateFallbackAllowlist: [/^\/404$/]
+      }
    })],
    image: {
       service: squooshImageService()

@@ -18,9 +18,9 @@ const {
    <meta name="generator" content={Astro.generator} />
    <meta name="description" content={description} />
    <meta name="author" content="Sergiu Mironescu" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
-   <meta name="theme-color" content="#222">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
+   <meta name="theme-color" content="#222" />
    <Seo
       {title}
       {description}
@@ -32,6 +32,20 @@ const {
    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
    <link rel="sitemap" href="/sitemap-index.xml" />
    <title>{title}</title>
-   { pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} /> }
+   {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
    <script src="/src/pwa/pwa.ts"></script>
+   <!-- Google tag (gtag.js) -->
+   <script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-F65W7TYF0D"
+   ></script>
+   <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+         dataLayer.push(arguments);
+      }
+
+      gtag('js', new Date());
+
+      gtag('config', 'G-F65W7TYF0D');
+   </script>
 </head>
