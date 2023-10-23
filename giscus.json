@@ -1,8 +1,11 @@
 {
+    "defaultCommentOrder": "newest",
     "origins": [
-        "https://xexiu.dev"
+        "https://xexiu.dev",
+        "http://localhost"
     ],
     "originsRegex": [
-        "http://localhost:[0-9]+"
+        "http://localhost.*",
+        "https://xexiu.dev.*"
     ]
 }
