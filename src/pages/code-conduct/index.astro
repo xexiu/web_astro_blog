@@ -1,0 +1,23 @@
+---
+import MainLayout from '@layouts/MainLayout.astro';
+import data from '@schemas/index-data.json';
+import { Markdown } from 'astro-remote';
+import * as code_conduct from '../../../CODE_OF_CONDUCT.md';
+
+---
+<MainLayout title={data.title} description={data.description}>
+   <div id="code_conduct_wrapper">
+      <Markdown
+         content={code_conduct.rawContent()}
+         sanitize={{ allowComponents: true }}
+      />
+   </div>
+</MainLayout>
+
+<style is:inline>
+    #code_conduct_wrapper {
+        #contributor-covenant-code-of-conduct, p, h2 {
+            margin: 20px 0;
+        }
+    }
+</style>
