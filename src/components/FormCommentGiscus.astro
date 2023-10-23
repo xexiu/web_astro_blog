@@ -24,7 +24,7 @@
          content: "";
          position: absolute;
          top: 94px;
-         left: 101px;
+         left: 110px;
          width: 175px;
          background-color: hsl(var(--bkg));
          display: block;
@@ -37,14 +37,21 @@
 
    @media screen and (width <= 500px) {
       .container-comments::before {
+         top: 95px;
+      }
+   }
+
+   @media screen and (width <= 458px) {
+      .container-comments::before {
          top: 125px;
          left: 0;
       }
    }
+
    @media screen and (width <= 370px) {
       .container-comments::before {
          left: 0;
-         top: 107px;
+         top: 110px;
          width: 54%;
          height: 33px;
       }
@@ -53,22 +60,17 @@
       .container-comments::before {
          height: 27px;
          left: 0;
-         top: 93px;
+         top: 105px;
          width: 55.5%;
       }
    }
 
-   @media screen and (width <= 265px) {
+   @media screen and (width <= 274px) {
       .container-comments::before {
          height: 20px;
          left: 0;
-         top: 83px;
+         top: 100px;
          width: 55.5%;
-      }
-   }
-   @media screen and (width <= 220px) {
-      .container-comments::before {
-         display: none;
       }
    }
 </style>
