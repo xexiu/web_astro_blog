@@ -25,6 +25,7 @@ import FormCommentGiscus from '@components/FormCommentGiscus.astro';
 import PostCardCategory from '@components/postcard/PostCardCategory.astro';
 import ArticleContainer from '@components/article/ArticleContainer.astro';
 import Modal from '@xexiu/astro-modal';
+import ProgressBar from '@xexiu/astro-progress-bar';
 import SocialShareTitle from '@components/social-share/SocialShareTitle.astro';
 import SocialShareOptions from '@components/social-share/SocialShareOptions.astro';
 import SocialShareFooter from '@components/social-share/SocialShareFooter.astro';
@@ -69,6 +70,7 @@ const { title, tags, excerpt, category } = entry.data;
    frontmatter={entry}
 >
    <SearchBar data={[...blogs.latest, ...blogs.pinned]} slot="search-bar" />
+   <ProgressBar />
    <ViewTransitions />
    <Breadcrumbs
       links={[
@@ -130,8 +132,7 @@ const { title, tags, excerpt, category } = entry.data;
                            aria-label="Escuchar artículo"
                            classes="listen-article"
                            data-article-text={`título: ${title}, descripción: ${excerpt}, artículo: ${entry.body}`}
-                        >
-                        </Button>
+                        />
                      </xe-article-speech>
                   </div>
                   <div class="article-share-container">
@@ -172,7 +173,7 @@ const { title, tags, excerpt, category } = entry.data;
 </MainLayout>
 
 <script>
-   import { ArticleSpeech } from '@js/custom-elements';
+  import { ArticleSpeech } from '@js/custom-elements';
 
-   customElements.define('xe-article-speech', ArticleSpeech);
+  customElements.define('xe-article-speech', ArticleSpeech);
 </script>
