@@ -1,22 +1,7 @@
 {
-  "name": "sm_astro",
-  "type": "module",
-  "version": "0.0.1",
   "browserslist": [
     "defaults"
   ],
-  "scripts": {
-    "cms-proxy-server": "bunx netlify-cms-proxy-server",
-    "dev": "concurrently 'astro dev' 'bun run cms-proxy-server'",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "lint": "stylelint **/*.css",
-    "lint:fix": "bun run lint -- --fix && eslint --fix --ext .js,.jsx,.ts,.astro ./src",
-    "postcss:watch": "postcss src/style.css --dir public",
-    "clean-install": "rm -rf node_modules && rm -rf package-lock.json && rm -rf bun.lockb && rm -rf dist && bun i"
-  },
   "dependencies": {
     "@astrojs/mdx": "^1.1.0",
     "@astrojs/netlify": "^3.0.2",
@@ -26,10 +11,10 @@
     "@astrojs/sitemap": "^3.0.0",
     "@types/mdx": "^2.0.7",
     "@typescript-eslint/parser": "^6.7.0",
+    "@xexiu/astro-modal": "0.4.3",
     "@xexiu/astro-tabs": "^0.4.3",
     "astro": "^3.3.0",
     "astro-icon": "^0.8.1",
-    "@xexiu/astro-modal": "0.4.3",
     "astro-purgecss": "^3.2.0",
     "astro-remote": "^0.2.4",
     "autoprefixer": "^10.4.15",
@@ -60,5 +45,21 @@
     "eslint": "^8.49.0",
     "typescript": "^5.2.2"
   },
-  "module": "index.ts"
+  "module": "index.ts",
+  "name": "sm_astro",
+  "scripts": {
+    "astro": "astro",
+    "build": "astro build",
+    "clean-install": "rm -rf node_modules && rm -rf package-lock.json && rm -rf bun.lockb && rm -rf dist && bun i",
+    "cms-proxy-server": "bunx netlify-cms-proxy-server",
+    "dev": "concurrently 'astro dev' 'bun run cms-proxy-server'",
+    "lint": "stylelint **/*.css",
+    "lint:fix": "bun run lint -- --fix && eslint --fix --ext .js,.jsx,.ts,.astro ./src",
+    "postcss:watch": "postcss src/style.css --dir public",
+    "postinstall": "patch-package",
+    "preview": "astro preview",
+    "start": "astro dev"
+  },
+  "type": "module",
+  "version": "0.0.1"
 }

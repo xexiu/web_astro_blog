@@ -25,7 +25,10 @@ export default defineConfig({
       config: {
          forward: ['dataLayer.push']
       }
-   }), sitemap(), purgecss(), AstroPWA({
+   }),
+   sitemap(),
+   purgecss(),
+   AstroPWA({
       registerType: 'autoUpdate',
       injectRegister: 'inline',
       mode: 'production',

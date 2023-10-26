@@ -110,6 +110,7 @@ export class ArticleSpeech extends HTMLElement {
 
       this?.addEventListener('click', (event: Event) => {
          event.preventDefault();
+         btn.ariaPressed = 'true';
 
          if (btn.classList.contains('pause')) {
             this.pause();

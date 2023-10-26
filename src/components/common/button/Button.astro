@@ -1,0 +1,18 @@
+---
+interface Props {
+  text?: string;
+  classes?: string;
+}
+const { text, classes = '', ...rest } = Astro.props;
+---
+
+<button
+   {...rest}
+   aria-label="button"
+   type="button"
+   class:list={['btn-clean', classes]}
+>
+   <slot name="button-before-text" />
+   {text}
+   <slot name="button-after-text" />
+</button>

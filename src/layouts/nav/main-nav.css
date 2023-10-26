@@ -62,6 +62,12 @@ html[data-current-page*="/blog"] {
     height: auto;
 }
 
+@media screen and (width <= 500px) {
+    #main-body:has(#click:checked) .menu-btn {
+        right: 10px;
+    }
+}
+
 @media screen and (width <= 650px) {
     #main-body:has(#click:checked) .header-main-nav {
         width: 100%;

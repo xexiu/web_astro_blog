@@ -10,12 +10,12 @@ import './main-nav.css';
    <Icon name="jam:menu" height="36" width="36" />
 </label>
 
-<nav class="header-main-nav" aria-label="Navagación Principal" data-main-nav>
+<nav class="header-main-nav" aria-label="Navagación Principal" data-main-nav role="navigation">
    <ul class="nav__links">
       {
          data.map((item) => {
             return (
-               <li>
+               <li aria-label={item.name}>
                   <Link
                      text={item.name}
                      href={item.path}

@@ -30,6 +30,7 @@ import SocialShareOptions from '@components/social-share/SocialShareOptions.astr
 import SocialShareFooter from '@components/social-share/SocialShareFooter.astro';
 import SearchBar from '@components/search-bar/SearchBar.astro';
 import { getCollectionFor } from '@js/server/utils';
+import Button from '@components/common/button/Button.astro';
 
 export async function getStaticPaths() {
    const blogEntries = await getCollection('blog');
@@ -124,13 +125,13 @@ const { title, tags, excerpt, category } = entry.data;
                         title="Escuchar artículo"
                         data-tooltip-placement="top"
                      >
-                        <button
+                        <Button
+                           aria-pressed="false"
                            aria-label="Escuchar artículo"
-                           class="listen-article"
+                           classes="listen-article"
                            data-article-text={`título: ${title}, descripción: ${excerpt}, artículo: ${entry.body}`}
-                           data-paused="false"
                         >
-                        </button>
+                        </Button>
                      </xe-article-speech>
                   </div>
                   <div class="article-share-container">
