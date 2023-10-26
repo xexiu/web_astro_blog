@@ -1,12 +1,12 @@
 ---
-import Seo from '@components/Seo.astro';
-import data from '@schemas/index-data.json' assert { type: 'json' };
+import SEO from '@xexiu/astro-seo';
+import defaultSchema from '@schemas/site-data.json' assert { type: 'json' };
 import type { HeadProps } from 'types/interfaces';
 import { pwaInfo } from 'virtual:pwa-info';
 
 const {
-   title = data.title,
-   description = data.description,
+   title = defaultSchema.title,
+   description = defaultSchema.description,
    featured_image,
    frontmatter,
    robots
@@ -20,13 +20,14 @@ const {
    <meta name="author" content="Sergiu Mironescu" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <meta name="theme-color" content="#222" />
-   <Seo
+   <SEO
       {title}
       {description}
       url={Astro.url}
       {featured_image}
       {frontmatter}
       {robots}
+      {defaultSchema}
    />
    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
    <link rel="sitemap" href="/sitemap-index.xml" />

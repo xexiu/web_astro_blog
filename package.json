@@ -11,7 +11,8 @@
     "@astrojs/sitemap": "^3.0.0",
     "@types/mdx": "^2.0.7",
     "@typescript-eslint/parser": "^6.7.0",
-    "@xexiu/astro-modal": "0.4.4",
+    "@xexiu/astro-modal": "^0.4.4",
+    "@xexiu/astro-seo": "^0.0.2",
     "@xexiu/astro-tabs": "^0.4.4",
     "astro": "^3.3.0",
     "astro-icon": "^0.8.1",
@@ -56,7 +57,6 @@
     "lint": "stylelint **/*.css",
     "lint:fix": "bun run lint -- --fix && eslint --fix --ext .js,.jsx,.ts,.astro ./src",
     "postcss:watch": "postcss src/style.css --dir public",
-    "postinstall": "patch-package",
     "preview": "astro preview",
     "start": "astro dev"
   },
