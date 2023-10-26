@@ -81,67 +81,6 @@ export class SaveArticleDetails extends SaveArticle {
    }
 }
 
-export class ArticleSpeech extends HTMLElement {
-   constructor() {
-      super();
-      let _voices = [] as any;
-      const _iOSvoices = [
-         { name: 'Flo (Spanish (Spain))"', voiceURI: 'com.apple.eloquence.es-ES.Flo', lang: 'es-ES', localService: true, default: true }
-      ];
-      const btn = this.querySelector('.listen-article') as HTMLButtonElement;
-      const utterance = new SpeechSynthesisUtterance();
-
-      window.speechSynthesis.onvoiceschanged = function() {
-         _voices = window.speechSynthesis.getVoices();
-
-         if (_voices.length === 0) {
-            // use hard-coded list because speechSynthesis.getVoices() didn't work on IOS returns []
-            _voices = _iOSvoices;
-         }
-
-         utterance.voice = _voices.filter((voice: any) => voice.name == 'Flo (Spanish (Spain))"')[0];
-      };
-
-      utterance.lang = 'es-ES';
-      utterance.text = btn.dataset.articleText as string;
-      utterance.voice = window.speechSynthesis.getVoices()[0];
-
-      window.speechSynthesis.cancel();
-
-      this?.addEventListener('click', (event: Event) => {
-         event.preventDefault();
-         btn.ariaPressed = 'true';
-
-         if (btn.classList.contains('pause')) {
-            this.pause();
-            btn.classList.toggle('pause');
-         } else {
-            this.play(utterance);
-            btn.classList.toggle('pause');
-         }
-      });
-
-      utterance.addEventListener('end', (event: Event) => {
-         event.preventDefault();
-         btn.classList.toggle('pause');
-      });
-   }
-
-   play(text: SpeechSynthesisUtterance) {
-      if (this.dataset.paused === 'true') {
-         this.dataset.paused = 'false';
-         window.speechSynthesis.resume();
-      } else {
-         window.speechSynthesis.speak(text);
-      }
-   }
-
-   pause() {
-      window.speechSynthesis.pause();
-      this.dataset.paused = 'true';
-   }
-}
-
 export class CopyrightFooter extends HTMLElement {
    constructor() {
       super();
@@ -204,37 +143,6 @@ export class SocialShareCopyCode extends BaseCopyCode {
 
    constructor() {
       super();
-   }
-}
-
-export class TabActions extends HTMLElement {
-   constructor() {
-      super();
-
-      const tabBtns = this.querySelectorAll('[data-tab') as NodeListOf<Element>;
-      const tabsContent = this.querySelectorAll('[data-tab-content]');
-
-      tabBtns?.forEach((tabBtn: HTMLButtonElement) => {
-         tabBtn?.addEventListener('click', (event: Event) => {
-            event.preventDefault();
-            if (tabBtn.classList.contains('active')) return;
-
-            const tabId = tabBtn.getAttribute('data-tab');
-
-            tabBtns.forEach((btn) => {
-               btn.classList.remove('active');
-            });
-            tabsContent.forEach((content) => {
-               content.classList.remove('active-content');
-            });
-
-            tabBtn.classList.add('active');
-            const correspondingContent = document.querySelector(
-               `[data-tab-content="${tabId}"]`
-            );
-            correspondingContent?.classList.add('active-content');
-         });
-      });
    }
 }
 

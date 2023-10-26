@@ -1,5 +1,6 @@
 ---
-import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
+import FormCommentGiscus from '@components/FormCommentGiscus.astro';
+import RelatedArticles from '@components/RelatedArticles.astro';
 import {
    ArticleAuthor,
    ArticleAuthorContainer,
@@ -8,30 +9,29 @@ import {
    ArticleReadingTime,
    ArticleTools
 } from '@components/article';
+import ArticleContainer from '@components/article/ArticleContainer.astro';
+import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
+import TagHeading from '@components/common/TagHeading.astro';
 import CodeBlock from '@components/markdown/CodeBlock.astro';
 import MarkdownImages from '@components/markdown/MarkdownImages.astro';
 import NormalizeLinks from '@components/markdown/NormalizeLinks.astro';
+import PostCardCategory from '@components/postcard/PostCardCategory.astro';
+import SearchBar from '@components/search-bar/SearchBar.astro';
+import SocialShareFooter from '@components/social-share/SocialShareFooter.astro';
+import SocialShareOptions from '@components/social-share/SocialShareOptions.astro';
+import SocialShareTitle from '@components/social-share/SocialShareTitle.astro';
 import Tags from '@components/tags/Tags.astro';
+import { getCollectionFor } from '@js/server/utils';
+import { findRelatedPostsByTag, isUserAdmin, slugify } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
 import '@styles/blog.css';
+import Modal from '@xexiu/astro-modal';
+import ProgressBar from '@xexiu/astro-progress-bar';
+import AstroSpeech from '@xexiu/astro-speech';
+import { Icon } from 'astro-icon';
 import { Markdown } from 'astro-remote';
 import { getCollection } from 'astro:content';
 import { ViewTransitions } from 'astro:transitions';
-import { Icon } from 'astro-icon';
-import { findRelatedPostsByTag, isUserAdmin, slugify } from '@js/utils';
-import RelatedArticles from '@components/RelatedArticles.astro';
-import TagHeading from '@components/common/TagHeading.astro';
-import FormCommentGiscus from '@components/FormCommentGiscus.astro';
-import PostCardCategory from '@components/postcard/PostCardCategory.astro';
-import ArticleContainer from '@components/article/ArticleContainer.astro';
-import Modal from '@xexiu/astro-modal';
-import ProgressBar from '@xexiu/astro-progress-bar';
-import SocialShareTitle from '@components/social-share/SocialShareTitle.astro';
-import SocialShareOptions from '@components/social-share/SocialShareOptions.astro';
-import SocialShareFooter from '@components/social-share/SocialShareFooter.astro';
-import SearchBar from '@components/search-bar/SearchBar.astro';
-import { getCollectionFor } from '@js/server/utils';
-import Button from '@components/common/button/Button.astro';
 
 export async function getStaticPaths() {
    const blogEntries = await getCollection('blog');
@@ -122,18 +122,13 @@ const { title, tags, excerpt, category } = entry.data;
                </ArticleAuthorContainer>
                <ArticleTools>
                   <div class="article-speech-container">
-                     <xe-article-speech
-                        class="tooltip xe-article-speech"
-                        title="Escuchar artículo"
+                     <AstroSpeech
+                        title="Escuchar Artículo"
+                        text={`título: ${title}, descripción: ${excerpt}, artículo: ${entry.body}`}
+                        classes="tooltip"
                         data-tooltip-placement="top"
-                     >
-                        <Button
-                           aria-pressed="false"
-                           aria-label="Escuchar artículo"
-                           classes="listen-article"
-                           data-article-text={`título: ${title}, descripción: ${excerpt}, artículo: ${entry.body}`}
-                        />
-                     </xe-article-speech>
+                        btnClasses="listen-article"
+                     />
                   </div>
                   <div class="article-share-container">
                      <Modal
@@ -171,9 +166,3 @@ const { title, tags, excerpt, category } = entry.data;
       <FormCommentGiscus />
    </ArticleContainer>
 </MainLayout>
-
-<script>
-  import { ArticleSpeech } from '@js/custom-elements';
-
-  customElements.define('xe-article-speech', ArticleSpeech);
-</script>
