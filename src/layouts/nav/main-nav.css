@@ -102,6 +102,8 @@ html[data-current-page*="/blog"] {
 
     #click:checked ~ .menu-btn {
         position: fixed;
+        transform: rotate(55deg);
+        transition: all .3s;
     }
 
     .menu-btn {
@@ -110,5 +112,6 @@ html[data-current-page*="/blog"] {
         top: 13px;
         right: 20px;
         z-index: 1000;
+        transition: all .3s;
     }
 }
