@@ -70,7 +70,7 @@ const { title, tags, excerpt, category } = entry.data;
    frontmatter={entry}
 >
    <SearchBar data={[...blogs.latest, ...blogs.pinned]} slot="search-bar" />
-   <ProgressBar />
+   <ProgressBar excludeElementSelector=".container-comments" />
    <ViewTransitions />
    <Breadcrumbs
       links={[
