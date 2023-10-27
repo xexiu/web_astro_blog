@@ -1,7 +1,7 @@
 .tooltip {
 	position: relative;
 	text-align: center;
-	z-index: 100;
+	z-index: 104;
 }
 
 .tooltip::after {
@@ -64,11 +64,11 @@
 	top: -35px;
 	left: 0;
 	transform: translateX(calc(-100% - 10px));
-	z-index: 100;
+	z-index: 104;
 }
 
 .tooltip[data-tooltip-placement="left"]::before {
 	top: 50%;
 	left: 0;
-	z-index: 100;
+	z-index: 104;
 }
