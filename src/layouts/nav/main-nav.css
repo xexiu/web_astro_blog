@@ -101,7 +101,9 @@ html[data-current-page*="/blog"] {
         width: 100%;
         display: block;
         text-align: center;
-        transition: all 0.3s ease;
+        transition-property: background-color, left;
+        transition-duration: 0.3s;
+        transition-timing-function: ease;
         z-index: 101;
     }
 
