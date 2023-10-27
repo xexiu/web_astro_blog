@@ -1,7 +1,5 @@
 ---
-// import Logo from '@components/Logo.astro';
 // import ToggleTheme from '@components/ToggleTheme.astro';
-// import Sidebar from '@components/sidebar/Sidebar.astro';
 import Logo from '@components/Logo.astro';
 import SocialIcons from '@components/SocialIcons.astro';
 import MainFooter from '@layouts/footer/MainFooter.astro';
@@ -32,24 +30,79 @@ const {
                <slot name="search-bar" slot="search-bar" />
             </Logo>
          </div>
-         <SocialIcons data={socialIcons} classes="header-social-icons" linkClass='tooltip' data-tooltip-placement="bottom" />
+         <SocialIcons
+            data={socialIcons}
+            classes="header-social-icons"
+            linkClass="tooltip"
+            data-tooltip-placement="bottom"
+         />
          <MainNav />
          <!-- <ToggleTheme style={{ marginLeft: 'auto' }} /> -->
       </MainHeader>
-      <main id=`${Astro.url.pathname === '/' ? 'homepage' : 'page'}`>
+      <div id="loader" class="center"></div>
+      <main class="main-container-page" id=`${Astro.url.pathname === '/' ? 'homepage' : 'page'}`>
          <slot> Default Text</slot>
-         <!-- <Sidebar /> -->
       </main>
       <MainFooter />
-   </body>
-</html>
+      <style is:inline>
+         .left-section {
+            display: flex;
+            align-items: center;
+         }
+         #header .header-social-icons a {
+            color: #f2f2f2;
+         }
 
-<style is:inline>
-   .left-section {
-      display: flex;
-      align-items: center;
-   }
-   #header .header-social-icons a {
-      color: #f2f2f2;
-   }
-</style>
+         #loader {
+            border: 12px solid hsl(var(--bkg));
+            border-radius: 50%;
+            border-top: 12px solid #222;
+            width: 70px;
+            height: 70px;
+            animation: spin 1s linear infinite;
+            z-index: 10000000;
+         }
+
+         .center {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-top: -35px !important;
+            margin-left: -35px !important;
+            margin: 0;
+            padding: 0;
+         }
+
+         @keyframes spin {
+            100% {
+               transform: rotate(360deg);
+            }
+         }
+      </style>
+   </body>
+   <script>
+      const internalLinks = document.querySelectorAll('.internal-link:not(.xml-wrapper):not([target="_blank"])');
+      const spinner =  (document as any).querySelector('#loader');
+      const main = (document as any).querySelector('.main-container-page');
+
+      internalLinks.forEach((link) => {
+         link.addEventListener('click', (event: any) => {
+            event.stopPropagation();
+            main.style.visibility = 'hidden';
+            main.style.display = 'none';
+            spinner.style.visibility = 'visible';
+            spinner.style.display = 'block';
+         });
+      });
+
+      document.onreadystatechange = function() {
+         if (document.readyState !== 'complete') {
+            main.style.visibility = 'hidden';
+            spinner.style.visibility = 'visible';
+         } else {
+            spinner.style.display = 'none';
+            main.style.visibility = 'visible';
+         }
+      };
+   </script>
+</html>

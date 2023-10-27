@@ -1,10 +1,7 @@
-<header id="header" class="main-header">
-   <slot />
-</header>
-
-<style>
-   .main-header {
-      display: flex;
+<header
+   id="header"
+   class="main-header"
+   style="display: flex;
       justify-content: space-between;
       align-items: center;
       position: fixed;
@@ -15,8 +12,22 @@
       z-index: 102;
       width: 100%;
       background-color: #222;
-      box-shadow: var(--shadow-bttm);
-      padding: 0 20px;
+      box-shadow: var(--shadow-bttm);"
+>
+   <slot />
+</header>
+
+<style is:inline>
+   [data-current-page="/"] {
+      #header {
+         background-color: transparent !important;
+         box-shadow: none !important;
+      }
+   }
+   @media screen and (width > 500px) {
+      .main-header {
+         padding: 0 20px;
+      }
    }
    @media screen and (width <= 500px) {
       .main-header {

@@ -1,19 +1,7 @@
----
-import logo from '../../public/assets/images/logo-min.png';
-import CommonImage from '@components/CommonImage.astro';
----
-
-<p class="logo">
-   <a href="/" aria-label="Inicio"
-   ><CommonImage
-         classes="logo-img"
-         src={logo}
-         alt="Logo"
-         width={150}
-         height={93}
-      /></a
-   >
-</p>
+<a href="/" aria-label="Inicio" title="Xe Logo" class="logo"
+   style="background-image: url(/assets/images/logo-min.png); background-size: cover;
+background-position: center center;">
+</a>
 <slot name="search-bar" slot="search-bar" />
 
 <style>
@@ -22,10 +10,5 @@ import CommonImage from '@components/CommonImage.astro';
       width: 100px;
       height: 62px;
       z-index: 102;
-
-      img {
-         width: 100%;
-         height: 100%;
-      }
    }
 </style>

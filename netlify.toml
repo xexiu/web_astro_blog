@@ -2,7 +2,6 @@
 [build]
   publish = "dist/"
   command = "bun run build"
-  functions = "netlify/functions"
 
   #MANIFEST
 [[headers]]
