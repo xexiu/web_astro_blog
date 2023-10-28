@@ -1,1 +1,66 @@
-<h1>ACCORDION</h1>
+---
+import Accordion from '@xexiu/astro-accordion';
+import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
+import DemosLayout from '@layouts/demos/DemosLayout.astro';
+
+const content = [
+   'Hae duae provinciae bello quondam piratico catervis mixtae praedonum a Servilio pro <a href="#focusable">focusable link for test</a> consule missae sub iugum factae sunt vectigales. et hae quidem regiones velut in prominenti terrarum lingua positae ob orbe eoo monte Amano disparantur.',
+   'Hae duae <a href="#focusable">focusable link for test</a> provinciaebello quondam piratico catervis mixtae praedonum a Servilio proconsule missae sub iugum factae sunt vectigales. et hae quidem regiones velut in prominenti terrarum lingua positae ob orbe eoo monte Amano disparantur.',
+   'Content 3'
+];
+---
+<DemosLayout title="Accordion Example">
+   <Breadcrumbs
+      slot='breadcrumb'
+      links={[
+         { name: 'Demos', path: '/demos' },
+         { name: 'Astro Components Demos', path: '/demos/astro' },
+         {
+            name: 'Astro Accordion Demo',
+            path: '/demos/astro/accordion',
+            linkIsActive: 'is-active'
+         }
+      ]}
+   />
+   <div class="with-expand">With Expand</div>
+   <Accordion
+      titles={[
+         'Accordion heading 1',
+         'Accordion heading 2',
+         'Accordion heading 3'
+      ]}
+      content={content}
+      isExpanded={[true, false, false]}
+   />
+   <hr />
+   <div class="without-expand">Without Expand</div>
+   <Accordion
+      titles={[
+         'Accordion heading 1',
+         'Accordion heading 2',
+         'Accordion heading 3'
+      ]}
+      content={content}
+   />
+</DemosLayout>
+
+<style is:inline>
+    .without-expand, with-expand {
+        margin: 20px 0;
+    }
+    button.heading {
+        display: block;
+        background-color: #f3f3f3;
+        color: #222;
+        border: 1px solid #ccc;
+        padding: 5px;
+    }
+
+    .region {
+        margin-bottom: 10px;
+    }
+
+    [role="heading"] {
+        margin-bottom: 5px;
+    }
+</style>
