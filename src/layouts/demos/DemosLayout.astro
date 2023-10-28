@@ -1,17 +1,21 @@
 ---
 import MainLayout from '@layouts/MainLayout.astro';
 
-const { title, ...rest } = Astro.props;
+const { title, githubLink, ...rest } = Astro.props;
 ---
 
 <MainLayout {title} {...rest}>
    <slot name="breadcrumb" />
+   {githubLink && <div class="github-link"><a data-normal-link href={githubLink} target="_blank">¡Vista Github para saber más!</a></div>}
    <div id="container-demos">
       <slot />
    </div>
 </MainLayout>
 
 <style>
+    .github-link {
+        margin: 20px 0;
+    }
     #container-demos {
         margin: 20px 0;
     }
