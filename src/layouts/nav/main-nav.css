@@ -31,23 +31,13 @@
     }
 }
 
-
-html[data-current-page="/"] {
-    .nav__links li a[href='/'] {
-        color: #00C2DB;
-        border-radius: 20px;
-        box-shadow: var(--shadow-md);
-        border: 1px solid #000;
-    }
-}
-
-html[data-current-page*="/blog"] {
-    .nav__links li a[href*='/blog'] {
-        color: #00C2DB;
-        border-radius: 20px;
-        box-shadow: var(--shadow-md);
-        border: 1px solid #000;
-    }
+html[data-current-page*="/blog"] .nav__links li a[href*='/blog'],
+html[data-current-page*="/portfolio"] .nav__links li a[href*='/portfolio'],
+html[data-current-page*="/demos"] .nav__links li a[href*='/demos'] {
+    color: #00C2DB;
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid #000;
 }
 
 .menu-btn {
@@ -62,14 +52,14 @@ html[data-current-page*="/blog"] {
     height: auto;
 }
 
- /* HIDE PROGRESS BAR WHEN MENU OPEN */
+/* HIDE PROGRESS BAR WHEN MENU OPEN */
 #main-body:has(#click:checked) .progress-bar {
     display: none;
     visibility: hidden;
     height: 0;
 }
 
- /* ----------- */
+/* ----------- */
 
 /* DISABLE SCROLL WHEN MENU OPEN */
 #main-body:has(#click:checked) {
@@ -79,7 +69,7 @@ html[data-current-page*="/blog"] {
     inset: 0;
 }
 
- /* ------------ */
+/* ------------ */
 
 @media screen and (width <= 500px) {
     #main-body:has(#click:checked) .menu-btn {

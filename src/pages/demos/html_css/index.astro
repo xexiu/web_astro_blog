@@ -1,6 +1,18 @@
 ---
+import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
+import DemoLinks from '@layouts/demos/DemoLinks.astro';
+import DemosLayout from '@layouts/demos/DemosLayout.astro';
 
+const paths = import.meta.glob( '../html_css/*/*.astro');
 ---
-
-<h1>HTML CSS Demos</h1>
-<img src="">
+<DemosLayout title="Astro Components Demo">
+   <Breadcrumbs
+      slot='breadcrumb'
+      links={[
+         { name: 'Demos', path: '/demos' },
+         { name: 'HTML/CSS Demos', path: '/demos/html_css', linkIsActive: 'is-active' }
+      ]}
+   />
+   <h1>En construcción!</h1>
+   <DemoLinks {paths} routeName="html_css" />
+</DemosLayout>

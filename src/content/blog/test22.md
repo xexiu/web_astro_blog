@@ -5,7 +5,7 @@ category: general
 excerpt: This is a short except about sdssfsdsdsd sfdsdsd um dolor sit amet cons
 author: Sergiu M
 featured_post: false
-is_private: false
+is_private: true
 tags:
   - solidjs
 featured_image:

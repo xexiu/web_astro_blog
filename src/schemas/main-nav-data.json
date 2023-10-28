@@ -13,5 +13,10 @@
         "iconName": "clarity:blocks-group-outline-alerted",
         "name": "Portafolio",
         "path": "/portfolio"
+    },
+    {
+        "iconName": "clarity:blocks-group-outline-alerted",
+        "name": "Demos",
+        "path": "/demos"
     }
 ]

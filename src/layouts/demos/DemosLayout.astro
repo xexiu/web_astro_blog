@@ -1,0 +1,18 @@
+---
+import MainLayout from '@layouts/MainLayout.astro';
+
+const { title, ...rest } = Astro.props;
+---
+
+<MainLayout {title} {...rest}>
+   <slot name="breadcrumb" />
+   <div id="container-demos">
+      <slot />
+   </div>
+</MainLayout>
+
+<style>
+    #container-demos {
+        margin: 20px 0;
+    }
+</style>

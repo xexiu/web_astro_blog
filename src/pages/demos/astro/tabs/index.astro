@@ -1,0 +1,59 @@
+---
+import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
+import DemosLayout from '@layouts/demos/DemosLayout.astro';
+import Tabs from '@xexiu/astro-tabs';
+
+const blogs = {
+   latest: [{
+      id: 1,
+      title: 'Test 1',
+      description: 'This is a text for tab 1'
+   }],
+   pinned: [{
+      id: 1,
+      title: 'Test 2',
+      description: 'This is a text for tab 2'
+   }],
+   private: [{
+      id: 1,
+      title: 'Test 3',
+      description: 'This is a text for tab 3'
+   }]
+};
+const keys = Object.keys(blogs); // ['latest', 'pinned', 'private']
+---
+<DemosLayout title="Tabs Example">
+   <Breadcrumbs
+      slot='breadcrumb'
+      links={[
+         { name: 'Demos', path: '/demos' },
+         { name: 'Astro Components Demos', path: '/demos/astro' },
+         {
+            name: 'Astro Tabs Demo',
+            path: '/demos/astro/tabs',
+            linkIsActive: 'is-active'
+         }
+      ]}
+   />
+
+   <Tabs {keys} tabTitles={['Title for Latest', 'Title for Private', 'Title for Pinned']}>
+      {
+         (key: string) => {
+            return (
+               <Fragment>
+                  <div>
+                     {
+                        blogs[key].map((blog: any) =>
+                           <div>
+                              {blog.title}
+                              <div>{blog.description}</div>
+                           </div>
+                        )
+                     }
+                  </div>
+               </Fragment>
+            );
+         }
+      }
+   </Tabs>
+</DemosLayout>

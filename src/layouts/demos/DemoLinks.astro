@@ -1,0 +1,67 @@
+---
+const { paths, routeName } = Astro.props;
+
+function getUniquePaths(paths: string[]) {
+   const uniquePaths = new Set();
+
+   for (const path in paths) {
+      const segments = path.split('/');
+
+      if (segments.length >= 2) {
+         const route = routeName
+            ? `/demos/${routeName}/${segments[1]}`
+            : `/demos/${segments[1]}`;
+         uniquePaths.add(route);
+      }
+   }
+
+   return Array.from(uniquePaths);
+}
+
+const uniquePaths = getUniquePaths(paths);
+---
+
+<nav>
+   <ol>
+      {
+         uniquePaths.map((path: string) => {
+            return (
+               <li>
+                  <>
+                     <span style="text-transform: none">
+                        {routeName ? 'open ' : 'cd '}
+                     </span>
+                     <a data-normal-link href={path}>{`${path.replace(
+                        `/demos/${routeName}/`,
+                        ''
+                     )}`}</a>
+                  </>
+               </li>
+            );
+         })
+      }
+   </ol>
+</nav>
+
+<style>
+   nav {
+      margin: 20px 0;
+   }
+   ol {
+      list-style: none;
+      counter-reset: item;
+   }
+   li {
+      margin: 20px 0;
+      text-transform: uppercase;
+   }
+   li:before {
+      margin-right: 5px;
+      content: "_";
+      color: #222;
+      width: 1.2em;
+      text-align: center;
+      display: inline-block;
+      text-align: end;
+   }
+</style>

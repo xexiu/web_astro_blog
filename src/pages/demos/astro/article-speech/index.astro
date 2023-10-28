@@ -1,0 +1,74 @@
+---
+import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
+import DemosLayout from '@layouts/demos/DemosLayout.astro';
+import AstroSpeech from '@xexiu/astro-speech';
+
+const blogs = {
+   latest: [
+      {
+         id: 'post-3.md',
+         slug: 'post-3',
+         body: 'Cuento de El Gato con Botas: adaptación del cuento de los Hermanos Grimm Érase una vez un molinero que tenía tres hijos. El hombre era muy pobre y casi no tenía bienes para dejarles en herencia. Al hijo mayor le legó su viejo molino, al mediano un asno y al pequeño, un gato. El menor de los chicos se lamentaba ante sus hermanos por lo poco que le había correspondido. El molino muele trigo para hacer panes y tortas y el asno ayuda en las faenas del campo, pero ¿qué puedo hacer yo con un simple gato? El gato escuchó las quejas de su nuevo amo y acercándose a él le dijo: - No te equivoques conmigo. Creo que puedo serte más útil de lo que piensas y muy pronto te lo demostraré. Dame una bolsa, un abrigo elegante y unas botas de mi talla,  que yo me encargo de todo. El joven le regaló lo que le pedía porque al fin y al cabo no era mucho y el gato puso en marcha su plan.',
+         collection: 'blog',
+         data: {
+            title: 'TEST3 Running out of sample post ideas for thd effs sfggds eeffg in 3 lines with the elipsis css!!!',
+            excerpt:
+                    'Sometimes you just run out of ideas for sample blog posts. Sometimes you just run out of',
+            tags: ['css', 'js', 'etherumdfdfdfdf', 'solidjs'],
+            category: 'General',
+            is_private: false,
+            author: 'Victoria Greenfelder',
+            date: new Date('2023-09-22T15:14:10.000Z'),
+            featured_post: false,
+            featured_image: {
+               src: {
+                  src: '/@fs/Users/smironescu/Desktop/sm_web/sm_astro_blog/src/images/mnt1.png?origWidth=2560&origHeight=1080&origFormat=png',
+                  width: 2560,
+                  height: 1080,
+                  format: 'png',
+                  orientation: undefined
+               },
+               alt: 'A picture of a coder'
+            }
+         }
+      }
+   ]
+};
+
+const post = blogs.latest[0];
+---
+
+<DemosLayout
+   title={post.data.title}
+   description={post.data.excerpt}
+   featured_image={post.data.featured_image}
+   frontmatter={post}
+>
+   <Breadcrumbs
+      slot="breadcrumb"
+      links={[
+         { name: 'Demos', path: '/demos' },
+         { name: 'Astro Components Demos', path: '/demos/astro' },
+         {
+            name: 'Astro Modal Demo',
+            path: '/demos/astro/modal',
+            linkIsActive: 'is-active'
+         }
+      ]}
+   />
+   <AstroSpeech
+      title="Escuchar Artículo"
+      text={blogs.latest[0].body}
+      btnClasses="btn-blue"
+      data-tooltip-placement="top"
+      btnText="Escuchar"
+   />
+   <p>{blogs.latest[0].body}</p>
+</DemosLayout>
+
+<style is:inline>
+    .btn-blue {
+        padding: 5px;
+        margin: 20px 0;
+    }
+</style>
