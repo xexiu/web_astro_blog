@@ -9,9 +9,14 @@ const content = [
    'Content 3'
 ];
 ---
-<DemosLayout title="Accordion Example" githubLink="https://github.com/xexiu/astro-components/tree/master">
+
+<DemosLayout
+   title="Astro Accordion Example"
+   description="ASTRO ACCORDION: HTML, CSS and a bit of javascript made with Custom Elements accordion for astro."
+   githubLink="https://github.com/xexiu/astro-components/tree/master"
+>
    <Breadcrumbs
-      slot='breadcrumb'
+      slot="breadcrumb"
       links={[
          { name: 'Demos', path: '/demos' },
          { name: 'Astro Components Demos', path: '/demos/astro' },
@@ -45,22 +50,23 @@ const content = [
 </DemosLayout>
 
 <style is:inline>
-    .without-expand, with-expand {
-        margin: 20px 0;
-    }
-    button.heading {
-        display: block;
-        background-color: #f3f3f3;
-        color: #222;
-        border: 1px solid #ccc;
-        padding: 5px;
-    }
+   .without-expand,
+   with-expand {
+      margin: 20px 0;
+   }
+   button.heading {
+      display: block;
+      background-color: #f3f3f3;
+      color: #222;
+      border: 1px solid #ccc;
+      padding: 5px;
+   }
 
-    .region {
-        margin-bottom: 10px;
-    }
+   .region {
+      margin-bottom: 10px;
+   }
 
-    [role="heading"] {
-        margin-bottom: 5px;
-    }
+   [role="heading"] {
+      margin-bottom: 5px;
+   }
 </style>

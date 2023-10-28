@@ -4,27 +4,38 @@ import DemosLayout from '@layouts/demos/DemosLayout.astro';
 import Tabs from '@xexiu/astro-tabs';
 
 const blogs = {
-   latest: [{
-      id: 1,
-      title: 'Test 1',
-      description: 'This is a text for tab 1'
-   }],
-   pinned: [{
-      id: 1,
-      title: 'Test 2',
-      description: 'This is a text for tab 2'
-   }],
-   private: [{
-      id: 1,
-      title: 'Test 3',
-      description: 'This is a text for tab 3'
-   }]
+   latest: [
+      {
+         id: 1,
+         title: 'Test 1',
+         description: 'This is a text for tab 1'
+      }
+   ],
+   pinned: [
+      {
+         id: 1,
+         title: 'Test 2',
+         description: 'This is a text for tab 2'
+      }
+   ],
+   private: [
+      {
+         id: 1,
+         title: 'Test 3',
+         description: 'This is a text for tab 3'
+      }
+   ]
 };
 const keys = Object.keys(blogs); // ['latest', 'pinned', 'private']
 ---
-<DemosLayout title="Tabs Example" githubLink="https://github.com/xexiu/astro-components/tree/master">
+
+<DemosLayout
+   title="Astro Tabs Example"
+   description="Pure HTML and CSS simple dynamic tabs for astro."
+   githubLink="https://github.com/xexiu/astro-components/tree/master"
+>
    <Breadcrumbs
-      slot='breadcrumb'
+      slot="breadcrumb"
       links={[
          { name: 'Demos', path: '/demos' },
          { name: 'Astro Components Demos', path: '/demos/astro' },
@@ -36,20 +47,21 @@ const keys = Object.keys(blogs); // ['latest', 'pinned', 'private']
       ]}
    />
 
-   <Tabs {keys} tabTitles={['Title for Latest', 'Title for Private', 'Title for Pinned']}>
+   <Tabs
+      {keys}
+      tabTitles={['Title for Latest', 'Title for Private', 'Title for Pinned']}
+   >
       {
          (key: string) => {
             return (
                <Fragment>
                   <div>
-                     {
-                        blogs[key].map((blog: any) =>
-                           <div>
-                              {blog.title}
-                              <div>{blog.description}</div>
-                           </div>
-                        )
-                     }
+                     {blogs[key].map((blog: any) => (
+                        <div>
+                           {blog.title}
+                           <div>{blog.description}</div>
+                        </div>
+                     ))}
                   </div>
                </Fragment>
             );
