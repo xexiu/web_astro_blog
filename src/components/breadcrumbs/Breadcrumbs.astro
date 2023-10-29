@@ -16,12 +16,13 @@ const { links }: Props = Astro.props;
 
 ---
 
-<nav class="breadcrumbs" aria-label="Breadcrumb" vocab="https://schema.org/" typeof="BreadcrumbList">
-   <ul>
+<nav role="navigation" class="breadcrumbs" aria-label="Breadcrumb" vocab="https://schema.org/" typeof="BreadcrumbList">
+   <ul itemtype="https://schema.org/BreadcrumbList">
+      <meta itemprop="numberOfItems" content={String(links.length)}>
       {
          links.map((link: Link, index: number) => {
             return (
-               <li>
+               <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                   <Link
                      text={link.name}
                      href={link.path}

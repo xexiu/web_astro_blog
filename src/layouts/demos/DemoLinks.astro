@@ -19,14 +19,16 @@ function getUniquePaths(paths: string[]) {
 }
 
 const uniquePaths = getUniquePaths(paths);
+const ariaLabel = routeName ? `${routeName} 'Demo Links'` : 'Demo Links';
 ---
 
-<nav>
-   <ol>
+<nav role="navigation" aria-label={ariaLabel} vocab="https://schema.org/">
+   <ol itemtype="https://schema.org/ItemList">
+      <meta itemprop="numberOfItems" content={String(uniquePaths.length)}>
       {
-         uniquePaths.map((path: string) => {
+         uniquePaths.map((path: string, index: number) => {
             return (
-               <li>
+               <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                   <span style="text-transform: none">
                      {routeName ? 'open ' : 'cd '}
                   </span>
@@ -34,6 +36,7 @@ const uniquePaths = getUniquePaths(paths);
                      `/demos/${routeName}/`,
                      ''
                   )}`}</a>
+                  <meta property="position" content={String(index + 1)}>
                </li>
             );
          })
