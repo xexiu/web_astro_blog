@@ -27,15 +27,13 @@ const uniquePaths = getUniquePaths(paths);
          uniquePaths.map((path: string) => {
             return (
                <li>
-                  <>
-                     <span style="text-transform: none">
-                        {routeName ? 'open ' : 'cd '}
-                     </span>
-                     <a data-normal-link href={path}>{`${path.replace(
-                        `/demos/${routeName}/`,
-                        ''
-                     )}`}</a>
-                  </>
+                  <span style="text-transform: none">
+                     {routeName ? 'open ' : 'cd '}
+                  </span>
+                  <a data-normal-link class="internal-link" href={path}>{`${path.replace(
+                     `/demos/${routeName}/`,
+                     ''
+                  )}`}</a>
                </li>
             );
          })
