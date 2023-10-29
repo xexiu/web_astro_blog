@@ -15,15 +15,15 @@ const { prevEntry, nextEntry } = Astro.props;
 let prev = null;
 let next = null;
 
-if(isAdmin && prevEntry?.data.is_private) {
+if (isAdmin && prevEntry?.data.is_private) {
    prev = prevEntry as any;
-} else if(prevEntry) {
+} else if (prevEntry) {
    prev = !prevEntry.data.is_private as any;
 }
 
-if(isAdmin && nextEntry?.data.is_private) {
+if (isAdmin && nextEntry?.data.is_private) {
    next = nextEntry as any;
-} else if(nextEntry) {
+} else if (nextEntry) {
    next = !nextEntry.data.is_private as any;
 }
 ---
@@ -89,10 +89,10 @@ if(isAdmin && nextEntry?.data.is_private) {
    }
 
    .prev-article {
+      margin-right: auto;
       justify-content: flex-start;
       & span {
-         padding-left: 15px;
-         font-size: 15px;
+         padding-left: 20px;
       }
       &:before {
          background: #222;
@@ -110,11 +110,11 @@ if(isAdmin && nextEntry?.data.is_private) {
    }
 
    .next-article {
+      margin-left: auto;
       justify-content: flex-end;
       & span {
-         padding-right: 15px;
+         padding-right: 20px;
          text-align: end;
-         font-size: 15px;
       }
       &:before {
          background: #222;
@@ -122,11 +122,11 @@ if(isAdmin && nextEntry?.data.is_private) {
          clip-path: polygon(50% 50%, -50% -50%, 0 100%);
          content: "";
          position: absolute;
-         top: 5px;
+         top: 2px;
          right: -7px;
          transition: background 0.2s linear;
-         width: 15px;
-         height: 10px;
+         width: 20px;
+         height: 15px;
          z-index: 1;
       }
    }
@@ -135,5 +135,9 @@ if(isAdmin && nextEntry?.data.is_private) {
    .next-article h5 {
       flex: 1;
       overflow: hidden;
+
+      & a span {
+         font-size: var(--fs-2sm);
+      }
    }
 </style>

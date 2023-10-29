@@ -16,11 +16,13 @@ export async function getStaticPaths() {
    const blogTags = blogs.flatMap((entry: any) => entry.data.tags);
 
    return blogTags.map((tag: string) => ({
+      props: { tagName: tag },
       params: { tag: slugify(tag) }
    }));
 }
 
 const { tag } = Astro.params;
+const { tagName } = Astro.props;
 
 const blogs = await getCollectionFor('blog', isAdmin, getCollection);
 const tagPosts = getPostsFor({
@@ -36,7 +38,7 @@ const tagPosts = getPostsFor({
          { name: 'Inicio', path: '/' },
          { name: 'Blog', path: '/blog' },
          {
-            name: tag as string,
+            name: tagName as string,
             path: `/blog/tag/${tag}`,
             linkIsActive: 'is-active'
          }
@@ -44,7 +46,7 @@ const tagPosts = getPostsFor({
    />
    <SectionContainer ariaLabel={`Posts about ${tag}`}>
       <span>Publicaciones etiquetadas con:</span>
-      <TagHeading classes="post-tags" tag="h2">{tag}</TagHeading>
+      <TagHeading classes="post-tags" tag="h2">{tagName}</TagHeading>
       <Posts entries={tagPosts} />
    </SectionContainer>
 </MainLayout>

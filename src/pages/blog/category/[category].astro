@@ -15,11 +15,13 @@ export async function getStaticPaths() {
    const blogEntries = await getCollection('blog');
 
    return blogEntries.map((entry) => ({
+      props: { categoryName: entry.data.category },
       params: { category: slugify(entry.data.category) }
    }));
 }
 
 const { category } = Astro.params;
+const { categoryName } = Astro.props;
 const blogs = await getCollectionFor('blog', isAdmin, getCollection);
 const catPosts = getPostsFor({
    propertyName: 'category',
@@ -34,7 +36,7 @@ const catPosts = getPostsFor({
          { name: 'Inicio', path: '/' },
          { name: 'Blog', path: '/blog' },
          {
-            name: category as string,
+            name: categoryName as string,
             path: `/blog/category/${category}`,
             linkIsActive: 'is-active'
          }
@@ -42,7 +44,7 @@ const catPosts = getPostsFor({
    />
    <SectionContainer ariaLabel={`Posts about ${category}`}>
       <span>Publicaciones en la categoria:</span>
-      <TagHeading classes="post-category" tag="h1">{category}</TagHeading>
+      <TagHeading classes="post-category" tag="h1">{categoryName}</TagHeading>
       <Posts entries={catPosts} />
    </SectionContainer>
 </MainLayout>

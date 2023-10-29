@@ -6,6 +6,8 @@
 html {
     scroll-behavior: smooth;
     scrollbar-gutter: auto;
+    scroll-padding-top: 100px;
+    font-family: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"apple color emoji","segoe ui emoji","Segoe UI Symbol","noto color emoji";
 }
 
 html::-webkit-scrollbar {
@@ -68,41 +70,12 @@ html::-webkit-scrollbar-thumb {
     }
 } */
 
-@font-face {
-    font-family: 'Golos Text';
-    font-display: fallback;
-    src: url('/assets/fonts/golos-text-font-familiy/Golos-Text_Regular.woff') format('woff'),
-        url('/assets/fonts/golos-text-font-familiy/Golos-Text_Regular.ttf') format('ttf');
-}
-
-@font-face {
-    font-family: 'Golos Text Medium';
-    font-display: fallback;
-    src: url('/assets/fonts/golos-text-font-familiy/Golos-Text_Medium.woff') format('woff'),
-        url('/assets/fonts/golos-text-font-familiy/Golos-Text_Medium.ttf') format('ttf');
-}
-
-@font-face {
-    font-family: 'Golos Text Bold';
-    font-display: fallback;
-    src: url('/assets/fonts/golos-text-font-familiy/Golos-Text_Bold.woff') format('woff'),
-        url('/assets/fonts/golos-text-font-familiy/Golos-Text_Bold.ttf') format('ttf');
-}
-
-@font-face {
-    font-family: 'Golos Text Black';
-    font-display: fallback;
-    src: url('/assets/fonts/golos-text-font-familiy/Golos-Text_Black.woff') format('woff'),
-        url('/assets/fonts/golos-text-font-familiy/Golos-Text_Black.ttf') format('ttf');
-}
-
 body {
     max-width: 1248px;
     background-color: hsl(var(--bkg));
     margin: 0 auto;
     padding: 0 10px;
     position: relative;
-    font-family: 'Golos Text', "Lucida Grande", Tahoma, sans-serif;
     font-weight: normal;
     color: hsl(var(--txt));
     text-rendering: optimizelegibility;

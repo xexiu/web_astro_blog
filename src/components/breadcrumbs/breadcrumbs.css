@@ -22,6 +22,10 @@
         li {
             display: flex;
 
+            a {
+                line-height: 20px;
+            }
+
             &:not(:nth-child(1)) {
                 a {
                     position: relative;
@@ -42,6 +46,7 @@
                 a {
                     width: 100%;
                     pointer-events: none;
+                    text-transform: capitalize;
                 }
             }
         }

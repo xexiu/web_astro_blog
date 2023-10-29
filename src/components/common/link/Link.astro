@@ -15,8 +15,11 @@ const {
    ...rest
 } = Astro.props as LinkProps;
 
-
 function isInternalURLValid(url: string) {
+   if(!url) {
+      return false;
+   }
+
    const whiteListDomains = ['https://xexiu', 'http://localhost', '/'];
 
    for (const domain of whiteListDomains) {
@@ -29,7 +32,6 @@ function isInternalURLValid(url: string) {
 }
 
 const isInternalUrl = isInternalURLValid(href);
-
 ---
 
 {

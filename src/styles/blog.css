@@ -84,6 +84,10 @@
 
 	ul, ol {
 		margin-left: 20px;
+
+		& li {
+			margin: 0.5em 0;
+		}
 	}
 
 	small,
@@ -115,6 +119,7 @@
 	strong {
 		font-weight: 600;
 		color: inherit;
+		font-family: sans-serif;
 	}
 
 	.container-copyboard {
@@ -228,18 +233,18 @@
 
 	blockquote {
 		position: relative;
-  		max-width: 600px;
+		max-width: 600px;
 		margin: 0 auto;
 		font-size: 1.5rem;
 		padding-left: .6rem;
 		color: var(--color-darken-grey);
 		border-left: .4rem solid var(--color-red);
-		margin-top: 10px;
-		margin-bottom: 10px;
+		margin-top: 25px;
+		margin-bottom: 25px;
 
 		p {
 			font-style: italic;
-  			text-align: left;
+			text-align: left;
 		}
 
 		strong {
@@ -299,10 +304,16 @@
 	}
 
 	.markdown-wrapper {
-		padding: 5px 10px;
-		box-shadow: 0 0 24px -5px #999;
+		padding: 5px 20px;
+		box-shadow: 0 0 10px -5px #999;
 		margin-top: 20px;
-		border-radius: 5px;
+		border-radius: 2px;
+
+		h2 {
+			border-bottom: 2px dashed #e2e2e2;
+			box-sizing: border-box;
+			line-height: 50px;
+		}
 
 		pre {
 			margin: 5px 0;
@@ -314,6 +325,7 @@
 
 		p {
 			line-height: var(--lh-1-6);
+			margin: 1.3em 0;
 		}
 	}
 

@@ -83,12 +83,12 @@ button {
  * contexts in Firefox 4+, Safari, and Chrome.
  */
 
- h1 { font-size: 2em; }
- h2 { font-size: 1.5em; }
- h3 { font-size: 1.3em; }
- h4 { font-size: 1em; }
- h5 { font-size: 0.8em; }
- h6 { font-size: 0.7em; }
+ h1 { font-size: var(--fs-xl); }
+ h2 { font-size: var(--fs-lg); }
+ h3 { font-size: var(--fs-md); }
+ h4 { font-size: var(--fs-sm); }
+ h5 { font-size: var(--fs-2sm); }
+ h6 { font-size: var(--fs-3sm); }
 
 /* @define-mixin button $bg, $color, $bgHover {
     background: $bg;
