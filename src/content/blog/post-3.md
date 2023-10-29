@@ -11,7 +11,7 @@ is_private: true
 tags:
   - css
   - js
-  - etherumdfdfdfdf
+  - etherum
   - solidjs
 featured_image: {
   src: "src/images/mnt1.png",
