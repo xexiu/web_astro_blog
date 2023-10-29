@@ -17,6 +17,9 @@ const isAdmin = isUserAdmin(cookie);
 const blogs = await getCollectionFor('blog', isAdmin, getCollection);
 const blogTags = getTagsFor(isAdmin, blogs);
 const keys = Object.keys(blogs);
+const sortedBlogTags = blogTags.sort((a, b) => {
+   return (a as any).localeCompare(b, 'es', { sensitivity: 'base' });
+});
 ---
 
 <MainLayout title={data.title} description={data.description}>
@@ -49,7 +52,7 @@ const keys = Object.keys(blogs);
                         <Posts entries={blogs[key]} />
                         <div class="post-card-tags">
                            <Tags
-                              tags={blogTags}
+                              tags={sortedBlogTags}
                               showCountBadge={true}
                               classes="blog-page-tag"
                            />
