@@ -1,5 +1,5 @@
 ---
-title: "Descifrando el Enigma de Internet: Todo lo que Debes Saber Descifrando el Enigma de Internet"
+title: "Descifrando el Enigma de Internet: Todo lo que Debes Saber!"
 excerpt: Descubre cómo funciona Internet y sus conceptos clave. Desde protocolos
   hasta seguridad, una guía completa.
 author: Sergiu Mironescu
