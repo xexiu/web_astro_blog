@@ -281,12 +281,13 @@
 
 		h2 {
 			border-bottom: 2px dashed #e2e2e2;
-			line-height: 50px;
+			line-height: 30px;
 		}
 
 		h3 {
 			border-bottom: 2px dotted #e2e2e2;
-			line-height: 40px;
+			line-height: 20px;
+			padding-bottom: 6px;
 		}
 
 		pre {
