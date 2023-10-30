@@ -50,7 +50,7 @@ const sortedBlogTags = blogTags.sort((a, b) => {
                   return (
                      <Fragment>
                         <Posts entries={blogs[key]} />
-                        <div class="post-card-tags">
+                        <div class="post-card-tags-container">
                            <Tags
                               tags={sortedBlogTags}
                               showCountBadge={true}
@@ -67,7 +67,7 @@ const sortedBlogTags = blogTags.sort((a, b) => {
 </MainLayout>
 
 <style is:inline>
-   .post-card-tags {
+   .post-card-tags-container {
       display: flex;
       padding: 10px 0;
    }

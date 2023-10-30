@@ -1,5 +1,5 @@
 ---
-title: "Descifrando el Enigma de Internet: Todo lo que Debes Saber"
+title: "Descifrando el Enigma de Internet: Todo lo que Debes Saber Descifrando el Enigma de Internet"
 excerpt: Descubre cómo funciona Internet y sus conceptos clave. Desde protocolos
   hasta seguridad, una guía completa.
 author: Sergiu Mironescu
@@ -20,15 +20,16 @@ La comprensión de cómo funciona Internet es esencial en el mundo actual, indep
 
 En este artículo, exploraremos los conceptos fundamentales de Internet, incluyendo lo que es, cómo funciona, términos básicos y conceptos, así como algunos protocolos comunes utilizados para crear aplicaciones y servicios en la web.
 
-* [Introducción a Internet](#introducción-a-internet)
-* [Cómo funciona Internet: Una Visión General](#cómo-funciona-internet-una-visión-general)
-* [Conceptos Básicos y Términos Clave](#conceptos-básicos-y-términos-clave)
-* [El Papel de los Protocolos en Internet](#el-papel-de-los-protocolos-en-internet)
-* [Entendiendo las Direcciones IP y los Nombres de Dominio](#entendiendo-las-direcciones-ip-y-los-nombres-de-dominio)
-* [Introducción a HTTP y HTTPS](#introducción-a-http-y-https)
-* [Creando Aplicaciones con TCP/IP](#creando-aplicaciones-con-tcpip)
-* [Seguridad en la Comunicación en Internet con SSL/TLS](#seguridad-en-la-comunicación-en-internet-con-ssltls)
-* [El Futuro de Internet: Cosas Asombrosas que Viene](#el-futuro-de-internet-cosas-asombrosas-que-viene)
+- [¿Cómo funciona Internet?](#cómo-funciona-internet)
+- [Introducción a Internet](#introducción-a-internet)
+- [Cómo funciona Internet: Una Visión General](#cómo-funciona-internet-una-visión-general)
+- [Conceptos Básicos y Términos Clave](#conceptos-básicos-y-términos-clave)
+- [El Papel de los Protocolos en Internet](#el-papel-de-los-protocolos-en-internet)
+- [Entendiendo las Direcciones IP y los Nombres de Dominio](#entendiendo-las-direcciones-ip-y-los-nombres-de-dominio)
+- [Introducción a HTTP y HTTPS](#introducción-a-http-y-https)
+- [Creando Aplicaciones con TCP/IP](#creando-aplicaciones-con-tcpip)
+- [Seguridad en la Comunicación en Internet con SSL/TLS](#seguridad-en-la-comunicación-en-internet-con-ssltls)
+- [El Futuro de Internet: Cosas Asombrosas que Viene](#el-futuro-de-internet-cosas-asombrosas-que-viene)
 
 ## Introducción a Internet
 
@@ -134,6 +135,6 @@ El Internet está siempre cambiando y mejorando. Algunas cosas emocionantes que 
 
 Conclusión Mágica
 
-¡Y eso es todo! Internet es como un mundo mágico lleno de cosas emocionantes. 
+¡Y eso es todo! Internet es como un mundo mágico lleno de cosas emocionantes.
 
 Si tienes alguna pregunta o quieres contarnos algo, ¡no dudes en hacerlo en los comentarios! ¡Gracias! 😄🌐🔮

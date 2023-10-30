@@ -10,15 +10,15 @@
         height: 45%;
         position: relative;
         justify-content: space-between;
-        width: 100%;
+        width: calc(100% - 200px);
         z-index: 2;
+        flex-direction: column;
+        margin-left: auto;
 
+        & h3 a {
+            word-break: break-word;
+        }
         a[data-normal-link] {
-            display: -webkit-box;
-            max-width: 100%;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
             &::before {
                 content: "";
             }
@@ -31,6 +31,7 @@
     @media screen and (width <= 650px) {
 		.post-card-details-container {
 			margin-top: 20px;
+            width: 100%;
 		}
 	}
 </style>

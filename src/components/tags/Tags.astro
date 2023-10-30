@@ -32,9 +32,10 @@ const uniqueTags = [...new Set(tags)] as [];
 <style is:inline>
    .post-card-tags {
       width: 100%;
-      overflow: auto;
+      overflow: hidden;
       white-space: nowrap;
       display: flex;
+      flex-wrap: wrap;
    }
    .tag-container {
       display: inline-block;

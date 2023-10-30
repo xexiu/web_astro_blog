@@ -128,3 +128,14 @@ main {
         padding: 0;
     }
 }
+
+@media screen and (width <= 350px) {
+    .tabs-nav {
+        flex-direction: column; /* Stack tabs vertically */
+      }
+
+      .tab-wrapper {
+        width: auto; /* Allow tabs to take their natural width */
+      }
+}
+
