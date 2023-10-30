@@ -89,7 +89,6 @@ const {
          link.addEventListener('click', (event: any) => {
             event.stopPropagation();
             main.style.visibility = 'hidden';
-            main.style.display = 'none';
             spinner.style.visibility = 'visible';
             spinner.style.display = 'block';
          });
@@ -100,11 +99,9 @@ const {
             // Page is shown from cache (e.g., after using back/forward buttons) in iOS/Android
             // You can hide the spinner and display the content here
             spinner.style.display = 'none';
-            main.style.display = 'block';
             main.style.visibility = 'visible';
          } else {
             spinner.style.display = 'none';
-            main.style.display = 'block';
             main.style.visibility = 'visible';
          }
       });
