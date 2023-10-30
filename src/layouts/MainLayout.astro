@@ -39,7 +39,7 @@ const {
          <MainNav />
          <!-- <ToggleTheme style={{ marginLeft: 'auto' }} /> -->
       </MainHeader>
-      <!-- <div id="loader" class="center"></div> -->
+      <div id="loader" class="center"></div>
       <main class="main-container-page" id=`${Astro.url.pathname === '/' ? 'homepage' : 'page'}`>
          <slot> Default Text</slot>
       </main>
@@ -80,7 +80,7 @@ const {
          }
       </style>
    </body>
-   <!-- <script>
+   <script>
       const internalLinks = document.querySelectorAll('.internal-link:not(.xml-wrapper):not([target="_blank"]):not(.anchor-link)');
       const spinner =  (document as any).querySelector('#loader');
       const main = (document as any).querySelector('.main-container-page');
@@ -95,14 +95,18 @@ const {
          });
       });
 
-      document.onreadystatechange = function() {
-         if (document.readyState !== 'complete') {
-            main.style.visibility = 'hidden';
-            spinner.style.visibility = 'visible';
+      window.addEventListener('pageshow', (event) => {
+         if (event.persisted) {
+            // Page is shown from cache (e.g., after using back/forward buttons) in iOS/Android
+            // You can hide the spinner and display the content here
+            spinner.style.display = 'none';
+            main.style.display = 'block';
+            main.style.visibility = 'visible';
          } else {
             spinner.style.display = 'none';
+            main.style.display = 'block';
             main.style.visibility = 'visible';
          }
-      };
-   </script> -->
+      });
+   </script>
 </html>
