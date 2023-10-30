@@ -1,6 +1,6 @@
 ---
 import Tag from '@components/tags/Tag.astro';
-import { getTagCounts } from '@js/utils';
+import { getTagCounts, unslugify } from '@js/utils';
 
 interface Props {
    tags: [];
@@ -9,9 +9,10 @@ interface Props {
    showCountBadge?: boolean;
 }
 const { tags, tagCounts, showCountBadge = false, ...rest } = Astro.props;
+const _tags = tags.map((tag) => unslugify(tag)) as [];
 
-const _tagCounts = showCountBadge ? getTagCounts(tags) : tagCounts;
-const uniqueTags = [...new Set(tags)] as [];
+const _tagCounts = showCountBadge ? getTagCounts(_tags) : tagCounts;
+const uniqueTags = [...new Set(_tags)] as [];
 ---
 
 <div class="post-card-tags">
