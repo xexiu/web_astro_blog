@@ -4,7 +4,7 @@ import TagHeading from '@components/common/TagHeading.astro';
 import Posts from '@components/postcard/Posts.astro';
 import SectionContainer from '@components/section/SectionContainer.astro';
 import { getCollectionFor } from '@js/server/utils';
-import { getPostsFor, isUserAdmin, slugify } from '@js/utils';
+import { getPostsFor, isUserAdmin, slugify, unslugify } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
 
@@ -28,6 +28,7 @@ const catPosts = getPostsFor({
    blog: blogs,
    property: String(category)
 });
+const _categoryName = unslugify(categoryName);
 ---
 
 <MainLayout title={category}>
@@ -36,15 +37,15 @@ const catPosts = getPostsFor({
          { name: 'Inicio', path: '/' },
          { name: 'Blog', path: '/blog' },
          {
-            name: categoryName as string,
+            name: _categoryName as string,
             path: `/blog/category/${category}`,
             linkIsActive: 'is-active'
          }
       ]}
    />
-   <SectionContainer ariaLabel={`Posts about ${category}`}>
+   <SectionContainer ariaLabel={`Posts about ${_categoryName}`}>
       <span>Publicaciones en la categoria:</span>
-      <TagHeading classes="post-category" tag="h1">{categoryName}</TagHeading>
+      <TagHeading classes="post-category" tag="h1">{_categoryName}</TagHeading>
       <Posts entries={catPosts} />
    </SectionContainer>
 </MainLayout>

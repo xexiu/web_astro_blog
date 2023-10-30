@@ -46,7 +46,10 @@
                 a {
                     width: 100%;
                     pointer-events: none;
-                    text-transform: capitalize;
+
+                    ::first-letter {
+                        text-transform: uppercase;
+                    }
                 }
             }
         }

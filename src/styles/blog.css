@@ -48,11 +48,6 @@
 	--max-width: calc(100% - 2rem);
 }
 
-/* body {
-	background: var(--theme-bg);
-	color: var(--theme-text);
-} */
-
 :root.theme-dark {
 	color-scheme: dark;
 
@@ -99,22 +94,17 @@
 		font-style: italic;
 	}
 
-	a > code, li > code {
+	a code, li code, p code {
 		position: relative;
-		color: var(--theme-accent);
-		background: transparent;
 		text-underline-offset: var(--padding-block);
 		padding: calc(2px * 1) calc(4px * 1);
-	}
-
-	a > code::before, li > code::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		display: block;
-		background: var(--theme-accent);
-		opacity: var(--theme-accent-opacity);
-		border-radius: var(--border-radius);
+		font-size: var(--fs-3sm);
+		word-break: break-word;
+		background: var(--color-red);
+		opacity: .6;
+		border-radius: 4px;
+		color: var(--color-gray-100);
+		text-shadow: 0 -1px 0 rgb(0 0 0 / 30%);
 	}
 
 	strong {
@@ -140,23 +130,6 @@
 	.copy-clipboard-code {
 		width: 25px;
 		height: 25px;
-	}
-
-	/* Supporting Content */
-
-	p code {
-		--border-radius: 3px;
-		--padding-block: 0.2rem;
-		--padding-inline: 0.33rem;
-
-		font-size: 0.85em;
-		color: #222;
-		background-color: #e9ebed;
-		padding: var(--padding-block) var(--padding-inline);
-		text-shadow: 0 2px 3px rgb(255 255 255 / 80%);
-		margin: calc(var(--padding-block) * -1) -0.125em;
-		border-radius: var(--border-radius);
-		word-break: break-word;
 	}
 
 	::selection {

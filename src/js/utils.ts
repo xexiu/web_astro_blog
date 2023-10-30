@@ -8,13 +8,28 @@ export function updateTheme(value: string): void {
 
 export function slugify(text: string): string {
    return text
+      .normalize('NFD')
       .toString()
       .toLowerCase()
+      .replace(/[\u0300-\u036f]/g, '')
       .replace(/\s+/g, '-')
-      .replace(/[^\w-]+/g, '')
-      .replace(/--+/g, '-')
-      .replace(/^-+/, '')
-      .replace(/-+$/, '');
+      .replace('#', '')
+      .replace('?', '')
+      .replace('¿', '')
+      .replace('!', '')
+      .replace('¡', '');
+}
+
+export function unslugify(text: string): string {
+   // Replace hyphens with spaces
+   const textWithSpaces = text.normalize('NFD')
+      .toString().replace(/-/g, ' ');
+
+   // Capitalize the first letter of each word
+   const textArray = textWithSpaces.split(' ');
+   const capitalizedText = textArray.map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+
+   return capitalizedText.toLowerCase();
 }
 
 export function formatDate(date: string): string {
@@ -167,6 +182,7 @@ export function getTagsFor(isAdmin: boolean, collection: Blog): [] {
 
 export function getPostsFor({ propertyName, blog, property, helper = slugify }: PostFor): Post[] {
    return [...blog.latest, ...blog.pinned, ...blog.private].filter((entry: Post) => {
+
       if (propertyName === 'tags') {
          return entry.data.tags.includes(property as any);
       } else if (propertyName === 'category') {

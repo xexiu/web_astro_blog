@@ -10,7 +10,7 @@ const {
    icon,
    isFilled = true,
    borderVisible = false,
-   isExternalLink = false,
+   markAsInternal = false,
    classes = 'link',
    ...rest
 } = Astro.props as LinkProps;
@@ -31,11 +31,30 @@ function isInternalURLValid(url: string) {
    return false;
 }
 
+function isSponsoredURL(url: string) {
+   if(!url) {
+      return false;
+   }
+
+   const sponsoredLinks = ['https://oceanosdevidalibre.org/'];
+
+   for (const domain of sponsoredLinks) {
+      if (url.startsWith(domain)) {
+         return true;
+      }
+   }
+
+   return false;
+}
+
+const isSponsored = isSponsoredURL(href);
+const isAnchor = href.startsWith('#');
 const isInternalUrl = isInternalURLValid(href);
+const _isExternalLink = !markAsInternal && !isAnchor && !isInternalUrl;
 ---
 
 {
-   isExternalLink && !isInternalUrl ? (
+   _isExternalLink ? (
       <ExternalLink
          {href}
          {text}
@@ -44,8 +63,9 @@ const isInternalUrl = isInternalURLValid(href);
          {customStyle}
          {isFilled}
          {borderVisible}
-         rel='noopener'
+         rel={isSponsored ? 'noopener sponsor' : 'noopener'}
          {...rest}
+         target="_blank"
       >
          <slot />
       </ExternalLink>
@@ -54,7 +74,7 @@ const isInternalUrl = isInternalURLValid(href);
          {href}
          {text}
          {icon}
-         classes={`internal-link ${classes}`}
+         classes={`internal-link ${isAnchor ? 'anchor-link' : ''} ${classes}`}
          {customStyle}
          {isFilled}
          {borderVisible}

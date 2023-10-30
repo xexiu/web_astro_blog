@@ -5,35 +5,14 @@ interface Props {
    href: string;
 }
 
-function isSponsoredURL(url: string) {
-   if(!url) {
-      return false;
-   }
-
-   const sponsoredLinks = ['https://oceanosdevidalibre.org/'];
-
-   for (const domain of sponsoredLinks) {
-      if (url.startsWith(domain)) {
-         return true;
-      }
-   }
-
-   return false;
-}
-
 const { href }: Props = Astro.props;
-const isSponsored = isSponsoredURL(href);
-const isAnchor = href.startsWith('#');
 ---
 
 <Link
    href={href}
    isFilled={false}
-   classes={`markdown-link ${isAnchor ? 'anchor-link' : ''}`}
+   classes='markdown-link'
    data-normal-link
-   target={isAnchor ? '_self' : '_blank'}
-   rel={isSponsored ? 'noopener sponsor' : 'noopener'}
-   isExternalLink={!isAnchor}
 >
    <slot />
 </Link>

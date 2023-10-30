@@ -1,5 +1,5 @@
 ---
-title: "La Evolución de HTTP: Desde el Nacimiento de la Web hasta HTTP/3"
+title: "La Evolución de HTTP: desde el nacimiento de la web hasta HTTP/3"
 excerpt: Descubre la historia y evolución de HTTP, desde sus inicios hasta
   HTTP/3. ¡Entiende cómo la web cambió!
 author: Sergiu Mironescu
@@ -20,15 +20,15 @@ HTTP es el protocolo que todos los desarrolladores web deben conocer, ya que imp
 
 En este artículo, discutiremos qué es HTTP, cómo surgió, dónde se encuentra hoy y cómo llegamos hasta aquí.
 
-* [¿Qué es HTTP?](#qu-es-http)
-* [HTTP/0.9 - El protocolo original (1991)](#http09-el-protocolo-original-1991)
-* [HTTP/1.0 - 1996](#http10-1996)
-* [Apretón de manos de tres vías (three-way handshake)](#apretn-de-manos-de-tres-vas-three-way-handshake)
-* [HTTP/1.1 - 1997](#http11-1997)
+* [¿Qué es HTTP?](#que-es-http)
+* [HTTP/0.9 - El protocolo original (1991)](#http09---el-protocolo-original-1991)
+* [HTTP/1.0 - 1996](#http10---1996)
+* [Apretón de manos de tres vías (three-way handshake)](#apreton-de-manos-de-tres-vias-three-way-handshake)
+* [HTTP/1.1 - 1997](#http11---1997)
 * [Sin embargo, no todo era perfecto](#sin-embargo-no-todo-era-perfecto)
-* [HTTP/2 - 2015](#http2-2015)
-* [HTTP/3 - 2020](#http3-2020)
-* [Conclusión](#conclusin)
+* [HTTP/2 - 2015](#http2---2015)
+* [HTTP/3 - 2020](#http3---2020)
+* [Conclusión](#conclusion)
 
 ### ¿Qué es HTTP?
 

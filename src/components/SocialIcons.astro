@@ -35,11 +35,12 @@ const { data, classes, style, linkClass, ...rest } = Astro.props;
                text=""
                href={social[s].path}
                isFilled={false}
-               target="_blank"
+               markAsInternal={true}
                title={s}
                classes={linkClass}
                aria-label={social[s].iconName}
                rel="nofollow"
+               target="_blank"
                {...rest}
             />
          ));
