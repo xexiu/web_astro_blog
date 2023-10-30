@@ -49,11 +49,17 @@ const { category, featured_image, title, date, author, excerpt, tags } =
       </TagHeading>
       <PostCardExcerpt {excerpt} />
       <PostCardDetails {author} {date} />
-      <Tags {tags} />
+      <div class="post-card-tags-container">
+         <Tags {tags} />
+      </div>
    </PostCardDetailsContainer>
 </PostCardContainer>
 
 <style is:global>
+   .post-card-tags-container {
+      display: flex;
+      padding: 10px 0;
+   }
    #main-body .post-title {
       padding: 0 0 5px 0;
       display: flex;

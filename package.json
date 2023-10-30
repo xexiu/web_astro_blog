@@ -16,7 +16,7 @@
     "@xexiu/astro-progress-bar": "^0.3.9",
     "@xexiu/astro-seo": "^0.1.9",
     "@xexiu/astro-speech": "^0.2.9",
-    "@xexiu/astro-tabs": "^0.5.9",
+    "@xexiu/astro-tabs": "^0.5.10",
     "astro": "^3.4.0",
     "astro-icon": "^0.8.1",
     "astro-purgecss": "^3.2.0",

@@ -35,15 +35,16 @@ const isInternalUrl = isInternalURLValid(href);
 ---
 
 {
-   isExternalLink ? (
+   isExternalLink && !isInternalUrl ? (
       <ExternalLink
          {href}
          {text}
          {icon}
-         classes={`${classes} ${isInternalUrl ? 'internal-link' : 'external-link'}`}
+         classes={`external-link ${classes}`}
          {customStyle}
          {isFilled}
          {borderVisible}
+         rel='noopener'
          {...rest}
       >
          <slot />
@@ -53,7 +54,7 @@ const isInternalUrl = isInternalURLValid(href);
          {href}
          {text}
          {icon}
-         classes={`${classes} ${isInternalUrl ? 'internal-link' : 'external-link'}`}
+         classes={`internal-link ${classes}`}
          {customStyle}
          {isFilled}
          {borderVisible}

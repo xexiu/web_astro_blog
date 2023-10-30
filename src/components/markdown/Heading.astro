@@ -1,0 +1,8 @@
+---
+import { slugify } from '@js/utils';
+const { as: Component, href } = Astro.props;
+
+const sanitizedId = slugify(href);
+---
+
+<Component id={sanitizedId}><slot /></Component>

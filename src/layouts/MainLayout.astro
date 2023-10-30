@@ -81,7 +81,7 @@ const {
       </style>
    </body>
    <script>
-      const internalLinks = document.querySelectorAll('.internal-link:not(.xml-wrapper):not([target="_blank"])');
+      const internalLinks = document.querySelectorAll('.internal-link:not(.xml-wrapper):not([target="_blank"]):not(.anchor-link)');
       const spinner =  (document as any).querySelector('#loader');
       const main = (document as any).querySelector('.main-container-page');
 

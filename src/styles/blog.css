@@ -99,14 +99,15 @@
 		font-style: italic;
 	}
 
-	a > code {
+	a > code, li > code {
 		position: relative;
 		color: var(--theme-accent);
 		background: transparent;
 		text-underline-offset: var(--padding-block);
+		padding: calc(2px * 1) calc(4px * 1);
 	}
 
-	a > code::before {
+	a > code::before, li > code::before {
 		content: '';
 		position: absolute;
 		inset: 0;
@@ -299,10 +300,6 @@
 		}
 	}
 
-	.tags-wrapper {
-		display: flex;
-	}
-
 	.markdown-wrapper {
 		padding: 5px 20px;
 		box-shadow: 0 0 10px -5px #999;
@@ -311,8 +308,12 @@
 
 		h2 {
 			border-bottom: 2px dashed #e2e2e2;
-			box-sizing: border-box;
 			line-height: 50px;
+		}
+
+		h3 {
+			border-bottom: 2px dotted #e2e2e2;
+			line-height: 40px;
 		}
 
 		pre {

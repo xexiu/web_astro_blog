@@ -13,6 +13,7 @@ import ArticleContainer from '@components/article/ArticleContainer.astro';
 import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
 import TagHeading from '@components/common/TagHeading.astro';
 import CodeBlock from '@components/markdown/CodeBlock.astro';
+import Heading from '@components/markdown/Heading.astro';
 import MarkdownImages from '@components/markdown/MarkdownImages.astro';
 import NormalizeLinks from '@components/markdown/NormalizeLinks.astro';
 import PostCardCategory from '@components/postcard/PostCardCategory.astro';
@@ -102,9 +103,7 @@ const { title, tags, excerpt, category } = entry.data;
          <TagHeading tag="h2" classes="article-main-heading-excerpt">
             {excerpt}
          </TagHeading>
-         <div class="tags-wrapper">
-            <Tags {tags} />
-         </div>
+         <Tags {tags} />
          <div class="markdown-wrapper">
             <Markdown
                content={entry.body}
@@ -112,55 +111,56 @@ const { title, tags, excerpt, category } = entry.data;
                components={{
                   img: MarkdownImages,
                   CodeBlock,
-                  a: NormalizeLinks
+                  a: NormalizeLinks,
+                  Heading
                }}
             />
-            <ArticleInfoContainer>
-               <ArticleAuthorContainer>
-                  <ArticleAuthor post={entry} />
-                  <ArticleReadingTime post={entry} />
-               </ArticleAuthorContainer>
-               <ArticleTools>
-                  <div class="article-speech-container">
-                     <AstroSpeech
-                        title="Escuchar Artículo"
-                        text={`título: ${title}, descripción: ${excerpt}, artículo: ${entry.body}`}
-                        classes="tooltip"
-                        data-tooltip-placement="top"
-                        btnClasses="listen-article"
-                     />
-                  </div>
-                  <div class="article-share-container">
-                     <Modal
-                        id="shareSocial"
-                        ariaLabel="Compartir en las redes"
-                        modalBtnClass="modal-button"
-                        btnCloseAriaLabel="Cerrar Modal"
-                     >
-                        <Icon
-                           name="octicon:share-16"
-                           height="28"
-                           width="28"
-                           slot="open-modal-button"
-                           class="icon-share-modal"
-                           aria-label="Compartir en las redes"
-                        />
-                        <SocialShareTitle slot="modal-title" />
-                        <SocialShareOptions
-                           slot="modal-main"
-                           linkUrl={`https://xexiu.dev/blog/${entry.slug}`}
-                           {title}
-                           {excerpt}
-                        />
-                        <SocialShareFooter
-                           slot="modal-footer"
-                           text={`https://xexiu.dev/blog/${entry.slug}`}
-                        />
-                     </Modal>
-                  </div>
-               </ArticleTools>
-            </ArticleInfoContainer>
          </div>
+         <ArticleInfoContainer>
+            <ArticleAuthorContainer>
+               <ArticleAuthor post={entry} />
+               <ArticleReadingTime post={entry} />
+            </ArticleAuthorContainer>
+            <ArticleTools>
+               <div class="article-speech-container">
+                  <AstroSpeech
+                     title="Escuchar Artículo"
+                     text={`título: ${title}, descripción: ${excerpt}, artículo: ${entry.body}`}
+                     classes="tooltip"
+                     data-tooltip-placement="top"
+                     btnClasses="listen-article"
+                  />
+               </div>
+               <div class="article-share-container">
+                  <Modal
+                     id="shareSocial"
+                     ariaLabel="Compartir en las redes"
+                     modalBtnClass="modal-button"
+                     btnCloseAriaLabel="Cerrar Modal"
+                  >
+                     <Icon
+                        name="octicon:share-16"
+                        height="28"
+                        width="28"
+                        slot="open-modal-button"
+                        class="icon-share-modal"
+                        aria-label="Compartir en las redes"
+                     />
+                     <SocialShareTitle slot="modal-title" />
+                     <SocialShareOptions
+                        slot="modal-main"
+                        linkUrl={`https://xexiu.dev/blog/${entry.slug}`}
+                        {title}
+                        {excerpt}
+                     />
+                     <SocialShareFooter
+                        slot="modal-footer"
+                        text={`https://xexiu.dev/blog/${entry.slug}`}
+                     />
+                  </Modal>
+               </div>
+            </ArticleTools>
+         </ArticleInfoContainer>
       </div>
       <RelatedArticles {relatedArticles} />
       <FormCommentGiscus />
