@@ -81,8 +81,10 @@ const {
       </style>
    </body>
    <script>
-      const internalLinks = document.querySelectorAll('.internal-link:not(.xml-wrapper):not([target="_blank"]):not(.anchor-link)');
-      const spinner =  (document as any).querySelector('#loader');
+      const internalLinks = document.querySelectorAll(
+         '.internal-link:not(.xml-wrapper):not([target="_blank"]):not(.anchor-link)'
+      );
+      const spinner = (document as any).querySelector('#loader');
       const main = (document as any).querySelector('.main-container-page');
 
       internalLinks.forEach((link) => {
@@ -95,14 +97,26 @@ const {
          });
       });
 
-      document.onreadystatechange = function() {
-         if (document.readyState !== 'complete') {
-            main.style.visibility = 'hidden';
-            spinner.style.visibility = 'visible';
+      // iOS/Android
+      // Function to handle pageshow event
+      function handlePageShow(event: any) {
+         if (event.persisted) {
+            spinner.style.display = 'none';
+            main.style.visibility = 'visible';
          } else {
             spinner.style.display = 'none';
             main.style.visibility = 'visible';
          }
-      };
+      }
+
+      // Function to handle pagehide event
+      function handlePageHide() {
+         main.style.visibility = 'hidden';
+         main.style.display = 'none';
+      }
+
+      // Attach event listeners
+      window.addEventListener('pageshow', handlePageShow);
+      window.addEventListener('pagehide', handlePageHide);
    </script>
 </html>
