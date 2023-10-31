@@ -44,8 +44,7 @@
     "@vite-pwa/astro": "^0.1.3",
     "bun-types": "^1.0.2",
     "concurrently": "^8.2.1",
-    "eslint": "^8.49.0",
-    "typescript": "^5.2.2"
+    "eslint": "^8.49.0"
   },
   "module": "index.ts",
   "name": "sm_astro",
@@ -59,7 +58,8 @@
     "lint:fix": "bun run lint -- --fix && eslint --fix --ext .js,.jsx,.ts,.astro ./src",
     "postcss:watch": "postcss src/style.css --dir public",
     "preview": "astro preview",
-    "start": "astro dev"
+    "start": "astro dev",
+    "test": "bun test"
   },
   "type": "module",
   "version": "0.0.1"
