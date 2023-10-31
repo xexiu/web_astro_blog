@@ -3,33 +3,27 @@ import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
 import TagHeading from '@components/common/TagHeading.astro';
 import Posts from '@components/postcard/Posts.astro';
 import SectionContainer from '@components/section/SectionContainer.astro';
-import { getCollectionFor } from '@js/server/utils';
-import { getPostsFor, isUserAdmin, slugify, unslugify } from '@js/utils';
+import { slugify } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
-
-const cookie = Astro.request.headers.get('cookie');
-const isAdmin = isUserAdmin(cookie);
+import { MyBlog as Blog } from '@js/builders';
 
 export async function getStaticPaths() {
-   const blogs = await getCollection('blog');
-   const blogTags = blogs.flatMap((entry: any) => entry.data.tags);
+   const blogEntries = await getCollection('blog');
+   const blogTags = blogEntries.flatMap((entry: any) => entry.data.tags);
 
    return blogTags.map((tag: string) => ({
-      props: { tagName: tag, blogs },
+      props: { tagName: tag, blogEntries },
       params: { tag: slugify(tag) }
    }));
 }
 
 const { tag } = Astro.params;
-const { tagName } = Astro.props;
-const _tagName = unslugify(tagName);
-
-const blogs = await getCollectionFor('blog', isAdmin, getCollection);
-const tagPosts = getPostsFor({
+const { tagName, blogEntries } = Astro.props;
+const blog = new Blog({ blogs: blogEntries, post: null, cookie: Astro.request.headers.get('cookie') });
+const tagPosts = blog.getPostsFor({
    propertyName: 'tags',
-   blog: blogs,
-   property: String(tag)
+   property: tagName
 });
 ---
 
@@ -39,15 +33,15 @@ const tagPosts = getPostsFor({
          { name: 'Inicio', path: '/' },
          { name: 'Blog', path: '/blog' },
          {
-            name: _tagName as string,
+            name: tagName,
             path: `/blog/tag/${tag}`,
             linkIsActive: 'is-active'
          }
       ]}
    />
-   <SectionContainer ariaLabel={`Posts about ${_tagName}`}>
+   <SectionContainer ariaLabel={`Posts about ${tagName}`}>
       <span>Publicaciones etiquetadas con:</span>
-      <TagHeading classes="post-tags" tag="h2">{_tagName}</TagHeading>
+      <TagHeading classes="post-tags" tag="h2">{tagName}</TagHeading>
       <Posts entries={tagPosts} />
    </SectionContainer>
 </MainLayout>

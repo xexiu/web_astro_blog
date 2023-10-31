@@ -61,6 +61,7 @@ const {
             height: 70px;
             animation: spin 1s linear infinite;
             z-index: 10000000;
+            display: none;
          }
 
          .center {
@@ -81,7 +82,9 @@ const {
       </style>
    </body>
    <script>
-      const internalLinks = document.querySelectorAll('.internal-link:not(.xml-wrapper):not([target="_blank"]):not(.anchor-link)');
+      const SELECTORS = '.internal-link:not(.xml-wrapper):not([target="_blank"]):not(.anchor-link)';
+      const DATA_LINKS = ':not([data-next-article]):not([data-prev-article]):not([data-related-article])';
+      const internalLinks = document.querySelectorAll(`${SELECTORS}${DATA_LINKS}`);
       const spinner =  (document as any).querySelector('#loader');
       const main = (document as any).querySelector('.main-container-page');
 

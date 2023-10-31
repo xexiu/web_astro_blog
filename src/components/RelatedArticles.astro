@@ -1,19 +1,15 @@
 ---
 import { Link } from '@components/common/link';
-import { getRelatedArticles, isUserAdmin } from '@js/utils';
 import type { Post } from 'types/utils';
 import TagHeading from './common/TagHeading.astro';
 import PostCardContainer from './postcard/PostCardContainer.astro';
 import PostCardDetails from './postcard/PostCardDetails.astro';
 
-const cookie = Astro.request.headers.get('cookie');
-const isAdmin = isUserAdmin(cookie);
 const { relatedArticles } = Astro.props;
-const _relatedArticles = getRelatedArticles(isAdmin, relatedArticles);
 ---
 
 {
-   _relatedArticles.length > 0 && (
+   relatedArticles.length > 0 && (
       <aside class="container-related-posts" aria-label="Related posts">
          <TagHeading
             classes="related-articles-heading"
@@ -22,29 +18,32 @@ const _relatedArticles = getRelatedArticles(isAdmin, relatedArticles);
          >
             Artículos Relacionados
          </TagHeading>
-         {_relatedArticles.map((relatedArticle: Post) => (
-            <PostCardContainer>
-               <Link
-                  href={`/blog/${relatedArticle.slug}`}
-                  isFilled={false}
-                  classes="post-link-wrapper"
-                  text={relatedArticle.data.title}
-               />
-               <TagHeading tag="h4">
+         {relatedArticles.map((relatedArticle: Post) => {
+            return (
+               <PostCardContainer>
                   <Link
                      href={`/blog/${relatedArticle.slug}`}
                      isFilled={false}
-                     classes="post-title"
+                     classes="post-link-wrapper"
                      text={relatedArticle.data.title}
-                     data-normal-link
+                     data-related-article
                   />
-               </TagHeading>
-               <PostCardDetails
-                  author={relatedArticle.data.author}
-                  date={relatedArticle.data.date as string}
-               />
-            </PostCardContainer>
-         ))}
+                  <TagHeading tag="h4">
+                     <Link
+                        href={`/blog/${relatedArticle.slug}`}
+                        isFilled={false}
+                        classes="post-title"
+                        text={relatedArticle.data.title}
+                        data-normal-link
+                     />
+                  </TagHeading>
+                  <PostCardDetails
+                     author={relatedArticle.data.author}
+                     date={relatedArticle.data.date as string}
+                  />
+               </PostCardContainer>
+            );
+         })}
       </aside>
    )
 }

@@ -3,32 +3,27 @@ import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
 import TagHeading from '@components/common/TagHeading.astro';
 import Posts from '@components/postcard/Posts.astro';
 import SectionContainer from '@components/section/SectionContainer.astro';
-import { getCollectionFor } from '@js/server/utils';
-import { getPostsFor, isUserAdmin, slugify, unslugify } from '@js/utils';
+import { slugify } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
-
-const cookie = Astro.request.headers.get('cookie');
-const isAdmin = isUserAdmin(cookie);
+import { MyBlog as Blog } from '@js/builders';
 
 export async function getStaticPaths() {
    const blogEntries = await getCollection('blog');
 
    return blogEntries.map((entry) => ({
-      props: { categoryName: entry.data.category },
+      props: { categoryName: entry.data.category, blogEntries },
       params: { category: slugify(entry.data.category) }
    }));
 }
 
 const { category } = Astro.params;
-const { categoryName } = Astro.props;
-const blogs = await getCollectionFor('blog', isAdmin, getCollection);
-const catPosts = getPostsFor({
+const { categoryName, blogEntries } = Astro.props;
+const blog = new Blog({ blogs: blogEntries, post: null, cookie: Astro.request.headers.get('cookie') });
+const catPosts = blog.getPostsFor({
    propertyName: 'category',
-   blog: blogs,
-   property: String(category)
+   property: category
 });
-const _categoryName = unslugify(categoryName);
 ---
 
 <MainLayout title={category}>
@@ -37,15 +32,15 @@ const _categoryName = unslugify(categoryName);
          { name: 'Inicio', path: '/' },
          { name: 'Blog', path: '/blog' },
          {
-            name: _categoryName as string,
+            name: categoryName,
             path: `/blog/category/${category}`,
             linkIsActive: 'is-active'
          }
       ]}
    />
-   <SectionContainer ariaLabel={`Posts about ${_categoryName}`}>
+   <SectionContainer ariaLabel={`Posts about ${categoryName}`}>
       <span>Publicaciones en la categoria:</span>
-      <TagHeading classes="post-category" tag="h1">{_categoryName}</TagHeading>
+      <TagHeading classes="post-category" tag="h1">{categoryName}</TagHeading>
       <Posts entries={catPosts} />
    </SectionContainer>
 </MainLayout>

@@ -4,30 +4,27 @@ import Posts from '@components/postcard/Posts.astro';
 import SearchBar from '@components/search-bar/SearchBar.astro';
 import SectionContainer from '@components/section/SectionContainer.astro';
 import Tags from '@components/tags/Tags.astro';
-import { getCollectionFor } from '@js/server/utils';
-import { getTagsFor, isUserAdmin } from '@js/utils';
+import { MyBlog as Blog } from '@js/builders';
 import MainLayout from '@layouts/MainLayout.astro';
 import data from '@schemas/blog-data.json';
 import Tabs from '@xexiu/astro-tabs';
 import { Icon } from 'astro-icon';
 import { getCollection } from 'astro:content';
 
-const cookie = Astro.request.headers.get('cookie');
-const isAdmin = isUserAdmin(cookie);
-const blogs = await getCollectionFor('blog', isAdmin, getCollection);
-const blogTags = getTagsFor(isAdmin, blogs);
+const blogEntries = await getCollection('blog');
+const blog = new Blog({ blogs: blogEntries, post: null, cookie: Astro.request.headers.get('cookie') });
+const { blogs, isAdmin, allBlogs } = blog;
+const { tags } = blogs;
 const keys = Object.keys(blogs);
-const sortedBlogTags = blogTags.sort((a, b) => {
-   return (a as any).localeCompare(b, 'es', { sensitivity: 'base' });
-});
+const blogKeys = keys.slice(0, 3);
 ---
 
 <MainLayout title={data.title} description={data.description}>
-   <SearchBar data={[...blogs.latest, ...blogs.pinned]} slot="search-bar" />
+   <SearchBar data={allBlogs} slot="search-bar" />
    <SectionContainer ariaLabel="Publicaciones Recientes">
       <div class="blog-page">
          <Tabs
-            {keys}
+            keys={blogKeys}
             tabTitles={['Últimos artículos', 'Destacados', 'Privados']}
          >
             {
@@ -52,7 +49,7 @@ const sortedBlogTags = blogTags.sort((a, b) => {
                         <Posts entries={blogs[key]} />
                         <div class="post-card-tags-container">
                            <Tags
-                              tags={sortedBlogTags}
+                              tags={tags}
                               showCountBadge={true}
                               classes="blog-page-tag"
                            />

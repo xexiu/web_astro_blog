@@ -3,13 +3,11 @@ import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
 import TagHeading from '@components/common/TagHeading.astro';
 import Posts from '@components/postcard/Posts.astro';
 import SectionContainer from '@components/section/SectionContainer.astro';
-import { getCollectionFor } from '@js/server/utils';
-import { getPostsFor, isUserAdmin, slugify, unslugify } from '@js/utils';
+import { slugify } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
+import { MyBlog as Blog } from '@js/builders';
 
-const cookie = Astro.request.headers.get('cookie');
-const isAdmin = isUserAdmin(cookie);
 
 export async function getStaticPaths() {
    const blogEntries = await getCollection('blog');
@@ -19,17 +17,16 @@ export async function getStaticPaths() {
 
    return allAuthors.map((author) => {
       return {
-         props: { authorName: author },
+         props: { authorName: author, blogEntries },
          params: { author: slugify(author) }
       };
    });
 }
 
-const { authorName } = Astro.props;
 const { author } = Astro.params;
-const blogs = await getCollectionFor('blog', isAdmin, getCollection);
-const authorPosts = getPostsFor({ propertyName: 'author', blog: blogs, property: authorName });
-const _authorName = unslugify(authorName);
+const { authorName, blogEntries } = Astro.props;
+const blog = new Blog({ blogs: blogEntries, post: null, cookie: Astro.request.headers.get('cookie') });
+const authorPosts = blog.getPostsFor({ propertyName: 'author', property: authorName });
 ---
 
 <MainLayout title={authorName}>
@@ -38,15 +35,15 @@ const _authorName = unslugify(authorName);
          { name: 'Inicio', path: '/' },
          { name: 'Blog', path: '/blog' },
          {
-            name: _authorName,
+            name: authorName,
             path: `/blog/author/${author}`,
             linkIsActive: 'is-active'
          }
       ]}
    />
-   <SectionContainer ariaLabel={`Posts by ${_authorName}`}>
+   <SectionContainer ariaLabel={`Posts by ${authorName}`}>
       <span>Publicaciones hechas por:</span>
-      <TagHeading classes="post-author" tag="h1">{_authorName}</TagHeading>
+      <TagHeading classes="post-author" tag="h1">{authorName}</TagHeading>
       <Posts entries={authorPosts} />
    </SectionContainer>
 </MainLayout>

@@ -1,14 +1,10 @@
 ---
 import Posts from '@components/postcard/Posts.astro';
-import { getCollectionFor } from '@js/server/utils';
-import { isUserAdmin } from '@js/utils';
 import MainLayout from '@layouts/MainLayout.astro';
 import data from '@schemas/portfolio-data.json';
 import { getCollection } from 'astro:content';
 
-const cookie = Astro.request.headers.get('cookie');
-const isAdmin = isUserAdmin(cookie);
-const portfolios = await getCollectionFor('portfolio', isAdmin, getCollection);
+const portfolios = await getCollection('portfolio');
 ---
 
 <MainLayout title={data.title} description={data.description}>

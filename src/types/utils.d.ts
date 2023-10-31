@@ -29,6 +29,8 @@ export type PortFolioData = {
    featured_image: PostDataFeaturedImage;
 }
 
+export type Nullable<T> = T | null;
+
 export type Post = {
    id: string;
    slug: string;
@@ -36,6 +38,8 @@ export type Post = {
    collection: string;
    data: PostData
 }
+
+export type PostNullable = Nullable<Post>
 
 export type PortFolio = {
    id: string;
@@ -47,8 +51,10 @@ export type PortFolio = {
 
 export type Blog = {
    latest: Post[];
-   pinned: Post[];
-   private: Post[];
+   featured: Post[];
+   privated: Post[];
+   categories: string[];
+   tags: string[]
 }
 
 export type RelatedArticles = {
@@ -60,7 +66,6 @@ export type RelatedArticles = {
 
 export type PostFor = {
    propertyName: string,
-   blog: Blog,
    property: string,
    helper?: Function
 }

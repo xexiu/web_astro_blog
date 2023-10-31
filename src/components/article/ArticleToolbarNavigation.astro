@@ -1,35 +1,18 @@
 ---
 import { Link } from '@components/common/link';
-import { isUserAdmin } from '@js/utils';
-import type { Post } from 'types/utils';
+import type { PostNullable, Post } from 'types/utils';
 
 interface Props {
-   nextEntry: Post;
-   prevEntry: Post;
+   nextEntry: PostNullable;
+   prevEntry: PostNullable;
+   blogEntries: Post[];
 }
-
-const cookie = Astro.request.headers.get('cookie');
-const isAdmin = isUserAdmin(cookie);
 
 const { prevEntry, nextEntry } = Astro.props;
-let prev = null;
-let next = null;
-
-if (isAdmin && prevEntry?.data.is_private) {
-   prev = prevEntry as any;
-} else if (prevEntry) {
-   prev = !prevEntry.data.is_private as any;
-}
-
-if (isAdmin && nextEntry?.data.is_private) {
-   next = nextEntry as any;
-} else if (nextEntry) {
-   next = !nextEntry.data.is_private as any;
-}
 ---
 
 {
-   prev && (
+   prevEntry && (
       <div class="prev-article">
          <h5>
             <Link
@@ -38,6 +21,7 @@ if (isAdmin && nextEntry?.data.is_private) {
                isFilled={false}
                data-normal-link
                aria-label={`Prev article: ${prevEntry.data.title}`}
+               data-prev-article
             />
          </h5>
       </div>
@@ -45,7 +29,7 @@ if (isAdmin && nextEntry?.data.is_private) {
 }
 
 {
-   next && (
+   nextEntry && (
       <div class="next-article">
          <h5>
             <Link
@@ -53,7 +37,8 @@ if (isAdmin && nextEntry?.data.is_private) {
                href={`/blog/${nextEntry.slug}`}
                isFilled={false}
                data-normal-link
-               aria-label={`Prev article: ${nextEntry.data.title}`}
+               aria-label={`Next article: ${nextEntry.data.title}`}
+               data-next-article
             />
          </h5>
       </div>

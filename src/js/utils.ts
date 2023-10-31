@@ -1,4 +1,4 @@
-import type { Blog, Post, PostFor, RelatedArticles } from 'types/utils';
+import type { Post, RelatedArticles } from 'types/utils';
 
 export function updateTheme(value: string): void {
    document.documentElement.classList.remove('light', 'dark');
@@ -129,9 +129,9 @@ export function findRelatedPostsByTag({ currentPost, maxRelatedPosts, minCommonT
       if (post.data.title === currentPost.title) continue;
 
       // Calculate the number of common tags between the current post and the target post
-      const commonTags = currentPost.tags.filter((tag) =>
-         post.data.tags.includes(tag)
-      );
+      const commonTags = currentPost.tags.filter((tag) => {
+         return post.data.tags.includes(tag);
+      });
 
       // You can adjust the threshold for similarity as per your requirements
       if (commonTags.length >= minCommonTags) {
@@ -174,41 +174,7 @@ export function eraseCookie(name: string): void {
    document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
-export function getTagsFor(isAdmin: boolean, collection: Blog): [] {
-   return [...collection.latest, ...collection.pinned, ...collection.private]
-      .filter((entry: any) => isAdmin ? entry : !entry.data.is_private)
-      .flatMap((entry: any) => entry.data.tags) as [];
-}
-
-export function getPostsFor({ propertyName, blog, property, helper = slugify }: PostFor): Post[] {
-   return [...blog.latest, ...blog.pinned, ...blog.private].filter((entry: Post) => {
-
-      if (propertyName === 'tags') {
-         return entry.data.tags.includes(property as any);
-      } else if (propertyName === 'category') {
-         return helper(entry.data.category) === property;
-      }
-
-      return entry.data.author === property;
-   });
-}
-
-export function getAllPostsFor(blog: Blog) {
-   const posts = [...blog.latest, ...blog.pinned, ...blog.private];
-
-   return posts.map((entry: Post, index: number) => ({
-      params: { slug: entry.slug },
-      props: {
-         entry,
-         indexEntry: index,
-         nextEntry: posts[index + 1],
-         prevEntry: posts[index - 1],
-         relatedArticles: findRelatedPostsByTag({ currentPost: entry.data, maxRelatedPosts: 3, blogPosts: posts })
-      }
-   }));
-}
-
-export function getTagCounts(tags: []): object {
+export function getTagCounts(tags: string[]): object {
    const tagCounts = {};
 
    tags.forEach((tag: string) => {
@@ -220,12 +186,6 @@ export function getTagCounts(tags: []): object {
    });
 
    return tagCounts;
-}
-
-export function getRelatedArticles(isAdmin: boolean, relatedArticles: Post[]): Post[] {
-   return relatedArticles.filter((entry: Post) =>
-      isAdmin ? entry : !entry.data.is_private
-   );
 }
 
 export function isPlainString(input: string): boolean {
