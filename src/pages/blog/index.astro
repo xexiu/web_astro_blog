@@ -29,7 +29,7 @@ const blogKeys = keys.slice(0, 3);
          >
             {
                (key: string) => {
-                  if (key === 'private' && !isAdmin) {
+                  if (key === 'privated' && !isAdmin) {
                      return (
                         <div class="private-layout">
                            <span>Este contenido es privado</span>
@@ -82,6 +82,7 @@ const blogKeys = keys.slice(0, 3);
    .tab-wrapper:has(.radio-tab:checked) {
       box-shadow: 0 2px 4px rgb(0 0 0 / 20%);
       text-shadow: 0 2px 3px rgb(255 255 255 / 40%);
+      box-shadow: var(--shadow-md);
       &:hover {
          box-shadow: var(--shadow-md);
       }

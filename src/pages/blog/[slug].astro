@@ -91,14 +91,16 @@ const { title, excerpt, category } = entry.data;
       </div>
 
       <div class:list={['article-content']}>
-         <TagHeading tag="h1" classes="article-main-heading">
-            {title}
-         </TagHeading>
-         <TagHeading tag="h2" classes="article-main-heading-excerpt">
-            {excerpt}
-         </TagHeading>
-         <Tags tags={unslugifiedPostTags} />
-         <div class="markdown-wrapper">
+         <section class="post-heading">
+            <TagHeading tag="h1" classes="article-main-heading">
+               {title}
+            </TagHeading>
+            <TagHeading tag="h2" classes="article-main-heading-excerpt">
+               {excerpt}
+            </TagHeading>
+            <Tags tags={unslugifiedPostTags} />
+         </section>
+         <section class="markdown-wrapper">
             <Markdown
                content={entry.body}
                sanitize={{ allowComponents: true }}
@@ -109,7 +111,7 @@ const { title, excerpt, category } = entry.data;
                   Heading
                }}
             />
-         </div>
+         </section>
          <ArticleInfoContainer>
             <ArticleAuthorContainer>
                <ArticleAuthor post={entry} />

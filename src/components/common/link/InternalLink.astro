@@ -15,7 +15,7 @@ const { text, icon, classes, href, customStyle, isFilled, borderVisible, ...rest
       )
    }
 
-   {text ? <span>{text}</span> : <slot />}
+   {text ? <span itemprop="name">{text}</span> : <slot />}
 
    {
       icon && icon.side === 'right' && (

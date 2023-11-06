@@ -3,11 +3,6 @@ import { Link } from '@components/common/link';
 import data from '@schemas/main-nav-data.json';
 import { Icon } from 'astro-icon';
 import './main-nav.css';
-
-type Link = {
-   name: string;
-   path: string;
-}
 ---
 
 <input type="checkbox" id="click" />
@@ -19,7 +14,7 @@ type Link = {
    <ul class="nav__links" itemtype="https://schema.org/ItemList">
       <meta itemprop="numberOfItems" content={String(data.length)}>
       {
-         (data as Link[]).map((item: Link, index: number) => {
+         (data).map((item, index: number) => {
             return (
                <li aria-label={item.name} itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                   <Link
@@ -31,6 +26,7 @@ type Link = {
                      classes='top-link'
                      data-has-items="false"
                      data-saved-items="0"
+                     itemprop="item"
                   />
                   <meta property="position" content={String(index + 1)}>
                </li>

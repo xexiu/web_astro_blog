@@ -320,7 +320,7 @@
 
 	.article-main-heading {
 		text-align: center;
-		font-size: 3em;
+		font-size: var(--fs-xl);
 		padding: 15px 0;
 	}
 
@@ -330,6 +330,6 @@
 		padding: 0 0 15px;
 		text-align: center;
 		line-height: 30px;
-		font-size: 18px;
+		font-size: var(--fs-2sm);
 	}
 }

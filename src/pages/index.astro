@@ -11,7 +11,7 @@ import TagHeading from '@components/common/TagHeading.astro';
    <section class="container-index-page" aria-label="Inicio del sitio web">
       <TagHeading classes="tag-heading" tag="h2">Sergiu Mironescu</TagHeading>
       <span class="tag-heading-typing">
-         <span class="word">Mi pasión es:</span>
+         <span class="word" style="margin-bottom: 20px; font-style: italic;">Mi pasión es:</span>
          <TagHeading tag="h1" classes="typing-words">
             <span>Diseño</span>
             <span>Mundo</span>
@@ -143,8 +143,8 @@ import TagHeading from '@components/common/TagHeading.astro';
 
         .tag-heading-typing {
             position: relative;
-            font-size: 20px;
             display: flex;
+            font-size: var(--fs-md);
             max-width: 27rem;
             flex-direction: column;
             margin-top: 30px;

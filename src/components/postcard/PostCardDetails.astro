@@ -1,6 +1,5 @@
 ---
-import { Link } from '@components/common/link';
-import { formatDate, slugify } from '@js/utils';
+import { formatDate } from '@js/utils';
 
 interface Props {
     author: string;
@@ -11,14 +10,7 @@ const { author, date } = Astro.props;
 ---
 
 <div class="post-card-details">
-   <div class="post-card-author" title={author} aria-label={author}>
-      <Link
-         text={author}
-         href={`/blog/author/${slugify(author)}/`}
-         isFilled={false}
-         aria-label={author}
-      />
-   </div>
+   <span class="post-card-author" aria-label={author}>{author}</span>
    <span class="post-card-date" title={formatDate(date)} aria-label={formatDate(date)}>
       {formatDate(date)}
    </span>
@@ -31,28 +23,21 @@ const { author, date } = Astro.props;
         gap: 10px;
         align-items: flex-end;
         max-width: 100%;
+        font-size: var(--fs-4sm);
+        font-style: italic;
+        color: var(--color-darken-grey);
+        flex-wrap: wrap;
+        margin-top: 5px;
 
         .post-card-date {
-            font-size: 14px;
-            color: var(--color-darken-grey);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
         .post-card-author {
-            font-size: 15px;
-            margin-top: 5px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            a {
-                text-decoration: none;
-                color: var(--color-darken-grey);
-                border-bottom: 1px solid #ccc;
-                &:hover {
-                    border-bottom: 2px solid black;
-                }
-            }
         }
     }
 </style>

@@ -1,15 +1,26 @@
 ---
 import { Link } from '@components/common/link';
+import seoLinks from './seo-links.json';
 
 interface Props {
    href: string;
 }
 
+const SEO_KEY = 'internal-seo--';
+
+function buildSeoLink(href: string) {
+   const linkPart = href.replace(SEO_KEY, '');
+
+   return seoLinks[linkPart] || href;
+}
+
 const { href }: Props = Astro.props;
+const isSeoLink = href.startsWith(SEO_KEY);
+const _href = isSeoLink ? buildSeoLink(href) : href;
 ---
 
 <Link
-   href={href}
+   href={_href}
    isFilled={false}
    classes='markdown-link'
    data-normal-link

@@ -24,19 +24,22 @@ const ariaLabel = routeName ? `${routeName} 'Demo Links'` : 'Demo Links';
 
 <nav role="navigation" aria-label={ariaLabel} vocab="https://schema.org/">
    <ol itemtype="https://schema.org/ItemList">
-      <meta itemprop="numberOfItems" content={String(uniquePaths.length)}>
+      <meta itemprop="numberOfItems" content={String(uniquePaths.length)} />
       {
          uniquePaths.map((path: string, index: number) => {
             return (
-               <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                  <span style="text-transform: none">
-                     {routeName ? 'open ' : 'cd '}
-                  </span>
-                  <a data-normal-link class="internal-link" href={path}>{`${path.replace(
-                     `/demos/${routeName}/`,
-                     ''
-                  )}`}</a>
-                  <meta property="position" content={String(index + 1)}>
+               <li
+                  itemprop="itemListElement"
+                  itemscope
+                  itemtype="https://schema.org/ListItem"
+               >
+                  <a itemprop="item" data-normal-link class="internal-link" href={path}>
+                     <span itemprop="name" class="suffix">
+                        {routeName ? 'open ' : 'cd '}
+                     </span>
+                     {`${path.replace(`/demos/${routeName}/`, '')}`}
+                  </a>
+                  <meta property="position" content={String(index + 1)} />
                </li>
             );
          })
@@ -64,5 +67,10 @@ const ariaLabel = routeName ? `${routeName} 'Demo Links'` : 'Demo Links';
       text-align: center;
       display: inline-block;
       text-align: end;
+   }
+
+   .suffix {
+      text-transform: none;
+      color: #222;
    }
 </style>

@@ -73,7 +73,7 @@ En la comunicación en Internet, se utilizan muchos protocolos diferentes, inclu
 
 El IP se encarga de dirigir paquetes de datos a su destino correcto, mientras que el TCP y el UDP se aseguran de que los paquetes se transmitan de manera fiable y eficiente. El DNS se utiliza para traducir nombres de dominio en direcciones IP, y el HTTP se utiliza para transferir datos entre clientes y servidores.
 
-Una de las principales ventajas de utilizar protocolos estandarizados es que permiten que dispositivos y sistemas de diferentes fabricantes y proveedores se comuniquen entre sí de manera fluida. Por ejemplo, un navegador web desarrollado por una empresa puede comunicarse con un servidor web desarrollado por otra empresa, siempre que ambos sigan el protocolo HTTP.
+Una de las principales ventajas de utilizar protocolos estandarizados es que permiten que dispositivos y sistemas de diferentes fabricantes y proveedores se comuniquen entre sí de manera fluida. Por ejemplo, un navegador web desarrollado por una empresa puede comunicarse con un servidor web desarrollado por otra empresa, siempre que ambos sigan el [protocolo HTTP](internal-seo--protocolo-HTTP).
 
 Como desarrollador, es importante comprender los diversos protocolos utilizados en la comunicación en Internet y cómo trabajan juntos para permitir la transferencia de datos e información en Internet.
 

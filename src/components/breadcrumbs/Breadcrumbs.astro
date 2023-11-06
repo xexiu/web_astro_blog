@@ -27,9 +27,9 @@ const { links }: Props = Astro.props;
                      text={link.name}
                      href={link.path}
                      isFilled={false}
-                     data-sidebarLink
                      aria-label={link.name}
                      classes={`breadcrumbs__item ${link.linkIsActive ? link.linkIsActive : ''}`}
+                     itemprop="item"
                   />
                   <meta property="position" content={String(index + 1)}>
                </li>

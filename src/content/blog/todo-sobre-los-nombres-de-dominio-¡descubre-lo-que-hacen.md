@@ -26,7 +26,7 @@ Todos los nombres de dominio son cuidados por personas especiales llamadas "regi
 
 ## ¿Cuál es la diferencia entre un nombre de dominio y una URL?
 
-Una URL, o dirección web, es como una tarjeta de visita. Contiene el nombre de dominio de un sitio y otras cosas, como cómo llegar allí. Por ejemplo, en la URL `https://xexiu.dev/blog/`, `xexiu.dev` es el nombre de dominio, [https](/blog/la-evolucion-de-http-desde-el-nacimiento-de-la-web-hasta-http-3) es cómo llegar allí y `/blog/` es el camino a una página especial en el sitio.
+Una URL, o dirección web, es como una tarjeta de visita. Contiene el nombre de dominio de un sitio y otras cosas, como cómo llegar allí. Por ejemplo, en la URL `https://xexiu.dev/blog/`, `xexiu.dev` es el nombre de dominio, [https](internal-seo--protocolo-HTTP) es cómo llegar allí y `/blog/` es el camino a una página especial en el sitio.
 
 ## ¿Qué partes tiene un nombre de dominio?
 
@@ -38,7 +38,6 @@ Para el nombre de dominio de Google en EE. UU., `google.com`:
 
 * `com` es el TLD (lo general)
 * `google` es el 2LD (lo específico)
-
 
 Pero para el nombre de dominio de Google en el Reino Unido, `google.co.uk`:
 
