@@ -6,7 +6,7 @@ const { title, githubLink, ...rest } = Astro.props;
 
 <MainLayout {title} {...rest}>
    <slot name="breadcrumb" />
-   {githubLink && <div class="github-link"><a data-normal-link href={githubLink} target="_blank">¡Vista Github para saber más!</a></div>}
+   {githubLink && <div class="github-link"><a data-normal-link href={githubLink} target="_blank">¡Visita Github para saber más!</a></div>}
    <div id="container-demos">
       <slot />
    </div>

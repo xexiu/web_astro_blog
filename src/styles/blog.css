@@ -100,7 +100,7 @@
 		padding: calc(2px * 1) calc(4px * 1);
 		font-size: var(--fs-3sm);
 		word-break: break-word;
-		background: var(--color-red);
+		background: #222;
 		opacity: .6;
 		border-radius: 4px;
 		color: var(--color-gray-100);

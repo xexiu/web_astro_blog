@@ -2,54 +2,6 @@
 const { type } = Astro.props;
 ---
 
-<aside class={`notecard ${type}`}>
+<aside class={`notecard ${type}`} role="complementary">
    <slot />
 </aside>
-
-<style is:inline>
-   .markdown-wrapper .notecard {
-      border-radius: 4px;
-      box-shadow: var(--shadow-md);
-      margin: 1rem 0;
-      padding: 1rem 1rem 1rem 3rem;
-      position: relative;
-      background-color: var(--bg-blue);
-      color: white;
-      & p {
-         margin: 0;
-      }
-      & a {
-         color: white;
-         text-decoration: underline;
-         &:hover {
-            text-decoration: none;
-         }
-         &::before {
-            content: '';
-            transform: none;
-            height: 0;
-         }
-      }
-      &::before {
-         content: "¡";
-         position: absolute;
-         left: 15px;
-         border: 1px solid white;
-         padding-left: 7px;
-         padding-bottom: 5px;
-         border-radius: 50%;
-         width: 20px;
-         height: 20px;
-         font-size: 0.9em;
-         display: flex;
-         align-items: center;
-         top: 32%;
-      }
-   }
-   .markdown-wrapper .notecard.note {
-      background-color: var(--bg-blue);
-   }
-   .markdown-wrapper .notecard.warning {
-      background-color: var(--bg-red);
-   }
-</style>

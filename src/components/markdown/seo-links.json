@@ -1,7 +1,10 @@
 {
     "DNS": "/blog/descifrando-el-enigma-de-internet-todo-lo-que-debes-saber#entendiendo-las-direcciones-ip-y-los-nombres-de-dominio-dns",
     "basic-setup": "/blog/vscode-setup-plugins",
+    "css": "/blog/css-roadmap-teoria-y-practica-ejercicios-todo-en-1",
     "internet": "/blog/descifrando-el-enigma-de-internet-todo-lo-que-debes-saber",
+    "javascript": "/blog/javascript-roadmap-teoria-y-practica-ejercicios-todo-en-1",
     "nombre-de-dominio": "/blog/todo-sobre-los-nombres-de-dominio-descubre-lo-que-hacen",
-    "protocolo-HTTP": "/blog/la-evolucion-de-http-desde-el-nacimiento-de-la-web-hasta-http-3#que-es-http"
+    "protocolo-HTTP": "/blog/la-evolucion-de-http-desde-el-nacimiento-de-la-web-hasta-http-3#que-es-http",
+    "html5-accesibility": "/blog/html-accesibilidad-optimiza-tu-sitio-web-para-una-experiencia-accesible"
 }

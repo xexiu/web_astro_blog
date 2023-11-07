@@ -23,8 +23,8 @@ Antes de comenzar con este tema, deberías tener al menos un conocimiento básic
 
 Después de aprender HTML, puedes avanzar y explorar temas más avanzados, como:
 
-* **[CSS](internal-seo--css)**, y cómo utilizarlo para dar estilo a tu HTML (por ejemplo, cambiar el tamaño del texto y las fuentes utilizadas, agregar bordes y sombras, diseñar tu página con múltiples columnas, añadir animaciones y otros efectos visuales).
-* **[JavaScript](internal-seo--javascript)**, y cómo usarlo para agregar funcionalidad dinámica a las páginas web (por ejemplo, encontrar tu ubicación y mostrarla en un mapa, hacer que los elementos de la interfaz de usuario aparezcan/desaparezcan al alternar un botón, guardar los datos de los usuarios localmente en sus computadoras y mucho más).
+* **[CSS Roadmap](internal-seo--css)**, y cómo utilizarlo para dar estilo a tu HTML (por ejemplo, cambiar el tamaño del texto y las fuentes utilizadas, agregar bordes y sombras, diseñar tu página con múltiples columnas, añadir animaciones y otros efectos visuales).
+* **[JavaScript Roadmap](internal-seo--javascript)**, y cómo usarlo para agregar funcionalidad dinámica a las páginas web (por ejemplo, encontrar tu ubicación y mostrarla en un mapa, hacer que los elementos de la interfaz de usuario aparezcan/desaparezcan al alternar un botón, guardar los datos de los usuarios localmente en sus computadoras y mucho más).
 
 ## HTML: Lenguaje de Marcado de Hipertexto
 
@@ -185,9 +185,116 @@ También hemos incluido un atributo alt (alternativo). En el atributo alt, se es
 ```
 
 > Las palabras clave para el texto alternativo son "texto descriptivo". El texto alternativo que escriba debe proporcionar al lector suficiente información para que tenga una buena idea de lo que transmite la imagen. En este ejemplo, nuestro texto actual "Mi logo" no es en absoluto adecuado. Una alternativa mucho mejor para nuestro logo sería "Xexiu dev logo: símbolo de un comando bash".
----
+
+- - -
+
 > **Note**
-[Aprende más sobre accesibilidad](internal-seo--html5-accesibility) en nuestra sección de aprendizaje sobre accesibilidad.
+> [Aprende más sobre accesibilidad](internal-seo--html5-accesibility) en nuestra sección de aprendizaje sobre accesibilidad.
+
+## Encabezados
+
+Los elementos de encabezado te permiten especificar que ciertas partes de tu contenido son encabezados o subtítulos. De la misma manera que un libro tiene un título principal, títulos de capítulos y subtítulos, un documento HTML también puede tenerlos. HTML contiene 6 niveles de encabezado, `<h1> - <h6>`, aunque normalmente solo usarás 3 o 4 como máximo:
+
+```html
+<h1>Título Principal</h1>
+<h2>Título secundario</h2>
+<h3>Subtítulo</h3>
+<h4>Sub-subtítulo</h4>
+<h5>título pequeño</h5>
+<h6>título muy muy pequeño</h6>
+```
+
+> **Note**
+> Cualquier cosa en HTML que esté entre `<!-- y -->` es un comentario HTML. El navegador ignora los comentarios al renderizar el código. En otras palabras, no son visibles en la página, solo en el código. Los comentarios en HTML son una forma de escribir notas útiles sobre tu código o lógica.
+
+```html
+<!-- Esto es un comentario y no se visualiza en la web -->
+<h1>Título principal</h1>
+```
+
+> **Note**
+> Verás que tu nivel de encabezado 1 tiene un estilo implícito. No uses elementos de encabezado para hacer que el texto sea más grande o en negrita, ya que se utilizan por razones de [accesibilidad](internal-seo--html5-accesibility) y otras, como [SEO](internal-seo--seo). Intenta crear una secuencia significativa de encabezados en tus páginas sin omitir niveles.
+
+### Párrafos
+
+Como se explicó anteriormente, los [elementos p](https://developer.mozilla.org/es/docs/Web/HTML/Element/p) `<p>` se utilizan para contener párrafos de texto; los usarás con frecuencia al marcar contenido de texto regular.
+
+```html
+<p>Esto es un páragrafo simple</p>
+```
+
+## Listas
+
+Gran parte del contenido web son listas y HTML tiene elementos especiales para ellas. La marcación de listas siempre consta de al menos 2 elementos. Los tipos de listas más comunes son las listas desordenadas y ordenadas:
+
+* Las listas desordenadas son para listas en las que el orden de los elementos no importa, como una lista de compras. Estas se envuelven en un elemento `<ul>`.
+* Las listas ordenadas son para listas en las que el orden de los elementos importa, como una receta. Estas se envuelven en un elemento `<ol>`.
+* Cada elemento dentro de las listas se coloca dentro de un elemento `<li>` (elemento de lista).
+
+Por ejemplo, si quisiéramos convertir la parte del siguiente fragmento de párrafo en una lista:
+
+```html
+<p>
+  Somos una comunidad global de tecnólogos, pensadores y constructores que trabajan juntos...
+</p>
+```
+
+Podríamos modificar el marcado a esto, haciendo use de `ul` (lista no ordenada):
+
+```html
+<p>Somos una comunidad global de</p>
+
+<ul>
+  <li>tecnólogos</li>
+  <li>pensadores</li>
+  <li>constructores</li>
+</ul>
+
+<p>que trabajan juntos...</p>
+```
+
+Y si queremos una lista ordenada, podemos hacer use de `ol`:
+
+```html
+<p>La lista de la compra:</p>
+
+<ol>
+<li>Leche</li>
+<li>Pan</li>
+<li>Cerveza</li>
+</ol>
+```
+
+## Enlaces
+
+Los enlaces son muy importantes, ¡son lo que hace que la web sea una web! Para agregar un enlace, necesitamos usar un elemento simple: `<a>`, donde [a](https://developer.mozilla.org/es/docs/Web/HTML/Element/a) es la forma corta de "anclaje". Para convertir el texto dentro de tu párrafo en un enlace, sigue estos pasos:
+
+1. Elige algún texto. En este caso, elegimos el texto "Buscador de Google".
+2. Envuelve el texto en un elemento `<a>`, como se muestra a continuación:
+
+```html
+<a>Buscador de Google</a>
+```
+
+3. Añade al elemento `<a>` un atributo href, como se muestra a continuación:
+
+```html
+<a href="">Buscador de Google</a>
+```
+
+4. Rellena el valor de este atributo con la dirección web a la que deseas que enlace el vínculo.
+
+```html
+<a href="https://www.google.com/">
+  Buscador de Google
+</a>
+```
+
+Puedes obtener resultados inesperados si omites la parte "https://" o "http://" al comienzo de la dirección web, llamada [protocolo](internal-seo--protocolo-HTTP). Después de crear un enlace, haz clic en él para asegurarte de que te lleve a donde deseas.
+
+### Conclusión
+
+Si has seguido todas las instrucciones de este artículo, deberías terminar con una página que luzca como la que se muestra a continuación [también puedes verla aquí](/demos/html_css/primer-html)
 
 > Seguir aprendiendo:
 

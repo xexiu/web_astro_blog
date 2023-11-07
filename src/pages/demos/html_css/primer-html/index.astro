@@ -1,0 +1,46 @@
+---
+import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
+import DemosLayout from '@layouts/demos/DemosLayout.astro';
+
+---
+<DemosLayout
+   title="First HTML Example"
+   description="Primer HTML de ejemplo con solo tags y sin estilos CSS"
+>
+   <Breadcrumbs
+      slot="breadcrumb"
+      links={[
+         { name: 'Demos', path: '/demos' },
+         { name: 'HTML Demos', path: '/demos/html_css' },
+         {
+            name: 'Astro Accordion Demo',
+            path: '/demos/html_css/primer-html',
+            linkIsActive: 'is-active'
+         }
+      ]}
+   />
+   <h1>Mi primer título de bienvenida</h1>
+   <p>---------</p>
+   <p>Esto es un párafo con texto</p>
+   <p>---------</p>
+   <p>A continuación, una imagen</p>
+   <p>---------</p>
+   <img src="/assets/images/screenshots/image-test.png" alt="Imagen de internet"/>
+   <p>---------</p>
+   <p>Siguiente link, se abre en una pestaña nueva, gracias al atributo <strong>target="_blank"</strong></p>
+   <p>Código: <strong>a href="link" target="_blank"</strong></p>
+   <a href="/assets/images/screenshots/image-test.png" target="_blank">¡Ver imagen en grande!</a>
+   <p>---------</p>
+   <p>---------</p>
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae odio exercitationem sunt, expedita numquam cumque deleniti nesciunt ab quo autem harum et molestias inventore laudantium modi repellat animi, quia voluptates.</p>
+   <p>---------</p>
+   <p>---------</p>
+   <p>Siguiente link se abre en la misma pestaña:</p>
+   <a href="https://xexiu.dev">Bienvenid@ a mi blog!</a>
+</DemosLayout>
+
+<style is:inline>
+    strong {
+        font-weight: bold;
+    }
+</style>
