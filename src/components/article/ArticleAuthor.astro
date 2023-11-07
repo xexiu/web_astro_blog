@@ -9,7 +9,7 @@ const { post } = Astro.props;
 ---
 
 <span class="author"
-><a data-normal-link href={`/blog/author/${slugify(post.data.author)}/`}
+   itemprop="author"><a data-normal-link href={`/blog/author/${slugify(post.data.author)}/`}
    >{post.data.author}</a
    ></span
 >

@@ -3,7 +3,6 @@ import { Link } from '@components/common/link';
 import type { Post } from 'types/utils';
 import TagHeading from './common/TagHeading.astro';
 import PostCardContainer from './postcard/PostCardContainer.astro';
-import PostCardDetails from './postcard/PostCardDetails.astro';
 
 const { relatedArticles } = Astro.props;
 ---
@@ -20,28 +19,20 @@ const { relatedArticles } = Astro.props;
          </TagHeading>
          {relatedArticles.map((relatedArticle: Post) => {
             return (
-               <PostCardContainer>
-                  <Link
-                     href={`/blog/${relatedArticle.slug}`}
-                     isFilled={false}
-                     classes="post-link-wrapper"
-                     text={relatedArticle.data.title}
-                     data-related-article
-                  />
-                  <TagHeading tag="h4">
-                     <Link
-                        href={`/blog/${relatedArticle.slug}`}
-                        isFilled={false}
-                        classes="post-title"
-                        text={relatedArticle.data.title}
-                        data-normal-link
-                     />
-                  </TagHeading>
-                  <PostCardDetails
-                     author={relatedArticle.data.author}
-                     date={relatedArticle.data.date as string}
-                  />
-               </PostCardContainer>
+               <Link
+                  href={`/blog/${relatedArticle.slug}`}
+                  isFilled={false}
+                  data-related-article
+                  itemprop="relatedLink"
+                  data-normal-link
+                  classes="link-article"
+               >
+                  <PostCardContainer>
+                     <TagHeading tag="h4">
+                        {relatedArticle.data.title}
+                     </TagHeading>
+                  </PostCardContainer>
+               </Link>
             );
          })}
       </aside>
@@ -49,33 +40,17 @@ const { relatedArticles } = Astro.props;
 }
 
 <style is:inline>
+   #main-body .link-article {
+      display: flex;
+      &::before {
+         content: "";
+         transform: none;
+         height: 0;
+      }
+   }
    .container-related-posts {
       margin-top: 20px;
       & article {
          margin: 5px 0;
       }
-      .post-link-wrapper {
-         opacity: 0;
-         position: absolute;
-         top: 0;
-         right: 0;
-         bottom: 0;
-         left: 0;
-         cursor: pointer;
-         overflow-wrap: anywhere;
-         width: 100%;
-         height: 100%;
-         z-index: 10;
-      }
-   }
-   .container-related-posts {
-      & .post-card-details {
-         gap: 0px;
-         margin-left: auto;
-         padding-left: 10px;
-         .post-card-author {
-            margin-right: 5px;
-         }
-      }
-   }
 </style>

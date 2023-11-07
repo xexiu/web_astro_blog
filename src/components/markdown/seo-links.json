@@ -1,6 +1,7 @@
 {
+    "DNS": "/blog/descifrando-el-enigma-de-internet-todo-lo-que-debes-saber#entendiendo-las-direcciones-ip-y-los-nombres-de-dominio-dns",
+    "basic-setup": "/blog/vscode-setup-plugins",
     "internet": "/blog/descifrando-el-enigma-de-internet-todo-lo-que-debes-saber",
     "nombre-de-dominio": "/blog/todo-sobre-los-nombres-de-dominio-descubre-lo-que-hacen",
-    "DNS": "/blog/descifrando-el-enigma-de-internet-todo-lo-que-debes-saber#entendiendo-las-direcciones-ip-y-los-nombres-de-dominio-dns",
     "protocolo-HTTP": "/blog/la-evolucion-de-http-desde-el-nacimiento-de-la-web-hasta-http-3#que-es-http"
 }

@@ -90,6 +90,10 @@ const {
 
       internalLinks.forEach((link) => {
          link.addEventListener('click', (event: any) => {
+            if(event.ctrlKey || event.metaKey) { // User clicked to CTRL or CMD to open in a new window
+               return;
+            }
+
             event.stopPropagation();
             main.style.visibility = 'hidden';
             spinner.style.visibility = 'visible';

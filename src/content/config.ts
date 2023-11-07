@@ -14,7 +14,7 @@ const blog = defineCollection({
             message: 'Excerpt must have more or equal 50 characters and at most 150 characters'
          }
       ),
-      tags: z.array(z.string()).min(1).max(4),
+      tags: z.array(z.string()).min(1).max(6),
       category: z.string().max(100),
       is_private: z.boolean().optional(),
       is_portfolio: z.boolean().optional(),
@@ -28,8 +28,8 @@ const blog = defineCollection({
       date: z.date(),
       featured_post: z.boolean().optional(),
       featured_image: z.object({
-         src: image().refine((img) => img.width >= 200 && img.height >= 200, {
-            message: 'Cover image must be at least 200 pixels wide and 200 pixels tall!'
+         src: image().refine((img) => img.width >= 150 && img.height >= 150, {
+            message: 'Cover image must be at least 150 pixels wide and 150 pixels tall!'
          }),
          alt: z.string()
       })
@@ -50,7 +50,7 @@ const portfolio = defineCollection({
             message: 'Excerpt must have more or equal 50 characters and at most 150 characters'
          }
       ),
-      tags: z.array(z.string()).min(1).max(4),
+      tags: z.array(z.string()).min(1).max(6),
       category: z.string(),
       author: z.string().refine(
          (value) => value.length >= 5 && value.length <= 50,
@@ -64,8 +64,8 @@ const portfolio = defineCollection({
       video_link: z.string().max(100).optional(),
       featured_portfolio: z.boolean().optional(),
       featured_image: z.object({
-         src: image().refine((img) => img.width >= 200 && img.height >= 200, {
-            message: 'Cover image must be at least 200 pixels wide and 200 pixels tall!'
+         src: image().refine((img) => img.width >= 150 && img.height >= 150, {
+            message: 'Cover image must be at least 150 pixels wide and 150 pixels tall!'
          }),
          alt: z.string()
       })

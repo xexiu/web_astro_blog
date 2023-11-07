@@ -8,7 +8,7 @@ import PostCardDetails from './PostCardDetails.astro';
 import PostCardExcerpt from './PostCardExcerpt.astro';
 
 const { post } = Astro.props;
-const { category, featured_image, title, date, author, excerpt, tags } =
+const { category, featured_image, title, date, author, excerpt } =
    post.data;
 ---
 
@@ -28,6 +28,7 @@ const { category, featured_image, title, date, author, excerpt, tags } =
                height="250"
                quality={80}
                classes="post-card-img"
+               itemprop="image"
             />
          )
       }

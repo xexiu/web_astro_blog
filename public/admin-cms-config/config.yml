@@ -30,7 +30,7 @@ collections:
       - {label: "Title", name: "title", widget: "string", pattern: ['^.{20,100}$', "Must have at least 20 characters and max 100"], hint: "Must have at least 20 characters and max 100"}
       - {label: "Excerpt", name: "excerpt", widget: "string", pattern: ['^.{50,150}$', "Must have at least 50 characters and max 150"], hint: "Must have at least 50 characters and max 150"}
       - {label: "Author", name: "author", widget: "string", pattern: ['^.{5,50}$', "Must have at least 5 characters and max 50"], hint: "Must have at least 5 characters and max 50"}
-      - {label: "Tags", name: "tags", widget: "list", default: ['javascript', 'css', 'html', 'react'], pattern: ['^\s*(?:[^,\n]+,){0,3}[^,\n]+\s*$', "Must have at least 1 tag and max 4. Please separate multiple tags with comma."], hint: "Must have at least 1 tag and max 4. Please separate multiple tags with comma."}
+      - {label: "Tags", name: "tags", widget: "list", default: ['javascript', 'css', 'html', 'react'], pattern: ['^\s*(?:[^,\n]+,){0,5}[^,\n]+\s*$', "Must have at least 1 tag and max 6. Please separate multiple tags with comma."], hint: "Must have at least 1 tag and max 6. Please separate multiple tags with comma."}
       - {label: "Category", name: "category", widget: "select", options: ["GENERAL", "CSS", "HTML", "JAVASCRIPT", "FULLSTACK", "FRONTEND", "BACKEND", "REACTJS", "REACT NATIVE", "ASTRO", "BLOCKCHAIN", "MLL", "IA", "WEB3"]}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Is Featured?", name: "featured_post", widget: "boolean", required: false}
@@ -55,7 +55,7 @@ collections:
       - {label: "Title", name: "title", widget: "string", pattern: ['^.{20,100}$', "Must have at least 20 characters and max 100"], hint: "Must have at least 20 characters and max 100"}
       - {label: "Excerpt", name: "excerpt", widget: "string", pattern: ['^.{50,150}$', "Must have at least 50 characters and max 150"], hint: "Must have at least 50 characters and max 150"}
       - {label: "Author", name: "author", widget: "string", pattern: ['^.{5,50}$', "Must have at least 5 characters and max 50"], hint: "Must have at least 5 characters and max 50"}
-      - {label: "Tags", name: "tags", widget: "list", default: ["javascript, css, html, react"], pattern: ['^\s*(?:[^,\n]+,){0,3}[^,\n]+\s*$', "Must have at least 1 tag and max 4. Please separate multiple tags with comma."], hint: "Must have at least 1 tag and max 4. Please separate multiple tags with comma."}
+      - {label: "Tags", name: "tags", widget: "list", default: ["javascript, css, html, react"], pattern: ['^\s*(?:[^,\n]+,){0,5}[^,\n]+\s*$', "Must have at least 1 tag and max 6. Please separate multiple tags with comma."], hint: "Must have at least 1 tag and max 6. Please separate multiple tags with comma."}
       - {label: "Category", name: "category", widget: "select", options: ["GENERAL", "CSS", "HTML", "JAVASCRIPT", "FULLSTACK", "FRONTEND", "BACKEND", "REACTJS", "REACT NATIVE", "ASTRO", "BLOCKCHAIN", "MLL", "IA", "WEB3"]}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Is Featured?", name: "featured_portfolio", widget: "boolean", required: false}

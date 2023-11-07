@@ -207,14 +207,11 @@
 
 	blockquote {
 		position: relative;
-		max-width: 600px;
-		margin: 0 auto;
 		font-size: 1.5rem;
 		padding-left: .6rem;
 		color: var(--color-darken-grey);
 		border-left: .4rem solid var(--color-red);
-		margin-top: 25px;
-		margin-bottom: 25px;
+		margin: 20px 0;
 
 		p {
 			font-style: italic;
@@ -281,12 +278,12 @@
 
 		h2 {
 			border-bottom: 2px dashed #e2e2e2;
-			line-height: 30px;
+			line-height: 35px;
 		}
 
 		h3 {
 			border-bottom: 2px dotted #e2e2e2;
-			line-height: 20px;
+			line-height: 25px;
 			padding-bottom: 6px;
 		}
 
@@ -325,8 +322,8 @@
 	}
 
 	.article-main-heading-excerpt {
-		font-weight: 200;
-		color: #666;
+		font-weight: 400;
+		color: #333;
 		padding: 0 0 15px;
 		text-align: center;
 		line-height: 30px;

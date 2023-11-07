@@ -92,10 +92,10 @@ const { title, excerpt, category } = entry.data;
 
       <div class:list={['article-content']}>
          <section class="post-heading">
-            <TagHeading tag="h1" classes="article-main-heading">
+            <TagHeading tag="h1" classes="article-main-heading" itemprop="name">
                {title}
             </TagHeading>
-            <TagHeading tag="h2" classes="article-main-heading-excerpt">
+            <TagHeading tag="h2" classes="article-main-heading-excerpt" itemprop="description">
                {excerpt}
             </TagHeading>
             <Tags tags={unslugifiedPostTags} />

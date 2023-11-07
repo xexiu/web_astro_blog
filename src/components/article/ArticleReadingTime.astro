@@ -11,7 +11,7 @@ const { time } = readingTime(post.body);
 ---
 
 <span class="reading-time"
->Lectura de {time} min - {formatDate(post.data.date.toString())}</span
+>Lectura de {time} min - <span itemprop="datePublished">{formatDate(post.data.date.toString())}</span></span
 >
 
 <style>
