@@ -24,13 +24,13 @@ En este artículo, exploraremos los conceptos fundamentales de Internet, incluye
 - [Cómo funciona Internet: Una visión general](#como-funciona-internet-una-vision-general)
 - [Conceptos básicos y términos clave](#conceptos-basicos-y-terminos-clave)
 - [El papel de los protocolos en Internet](#el-papel-de-los-protocolos-en-internet)
-- [Entendiendo las direcciones IP y los nombres de dominio(DNS)](#entendiendo-las-direcciones-ip-y-los-nombres-de-dominio-dns)
+- [Entendiendo las direcciones IP y los nombres de dominio](#entendiendo-las-direcciones-ip-y-los-nombres-de-dominio)
 - [Introducción a HTTP y HTTPS](#introduccion-a-http-y-https)
 - [Creando aplicaciones con TCP/IP](#creando-aplicaciones-con-tcpip)
 - [Seguridad en la comunicación en Internet con SSL/TLS](#seguridad-en-la-comunicacion-en-internet-con-ssltls)
 - [El futuro de Internet: cosas asombrosas que viene](#el-futuro-de-internet-cosas-asombrosas-que-viene)
 
-## Introducción a Internet
+## [Introducción a Internet](#introduccion-a-internet)
 
 Antes de adentrarnos en el funcionamiento de Internet, es importante comprender qué es una red. Una red es un conjunto de dispositivos, como computadoras, que están conectados entre sí. En tu hogar, por ejemplo, puedes tener una red de dispositivos, al igual que tu vecino y su vecino. Cuando todas estas redes se conectan, forman lo que conocemos como Internet.
 
@@ -40,7 +40,7 @@ El Internet surgió en la década de 1960 como un proyecto del Departamento de D
 
 Hoy en día, el Internet es esencial en la vida moderna, utilizado por miles de millones de personas en todo el mundo para acceder a información, comunicarse con amigos y familiares, llevar a cabo negocios y mucho más. Como desarrollador, es fundamental comprender cómo funciona Internet y las tecnologías y protocolos que sustentan su funcionamiento.
 
-## Cómo funciona Internet: Una visión general
+## [Cómo funciona Internet: Una visión general](#como-funciona-internet-una-vision-general)
 
 A grandes rasgos, Internet conecta dispositivos y sistemas informáticos utilizando una serie de protocolos estandarizados. Estos protocolos definen cómo se intercambia información entre dispositivos y garantizan que los datos se transmitan de manera confiable y segura.
 
@@ -50,7 +50,7 @@ Para garantizar que los paquetes se envíen y reciban correctamente, Internet ut
 
 Además de estos protocolos centrales, existen una amplia gama de otras tecnologías y protocolos que se utilizan para permitir la comunicación y el intercambio de datos en Internet, como el Sistema de Nombres de Dominio (DNS), el Protocolo de Transferencia de Hipertexto (HTTP) y el Protocolo de Seguridad de Capa de Zócalo Seguro/Seguridad de la Capa de Transporte (SSL/TLS). Como desarrollador, es importante comprender cómo estas diferentes tecnologías y protocolos trabajan juntos para habilitar la comunicación y el intercambio de datos en Internet.
 
-## Conceptos básicos y términos clave
+## [Conceptos básicos y términos clave](#conceptos-basicos-y-terminos-clave)
 
 Para comprender Internet, es fundamental familiarizarse con algunos conceptos básicos y términos clave:
 
@@ -65,7 +65,7 @@ Para comprender Internet, es fundamental familiarizarse con algunos conceptos b�
 
 Comprender estos conceptos y términos básicos es esencial para trabajar con Internet y desarrollar aplicaciones y servicios basados en la web.
 
-## El papel de los protocolos en Internet
+## [El papel de los protocolos en Internet](#el-papel-de-los-protocolos-en-internet)
 
 Los protocolos desempeñan un papel crítico en la habilitación de la comunicación y el intercambio de datos en Internet. Un protocolo es un conjunto de reglas y estándares que definen cómo se intercambia información entre dispositivos y sistemas.
 
@@ -77,7 +77,7 @@ Una de las principales ventajas de utilizar protocolos estandarizados es que per
 
 Como desarrollador, es importante comprender los diversos protocolos utilizados en la comunicación en Internet y cómo trabajan juntos para permitir la transferencia de datos e información en Internet.
 
-## Entendiendo las direcciones IP y los nombres de dominio (DNS)
+## [Entendiendo las direcciones IP y los nombres de dominio](#entendiendo-las-direcciones-ip-y-los-nombres-de-dominio)
 
 Las direcciones IP y los nombres de dominio son conceptos clave al trabajar en Internet.
 
@@ -87,7 +87,7 @@ Por otro lado, los nombres de dominio son nombres legibles por humanos que se ut
 
 El DNS desempeña un papel fundamental en la infraestructura de Internet, ya que se encarga de traducir nombres de dominio en direcciones IP. Cuando escribes un nombre de dominio en tu navegador web, tu computadora envía una consulta DNS a un servidor DNS, que devuelve la dirección IP correspondiente. Tu computadora utiliza luego esa dirección IP para conectarse al sitio web u otro recurso que has solicitado.
 
-## Introducción a HTTP y HTTPS
+## [Introducción a HTTP y HTTPS](#introduccion-a-http-y-https)
 
 HTTP (Protocolo de Transferencia de Hipertexto) y HTTPS (HTTP Seguro) son dos de los protocolos más utilizados en aplicaciones y servicios basados en Internet.
 
@@ -97,7 +97,7 @@ HTTPS es una versión más segura de HTTP que cifra los datos que se transmiten 
 
 Cuando visitas un sitio web que utiliza HTTPS, tu navegador muestra un ícono de candado en la barra de direcciones, lo que indica que la conexión es segura. También puedes ver las letras "https" al comienzo de la dirección del sitio web, en lugar de "http".
 
-## Creando aplicaciones con TCP/IP
+## [Creando aplicaciones con TCP/IP](#creando-aplicaciones-con-tcpip)
 
 TCP/IP (Protocolo de Control de Transmisión/Protocolo de Internet) es el protocolo subyacente de comunicación utilizado en la mayoría de las aplicaciones y servicios basados en Internet. Proporciona una entrega confiable, ordenada y verificada de datos entre aplicaciones que se ejecutan en diferentes dispositivos.
 
@@ -110,7 +110,7 @@ Cuando desarrollas aplicaciones con TCP/IP, es importante comprender algunos con
 
 Al desarrollar aplicaciones con TCP/IP, es necesario garantizar que tu aplicación esté diseñada para trabajar con los puertos, zócalos y conexiones adecuados. Además, debes estar familiarizado con los diversos protocolos y estándares que se utilizan comúnmente con TCP/IP, como HTTP, FTP (Protocolo de Transferencia de Archivos) y SMTP (Protocolo Simple de Transferencia de Correo). Comprender estos conceptos y protocolos es esencial para crear aplicaciones basadas en Internet efectivas, escalables y seguras.
 
-## Seguridad en la comunicación en Internet con SSL/TLS
+## [Seguridad en la comunicación en Internet con SSL/TLS](#seguridad-en-la-comunicacion-en-internet-con-ssltls)
 
 Como mencionamos anteriormente, SSL/TLS es un protocolo utilizado para cifrar datos que se transmiten por Internet. Se utiliza comúnmente para proporcionar conexiones seguras en aplicaciones como navegadores web, clientes de correo electrónico y programas de transferencia de archivos.
 
@@ -122,7 +122,7 @@ Cuando se utiliza SSL/TLS para asegurar la comunicación en Internet, es importa
 
 Al desarrollar aplicaciones y servicios basados en Internet, es fundamental comprender cómo funciona SSL/TLS y asegurarse de que tu aplicación esté diseñada para utilizar SSL/TLS al transmitir datos sensibles, como credenciales de inicio de sesión, información de pago y otros datos personales. También debes garantizar que obtienes y mantienes certificados SSL/TLS válidos para tus servidores, y seguir las mejores prácticas para configurar y asegurar tus conexiones SSL/TLS. De esta manera, puedes proteger los datos de tus usuarios y garantizar la integridad y confidencialidad de la comunicación de tu aplicación en Internet.
 
-## El futuro de Internet: cosas asombrosas que viene
+## [El futuro de Internet: cosas asombrosas que viene](#el-futuro-de-internet-cosas-asombrosas-que-viene)
 
 El Internet está siempre cambiando y mejorando. Algunas cosas emocionantes que veremos en el futuro son:
 

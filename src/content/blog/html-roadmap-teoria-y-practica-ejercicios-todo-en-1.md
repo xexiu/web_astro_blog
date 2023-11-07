@@ -20,6 +20,9 @@ featured_image:
 
 El [HTML básico](internal-seo--html) es esencial para la creación de sitios web, y el [HTML5 semántico](internal-seo--html5) es una práctica estándar. La accesibilidad garantiza que todos los usuarios puedan acceder al contenido, y los [formularios bien validados](internal-seo--form-validate) mejoran la interacción. El [SEO](internal-seo--seo), o optimización para motores de búsqueda, es clave para destacar en las búsquedas. Al aprender [HTML básico](internal-seo--html) y [HTML5 semántico](internal-seo--html5), mejorar la accesibilidad, y dominar la validación de formularios, puedes elevar tu sitio web y lograr un mejor posicionamiento en buscadores. ¡Optimiza tu presencia en línea!
 
+> 1. [Cheetsheet muy útil](https://htmlcheatsheet.com/)
+> 2. [Cheetsheet en PDF](https://htmlcheatsheet.com/HTML-Cheat-Sheet.pdf)
+
 ## Teoría
 
 1. [Aprende lo básico de HTML](internal-seo--html)

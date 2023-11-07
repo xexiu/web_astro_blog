@@ -14,6 +14,7 @@ import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
 import TagHeading from '@components/common/TagHeading.astro';
 import CodeBlock from '@components/markdown/CodeBlock.astro';
 import Heading from '@components/markdown/Heading.astro';
+import Note from '@components/markdown/Note.astro';
 import MarkdownImages from '@components/markdown/MarkdownImages.astro';
 import NormalizeLinks from '@components/markdown/NormalizeLinks.astro';
 import PostCardCategory from '@components/postcard/PostCardCategory.astro';
@@ -108,7 +109,8 @@ const { title, excerpt, category } = entry.data;
                   img: MarkdownImages,
                   CodeBlock,
                   a: NormalizeLinks,
-                  Heading
+                  Heading,
+                  Note
                }}
             />
          </section>

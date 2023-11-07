@@ -142,17 +142,14 @@
 		all: unset;
 	}
 
-	pre code::before {
-		content: "code";
-		text-transform: uppercase;
+	.lang-code {
 		background-color: var(--color-red);
 		color: #fff;
-		border-bottom-right-radius: 10px;
-		padding: 7px 8px;
-		font-family: monospace;
+		padding: 2px 4px;
 		position: absolute;
-		top: -35px;
-		left: 0
+		text-transform: uppercase;
+		font-size: var(--fs-4sm);
+		z-index: 1;
 	}
 
 	pre {
@@ -212,6 +209,10 @@
 		color: var(--color-darken-grey);
 		border-left: .4rem solid var(--color-red);
 		margin: 20px 0;
+
+		ol li, ul li {
+			font-size: var(--fs-2sm);
+		}
 
 		p {
 			font-style: italic;
@@ -301,11 +302,14 @@
 		}
 	}
 
-	.markdown-link.external-link {
+	.markdown-link.external-link, .markdown-link.internal-link {
 		display: inline-flex;
-		align-items: flex-start;
-		padding: 5px 0;
+		align-items: center;
 		gap: 5px;
+	}
+
+	.anchor-icon {
+		color: #222;
 	}
 
 	.article-top-prev-next-wrapper {
