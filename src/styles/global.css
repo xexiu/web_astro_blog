@@ -11,7 +11,7 @@ html {
 }
 
 html::-webkit-scrollbar {
-    width: 5px;
+    width: 10px;
     border-radius: 5px;
 }
 
@@ -25,50 +25,9 @@ html::-webkit-scrollbar-thumb {
     border-radius: 5px;
 }
 
-/* :root > * {
-    display: none; <Toggle Theme should be activated in MainLayout.astro -->
-} */
-
 .light > * {
     display: block;
 }
-
-/* .dark {
-    > * {
-        display: block;
-    }
-
-    body {
-        background-color: $bg-dark;
-        color: $main-link-white;
-
-        a[data-normal-link], a.logomark {
-            color: $bg-blue;
-            position: relative;
-            transition: color .3s ease-in-out;
-            text-decoration: none;
-
-            &::before {
-                content: '';
-                position: absolute;
-                top: 100%;
-                width: 100%;
-                height: 1px;
-                background-color: $color-red;
-                transform: scaleX(0);
-                transition: transform .3s ease-in-out;
-            }
-
-            &:hover {
-                color: var(--link-1);
-            }
-
-            &:hover::before {
-                transform: scaleX(1);
-            }
-        }
-    }
-} */
 
 body {
     max-width: 1248px;
@@ -109,6 +68,13 @@ body {
             transform: scaleX(1);
         }
     }
+
+    .error-wavy {
+        color: var(--color-red);
+        text-decoration: underline wavy;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
 }
 
 main {
@@ -122,6 +88,59 @@ main {
         object-position: top center;
     }
 }
+
+#main-body .notecard {
+    border-radius: 4px;
+    box-shadow: var(--shadow-md);
+    margin: 1rem 0;
+    padding: 1rem 1rem 1rem 3rem;
+    position: relative;
+    background-color: var(--bg-blue);
+    color: white;
+
+    & p {
+       margin: 0;
+    }
+
+    & a {
+       color: white;
+       text-decoration: underline;
+
+       &:hover {
+          text-decoration: none;
+       }
+
+       &::before {
+          content: '';
+          transform: none;
+          height: 0;
+       }
+    }
+
+    &::before {
+       content: "¡";
+       position: absolute;
+       left: 15px;
+       border: 1px solid white;
+       padding-left: 7px;
+       padding-bottom: 5px;
+       border-radius: 50%;
+       width: 20px;
+       height: 20px;
+       font-size: 0.9em;
+       display: flex;
+       align-items: center;
+       top: 32%;
+    }
+ }
+
+ .notecard.note {
+    background-color: var(--bg-blue);
+ }
+
+ .notecard.warning {
+    background-color: var(--bg-red);
+ }
 
 @media screen and (width <= 500px) {
     main {

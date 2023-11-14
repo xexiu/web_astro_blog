@@ -6,32 +6,43 @@ type Link = {
    name: string;
    path: string;
    linkIsActive?: string;
-}
+};
 
 interface Props {
-    links: Link[];
+   links: Link[];
 }
 
 const { links }: Props = Astro.props;
-
 ---
 
-<nav role="navigation" class="breadcrumbs" aria-label="Breadcrumb" vocab="https://schema.org/" typeof="BreadcrumbList">
+<nav
+   role="navigation"
+   class="breadcrumbs"
+   aria-label="Breadcrumb"
+   vocab="https://schema.org/"
+   typeof="BreadcrumbList"
+>
    <ul itemtype="https://schema.org/BreadcrumbList">
-      <meta itemprop="numberOfItems" content={String(links.length)}>
+      <meta itemprop="numberOfItems" content={String(links.length)} />
       {
          links.map((link: Link, index: number) => {
             return (
-               <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+               <li
+                  itemprop="itemListElement"
+                  itemscope
+                  itemtype="https://schema.org/ListItem"
+               >
                   <Link
                      text={link.name}
                      href={link.path}
                      isFilled={false}
                      aria-label={link.name}
-                     classes={`breadcrumbs__item ${link.linkIsActive ? link.linkIsActive : ''}`}
+                     classes={`breadcrumbs__item ${
+                        link.linkIsActive ? link.linkIsActive : ''
+                     }`}
                      itemprop="item"
                   />
-                  <meta property="position" content={String(index + 1)}>
+                  <meta property="position" content={String(index + 1)} />
                </li>
             );
          })

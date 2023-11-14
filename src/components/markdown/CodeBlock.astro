@@ -12,6 +12,7 @@ const lineNumbers = getLineNumbers(code);
 ---
 
 <div style="position: relative" data-lines={lineNumbers} data-language={lang}>
+   <span class="lang-code">{lang}</span>
    <Code code={code} lang={lang} />
    <xe-copy-clipboard data-text={code}>
       <div class="container-copyboard">

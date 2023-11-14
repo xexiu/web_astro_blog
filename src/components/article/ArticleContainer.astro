@@ -8,7 +8,7 @@ interface Props {
 const { ariaLabel, classes } = Astro.props;
 ---
 
-<article class="article-content-wrapper" class:list={classes} transition:animate="slide" aria-label={ariaLabel}>
+<article class="article-content-wrapper" class:list={classes} transition:animate="slide" aria-label={ariaLabel} role="article">
    <ViewTransitions />
    <slot />
 </article>

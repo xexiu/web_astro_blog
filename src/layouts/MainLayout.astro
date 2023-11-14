@@ -30,12 +30,13 @@ const {
                <slot name="search-bar" slot="search-bar" />
             </Logo>
          </div>
-         <SocialIcons
+         {Astro.url.pathname !== '/' && <SocialIcons
             data={socialIcons}
             classes="header-social-icons"
             linkClass="tooltip"
             data-tooltip-placement="bottom"
          />
+         }
          <MainNav />
          <!-- <ToggleTheme style={{ marginLeft: 'auto' }} /> -->
       </MainHeader>
@@ -90,6 +91,10 @@ const {
 
       internalLinks.forEach((link) => {
          link.addEventListener('click', (event: any) => {
+            if(event.ctrlKey || event.metaKey) { // User clicked to CTRL or CMD to open in a new window
+               return;
+            }
+
             event.stopPropagation();
             main.style.visibility = 'hidden';
             spinner.style.visibility = 'visible';

@@ -100,7 +100,7 @@
 		padding: calc(2px * 1) calc(4px * 1);
 		font-size: var(--fs-3sm);
 		word-break: break-word;
-		background: var(--color-red);
+		background: #222;
 		opacity: .6;
 		border-radius: 4px;
 		color: var(--color-gray-100);
@@ -142,17 +142,14 @@
 		all: unset;
 	}
 
-	pre code::before {
-		content: "code";
-		text-transform: uppercase;
+	.lang-code {
 		background-color: var(--color-red);
 		color: #fff;
-		border-bottom-right-radius: 10px;
-		padding: 7px 8px;
-		font-family: monospace;
+		padding: 2px 4px;
 		position: absolute;
-		top: -35px;
-		left: 0
+		text-transform: uppercase;
+		font-size: var(--fs-4sm);
+		z-index: 1;
 	}
 
 	pre {
@@ -207,14 +204,15 @@
 
 	blockquote {
 		position: relative;
-		max-width: 600px;
-		margin: 0 auto;
 		font-size: 1.5rem;
 		padding-left: .6rem;
 		color: var(--color-darken-grey);
 		border-left: .4rem solid var(--color-red);
-		margin-top: 25px;
-		margin-bottom: 25px;
+		margin: 20px 0;
+
+		ol li, ul li {
+			font-size: var(--fs-2sm);
+		}
 
 		p {
 			font-style: italic;
@@ -281,12 +279,12 @@
 
 		h2 {
 			border-bottom: 2px dashed #e2e2e2;
-			line-height: 30px;
+			line-height: 35px;
 		}
 
 		h3 {
 			border-bottom: 2px dotted #e2e2e2;
-			line-height: 20px;
+			line-height: 25px;
 			padding-bottom: 6px;
 		}
 
@@ -304,11 +302,14 @@
 		}
 	}
 
-	.markdown-link.external-link {
+	.markdown-link.external-link, .markdown-link.internal-link {
 		display: inline-flex;
-		align-items: flex-start;
-		padding: 5px 0;
+		align-items: center;
 		gap: 5px;
+	}
+
+	.anchor-icon {
+		color: #222;
 	}
 
 	.article-top-prev-next-wrapper {
@@ -325,8 +326,8 @@
 	}
 
 	.article-main-heading-excerpt {
-		font-weight: 200;
-		color: #666;
+		font-weight: 400;
+		color: #333;
 		padding: 0 0 15px;
 		text-align: center;
 		line-height: 30px;

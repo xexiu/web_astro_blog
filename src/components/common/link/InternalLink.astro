@@ -11,7 +11,7 @@ const { text, icon, classes, href, customStyle, isFilled, borderVisible, ...rest
 <BaseLink classes={`${classes}`} {href} {customStyle} {isFilled} {borderVisible} {...rest}>
    {
       icon && icon.side === 'left' && (
-         <Icon name={icon.name} height={icon.height} width={icon.width} class={icon.class} alt="Enlace interno" />
+         <Icon name={icon.name} height={icon.height} width={icon.width} class={icon.class} alt={text} />
       )
    }
 
@@ -19,7 +19,7 @@ const { text, icon, classes, href, customStyle, isFilled, borderVisible, ...rest
 
    {
       icon && icon.side === 'right' && (
-         <Icon name={icon.name} height={icon.height} width={icon.width} class={icon.class} alt="Enlace interno" />
+         <Icon name={icon.name} height={icon.height} width={icon.width} class={icon.class} alt={text} />
       )
    }
 </BaseLink>

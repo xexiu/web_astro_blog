@@ -115,7 +115,7 @@ export class BaseCopyCode extends HTMLElement {
          await navigator.clipboard.writeText(this.text as string).then(() => {
             element.title = 'Copiado!';
 
-            if(icon) {
+            if (icon) {
                icon.remove();
                const spanEl = document.createElement('span');
                spanEl.classList.add('feedback-text');
@@ -163,7 +163,7 @@ export class SearchBarHelper extends HTMLElement {
             data = JSON.parse(rawData);
 
             if (!Array.isArray(data)) {
-               throw new Error('Parsed data is not an array');
+               throw new Error('Parsed data is not an array: SearchBarHelper');
             }
          } catch (error) {
             throw new Error('Error parsing data: SearchBarHelper', error);
@@ -179,39 +179,56 @@ export class SearchBarHelper extends HTMLElement {
 
             const filteredData = data && data
                .filter((d: Post) => d.data.title.toLowerCase().includes(searchTerm))
-               .map((d: Post) => ({ slug: d.slug, data: { title: d.data.title } }));
+               .map((d: Post) => ({ slug: d.slug, data: { title: d.data.title, excerpt: d.data.excerpt } }));
 
-            this.setList(filteredData as Post[]);
+            this.setList(filteredData as Post[], searchTerm);
          } else {
             this.list.innerHTML = '';
          }
       });
    }
 
-   setList(results: Post[]): void {
+   setList(results: Post[], searchTerm: string): void {
       if (results.length === 0) {
          this.noResults();
       }
 
       for (const post of results) {
+         this.highlight(searchTerm, post);
+
          // creating a li element for each result item
          const resultItem = document.createElement('li');
          const resultLink = document.createElement('a');
+         const excerptNode = document.createElement('div');
          resultLink.href = `/blog/${post.slug}`;
 
          // adding a class to each item of the results
          resultItem.classList.add('result-item');
 
-         // grabbing the name of the current point of the loop and adding the name as the list item's text
-         const text = document.createTextNode(post.data.title);
-         resultLink.appendChild(text);
-
+         resultLink.innerHTML = post.data.title;
+         excerptNode.innerHTML = post.data.excerpt;
          // appending the text to the result item
          resultItem.appendChild(resultLink);
+         resultItem.appendChild(excerptNode);
 
          // appending the result item to the list
          this.list.appendChild(resultItem);
       }
+   }
+
+   highlight(text: string, post: Post) {
+      const lowerText = text.toLowerCase();
+      const { title } = post.data;
+      const highlightedTitle = title
+         .split(new RegExp(`(${lowerText})`, 'i'))
+         .map((part) =>
+            part.toLowerCase() === lowerText
+               ? `<span class='highlight'>${part}</span>`
+               : part
+         )
+         .join('');
+
+      post.data.title = highlightedTitle;
    }
 
    noResults() {

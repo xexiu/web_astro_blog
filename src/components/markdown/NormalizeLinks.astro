@@ -17,9 +17,11 @@ function buildSeoLink(href: string) {
 const { href }: Props = Astro.props;
 const isSeoLink = href.startsWith(SEO_KEY);
 const _href = isSeoLink ? buildSeoLink(href) : href;
+const isAnchor = _href.startsWith('#');
 ---
 
 <Link
+   icon={isAnchor ? { name: 'ic:baseline-link', side: 'right', width: '22', height: '22', class: 'anchor-icon' } : {}}
    href={_href}
    isFilled={false}
    classes='markdown-link'
