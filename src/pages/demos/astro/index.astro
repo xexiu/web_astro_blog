@@ -3,14 +3,24 @@ import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
 import DemoLinks from '@layouts/demos/DemoLinks.astro';
 import DemosLayout from '@layouts/demos/DemosLayout.astro';
 
-const paths = import.meta.glob( '../astro/*/*.astro');
+const paths = import.meta.glob('../astro/*/*.astro');
 ---
-<DemosLayout title="Astro Components Demo" githubLink="https://github.com/xexiu/astro-components/tree/master">
+
+<DemosLayout
+   title="Astro Components Demo"
+   githubLink="https://github.com/xexiu/astro-components/tree/master"
+   description="Pure HTML and CSS tabs for astro."
+>
    <Breadcrumbs
-      slot='breadcrumb'
+      slot="breadcrumb"
       links={[
+         { name: 'Inicio', path: '/' },
          { name: 'Demos', path: '/demos' },
-         { name: 'Astro Components Demos', path: '/demos/astro', linkIsActive: 'is-active' }
+         {
+            name: 'Astro Components Demos',
+            path: '/demos/astro',
+            linkIsActive: 'is-active'
+         }
       ]}
    />
    <DemoLinks {paths} routeName="astro" />

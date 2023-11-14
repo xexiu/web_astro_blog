@@ -9,6 +9,7 @@ const paths = import.meta.glob( '../html_css/*/*.astro');
    <Breadcrumbs
       slot='breadcrumb'
       links={[
+         { name: 'Inicio', path: '/' },
          { name: 'Demos', path: '/demos' },
          { name: 'Javascript Demos', path: '/demos/javascript', linkIsActive: 'is-active' }
       ]}

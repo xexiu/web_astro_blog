@@ -4,10 +4,15 @@ import DemosLayout from '@layouts/demos/DemosLayout.astro';
 import Modal from '@xexiu/astro-modal';
 ---
 
-<DemosLayout title="Astro Modal Example" description="Pure HTML and CSS simple modal for astro.">
+<DemosLayout
+   title="Astro Modal Example"
+   description="Pure HTML and CSS simple modal for astro."
+   githubLink="https://github.com/xexiu/astro-components/tree/master"
+>
    <Breadcrumbs
-      slot='breadcrumb'
+      slot="breadcrumb"
       links={[
+         { name: 'Inicio', path: '/' },
          { name: 'Demos', path: '/demos' },
          { name: 'Astro Components Demos', path: '/demos/astro' },
          {
@@ -18,216 +23,224 @@ import Modal from '@xexiu/astro-modal';
       ]}
    />
    <Modal
-      id="shareSocial"
-      ariaLabel="Compartir en las redes"
+      id="modalTest"
+      ariaLabel="Esto es un test modal"
       btnCloseAriaLabel="Cerrar Modal"
-      githubLink="https://github.com/xexiu/astro-components/tree/master"
    >
       <div slot="open-modal-button">Abrir Modal</div>
       <h2 slot="modal-title">Modal Title</h2>
       <div slot="modal-main">
          <h4>Modal Main</h4>
          <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur nesciunt
-        placeat officia, aliquid enim corrupti error repellat iusto corporis
-        commodi ad natus ratione aut iure nisi deserunt soluta quam iste!
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur
+            nesciunt placeat officia, aliquid enim corrupti error repellat iusto
+            corporis commodi ad natus ratione aut iure nisi deserunt soluta quam
+            iste!
          </p>
       </div>
       <div slot="modal-footer">Modal Footer</div>
    </Modal>
    <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
-    dolorum distinctio, accusamus impedit unde facilis, dignissimos mollitia
-    pariatur, temporibus voluptas cum at sed? Aut est temporibus neque minima sed
-    nam? Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque deleniti
-    nesciunt ad repellendus, nulla perspiciatis beatae quo impedit? Enim expedita
-    laudantium dicta reprehenderit neque adipisci unde quidem totam sint itaque?
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur ipsa
-    labore aperiam numquam? Deserunt esse repudiandae, commodi enim praesentium
-    vel iste voluptates accusamus aliquam exercitationem eum quia eius. Qui, iste!
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda, animi.
-    Ullam harum ipsam quos sint ipsa aliquam magni. Earum voluptatibus quasi
-    possimus delectus minima eos ullam adipisci amet a velit. Lorem ipsum dolor
-    sit amet consectetur adipisicing elit. Necessitatibus dolorum distinctio,
-    accusamus impedit unde facilis, dignissimos mollitia pariatur, temporibus
-    voluptas cum at sed? Aut est temporibus neque minima sed nam? Lorem ipsum
-    dolor sit amet consectetur adipisicing elit. Itaque deleniti nesciunt ad
-    repellendus, nulla perspiciatis beatae quo impedit? Enim expedita laudantium
-    dicta reprehenderit neque adipisci unde quidem totam sint itaque? Lorem ipsum
-    dolor sit amet consectetur, adipisicing elit. Consequuntur ipsa labore aperiam
-    numquam? Deserunt esse repudiandae, commodi enim praesentium vel iste
-    voluptates accusamus aliquam exercitationem eum quia eius. Qui, iste! Lorem
-    ipsum dolor, sit amet consectetur adipisicing elit. Assumenda, animi. Ullam
-    harum ipsam quos sint ipsa aliquam magni. Earum voluptatibus quasi possimus
-    delectus minima eos ullam adipisci amet a velit. Lorem ipsum dolor sit amet
-    consectetur adipisicing elit. Necessitatibus dolorum distinctio, accusamus
-    impedit unde facilis, dignissimos mollitia pariatur, temporibus voluptas cum
-    at sed? Aut est temporibus neque minima sed nam? Lorem ipsum dolor sit amet
-    consectetur adipisicing elit. Itaque deleniti nesciunt ad repellendus, nulla
-    perspiciatis beatae quo impedit? Enim expedita laudantium dicta reprehenderit
-    neque adipisci unde quidem totam sint itaque? Lorem ipsum dolor sit amet
-    consectetur, adipisicing elit. Consequuntur ipsa labore aperiam numquam?
-    Deserunt esse repudiandae, commodi enim praesentium vel iste voluptates
-    accusamus aliquam exercitationem eum quia eius. Qui, iste! Lorem ipsum dolor,
-    sit amet consectetur adipisicing elit. Assumenda, animi. Ullam harum ipsam
-    quos sint ipsa aliquam magni. Earum voluptatibus quasi possimus delectus
-    minima eos ullam adipisci amet a velit. Lorem ipsum dolor sit amet consectetur
-    adipisicing elit. Necessitatibus dolorum distinctio, accusamus impedit unde
-    facilis, dignissimos mollitia pariatur, temporibus voluptas cum at sed? Aut
-    est temporibus neque minima sed nam? Lorem ipsum dolor sit amet consectetur
-    adipisicing elit. Itaque deleniti nesciunt ad repellendus, nulla perspiciatis
-    beatae quo impedit? Enim expedita laudantium dicta reprehenderit neque
-    adipisci unde quidem totam sint itaque? Lorem ipsum dolor sit amet
-    consectetur, adipisicing elit. Consequuntur ipsa labore aperiam numquam?
-    Deserunt esse repudiandae, commodi enim praesentium vel iste voluptates
-    accusamus aliquam exercitationem eum quia eius. Qui, iste! Lorem ipsum dolor,
-    sit amet consectetur adipisicing elit. Assumenda, animi. Ullam harum ipsam
-    quos sint ipsa aliquam magni. Earum voluptatibus quasi possimus delectus
-    minima eos ullam adipisci amet a velit. Lorem ipsum dolor sit amet consectetur
-    adipisicing elit. Necessitatibus dolorum distinctio, accusamus impedit unde
-    facilis, dignissimos mollitia pariatur, temporibus voluptas cum at sed? Aut
-    est temporibus neque minima sed nam? Lorem ipsum dolor sit amet consectetur
-    adipisicing elit. Itaque deleniti nesciunt ad repellendus, nulla perspiciatis
-    beatae quo impedit? Enim expedita laudantium dicta reprehenderit neque
-    adipisci unde quidem totam sint itaque? Lorem ipsum dolor sit amet
-    consectetur, adipisicing elit. Consequuntur ipsa labore aperiam numquam?
-    Deserunt esse repudiandae, commodi enim praesentium vel iste voluptates
-    accusamus aliquam exercitationem eum quia eius. Qui, iste! Lorem ipsum dolor,
-    sit amet consectetur adipisicing elit. Assumenda, animi. Ullam harum ipsam
-    quos sint ipsa aliquam magni. Earum voluptatibus quasi possimus delectus
-    minima eos ullam adipisci amet a velit. Lorem ipsum dolor sit amet consectetur
-    adipisicing elit. Necessitatibus dolorum distinctio, accusamus impedit unde
-    facilis, dignissimos mollitia pariatur, temporibus voluptas cum at sed? Aut
-    est temporibus neque minima sed nam? Lorem ipsum dolor sit amet consectetur
-    adipisicing elit. Itaque deleniti nesciunt ad repellendus, nulla perspiciatis
-    beatae quo impedit? Enim expedita laudantium dicta reprehenderit neque
-    adipisci unde quidem totam sint itaque? Lorem ipsum dolor sit amet
-    consectetur, adipisicing elit. Consequuntur ipsa labore aperiam numquam?
-    Deserunt esse repudiandae, commodi enim praesentium vel iste voluptates
-    accusamus aliquam exercitationem eum quia eius. Qui, iste! Lorem ipsum dolor,
-    sit amet consectetur adipisicing elit. Assumenda, animi. Ullam harum ipsam
-    quos sint ipsa aliquam magni. Earum voluptatibus quasi possimus delectus
-    minima eos ullam adipisci amet a velit. Lorem ipsum dolor sit amet consectetur
-    adipisicing elit. Necessitatibus dolorum distinctio, accusamus impedit unde
-    facilis, dignissimos mollitia pariatur, temporibus voluptas cum at sed? Aut
-    est temporibus neque minima sed nam? Lorem ipsum dolor sit amet consectetur
-    adipisicing elit. Itaque deleniti nesciunt ad repellendus, nulla perspiciatis
-    beatae quo impedit? Enim expedita laudantium dicta reprehenderit neque
-    adipisci unde quidem totam sint itaque? Lorem ipsum dolor sit amet
-    consectetur, adipisicing elit. Consequuntur ipsa labore aperiam numquam?
-    Deserunt esse repudiandae, commodi enim praesentium vel iste voluptates
-    accusamus aliquam exercitationem eum quia eius. Qui, iste! Lorem ipsum dolor,
-    sit amet consectetur adipisicing elit. Assumenda, animi. Ullam harum ipsam
-    quos sint ipsa aliquam magni. Earum voluptatibus quasi possimus delectus
-    minima eos ullam adipisci amet a velit. Lorem ipsum dolor sit amet consectetur
-    adipisicing elit. Necessitatibus dolorum distinctio, accusamus impedit unde
-    facilis, dignissimos mollitia pariatur, temporibus voluptas cum at sed? Aut
-    est temporibus neque minima sed nam? Lorem ipsum dolor sit amet consectetur
-    adipisicing elit. Itaque deleniti nesciunt ad repellendus, nulla perspiciatis
-    beatae quo impedit? Enim expedita laudantium dicta reprehenderit neque
-    adipisci unde quidem totam sint itaque? Lorem ipsum dolor sit amet
-    consectetur, adipisicing elit. Consequuntur ipsa labore aperiam numquam?
-    Deserunt esse repudiandae, commodi enim praesentium vel iste voluptates
-    accusamus aliquam exercitationem eum quia eius. Qui, iste! Lorem ipsum dolor,
-    sit amet consectetur adipisicing elit. Assumenda, animi. Ullam harum ipsam
-    quos sint ipsa aliquam magni. Earum voluptatibus quasi possimus delectus
-    minima eos ullam adipisci amet a velit. Lorem ipsum dolor sit amet consectetur
-    adipisicing elit. Necessitatibus dolorum distinctio, accusamus impedit unde
-    facilis, dignissimos mollitia pariatur, temporibus voluptas cum at sed? Aut
-    est temporibus neque minima sed nam? Lorem ipsum dolor sit amet consectetur
-    adipisicing elit. Itaque deleniti nesciunt ad repellendus, nulla perspiciatis
-    beatae quo impedit? Enim expedita laudantium dicta reprehenderit neque
-    adipisci unde quidem totam sint itaque? Lorem ipsum dolor sit amet
-    consectetur, adipisicing elit. Consequuntur ipsa labore aperiam numquam?
-    Deserunt esse repudiandae, commodi enim praesentium vel iste voluptates
-    accusamus aliquam exercitationem eum quia eius. Qui, iste! Lorem ipsum dolor,
-    sit amet consectetur adipisicing elit. Assumenda, animi. Ullam harum ipsam
-    quos sint ipsa aliquam magni. Earum voluptatibus quasi possimus delectus
-    minima eos ullam adipisci amet a velit. Lorem ipsum dolor sit amet consectetur
-    adipisicing elit. Necessitatibus dolorum distinctio, accusamus impedit unde
-    facilis, dignissimos mollitia pariatur, temporibus voluptas cum at sed? Aut
-    est temporibus neque minima sed nam? Lorem ipsum dolor sit amet consectetur
-    adipisicing elit. Itaque deleniti nesciunt ad repellendus, nulla perspiciatis
-    beatae quo impedit? Enim expedita laudantium dicta reprehenderit neque
-    adipisci unde quidem totam sint itaque? Lorem ipsum dolor sit amet
-    consectetur, adipisicing elit. Consequuntur ipsa labore aperiam numquam?
-    Deserunt esse repudiandae, commodi enim praesentium vel iste voluptates
-    accusamus aliquam exercitationem eum quia eius. Qui, iste! Lorem ipsum dolor,
-    sit amet consectetur adipisicing elit. Assumenda, animi. Ullam harum ipsam
-    quos sint ipsa aliquam magni. Earum voluptatibus quasi possimus delectus
-    minima eos ullam adipisci amet a velit. Lorem ipsum dolor sit amet consectetur
-    adipisicing elit. Necessitatibus dolorum distinctio, accusamus impedit unde
-    facilis, dignissimos mollitia pariatur, temporibus voluptas cum at sed? Aut
-    est temporibus neque minima sed nam? Lorem ipsum dolor sit amet consectetur
-    adipisicing elit. Itaque deleniti nesciunt ad repellendus, nulla perspiciatis
-    beatae quo impedit? Enim expedita laudantium dicta reprehenderit neque
-    adipisci unde quidem totam sint itaque? Lorem ipsum dolor sit amet
-    consectetur, adipisicing elit. Consequuntur ipsa labore aperiam numquam?
-    Deserunt esse repudiandae, commodi enim praesentium vel iste voluptates
-    accusamus aliquam exercitationem eum quia eius. Qui, iste! Lorem ipsum dolor,
-    sit amet consectetur adipisicing elit. Assumenda, animi. Ullam harum ipsam
-    quos sint ipsa aliquam magni. Earum voluptatibus quasi possimus delectus
-    minima eos ullam adipisci amet a velit. Lorem ipsum dolor sit amet consectetur
-    adipisicing elit. Necessitatibus dolorum distinctio, accusamus impedit unde
-    facilis, dignissimos mollitia pariatur, temporibus voluptas cum at sed? Aut
-    est temporibus neque minima sed nam? Lorem ipsum dolor sit amet consectetur
-    adipisicing elit. Itaque deleniti nesciunt ad repellendus, nulla perspiciatis
-    beatae quo impedit? Enim expedita laudantium dicta reprehenderit neque
-    adipisci unde quidem totam sint itaque? Lorem ipsum dolor sit amet
-    consectetur, adipisicing elit. Consequuntur ipsa labore aperiam numquam?
-    Deserunt esse repudiandae, commodi enim praesentium vel iste voluptates
-    accusamus aliquam exercitationem eum quia eius. Qui, iste! Lorem ipsum dolor,
-    sit amet consectetur adipisicing elit. Assumenda, animi. Ullam harum ipsam
-    quos sint ipsa aliquam magni. Earum voluptatibus quasi possimus delectus
-    minima eos ullam adipisci amet a velit. Lorem ipsum dolor sit amet consectetur
-    adipisicing elit. Necessitatibus dolorum distinctio, accusamus impedit unde
-    facilis, dignissimos mollitia pariatur, temporibus voluptas cum at sed? Aut
-    est temporibus neque minima sed nam? Lorem ipsum dolor sit amet consectetur
-    adipisicing elit. Itaque deleniti nesciunt ad repellendus, nulla perspiciatis
-    beatae quo impedit? Enim expedita laudantium dicta reprehenderit neque
-    adipisci unde quidem totam sint itaque? Lorem ipsum dolor sit amet
-    consectetur, adipisicing elit. Consequuntur ipsa labore aperiam numquam?
-    Deserunt esse repudiandae, commodi enim praesentium vel iste voluptates
-    accusamus aliquam exercitationem eum quia eius. Qui, iste! Lorem ipsum dolor,
-    sit amet consectetur adipisicing elit. Assumenda, animi. Ullam harum ipsam
-    quos sint ipsa aliquam magni. Earum voluptatibus quasi possimus delectus
-    minima eos ullam adipisci amet a velit. Lorem ipsum dolor sit amet consectetur
-    adipisicing elit. Necessitatibus dolorum distinctio, accusamus impedit unde
-    facilis, dignissimos mollitia pariatur, temporibus voluptas cum at sed? Aut
-    est temporibus neque minima sed nam? Lorem ipsum dolor sit amet consectetur
-    adipisicing elit. Itaque deleniti nesciunt ad repellendus, nulla perspiciatis
-    beatae quo impedit? Enim expedita laudantium dicta reprehenderit neque
-    adipisci unde quidem totam sint itaque? Lorem ipsum dolor sit amet
-    consectetur, adipisicing elit. Consequuntur ipsa labore aperiam numquam?
-    Deserunt esse repudiandae, commodi enim praesentium vel iste voluptates
-    accusamus aliquam exercitationem eum quia eius. Qui, iste! Lorem ipsum dolor,
-    sit amet consectetur adipisicing elit. Assumenda, animi. Ullam harum ipsam
-    quos sint ipsa aliquam magni. Earum voluptatibus quasi possimus delectus
-    minima eos ullam adipisci amet a velit. Lorem ipsum dolor sit amet consectetur
-    adipisicing elit. Necessitatibus dolorum distinctio, accusamus impedit unde
-    facilis, dignissimos mollitia pariatur, temporibus voluptas cum at sed? Aut
-    est temporibus neque minima sed nam? Lorem ipsum dolor sit amet consectetur
-    adipisicing elit. Itaque deleniti nesciunt ad repellendus, nulla perspiciatis
-    beatae quo impedit? Enim expedita laudantium dicta reprehenderit neque
-    adipisci unde quidem totam sint itaque? Lorem ipsum dolor sit amet
-    consectetur, adipisicing elit. Consequuntur ipsa labore aperiam numquam?
-    Deserunt esse repudiandae, commodi enim praesentium vel iste voluptates
-    accusamus aliquam exercitationem eum quia eius. Qui, iste! Lorem ipsum dolor,
-    sit amet consectetur adipisicing elit. Assumenda, animi. Ullam harum ipsam
-    quos sint ipsa aliquam magni. Earum voluptatibus quasi possimus delectus
-    minima eos ullam adipisci amet a velit.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
+      dolorum distinctio, accusamus impedit unde facilis, dignissimos mollitia
+      pariatur, temporibus voluptas cum at sed? Aut est temporibus neque minima
+      sed nam? Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
+      deleniti nesciunt ad repellendus, nulla perspiciatis beatae quo impedit?
+      Enim expedita laudantium dicta reprehenderit neque adipisci unde quidem
+      totam sint itaque? Lorem ipsum dolor sit amet consectetur, adipisicing
+      elit. Consequuntur ipsa labore aperiam numquam? Deserunt esse repudiandae,
+      commodi enim praesentium vel iste voluptates accusamus aliquam
+      exercitationem eum quia eius. Qui, iste! Lorem ipsum dolor, sit amet
+      consectetur adipisicing elit. Assumenda, animi. Ullam harum ipsam quos
+      sint ipsa aliquam magni. Earum voluptatibus quasi possimus delectus minima
+      eos ullam adipisci amet a velit. Lorem ipsum dolor sit amet consectetur
+      adipisicing elit. Necessitatibus dolorum distinctio, accusamus impedit
+      unde facilis, dignissimos mollitia pariatur, temporibus voluptas cum at
+      sed? Aut est temporibus neque minima sed nam? Lorem ipsum dolor sit amet
+      consectetur adipisicing elit. Itaque deleniti nesciunt ad repellendus,
+      nulla perspiciatis beatae quo impedit? Enim expedita laudantium dicta
+      reprehenderit neque adipisci unde quidem totam sint itaque? Lorem ipsum
+      dolor sit amet consectetur, adipisicing elit. Consequuntur ipsa labore
+      aperiam numquam? Deserunt esse repudiandae, commodi enim praesentium vel
+      iste voluptates accusamus aliquam exercitationem eum quia eius. Qui, iste!
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda,
+      animi. Ullam harum ipsam quos sint ipsa aliquam magni. Earum voluptatibus
+      quasi possimus delectus minima eos ullam adipisci amet a velit. Lorem
+      ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus dolorum
+      distinctio, accusamus impedit unde facilis, dignissimos mollitia pariatur,
+      temporibus voluptas cum at sed? Aut est temporibus neque minima sed nam?
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque deleniti
+      nesciunt ad repellendus, nulla perspiciatis beatae quo impedit? Enim
+      expedita laudantium dicta reprehenderit neque adipisci unde quidem totam
+      sint itaque? Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+      Consequuntur ipsa labore aperiam numquam? Deserunt esse repudiandae,
+      commodi enim praesentium vel iste voluptates accusamus aliquam
+      exercitationem eum quia eius. Qui, iste! Lorem ipsum dolor, sit amet
+      consectetur adipisicing elit. Assumenda, animi. Ullam harum ipsam quos
+      sint ipsa aliquam magni. Earum voluptatibus quasi possimus delectus minima
+      eos ullam adipisci amet a velit. Lorem ipsum dolor sit amet consectetur
+      adipisicing elit. Necessitatibus dolorum distinctio, accusamus impedit
+      unde facilis, dignissimos mollitia pariatur, temporibus voluptas cum at
+      sed? Aut est temporibus neque minima sed nam? Lorem ipsum dolor sit amet
+      consectetur adipisicing elit. Itaque deleniti nesciunt ad repellendus,
+      nulla perspiciatis beatae quo impedit? Enim expedita laudantium dicta
+      reprehenderit neque adipisci unde quidem totam sint itaque? Lorem ipsum
+      dolor sit amet consectetur, adipisicing elit. Consequuntur ipsa labore
+      aperiam numquam? Deserunt esse repudiandae, commodi enim praesentium vel
+      iste voluptates accusamus aliquam exercitationem eum quia eius. Qui, iste!
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda,
+      animi. Ullam harum ipsam quos sint ipsa aliquam magni. Earum voluptatibus
+      quasi possimus delectus minima eos ullam adipisci amet a velit. Lorem
+      ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus dolorum
+      distinctio, accusamus impedit unde facilis, dignissimos mollitia pariatur,
+      temporibus voluptas cum at sed? Aut est temporibus neque minima sed nam?
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque deleniti
+      nesciunt ad repellendus, nulla perspiciatis beatae quo impedit? Enim
+      expedita laudantium dicta reprehenderit neque adipisci unde quidem totam
+      sint itaque? Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+      Consequuntur ipsa labore aperiam numquam? Deserunt esse repudiandae,
+      commodi enim praesentium vel iste voluptates accusamus aliquam
+      exercitationem eum quia eius. Qui, iste! Lorem ipsum dolor, sit amet
+      consectetur adipisicing elit. Assumenda, animi. Ullam harum ipsam quos
+      sint ipsa aliquam magni. Earum voluptatibus quasi possimus delectus minima
+      eos ullam adipisci amet a velit. Lorem ipsum dolor sit amet consectetur
+      adipisicing elit. Necessitatibus dolorum distinctio, accusamus impedit
+      unde facilis, dignissimos mollitia pariatur, temporibus voluptas cum at
+      sed? Aut est temporibus neque minima sed nam? Lorem ipsum dolor sit amet
+      consectetur adipisicing elit. Itaque deleniti nesciunt ad repellendus,
+      nulla perspiciatis beatae quo impedit? Enim expedita laudantium dicta
+      reprehenderit neque adipisci unde quidem totam sint itaque? Lorem ipsum
+      dolor sit amet consectetur, adipisicing elit. Consequuntur ipsa labore
+      aperiam numquam? Deserunt esse repudiandae, commodi enim praesentium vel
+      iste voluptates accusamus aliquam exercitationem eum quia eius. Qui, iste!
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda,
+      animi. Ullam harum ipsam quos sint ipsa aliquam magni. Earum voluptatibus
+      quasi possimus delectus minima eos ullam adipisci amet a velit. Lorem
+      ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus dolorum
+      distinctio, accusamus impedit unde facilis, dignissimos mollitia pariatur,
+      temporibus voluptas cum at sed? Aut est temporibus neque minima sed nam?
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque deleniti
+      nesciunt ad repellendus, nulla perspiciatis beatae quo impedit? Enim
+      expedita laudantium dicta reprehenderit neque adipisci unde quidem totam
+      sint itaque? Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+      Consequuntur ipsa labore aperiam numquam? Deserunt esse repudiandae,
+      commodi enim praesentium vel iste voluptates accusamus aliquam
+      exercitationem eum quia eius. Qui, iste! Lorem ipsum dolor, sit amet
+      consectetur adipisicing elit. Assumenda, animi. Ullam harum ipsam quos
+      sint ipsa aliquam magni. Earum voluptatibus quasi possimus delectus minima
+      eos ullam adipisci amet a velit. Lorem ipsum dolor sit amet consectetur
+      adipisicing elit. Necessitatibus dolorum distinctio, accusamus impedit
+      unde facilis, dignissimos mollitia pariatur, temporibus voluptas cum at
+      sed? Aut est temporibus neque minima sed nam? Lorem ipsum dolor sit amet
+      consectetur adipisicing elit. Itaque deleniti nesciunt ad repellendus,
+      nulla perspiciatis beatae quo impedit? Enim expedita laudantium dicta
+      reprehenderit neque adipisci unde quidem totam sint itaque? Lorem ipsum
+      dolor sit amet consectetur, adipisicing elit. Consequuntur ipsa labore
+      aperiam numquam? Deserunt esse repudiandae, commodi enim praesentium vel
+      iste voluptates accusamus aliquam exercitationem eum quia eius. Qui, iste!
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda,
+      animi. Ullam harum ipsam quos sint ipsa aliquam magni. Earum voluptatibus
+      quasi possimus delectus minima eos ullam adipisci amet a velit. Lorem
+      ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus dolorum
+      distinctio, accusamus impedit unde facilis, dignissimos mollitia pariatur,
+      temporibus voluptas cum at sed? Aut est temporibus neque minima sed nam?
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque deleniti
+      nesciunt ad repellendus, nulla perspiciatis beatae quo impedit? Enim
+      expedita laudantium dicta reprehenderit neque adipisci unde quidem totam
+      sint itaque? Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+      Consequuntur ipsa labore aperiam numquam? Deserunt esse repudiandae,
+      commodi enim praesentium vel iste voluptates accusamus aliquam
+      exercitationem eum quia eius. Qui, iste! Lorem ipsum dolor, sit amet
+      consectetur adipisicing elit. Assumenda, animi. Ullam harum ipsam quos
+      sint ipsa aliquam magni. Earum voluptatibus quasi possimus delectus minima
+      eos ullam adipisci amet a velit. Lorem ipsum dolor sit amet consectetur
+      adipisicing elit. Necessitatibus dolorum distinctio, accusamus impedit
+      unde facilis, dignissimos mollitia pariatur, temporibus voluptas cum at
+      sed? Aut est temporibus neque minima sed nam? Lorem ipsum dolor sit amet
+      consectetur adipisicing elit. Itaque deleniti nesciunt ad repellendus,
+      nulla perspiciatis beatae quo impedit? Enim expedita laudantium dicta
+      reprehenderit neque adipisci unde quidem totam sint itaque? Lorem ipsum
+      dolor sit amet consectetur, adipisicing elit. Consequuntur ipsa labore
+      aperiam numquam? Deserunt esse repudiandae, commodi enim praesentium vel
+      iste voluptates accusamus aliquam exercitationem eum quia eius. Qui, iste!
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda,
+      animi. Ullam harum ipsam quos sint ipsa aliquam magni. Earum voluptatibus
+      quasi possimus delectus minima eos ullam adipisci amet a velit. Lorem
+      ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus dolorum
+      distinctio, accusamus impedit unde facilis, dignissimos mollitia pariatur,
+      temporibus voluptas cum at sed? Aut est temporibus neque minima sed nam?
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque deleniti
+      nesciunt ad repellendus, nulla perspiciatis beatae quo impedit? Enim
+      expedita laudantium dicta reprehenderit neque adipisci unde quidem totam
+      sint itaque? Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+      Consequuntur ipsa labore aperiam numquam? Deserunt esse repudiandae,
+      commodi enim praesentium vel iste voluptates accusamus aliquam
+      exercitationem eum quia eius. Qui, iste! Lorem ipsum dolor, sit amet
+      consectetur adipisicing elit. Assumenda, animi. Ullam harum ipsam quos
+      sint ipsa aliquam magni. Earum voluptatibus quasi possimus delectus minima
+      eos ullam adipisci amet a velit. Lorem ipsum dolor sit amet consectetur
+      adipisicing elit. Necessitatibus dolorum distinctio, accusamus impedit
+      unde facilis, dignissimos mollitia pariatur, temporibus voluptas cum at
+      sed? Aut est temporibus neque minima sed nam? Lorem ipsum dolor sit amet
+      consectetur adipisicing elit. Itaque deleniti nesciunt ad repellendus,
+      nulla perspiciatis beatae quo impedit? Enim expedita laudantium dicta
+      reprehenderit neque adipisci unde quidem totam sint itaque? Lorem ipsum
+      dolor sit amet consectetur, adipisicing elit. Consequuntur ipsa labore
+      aperiam numquam? Deserunt esse repudiandae, commodi enim praesentium vel
+      iste voluptates accusamus aliquam exercitationem eum quia eius. Qui, iste!
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda,
+      animi. Ullam harum ipsam quos sint ipsa aliquam magni. Earum voluptatibus
+      quasi possimus delectus minima eos ullam adipisci amet a velit. Lorem
+      ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus dolorum
+      distinctio, accusamus impedit unde facilis, dignissimos mollitia pariatur,
+      temporibus voluptas cum at sed? Aut est temporibus neque minima sed nam?
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque deleniti
+      nesciunt ad repellendus, nulla perspiciatis beatae quo impedit? Enim
+      expedita laudantium dicta reprehenderit neque adipisci unde quidem totam
+      sint itaque? Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+      Consequuntur ipsa labore aperiam numquam? Deserunt esse repudiandae,
+      commodi enim praesentium vel iste voluptates accusamus aliquam
+      exercitationem eum quia eius. Qui, iste! Lorem ipsum dolor, sit amet
+      consectetur adipisicing elit. Assumenda, animi. Ullam harum ipsam quos
+      sint ipsa aliquam magni. Earum voluptatibus quasi possimus delectus minima
+      eos ullam adipisci amet a velit. Lorem ipsum dolor sit amet consectetur
+      adipisicing elit. Necessitatibus dolorum distinctio, accusamus impedit
+      unde facilis, dignissimos mollitia pariatur, temporibus voluptas cum at
+      sed? Aut est temporibus neque minima sed nam? Lorem ipsum dolor sit amet
+      consectetur adipisicing elit. Itaque deleniti nesciunt ad repellendus,
+      nulla perspiciatis beatae quo impedit? Enim expedita laudantium dicta
+      reprehenderit neque adipisci unde quidem totam sint itaque? Lorem ipsum
+      dolor sit amet consectetur, adipisicing elit. Consequuntur ipsa labore
+      aperiam numquam? Deserunt esse repudiandae, commodi enim praesentium vel
+      iste voluptates accusamus aliquam exercitationem eum quia eius. Qui, iste!
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda,
+      animi. Ullam harum ipsam quos sint ipsa aliquam magni. Earum voluptatibus
+      quasi possimus delectus minima eos ullam adipisci amet a velit. Lorem
+      ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus dolorum
+      distinctio, accusamus impedit unde facilis, dignissimos mollitia pariatur,
+      temporibus voluptas cum at sed? Aut est temporibus neque minima sed nam?
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque deleniti
+      nesciunt ad repellendus, nulla perspiciatis beatae quo impedit? Enim
+      expedita laudantium dicta reprehenderit neque adipisci unde quidem totam
+      sint itaque? Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+      Consequuntur ipsa labore aperiam numquam? Deserunt esse repudiandae,
+      commodi enim praesentium vel iste voluptates accusamus aliquam
+      exercitationem eum quia eius. Qui, iste! Lorem ipsum dolor, sit amet
+      consectetur adipisicing elit. Assumenda, animi. Ullam harum ipsam quos
+      sint ipsa aliquam magni. Earum voluptatibus quasi possimus delectus minima
+      eos ullam adipisci amet a velit.
    </p>
 </DemosLayout>
 
 <style is:inline>
-  .btn-modal {
-    background-color: brown;
-    color: white;
-    border-radius: 5px;
-    padding: 10px;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
+   .btn-modal {
+      background-color: brown;
+      color: white;
+      border-radius: 5px;
+      padding: 10px;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+   }
 </style>

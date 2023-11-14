@@ -292,9 +292,11 @@ Los enlaces son muy importantes, ¡son lo que hace que la web sea una web! Para 
 
 Puedes obtener resultados inesperados si omites la parte "https://" o "http://" al comienzo de la dirección web, llamada [protocolo](internal-seo--protocolo-HTTP). Después de crear un enlace, haz clic en él para asegurarte de que te lleve a donde deseas.
 
-### Conclusión
+## Conclusión
 
 Si has seguido todas las instrucciones de este artículo, deberías terminar con una página que luzca como la que se muestra a continuación [también puedes verla aquí](/demos/html_css/primer-html)
+
+![Mi primer html](/src/images/image-test.png "Mi Primer html")
 
 > Seguir aprendiendo:
 
