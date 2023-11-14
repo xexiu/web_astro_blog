@@ -9,11 +9,9 @@ const paths = import.meta.glob( '../html_css/*/*.astro');
    <Breadcrumbs
       slot='breadcrumb'
       links={[
-         { name: 'Inicio', path: '/' },
          { name: 'Demos', path: '/demos' },
          { name: 'HTML/CSS Demos', path: '/demos/html_css', linkIsActive: 'is-active' }
       ]}
    />
-   <h1>En construcción!</h1>
    <DemoLinks {paths} routeName="html_css" />
 </DemosLayout>

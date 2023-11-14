@@ -1,0 +1,48 @@
+---
+import { Link } from '@components/common/link';
+---
+
+<meta itemprop="numberOfItems" content="1" />
+<li
+   aria-label="Blog Item"
+   itemprop="itemListElement"
+   itemscope
+   itemtype="https://schema.org/ListItem"
+>
+   <Link
+      href="/blog"
+      icon={{
+         name: 'ion:enter-outline',
+         side: 'right',
+         width: '46',
+         height: '46'
+      }}
+      aria-label="Blog Link"
+      target="_blank"
+   />
+   <meta property="position" content="1" />
+</li>
+
+<style is:inline>
+    .landing-menu {
+        list-style: none;
+    }
+
+    .landing-menu li {
+        display: inline-block;
+        padding: 0 5px;
+    }
+
+    .landing-menu li a {
+        transition: all 0.3s ease 0s;
+        text-decoration: none;
+        color: #f2f2f2;
+        opacity: 0.8;
+
+        &:hover {
+            transition: all 0.3s ease 0s;
+            opacity: 1;
+            filter: drop-shadow(10px 10px 4px #222);
+        }
+    }
+</style>

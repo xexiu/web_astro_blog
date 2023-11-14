@@ -30,12 +30,13 @@ const {
                <slot name="search-bar" slot="search-bar" />
             </Logo>
          </div>
-         <SocialIcons
+         {Astro.url.pathname !== '/' && <SocialIcons
             data={socialIcons}
             classes="header-social-icons"
             linkClass="tooltip"
             data-tooltip-placement="bottom"
          />
+         }
          <MainNav />
          <!-- <ToggleTheme style={{ marginLeft: 'auto' }} /> -->
       </MainHeader>

@@ -1,10 +1,5 @@
 [
     {
-        "iconName": "clarity:home-solid",
-        "name": "Inicio",
-        "path": "/"
-    },
-    {
         "iconName": "clarity:blocks-group-outline-alerted",
         "name": "Blog",
         "path": "/blog"

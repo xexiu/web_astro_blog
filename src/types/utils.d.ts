@@ -1,9 +1,9 @@
 export type PostDataFeaturedImage = {
    src: string | any;
-   width: number;
-   height: number;
-   format: string;
-   orientation: string;
+   width?: number;
+   height?: number;
+   format?: string;
+   orientation?: string;
    alt: string;
 }
 
@@ -27,11 +27,12 @@ export type PortFolioData = {
    tags: string[];
    date: Date | string;
    author: string;
-   github_project_link: string;
+   github_project_link?: string;
    featured_portfolio?: boolean;
    demo_link?: string;
    video_link?: string;
    featured_image: PostDataFeaturedImage;
+   twitter_name?: string;
 }
 
 export type Nullable<T> = T | null;
