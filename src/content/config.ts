@@ -25,6 +25,7 @@ const blog = defineCollection({
             message: 'Author must have more or equal than 5 characters and at most 50 characters'
          }
       ),
+      twitter_name: z.string().max(90).optional(),
       date: z.date(),
       featured_post: z.boolean().optional(),
       featured_image: z.object({
@@ -58,6 +59,7 @@ const portfolio = defineCollection({
             message: 'Author must have more or equal than 5 characters and at most 50 characters'
          }
       ),
+      twitter_name: z.string().max(90).optional(),
       date: z.date(),
       github_project_link: z.string().max(100).optional(),
       demo_link: z.string().max(100).optional(),
