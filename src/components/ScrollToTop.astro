@@ -3,8 +3,8 @@ import Icon from 'astro-icon';
 import Button from './common/button/Button.astro';
 ---
 
-<xe-scroll-top>
-   <Button title="Ir arriba" classes='scrollTop'>
+<xe-scroll-top class="scrollTop">
+   <Button title="Ir arriba" classes='scroll-top-btn'>
       <Icon
          slot='button-before-text'
          name='icon-park-outline:to-top'
@@ -24,14 +24,11 @@ customElements.define('xe-scroll-top', ScrollTop);
 <style>
 .scrollTop {
     position: sticky;
-    width: 40px;
-    height: 40px;
     left: 90%;
     opacity: .6;
     bottom: -6rem;
     display: flex;
     justify-content: center;
-    padding: 0.3rem;
     background-color: var(--color-red);
     align-items: center;
     z-index: 1000000000;
@@ -39,7 +36,9 @@ customElements.define('xe-scroll-top', ScrollTop);
     cursor: pointer;
     transition: 0.5s;
     color: #fff;
-    /* visibility: hidden; */
+    visibility: hidden;
+    height: 0;
+    width: 0;
     &:hover {
         background-color: var(--color-dark);
         opacity: 1;
@@ -48,5 +47,8 @@ customElements.define('xe-scroll-top', ScrollTop);
 .show-scroll {
     visibility: visible;
     bottom: 3.7rem;
+    height: 40px;
+    width: 40px;
+    padding: 0.3rem;
 }
 </style>

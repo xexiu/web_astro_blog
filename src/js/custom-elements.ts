@@ -251,7 +251,7 @@ export class ScrollTop extends HTMLElement {
 
    constructor() {
       super();
-      this.buttonScroll = this.querySelector('.scrollTop') as HTMLButtonElement;
+      this.buttonScroll = this.querySelector('.scroll-top-btn') as HTMLButtonElement;
 
       if (this.buttonScroll) {
          window.addEventListener('scroll', this.scrollToTop.bind(this));
@@ -265,9 +265,9 @@ export class ScrollTop extends HTMLElement {
 
    scrollToTop() {
       if(window.scrollY >= 460) {
-         this.buttonScroll?.classList.add('show-scroll');
+         this?.classList.add('show-scroll');
       } else {
-         this.buttonScroll?.classList.remove('show-scroll');
+         this?.classList.remove('show-scroll');
       }
    }
 }
