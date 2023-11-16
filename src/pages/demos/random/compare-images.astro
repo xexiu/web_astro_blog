@@ -1,0 +1,24 @@
+---
+import CompareImages from '@components/CompareImages.astro';
+import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
+import DemosLayout from '@layouts/demos/DemosLayout.astro';
+---
+
+<DemosLayout
+   title="Comparar dos imágenes!"
+   description="Compara dos imágenes después de aplicar efectos sobre la imágen original."
+>
+   <Breadcrumbs
+      slot="breadcrumb"
+      links={[
+         { name: 'Demos', path: '/demos' },
+         { name: 'Random Demos', path: '/demos/random' },
+         {
+            name: 'Compare Images Demos', path: '/demos/random/compare-images',
+            linkIsActive: 'is-active'
+         }
+      ]}
+   />
+
+   <CompareImages originalImageSrc="https://assets.codepen.io/2585/Runner.svg" comparedImageSrc="https://assets.codepen.io/2585/Roboto.svg" />
+</DemosLayout>

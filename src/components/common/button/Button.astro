@@ -2,13 +2,14 @@
 interface Props {
   text?: string;
   classes?: string;
+  title?: string;
 }
-const { text, classes = '', ...rest } = Astro.props;
+const { text, title = 'Botón', classes = '', ...rest } = Astro.props;
 ---
 
 <button
    {...rest}
-   aria-label="button"
+   aria-label={title}
    type="button"
    class:list={['btn-clean', classes]}
 >

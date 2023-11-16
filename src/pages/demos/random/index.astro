@@ -3,15 +3,16 @@ import Breadcrumbs from '@components/breadcrumbs/Breadcrumbs.astro';
 import DemoLinks from '@layouts/demos/DemoLinks.astro';
 import DemosLayout from '@layouts/demos/DemosLayout.astro';
 
-const paths = import.meta.glob('../html_css/*/*.astro');
+const paths = import.meta.glob('../random/*.astro');
 ---
 <DemosLayout title="Astro Components Demo">
    <Breadcrumbs
       slot='breadcrumb'
       links={[
          { name: 'Demos', path: '/demos' },
-         { name: 'HTML/CSS Demos', path: '/demos/html_css', linkIsActive: 'is-active' }
+         { name: 'Random Demos', path: '/demos/random', linkIsActive: 'is-active' }
       ]}
    />
-   <DemoLinks {paths} routeName="html_css" />
+   <DemoLinks {paths} routeName="random" />
 </DemosLayout>
+

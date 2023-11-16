@@ -1,0 +1,67 @@
+---
+import CommonImage from '@components/CommonImage.astro';
+
+const { originalImageSrc, comparedImageSrc, ...rest } = Astro.props;
+---
+
+<div class="compare">
+   <section class="before">
+      <CommonImage src={originalImageSrc} alt="Original Image" width="800" height="600"{...rest} />
+   </section>
+   <section class="after">
+      <CommonImage src={comparedImageSrc} alt="Compared Image" width="800" height="600"{...rest} />
+   </section>
+   <input type="range" id="range" name="range" aria-labelledby="range" />
+   <label for="range">Slider Range</label>
+</div>
+
+<script>
+const range = document.getElementById('range') as HTMLInputElement;
+range.addEventListener('input', (_ig_event) =>
+   document.body.style.setProperty('--pos', range?.value + '%')
+);
+</script>
+
+<style>
+    .compare {
+        display: grid;
+
+        > * {
+            grid-area: 1 / 1;
+        }
+
+        > section {
+            display: grid;
+            place-content: center;
+        }
+    }
+
+    .before {
+        mask: linear-gradient(to right, #000 0, var(--pos, 50%), #0000 0);
+    }
+
+    .after {
+        mask: linear-gradient(to right, #0000 0, var(--pos, 50%), #000 0);
+    }
+
+    input[type="range"] {
+        z-index: 1;
+        appearance: none;
+        background: transparent;
+        cursor: pointer;
+
+        &::-webkit-slider-thumb {
+            appearance: none;
+            width: 4px;
+            height: 100dvh;
+            background-color: CanvasText;
+        }
+
+        &::-moz-range-thumb {
+            appearance: none;
+            width: 4px;
+            height: 100dvh;
+            background-color: CanvasText;
+        }
+    }
+</style>

@@ -11,7 +11,8 @@ function getUniquePaths(paths: string[]) {
          const route = routeName
             ? `/demos/${routeName}/${segments[1]}`
             : `/demos/${segments[1]}`;
-         uniquePaths.add(route);
+         const cleanRoute = route.replace('.astro', '');
+         uniquePaths.add(cleanRoute);
       }
    }
 

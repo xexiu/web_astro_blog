@@ -1,0 +1,50 @@
+---
+import Icon from 'astro-icon';
+import Button from './common/button/Button.astro';
+---
+
+<xe-scroll-top>
+   <Button title="Ir arriba" classes='scrollTop'>
+      <Icon
+         slot='button-before-text'
+         name='icon-park-outline:to-top'
+         height='22'
+         width='22'
+         class="scroll-to-top-icon"
+      />
+   </Button>
+</xe-scroll-top>
+
+<script>
+import { ScrollTop } from '@js/custom-elements';
+
+customElements.define('xe-scroll-top', ScrollTop);
+</script>
+
+<style>
+.scrollTop {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    right: 1rem;
+    bottom: -6rem;
+    display: flex;
+    justify-content: center;
+    padding: 0.3rem;
+    background-color: var(--color-red);
+    align-items: center;
+    z-index: 1000000000;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.5s;
+    color: #fff;
+    /* visibility: hidden; */
+    &:hover {
+        background-color: var(--color-dark);
+    }
+}
+.show-scroll {
+    visibility: visible;
+    bottom: 3.5rem;
+}
+</style>

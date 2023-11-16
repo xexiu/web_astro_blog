@@ -245,3 +245,29 @@ export class SearchBarHelper extends HTMLElement {
       this.list.appendChild(error);
    }
 }
+
+export class ScrollTop extends HTMLElement {
+   public buttonScroll: HTMLButtonElement;
+
+   constructor() {
+      super();
+      this.buttonScroll = this.querySelector('.scrollTop') as HTMLButtonElement;
+
+      if (this.buttonScroll) {
+         window.addEventListener('scroll', this.scrollToTop.bind(this));
+
+         this.buttonScroll.addEventListener('click', (event: Event) => {
+            event.preventDefault();
+            window.scrollTo({ top: 0 });
+         });
+      }
+   }
+
+   scrollToTop() {
+      if(window.scrollY >= 460) {
+         this.buttonScroll?.classList.add('show-scroll');
+      } else {
+         this.buttonScroll?.classList.remove('show-scroll');
+      }
+   }
+}

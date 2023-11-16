@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon';
+import Button from './button/Button.astro';
 
 interface Props {
    disableTooltip?: boolean;
@@ -31,29 +32,32 @@ const _icon = {
 };
 ---
 
-<button
-   class={`copy-clipboard-code ${!disableTooltip ? 'tooltip' : ''}`}
+<Button
+   classes={`copy-clipboard-code ${!disableTooltip ? 'tooltip' : ''}`}
    data-tooltip-placement="left"
    title="Guardar en el portapapeles"
 >
-   {
-      !disableIcon && icon && (
-         <Icon
-            name={_icon.name}
-            height={_icon.height}
-            width={_icon.width}
-            class="feedback-icon"
-         />
-      )
-   }
-   {
-      disableIcon && (
-         <span class="btn-blue feedback" class:list={[classes]}>
+   <div slot="button-before-text">
+
+      {
+         !disableIcon && icon && (
+            <Icon
+               name={_icon.name}
+               height={_icon.height}
+               width={_icon.width}
+               class="feedback-icon"
+            />
+         )
+      }
+      {
+         disableIcon && (
+            <span class="btn-blue feedback" class:list={[classes]}>
             Copiar
-         </span>
-      )
-   }
-</button>
+            </span>
+         )
+      }
+   </div>
+</Button>
 
 <style is:inline>
    .copy-clipboard-code {

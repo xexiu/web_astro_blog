@@ -1,6 +1,7 @@
 ---
 // import ToggleTheme from '@components/ToggleTheme.astro';
 import Logo from '@components/Logo.astro';
+import ScrollToTop from '@components/ScrollToTop.astro';
 import SocialIcons from '@components/SocialIcons.astro';
 import MainFooter from '@layouts/footer/MainFooter.astro';
 import MainHead from '@layouts/header/MainHead.astro';
@@ -44,6 +45,7 @@ const {
       <main class="main-container-page" id=`${Astro.url.pathname === '/' ? 'homepage' : 'page'}`>
          <slot> Default Text</slot>
       </main>
+      <ScrollToTop />
       <MainFooter />
       <style is:inline>
          .left-section {

@@ -12,13 +12,14 @@ import { Link } from '@components/common/link';
    <Link
       href="/blog"
       icon={{
-         name: 'ion:enter-outline',
+         name: 'codicon:run-all',
          side: 'right',
          width: '46',
          height: '46'
       }}
       aria-label="Blog Link"
       target="_blank"
+      title="Blog"
    />
    <meta property="position" content="1" />
 </li>
@@ -37,11 +38,10 @@ import { Link } from '@components/common/link';
         transition: all 0.3s ease 0s;
         text-decoration: none;
         color: #f2f2f2;
-        opacity: 0.8;
+        filter: drop-shadow(5px 10px 4px #222);
 
         &:hover {
             transition: all 0.3s ease 0s;
-            opacity: 1;
             filter: drop-shadow(10px 10px 4px #222);
         }
     }
