@@ -4,11 +4,12 @@ import { getTagCounts } from '@js/utils';
 
 interface Props {
    tags: string[];
+   linkExtension?: string;
    tagCounts?: object;
    classes?: string;
    showCountBadge?: boolean;
 }
-const { tags, tagCounts, showCountBadge = false, ...rest } = Astro.props;
+const { tags, tagCounts, showCountBadge = false, linkExtension = 'tag', ...rest } = Astro.props;
 const _tagCounts = showCountBadge ? getTagCounts(tags) : tagCounts;
 const uniqueTags = [...new Set(tags)];
 ---
@@ -20,7 +21,7 @@ const uniqueTags = [...new Set(tags)];
 
          return (
             <span class="tag-container">
-               <Tag {tag} data-number-tag={count} {...rest} />
+               <Tag {tag} data-number-tag={count} {linkExtension} {...rest} />
                {showCountBadge && <span class="tag-count">{count}</span>}
             </span>
          );

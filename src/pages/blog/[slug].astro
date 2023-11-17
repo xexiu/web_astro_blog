@@ -33,7 +33,6 @@ import AstroSpeech from '@xexiu/astro-speech';
 import { Icon } from 'astro-icon';
 import { Markdown } from 'astro-remote';
 import { getCollection } from 'astro:content';
-import { ViewTransitions } from 'astro:transitions';
 // Cookie not working in prod (but works locally) because of this:
 // https://answers.netlify.com/t/cookie-not-set-in-deployment-but-works-in-localhost/97069
 
@@ -67,7 +66,6 @@ const { title, excerpt, category } = entry.data;
 >
    <SearchBar data={allBlogs} slot="search-bar" />
    <ProgressBar excludeElementSelector=".container-comments" />
-   <ViewTransitions />
    <Breadcrumbs
       links={[
          { name: 'Blog', path: '/blog' },

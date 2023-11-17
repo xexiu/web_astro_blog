@@ -5,13 +5,14 @@ import { slugify } from '@js/utils';
 interface Props {
     tag: string;
     classes?: string;
+    linkExtension?: string;
 }
-const { tag, classes = '', ...rest } = Astro.props;
+const { tag, classes = '', linkExtension = 'tag', ...rest } = Astro.props;
 ---
 
 <Link
    text={tag}
-   href={`/blog/tag/${slugify(tag)}/`}
+   href={`/blog/${linkExtension}/${slugify(tag)}/`}
    borderVisible={true}
    isFilled={false}
    classes={`${classes} tag`}

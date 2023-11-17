@@ -12,7 +12,7 @@ const { category, featured_image, title, date, author, excerpt } =
    post.data;
 ---
 
-<PostCardContainer>
+<PostCardContainer classes={`${post.data.featured_post ? 'featured_post' : ''}`}>
    <Link
       href={`/blog/${post.slug}`}
       isFilled={false}

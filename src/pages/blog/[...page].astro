@@ -1,0 +1,81 @@
+---
+import Dropdown from '@components/Dropdown.astro';
+import Pagination from '@components/Pagination.astro';
+import Posts from '@components/postcard/Posts.astro';
+import SearchBar from '@components/search-bar/SearchBar.astro';
+import SectionContainer from '@components/section/SectionContainer.astro';
+import Tags from '@components/tags/Tags.astro';
+import { MyBlog as Blog } from '@js/builders';
+import MainLayout from '@layouts/MainLayout.astro';
+import data from '@schemas/blog-data.json';
+import { getCollection } from 'astro:content';
+import { ViewTransitions } from 'astro:transitions';
+
+export async function getStaticPaths({ paginate }) {
+   const blogEntries = await getCollection('blog', ({ data }) => {
+      return data.is_private !== true;
+   });
+
+   const sortedBlogs = blogEntries.sort((_a, b) => (b.data.featured_post ? 1 : -1));
+
+   return paginate(sortedBlogs, { pageSize: 20 });
+}
+
+const { page } = Astro.props;
+const blog = new Blog({ blogs: page['data'], post: null, cookie: Astro.request.headers.get('cookie') });
+const { blogs, allBlogs } = blog;
+const { categories } = blogs;
+const uniqueCategories = [...new Set(categories)];
+---
+
+<MainLayout title={data.title} description={data.description}>
+   <SearchBar data={allBlogs} slot="search-bar" />
+   <Dropdown defaultText={`Categorias ${uniqueCategories.length}`} dropdownId="dropdown-categories">
+      <Tags
+         linkExtension="category"
+         slot="default-container-dropdown"
+         tags={categories}
+         showCountBadge={true}
+         classes="blog-page-tag"
+      />
+   </Dropdown>
+   <ViewTransitions />
+   <SectionContainer ariaLabel="Publicaciones Recientes">
+      <div class="blog-page">
+         <Posts entries={page['data']} />
+         <Pagination prevUrl={page['url']['prev']} nextUrl={page['url']['next']} />
+      </div>
+   </SectionContainer>
+</MainLayout>
+
+<style is:inline>
+   .dropdowns {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+   }
+   .private-layout {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f0f0f0;
+      font-size: var(--fs-lg);
+      text-align: center;
+      box-sizing: border-box;
+   }
+
+   .contenido-privado-icon {
+      margin: 0 auto;
+   }
+
+   .tab-wrapper:has(.radio-tab:checked) {
+      box-shadow: 0 2px 4px rgb(0 0 0 / 20%);
+      text-shadow: 0 2px 3px rgb(255 255 255 / 40%);
+      box-shadow: var(--shadow-md);
+      &:hover {
+         box-shadow: var(--shadow-md);
+      }
+   }
+</style>

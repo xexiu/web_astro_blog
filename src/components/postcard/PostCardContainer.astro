@@ -11,6 +11,18 @@ const { classes, ...rest } = Astro.props as Props;
 </article>
 
 <style>
+	.post-card-container.featured_post {
+		&::after {
+			content: "DESTACADO";
+			position: absolute;
+			right: 2px;
+			top: 2px;
+			font-weight: bold;
+			font-size: var(--fs-4sm);
+			color: var(--color-red);
+			text-decoration: underline wavy;
+		}
+	}
 	.post-card-container {
 		position: relative;
 		background-color: #fff;
@@ -22,7 +34,7 @@ const { classes, ...rest } = Astro.props as Props;
 		border: 1px solid #ccc;
 		box-shadow: inset 0 0 0 1px hsla(0, 0%, 100%, 0.1);
 		list-style: none;
-		transition: all .2s;
+		transition: all 0.2s;
 		width: 100%;
 		flex-direction: column;
 		&:hover {
@@ -30,7 +42,11 @@ const { classes, ...rest } = Astro.props as Props;
 			text-decoration: none;
 			-webkit-transform: translateY(-4px);
 			transform: translateY(-4px);
-			transition: all .2s;
+			transition: all 0.2s;
 		}
+	}
+	.featured_post {
+		border-top: 2px solid rgb(228, 235, 13);
+		box-shadow: 0 10px 42px rgba(25, 17, 34, 0.1);
 	}
 </style>

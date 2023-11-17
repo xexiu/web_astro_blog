@@ -1,0 +1,63 @@
+---
+import PageLinks from '@layouts/nav/PageLinks.astro';
+import type { Links } from 'types/utils';
+
+interface Props {
+    defaultText?: string;
+    links?: Links[];
+    dropdownId: string;
+}
+
+const { defaultText = 'No Text', links = [], dropdownId = 'dropwdown' } = Astro.props;
+
+---
+<div class="dropdown-container">
+   <div class="dropdown-header">
+      <input
+         class='dropdown'
+         type="checkbox"
+         id={`${dropdownId}-main-id`}
+         name={`${dropdownId}-main-id`}
+         aria-labelledby={`${dropdownId}-main-id`}
+      />
+      <label class="for-dropdown" for={`${dropdownId}-main-id`}>{defaultText}</label>
+   </div>
+
+   {!!links.length && <ul class="dropdown-menu" itemtype="https://schema.org/ItemList">
+      <PageLinks links={links} />
+   </ul>
+   }
+   <div class="dropdown-content">
+      <slot name="default-container-dropdown" />
+   </div>
+</div>
+
+<style>
+    .dropdown-container {
+        margin: 20px 0;
+    }
+    .dropdown-menu, .dropdown-content, .dropdown {
+        display: none;
+    }
+    .for-dropdown {
+        cursor: pointer;
+        background-color: var(--color-dark);
+        color: white;
+        padding: 5px;
+        border-radius: 5px;
+        transition: .4s;
+        &:hover {
+         background-color: var(--color-darken-grey);
+         transition: .4s;
+        }
+    }
+    .dropdown-container:has(.dropdown:checked){
+        .dropdown-menu, .dropdown-content {
+            display: block;
+            color: white;
+            list-style-type: none;
+            padding: 5px;
+            margin: 20px 0;
+        }
+    }
+</style>

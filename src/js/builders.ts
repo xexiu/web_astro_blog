@@ -111,8 +111,10 @@ export class MyBlog {
       });
 
       const allTags = blogs.flatMap((entry: any) => entry.data.tags).sort((a, b) => a.localeCompare(b, 'es', { sensitivity: 'base' }));
+      const allCategories = blogs.flatMap((entry: any) => entry.data.category).sort((a, b) => a.localeCompare(b, 'es', { sensitivity: 'base' }));
 
       _blogs.tags.push(...allTags);
+      _blogs.categories.push(...allCategories);
 
       return _blogs as never;
    }

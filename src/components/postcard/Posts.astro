@@ -10,7 +10,7 @@ interface Props {
 const { entries, classes, ...rest } = Astro.props;
 ---
 
-<div class="posts-container" class:list={classes} {...rest}>
+<div class:list={['posts-container', classes]} {...rest}>
    {entries.map((post) => <PostCard {post} />)}
 </div>
 

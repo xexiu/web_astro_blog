@@ -80,3 +80,9 @@ export type Cookies = {
    // eslint-disable-next-line no-unused-vars
    get: (param: string) => string | undefined;
 }
+
+export type Links = {
+   iconName?: string;
+   name?: string;
+   path: string
+}

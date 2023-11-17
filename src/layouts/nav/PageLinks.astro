@@ -1,26 +1,38 @@
 ---
 import { Link } from '@components/common/link';
 import data from '@schemas/main-nav-data.json';
+import type { Links } from 'types/utils';
+
+interface Props {
+   links?: Links[];
+}
+
+const { links = data } = Astro.props;
 ---
 
 {
-   (data).map((item, index: number) => {
+   links.map((item: Links, index: number) => {
       return (
-         <li aria-label={item.name} itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+         <li
+            aria-label={item.name}
+            itemprop="itemListElement"
+            itemscope
+            itemtype="https://schema.org/ListItem"
+         >
             <Link
                text={item.name}
                href={item.path}
                isFilled={false}
                data-navLink
                aria-label={item.name}
-               classes='top-link'
+               classes="top-link"
                data-has-items="false"
                data-saved-items="0"
                itemprop="item"
                title={item.name}
             />
-            <meta property="position" content={String(index + 1)}>
+            <meta property="position" content={String(index + 1)} />
          </li>
       );
    })
- }
+}

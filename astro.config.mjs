@@ -8,6 +8,9 @@ import { manifest } from './src/pwa/manifest';
 
 // https://astro.build/config
 export default defineConfig({
+   experimental: {
+      contentCollectionCache: true
+   },
    output: 'hybrid',
    vite: {
       logLevel: 'info',

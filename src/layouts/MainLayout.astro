@@ -41,7 +41,6 @@ const {
          <MainNav />
          <!-- <ToggleTheme style={{ marginLeft: 'auto' }} /> -->
       </MainHeader>
-      <div id="loader" class="center"></div>
       <main class="main-container-page" id=`${Astro.url.pathname === '/' ? 'homepage' : 'page'}`>
          <slot> Default Text</slot>
          <ScrollToTop />
@@ -55,65 +54,6 @@ const {
          #header .header-social-icons a {
             color: #f2f2f2;
          }
-
-         #loader {
-            border: 12px solid hsl(var(--bkg));
-            border-radius: 50%;
-            border-top: 12px solid #222;
-            width: 70px;
-            height: 70px;
-            animation: spin 1s linear infinite;
-            z-index: 10000000;
-            display: none;
-         }
-
-         .center {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            margin-top: -35px !important;
-            margin-left: -35px !important;
-            margin: 0;
-            padding: 0;
-         }
-
-         @keyframes spin {
-            100% {
-               transform: rotate(360deg);
-            }
-         }
       </style>
    </body>
-   <script>
-      const SELECTORS = '.internal-link:not(.xml-wrapper):not([target="_blank"]):not(.anchor-link)';
-      const DATA_LINKS = ':not([data-next-article]):not([data-prev-article]):not([data-related-article])';
-      const internalLinks = document.querySelectorAll(`${SELECTORS}${DATA_LINKS}`);
-      const spinner =  (document as any).querySelector('#loader');
-      const main = (document as any).querySelector('.main-container-page');
-
-      internalLinks.forEach((link) => {
-         link.addEventListener('click', (event: any) => {
-            if(event.ctrlKey || event.metaKey) { // User clicked to CTRL or CMD to open in a new window
-               return;
-            }
-
-            event.stopPropagation();
-            main.style.visibility = 'hidden';
-            spinner.style.visibility = 'visible';
-            spinner.style.display = 'block';
-         });
-      });
-
-      window.addEventListener('pageshow', (event) => {
-         if (event.persisted) {
-            // Page is shown from cache (e.g., after using back/forward buttons) in iOS/Android
-            // You can hide the spinner and display the content here
-            spinner.style.display = 'none';
-            main.style.visibility = 'visible';
-         } else {
-            spinner.style.display = 'none';
-            main.style.visibility = 'visible';
-         }
-      });
-   </script>
 </html>
