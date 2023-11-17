@@ -11,16 +11,31 @@ import data from '@schemas/404-data.json';
       textAlign: 'center',
       gap: 'var(--space-sm)'
    }}>
+      <span class="error">404</span>
+      <span class="error-desc">¡No encontrado!</span>
       <div>
-         <h1>Ooppss!! Al ha ocurrido!</h1>
+         <h1>Ooppss!! Algo ha ocurrido!</h1>
          <p>Puede que la página que busque no existe...</p>
          <Link href='/' text='Volver a Inicio' classes="btn-blue" />
       </div>
    </div>
 </MainLayout>
 <style>
-   .primary {
-      margin: 40px 0;
-      display: inline-block;
+   .container {
+      display: flex;
+      .error {
+         font-size: max(9.80rem,min(calc(7.31rem + 5.43vw),9.20rem));
+      }
+      .error-desc {
+         font-size: var(--fs-md);
+      }
+      p {
+         margin: 20px 0;
+      }
+      .internal-link {
+         margin: 40px 0;
+         display: inline-block;
+         padding: 5px;
+      }
    }
 </style>
