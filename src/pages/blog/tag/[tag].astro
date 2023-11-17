@@ -24,7 +24,7 @@ const blog = new Blog({ blogs: blogEntries, post: null, cookie: Astro.request.he
 const tagPosts = blog.getPostsFor({
    propertyName: 'tags',
    property: tagName
-});
+}).sort((_a, b) => (b.data.featured_post ? 1 : -1));
 ---
 
 <MainLayout title={tag}>

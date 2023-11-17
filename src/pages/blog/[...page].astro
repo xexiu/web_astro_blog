@@ -42,7 +42,8 @@ const uniqueCategories = [...new Set(categories)];
    <ViewTransitions />
    <SectionContainer ariaLabel="Publicaciones Recientes">
       <div class="blog-page">
-         <Posts entries={page['data']} />
+         <Posts entries={blogs.featured} />
+         <Posts entries={blogs.latest} />
          <Pagination prevUrl={page['url']['prev']} nextUrl={page['url']['next']} />
       </div>
    </SectionContainer>
