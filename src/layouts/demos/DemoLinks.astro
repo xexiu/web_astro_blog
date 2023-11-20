@@ -25,7 +25,6 @@ const ariaLabel = routeName ? `${routeName} Demo Links` : 'Demo Links';
 
 <nav role="navigation" aria-label={ariaLabel} vocab="https://schema.org/">
    <ol itemtype="https://schema.org/ItemList">
-      <meta itemprop="numberOfItems" content={String(uniquePaths.length)} />
       {
          uniquePaths.map((path: string, index: number) => {
             return (

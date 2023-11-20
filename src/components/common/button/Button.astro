@@ -8,10 +8,11 @@ const { text, title = 'Botón', classes = '', ...rest } = Astro.props;
 ---
 
 <button
-   {...rest}
    aria-label={title}
    type="button"
    class:list={['btn-clean', classes]}
+   title={title}
+   {...rest}
 >
    <slot name="button-before-text" />
    {text}

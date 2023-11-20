@@ -45,6 +45,11 @@ html[data-current-page*="/demos"] .nav__links li a[href*='/demos'] {
     display: none;
     cursor: pointer;
     padding-left: 10px;
+
+    div {
+        width: 0;
+        height: 0;
+    }
 }
 
 .logo-img {

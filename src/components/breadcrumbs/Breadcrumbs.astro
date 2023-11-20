@@ -23,7 +23,6 @@ const { links }: Props = Astro.props;
    typeof="BreadcrumbList"
 >
    <ul itemtype="https://schema.org/BreadcrumbList">
-      <meta itemprop="numberOfItems" content={String(links.length)} />
       {
          links.map((link: Link, index: number) => {
             return (

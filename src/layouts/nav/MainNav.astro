@@ -5,10 +5,10 @@ import LandingLinks from '@layouts/nav/LandingLinks.astro';
 import PageLinks from '@layouts/nav/PageLinks.astro';
 ---
 
-<input type="checkbox" id="click" />
-<label for="click" class="menu-btn">
+{Astro.url.pathname !== '/' && <input type="checkbox" id="click" />
+<label for="click" class="menu-btn" aria-label="Menu">
    <Icon name="jam:menu" height="36" width="36" />
-</label>
+</label>}
 
 <nav
    class=`${Astro.url.pathname === '/' ? 'landing-header-main-nav' : 'header-main-nav'}`

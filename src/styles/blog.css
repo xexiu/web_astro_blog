@@ -98,7 +98,8 @@
 
 	a code, li code, p code {
 		position: relative;
-		text-underline-offset: var(--padding-block);
+		border-bottom: var(--padding-block) solid;
+		text-decoration: none;
 		padding: calc(2px * 1) calc(4px * 1);
 		font-size: var(--fs-3sm);
 		word-break: break-word;
@@ -126,6 +127,10 @@
 		margin: 5px;
 		color: #f2f2f2;
 		cursor: pointer;
+
+		.feedback-text {
+			color: #f2f2f2;
+		}
 	}
 
 	.copy-clipboard-code {

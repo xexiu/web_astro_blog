@@ -26,14 +26,12 @@ export const manifest = {
       {
          'src': '/assets/images/image-default_540x344-min.png',
          'type': 'image/png',
-         'sizes': '540x344',
-         'form_factor': 'narrow'
+         'sizes': '540x344'
       },
       {
          'src': '/assets/images/image-default_1024x652-min.png',
          'type': 'image/png',
-         'sizes': '1024x652',
-         'form_factor': 'wide'
+         'sizes': '1024x652'
       }
    ],
    icons: [

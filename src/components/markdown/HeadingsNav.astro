@@ -41,7 +41,6 @@ function extractHeadings(text: string) {
       !!links &&
       links.length &&
       `<span class="index-article">En este artículo: </span><ul>
-         <meta itemprop="numberOfItems" content="${String(links.length)}" />
          ${links.join('')}</ul>`
    );
 }

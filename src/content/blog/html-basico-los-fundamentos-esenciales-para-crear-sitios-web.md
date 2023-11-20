@@ -64,7 +64,7 @@ HTML utiliza "marcado" para anotar texto, imágenes y otros contenidos para su v
 
 y muchos otros.
 
-Puedes consultar más [aquí](https://developer.mozilla.org/es/docs/Web/HTML/Element/a)
+Puedes consultar más en [MDN Mozilla](https://developer.mozilla.org/es/docs/Web/HTML/Element/a)
 
 Un elemento HTML se separa del resto del texto en un documento mediante "etiquetas", que consisten en el nombre del elemento rodeado por "<" y ">". El nombre de un elemento dentro de una etiqueta no distingue entre mayúsculas y minúsculas, es decir, se puede escribir en mayúsculas, minúsculas o en una combinación de ambas. Por ejemplo, la etiqueta `<title>` se puede escribir como `<Title>`, `<TITLE>` o de cualquier otra manera. Sin embargo, la convención y la práctica recomendada es escribir las etiquetas en minúsculas.
 
