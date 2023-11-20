@@ -8,16 +8,24 @@ export function updateTheme(value: string): void {
 
 export function slugify(text: string): string {
    return text
-      .normalize('NFD')
       .toString()
       .toLowerCase()
+      .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '')
       .replace(/\s+/g, '-')
       .replace('#', '')
       .replace('?', '')
       .replace('¿', '')
       .replace('!', '')
-      .replace('¡', '');
+      .replace('¡', '')
+      .replace('{', '')
+      .replace('}', '')
+      .replace('\/', '')
+      .replace('\\', '')
+      .replace(':', '')
+      .replace('.', '')
+      .replace('\(', '')
+      .replace('\)', '');
 }
 
 export function unslugify(text: string): string {

@@ -207,9 +207,21 @@
 		align-items: center;
 	}
 
-	img {
+	.markdown-image {
 		display: block;
 		max-width: 100%;
+		margin: 10px 0;
+		border-radius: 5px;
+		position: relative;
+	}
+
+	.index-article {
+		font-weight: bold;
+		margin: 10px 0;
+		display: inline-block;
+	}
+
+	.article-nav {
 		margin: 10px 0;
 	}
 
@@ -293,6 +305,7 @@
 		box-shadow: 0 0 10px -5px #999;
 		margin-top: 20px;
 		border-radius: 2px;
+		position: relative;
 
 		h2, h3 {
 			border-bottom: 2px dashed var(--color-darken-grey);
@@ -331,7 +344,7 @@
 		}
 
 		p {
-			line-height: var(--lh-1-6);
+			line-height: var(--lh-1-8);
 			margin: 1.3em 0;
 		}
 	}

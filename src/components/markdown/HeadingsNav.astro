@@ -1,0 +1,80 @@
+---
+import { slugify } from '@js/utils';
+
+const { markdown } = Astro.props;
+
+function extractHeadings(text: string) {
+   const regex = /^##?#\s+(.*)/gm;
+
+   // Match all occurrences
+   const matches = [];
+   let match = null as any;
+
+   while ((match = regex.exec(text)) !== null) {
+      matches.push(match[1] as never);
+   }
+
+   const links = matches.map((heading: string, index: number) => {
+      const id = slugify(heading);
+
+      return `<li
+                  itemprop="itemListElement"
+                  itemscope
+                  itemtype="https://schema.org/ListItem"
+               >
+                  <a
+                     itemprop="item"
+                     aria-label="${heading}"
+                     title="${heading}"
+                     class="internal-link anchor-link markdown-link"
+                     data-normal-link
+                     data-section-id="${id}"
+                     href="#${id}"
+                  >
+                     ${heading}
+                  </a>
+                  <meta property="position" content="${String(index + 1)}" />
+               </li>`;
+   });
+
+   return (
+      !!links &&
+      links.length &&
+      `<span class="index-article">En este artículo: </span><ul>
+         <meta itemprop="numberOfItems" content="${String(links.length)}" />
+         ${links.join('')}</ul>`
+   );
+}
+
+const headings = extractHeadings(markdown);
+---
+
+{!!headings && <div class="article-nav timeline" set:html={headings} />}
+
+<style>
+   @media screen and (width >= 1815px) {
+      .timeline {
+         position: fixed;
+         top: 18%;
+         max-height: 700px;
+         left: 20px;
+         width: 260px;
+         overflow: auto;
+         &::-webkit-scrollbar {
+            width: 10px;
+            border-radius: 5px;
+         }
+
+         &::-webkit-scrollbar-track {
+            background: var(--color-dark);
+            box-shadow: inset 0 0 6px rgb(0 0 0 / 30%);
+         }
+
+         &::-webkit-scrollbar-thumb,
+         &::-webkit-scrollbar-button {
+            background: var(--color-red);
+            border-radius: 5px;
+         }
+      }
+   }
+</style>

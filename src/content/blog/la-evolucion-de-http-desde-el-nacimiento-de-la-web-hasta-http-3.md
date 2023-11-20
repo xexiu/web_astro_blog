@@ -20,16 +20,6 @@ HTTP es el protocolo que todos los desarrolladores web deben conocer, ya que imp
 
 En este artículo, discutiremos qué es HTTP, cómo surgió, dónde se encuentra hoy y cómo llegamos hasta aquí.
 
-* [¿Qué es HTTP?](#que-es-http)
-* [HTTP/0.9 - El protocolo original (1991)](#http09---el-protocolo-original-1991)
-* [HTTP/1.0 - 1996](#http10---1996)
-* [Apretón de manos de tres vías (three-way handshake)](#apreton-de-manos-de-tres-vias-three-way-handshake)
-* [HTTP/1.1 - 1997](#http11---1997)
-* [Sin embargo, no todo era perfecto](#sin-embargo-no-todo-era-perfecto)
-* [HTTP/2 - 2015](#http2---2015)
-* [HTTP/3 - 2020](#http3---2020)
-* [Conclusión](#conclusion)
-
 ### ¿Qué es HTTP?
 
 Primero lo primero, ¿qué es HTTP? HTTP es un protocolo de comunicación de la capa de aplicación basado en TCP/IP que estandariza cómo los clientes y servidores se comunican entre sí. Define cómo se solicita y transmite contenido a través de Internet. Es un protocolo de capa de aplicación, lo que significa que es simplemente una capa de abstracción que estandariza cómo los hosts (clientes y servidores) se comunican. HTTP depende de TCP/IP para enviar solicitudes y respuestas entre el cliente y el servidor. De forma predeterminada, se utiliza el puerto TCP 80, pero también se pueden utilizar otros puertos. HTTPS, por otro lado, utiliza el puerto 443.

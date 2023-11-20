@@ -1,8 +1,21 @@
 ---
 import { slugify } from '@js/utils';
-const { as: Component, href } = Astro.props;
+import NormalizeLinks from '@components/markdown/NormalizeLinks.astro';
 
+const { as: Component, href } = Astro.props;
 const sanitizedId = slugify(href);
 ---
 
-<Component id={sanitizedId}><slot /></Component>
+{
+   Component === 'h2' || Component === 'h3' ? (
+      <Component id={sanitizedId}>
+         <NormalizeLinks href={`#${sanitizedId}`}>
+            <slot />
+         </NormalizeLinks>
+      </Component>
+   ) : (
+      <Component id={sanitizedId}>
+         <slot />
+      </Component>
+   )
+}

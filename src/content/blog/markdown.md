@@ -14,11 +14,7 @@ featured_image:
   alt: featured
   src: src/images/screen-shot-2023-08-31-at-08.19.44-am-2-.png
 ---
-```javascript
-  import Welcome from "../../components/Welcome.astro";
-
-  <Welcome text="Sergiu" />
-```
+<WelcomeTest text="Sergiu from Custom Component" />
 
 I need to highlight these <mark>very important words</mark>
 

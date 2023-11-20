@@ -1,14 +1,14 @@
 ---
-// import { Icon } from 'astro-icon';
+import { Icon } from 'astro-icon';
 import './main-nav.css';
 import LandingLinks from '@layouts/nav/LandingLinks.astro';
 import PageLinks from '@layouts/nav/PageLinks.astro';
 ---
 
-<!-- <input type="checkbox" id="click" />
+<input type="checkbox" id="click" />
 <label for="click" class="menu-btn">
    <Icon name="jam:menu" height="36" width="36" />
-</label> -->
+</label>
 
 <nav
    class=`${Astro.url.pathname === '/' ? 'landing-header-main-nav' : 'header-main-nav'}`

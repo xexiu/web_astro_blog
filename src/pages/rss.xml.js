@@ -5,7 +5,9 @@ import { MyBlog as Blog } from '@js/builders';
 import { getCollection } from 'astro:content';
 
 export async function GET(context) {
-   const blogEntries = await getCollection('blog');
+   const blogEntries = await getCollection('blog', ({ data }) => {
+      return data.is_private !== true;
+   });
    const blog = new Blog({ blogs: blogEntries, post: null, cookie: context.request.headers.get('cookie') });
    const { allBlogs } = blog;
 

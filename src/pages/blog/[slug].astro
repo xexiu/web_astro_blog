@@ -33,11 +33,15 @@ import AstroSpeech from '@xexiu/astro-speech';
 import { Icon } from 'astro-icon';
 import { Markdown } from 'astro-remote';
 import { getCollection } from 'astro:content';
+import WelcomeTest from '@components/WelcomeTest.astro';
+import HeadingsNav from '@components/markdown/HeadingsNav.astro';
 // Cookie not working in prod (but works locally) because of this:
 // https://answers.netlify.com/t/cookie-not-set-in-deployment-but-works-in-localhost/97069
 
 export async function getStaticPaths() {
-   const blogEntries = await getCollection('blog');
+   const blogEntries = await getCollection('blog', ({ data }) => {
+      return data.is_private !== true;
+   });
 
    return blogEntries.map((entry) => {
       return {
@@ -99,6 +103,7 @@ const { title, excerpt, category } = entry.data;
             <Tags tags={unslugifiedPostTags} />
          </section>
          <section class="markdown-wrapper">
+            <HeadingsNav markdown={entry.body} />
             <Markdown
                content={entry.body}
                sanitize={{ allowComponents: true }}
@@ -107,7 +112,8 @@ const { title, excerpt, category } = entry.data;
                   CodeBlock,
                   a: NormalizeLinks,
                   Heading,
-                  Note
+                  Note,
+                  WelcomeTest
                }}
             />
          </section>

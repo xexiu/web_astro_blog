@@ -10,7 +10,10 @@ import { MyBlog as Blog } from '@js/builders';
 
 
 export async function getStaticPaths() {
-   const blogEntries = await getCollection('blog');
+   const blogEntries = await getCollection('blog', ({ data }) => {
+      return data.is_private !== true;
+   });
+
    const allAuthors = [
       ...new Set(blogEntries.map((post) => post.data.author).flat())
    ];
